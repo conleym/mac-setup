@@ -36,12 +36,14 @@
         block:
         - debug:
             msg: "Downloading to {{ downloads }}"
-        - name: Download MacPorts
-          get_url:
-            url: "https://distfiles.macports.org/MacPorts/MacPorts-{{ macports_version }}-{{ macos_major_version }}-{{ macos_marketing_version }}.pkg"
-            dest: "{{ downloads }}/macports.pkg"
-            # TODO why does this fail on catalina?
-            validate_certs: no
+            
+# TODO why is this not found on catalina?
+#        - name: Download MacPorts
+#          get_url:
+#            url: "https://distfiles.macports.org/MacPorts/MacPorts-{{ macports_version }}-{{ macos_major_version }}-{{ macos_marketing_version }}.pkg"
+#            dest: "{{ downloads }}/macports.pkg"
+#            # TODO why does validation fail on catalina?
+#            validate_certs: no
 
         - name: Install MacPorts
           command: "installer -pkg {{ downloads }}/macports.pkg -target /"
@@ -53,7 +55,7 @@
           get_url:
             url: https://data.services.jetbrains.com/products/download?platform=mac&code=TBA
             dest: "{{ downloads }}/jetbrains-toolbox.dmg"
-            # TODO why does this fail on catalina?
+            # TODO why does validation fail on catalina?
             validate_certs: no
         - name: Mount JetBrains toolbox dmg
           include_role:
