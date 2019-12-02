@@ -1,0 +1,10 @@
+# List of ports with optional variants
+---
+ports_to_install:
+    coreutils:
+    gwhich:
+    harfbuzz:
+    harfbuzz-icu:
+    mas:
+    lastpass-cli-doc:
+    lastpass-cli: +pientry
