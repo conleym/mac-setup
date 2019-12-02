@@ -4,6 +4,7 @@
   vars_files:
       - vars.yml
       - ports.yml
+      - mas.yml
   tasks:
       # See https://unix.stackexchange.com/questions/234104/get-osx-codename-from-command-line
       - name: Determine OS version
@@ -74,6 +75,15 @@
           vars:
             mountpoint: jetbrains-toolbox
 
+      - name: List installed apps
+        command: mas list
+        register: mas_list_stdout
+
+      - name: Install AppStore apps
+        command: mas install "{{ item }}"
+        with_items: "{{ mas_apps_to_install }}"
+        when: (item | string) not in mas_list_stdout.stdout
+
       - name: Add MacPorts to path
         lineinfile:
           line: /opt/local/bin
@@ -91,6 +101,7 @@
           state: present
         become: yes
         with_dict: "{{ ports_to_install }}"
+
 
 #      - name: Clone emacs
 #        git:

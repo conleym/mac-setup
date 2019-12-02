@@ -5,6 +5,5 @@ ports_to_install:
     gwhich:
     harfbuzz:
     harfbuzz-icu:
-    mas:
     lastpass-cli-doc:
     lastpass-cli: +pientry
