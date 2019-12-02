@@ -1,0 +1,3 @@
+---
+- name: Mount dmg
+  command: "hdiutil attach '{{ path }}' -nobrowse -mountpoint '/Volumes/{{ mountpoint }}'"

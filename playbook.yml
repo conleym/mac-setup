@@ -1,0 +1,82 @@
+---
+- hosts: localhost
+  become: no
+  vars_files:
+      - vars.yml
+  tasks:
+      # See https://unix.stackexchange.com/questions/234104/get-osx-codename-from-command-line
+      - name: Determine OS version
+        command: sw_vers -productVersion
+        register: sw_vers_stdout
+
+      - set_fact:
+          macos_version: "{{ sw_vers_stdout.stdout }}"
+          macos_major_version: "{{ sw_vers_stdout.stdout | regex_replace('^(10\\.\\d+).*', '\\1') }}"
+
+      - name: Determine marketing version
+        shell: >-
+            awk '/SOFTWARE LICENSE AGREEMENT FOR (macOS|OS X)/' '/System/Library/CoreServices/Setup Assistant.app/Contents/Resources/en.lproj/OSXSoftwareLicense.rtf' |
+            awk -F '(macOS|OS X)' '{ print $NF }' |
+            awk '{ gsub(/^[ \t]+|[ \t]+$/, ""); print }'
+        register: awk_stdout
+
+      - set_fact:
+          macos_marketing_version: "{{ awk_stdout.stdout }}"
+
+      - set_fact:
+          downloads: "{{ '~/Downloads/setup' | expanduser }}"
+
+      - name: Ensure downloads directory exists
+        file:
+          path: "{{ downloads }}"
+          state: directory
+
+        # Download and install stuff.
+      - name: Install various things.
+        block:
+        - debug:
+            msg: "Downloading to {{ downloads }}"
+        - name: Download MacPorts
+          get_url:
+            url: "https://distfiles.macports.org/MacPorts/MacPorts-{{ macports_version }}-{{ macos_major_version }}-{{ macos_marketing_version }}.pkg"
+            dest: "{{ downloads }}/macports.pkg"
+            # TODO why does this fail on catalina?
+            validate_certs: no
+
+        - name: Install MacPorts
+          command: "installer -pkg {{ downloads }}/macports.pkg -target /"
+          become: yes
+          args:
+            creates: /opt/local/bin/port
+
+        - name: Download JetBrains toolbox
+          get_url:
+            url: https://data.services.jetbrains.com/products/download?platform=mac&code=TBA
+            dest: "{{ downloads }}/jetbrains-toolbox.dmg"
+            # TODO why does this fail on catalina?
+            validate_certs: no
+        - name: Mount JetBrains toolbox dmg
+          include_role:
+            name: mount_dmg
+          vars:
+            path: "{{ downloads }}/jetbrains-toolbox.dmg"
+            mountpoint: "jetbrains-toolbox"
+        - name: Install JetBrains toolbox
+          shell: cp -aR '/Volumes/jetbrains-toolbox/Jetbrains Toolbox.app' /Applications
+          args:
+            creates: /Applications/Jetbrains Toolbox.app
+        - name: Unmount JetBrains toolbox dmg
+          include_role:
+            name: unmount_dmg
+          vars:
+            mountpoint: jetbrains-toolbox
+#      - name: Clone emacs
+#        git:
+#         repo: https://github.com/emacs-mirror/emacs
+#         dest: ~/src/emacs
+#      - name: Clone .emacs.d
+#        git:
+#         repo: git@github.com:conleym/dot-emacs.git
+#         dest: ~/.emacs.d
+#      - name: Compile emacs
+#        shell: ""
