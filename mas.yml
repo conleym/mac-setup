@@ -1,8 +1,5 @@
 # Apps to install via the app store, with identifiers.
 ---
-mas_installed_apps:
-    - name: LastPass
-      id: 926036361
-
-    - name: Slack
-      id: 803453959
+mas_apps_to_install:
+    - 926036361 # LastPass
+    - 803453959 # Slack
