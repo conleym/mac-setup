@@ -3,6 +3,7 @@
   become: no
   vars_files:
       - vars.yml
+      - ports.yml
   tasks:
       # See https://unix.stackexchange.com/questions/234104/get-osx-codename-from-command-line
       - name: Determine OS version
@@ -36,7 +37,7 @@
         block:
         - debug:
             msg: "Downloading to {{ downloads }}"
-            
+
 # TODO why is this not found on catalina?
 #        - name: Download MacPorts
 #          get_url:
@@ -72,6 +73,17 @@
             name: unmount_dmg
           vars:
             mountpoint: jetbrains-toolbox
+
+      - name: Install Ports
+        macports:
+          selfupdate: yes
+          upgrade: yes
+          name: "{{ item.key }}"
+          variant: "{{ item.value }}"
+          state: present
+        become: yes
+        with_dict: "{{ ports_to_install }}"
+
 #      - name: Clone emacs
 #        git:
 #         repo: https://github.com/emacs-mirror/emacs
