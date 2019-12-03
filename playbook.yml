@@ -35,6 +35,12 @@
           path: "{{ downloads }}"
           state: directory
 
+      - name: Ensure ~/.ssh exists
+        file:
+          path: "{{ '~/.ssh' | expanduser }}"
+          state: directory
+          mode: u=rwx
+
         # Download and install stuff.
       - name: Install various things.
         block:

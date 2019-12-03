@@ -3,9 +3,8 @@
 ports_to_install:
     # GNU coreutils.
     coreutils:
-    # GNU getopt
     getopt:
-    # GNU which
+    gmake:
     gwhich:
 
     # Harfbuzz (emacs uses this)
