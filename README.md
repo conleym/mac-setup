@@ -2,8 +2,6 @@
 
 ## Prerequisites
 
-1. xcode app (download from app store). The full app is required to install `mas` with MacPorts.
-1. `sudo xcodebuild -license` and accept.
 1. xcode command line tools (`xcode-select --install`), includes `python3` with `pip3`.
 1. ansible (`pip3 install [--user] ansible`)
 1. mas (https://github.com/mas-cli/mas/releases), because the MacPorts version is old and broken.
