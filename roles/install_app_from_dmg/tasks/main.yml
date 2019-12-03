@@ -1,0 +1,31 @@
+---
+- name: Check for app
+  stat:
+    path: "/Applications/{{ app_name }}.app"
+  register: install_app_from_dmg_st
+
+- set_fact:
+    install_app_from_dmg_st: "{{ install_app_from_dmg_st.stat }}"
+
+- name: Download disk image
+  get_url:
+    url: "{{ dmg_url }}"
+    dest: "{{ dmg_destination }}"
+    # TODO why does this fail on catalina?
+    validate_certs: no
+  when: not (install_app_from_dmg_st.exists and install_app_from_dmg_st.isdir)
+
+- block:
+    - include_role:
+        name: mount_dmg
+      vars:
+        path: "{{ dmg_destination }}"
+        mountpoint: "{{ app_name }}"
+    - name: Copy app to destination
+      shell: "cp -aR '/Volumes/{{ app_name }}/{{ app_name }}.app' '{{ app_destination }}'"
+  always:
+    - include_role:
+        name: unmount_dmg
+      vars:
+        mountpoint: "{{ app_name }}"
+  when: not (install_app_from_dmg_st.exists and install_app_from_dmg_st.isdir)

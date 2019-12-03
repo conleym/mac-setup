@@ -1,10 +1,12 @@
 ---
 - hosts: localhost
   become: no
+  connection: local
   vars_files:
       - vars.yml
       - ports.yml
       - mas.yml
+      - dmgs.yml
   tasks:
       # See https://unix.stackexchange.com/questions/234104/get-osx-codename-from-command-line
       - name: Determine OS version
@@ -53,27 +55,14 @@
           args:
             creates: /opt/local/bin/port
 
-        - name: Download JetBrains toolbox
-          get_url:
-            url: https://data.services.jetbrains.com/products/download?platform=mac&code=TBA
-            dest: "{{ downloads }}/jetbrains-toolbox.dmg"
-            # TODO why does validation fail on catalina?
-            validate_certs: no
-        - name: Mount JetBrains toolbox dmg
+        - name: Download and install apps from disk images
           include_role:
-            name: mount_dmg
+            name: install_app_from_dmg
           vars:
-            path: "{{ downloads }}/jetbrains-toolbox.dmg"
-            mountpoint: "jetbrains-toolbox"
-        - name: Install JetBrains toolbox
-          shell: cp -aR '/Volumes/jetbrains-toolbox/Jetbrains Toolbox.app' /Applications
-          args:
-            creates: /Applications/Jetbrains Toolbox.app
-        - name: Unmount JetBrains toolbox dmg
-          include_role:
-            name: unmount_dmg
-          vars:
-            mountpoint: jetbrains-toolbox
+            dmg_url: "{{ item.dmg_url }}"
+            dmg_destination: "{{ downloads }}/{{ item.app_name }}.dmg"
+            app_name: "{{ item.app_name }}"
+          with_items: "{{ dmgs_to_download_and_install }}"
 
       - name: List installed apps
         command: mas list
