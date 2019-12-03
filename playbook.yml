@@ -81,6 +81,15 @@
           insertbefore: /usr/local/bin
         become: yes
 
+      # Install separately, since some ports require it, or at least look for it, causing prompts.
+      - name: Install OpenJDK
+        macports:
+          selfupdate: yes
+          upgrade: yes
+          name: openjdk8
+          state: present
+        become: yes
+
       - name: Install ports
         macports:
           selfupdate: yes

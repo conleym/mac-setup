@@ -1,9 +1,29 @@
 # List of ports with optional variants
 ---
 ports_to_install:
+    # GNU coreutils.
     coreutils:
+    # GNU getopt
+    getopt:
+    # GNU which
     gwhich:
+
+    # Harfbuzz (emacs uses this)
     harfbuzz:
     harfbuzz-icu:
+    jq:
+    # LastPass CLI
     lastpass-cli-doc:
     lastpass-cli: +pientry
+
+    the_silver_searcher:
+    tidy:
+    trash:
+    tree:
+    watch:
+    wget: +gnutls
+    # XQuartz
+    xorg:
+    xorg-server:
+
+    zsh-completions:
