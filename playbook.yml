@@ -41,34 +41,52 @@
           state: directory
           mode: u=rwx
 
-        # Download and install stuff.
-      - name: Install various things.
-        block:
-        - debug:
-            msg: "Downloading to {{ downloads }}"
+      - name: Download XQuartz
+        get_url:
+          url: "https://dl.bintray.com/xquartz/downloads/XQuartz-{{ xquartz_version }}.dmg"
+          dest: "{{ downloads }}/xquartz.dmg"
 
-# TODO why is this not found on catalina?
-#        - name: Download MacPorts
-#          get_url:
-#            url: "https://distfiles.macports.org/MacPorts/MacPorts-{{ macports_version }}-{{ macos_major_version }}-{{ macos_marketing_version }}.pkg"
-#            dest: "{{ downloads }}/macports.pkg"
-#            # TODO why does validation fail on catalina?
-#            validate_certs: no
-
-        - name: Install MacPorts
-          command: "installer -pkg {{ downloads }}/macports.pkg -target /"
+      - block:
+        - name: Mount XQuartz disk image
+          include_role:
+            name: mount_dmg
+          vars:
+            path: "{{ downloads }}/xquartz.dmg"
+            mountpoint: xquartz
+        - name: Install XQuartz
+          command: "installer -pkg /Volumes/xquartz/XQuartz.pkg -target /"
           become: yes
           args:
-            creates: /opt/local/bin/port
+            creates: /usr/X11/bin/Xquartz
+        always:
+          - name: Unmount XQuartz disk image
+            include_role:
+              name: unmount_dmg
+            vars:
+              mountpoint: xquartz
 
-        - name: Download and install apps from disk images
-          include_role:
-            name: install_app_from_dmg
-          vars:
-            dmg_url: "{{ item.dmg_url }}"
-            dmg_destination: "{{ downloads }}/{{ item.app_name }}.dmg"
-            app_name: "{{ item.app_name }}"
-          with_items: "{{ dmgs_to_download_and_install }}"
+          # TODO why is this not found on catalina?
+          #        - name: Download MacPorts
+          #          get_url:
+          #            url: "https://distfiles.macports.org/MacPorts/MacPorts-{{ macports_version }}-{{ macos_major_version }}-{{ macos_marketing_version }}.pkg"
+          #            dest: "{{ downloads }}/macports.pkg"
+          #            # TODO why does validation fail on catalina?
+          #            validate_certs: no
+
+      - name: Install MacPorts
+        command: "installer -pkg {{ downloads }}/macports.pkg -target /"
+        become: yes
+        args:
+          creates: /opt/local/bin/port
+
+      - name: Download and install apps from disk images
+        include_role:
+          name: install_app_from_dmg
+        vars:
+          dmg_url: "{{ item.dmg_url }}"
+          dmg_destination: "{{ downloads }}/{{ item.app_name }}.dmg"
+          app_name: "{{ item.app_name }}"
+        with_items: "{{ dmgs_to_download_and_install }}"
 
       - name: List installed apps
         command: mas list
@@ -87,7 +105,7 @@
           insertbefore: /usr/local/bin
         become: yes
 
-      # Install separately, since some ports require it, or at least look for it, causing prompts.
+    # Install separately, since some ports require it, or at least look for it, causing prompts.
       - name: Install OpenJDK
         macports:
           selfupdate: yes
@@ -106,14 +124,14 @@
         become: yes
         with_dict: "{{ ports_to_install }}"
 
+      - name: Clone emacs
+        git:
+          repo: https://github.com/emacs-mirror/emacs
+          dest: "{{ '~/src/emacs' | expanduser }}"
 
-#      - name: Clone emacs
-#        git:
-#         repo: https://github.com/emacs-mirror/emacs
-#         dest: ~/src/emacs
-#      - name: Clone .emacs.d
-#        git:
-#         repo: git@github.com:conleym/dot-emacs.git
-#         dest: ~/.emacs.d
-#      - name: Compile emacs
-#        shell: ""
+    # TODO build emacs and copy to /Applications
+
+      - name: Clone .emacs.d
+        git:
+          repo: git@github.com:conleym/dot-emacs.git
+          dest: "{{  '~/.emacs.d' | expanduser }}"

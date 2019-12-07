@@ -5,24 +5,20 @@ ports_to_install:
     coreutils:
     getopt:
     gmake:
+    gmp: native
     gwhich:
-
-    # Harfbuzz (emacs uses this)
     harfbuzz:
     harfbuzz-icu:
     jq:
-    # LastPass CLI
     lastpass-cli-doc:
     lastpass-cli: +pientry
-
+    lesspipe:
+    multimarkdown:
+    poppler:
     the_silver_searcher:
     tidy:
     trash:
     tree:
     watch:
     wget: +gnutls
-    # XQuartz
-    xorg:
-    xorg-server:
-
     zsh-completions:
