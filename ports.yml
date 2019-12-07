@@ -17,6 +17,7 @@ ports_to_install:
     multimarkdown:
     poppler:
     siege:
+    texinfo:
     the_silver_searcher:
     tidy:
     trash:

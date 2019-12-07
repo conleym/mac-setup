@@ -65,6 +65,16 @@
             vars:
               mountpoint: xquartz
 
+      - name: Download MacTeX
+        get_url:
+          url: https://tug.org/cgi-bin/mactex-download/MacTeX.pkg
+          dest: "{{ downloads }}/mactex.pkg"
+      - name: Install MacTeX
+        command: "installer -pkg {{ downloads }}/mactex.pkg -target /"
+        become: yes
+        args:
+          creates: /usr/local/texlive
+
           # TODO why is this not found on catalina?
           #        - name: Download MacPorts
           #          get_url:
