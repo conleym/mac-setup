@@ -1,6 +1,7 @@
 # List of ports with optional variants
 ---
 ports_to_install:
+    autoconf:
     # GNU coreutils.
     coreutils:
     getopt:
@@ -15,6 +16,7 @@ ports_to_install:
     lesspipe:
     multimarkdown:
     poppler:
+    siege:
     the_silver_searcher:
     tidy:
     trash:
