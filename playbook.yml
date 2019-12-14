@@ -115,10 +115,23 @@
           insertbefore: /usr/local/bin
         become: yes
 
+      - name: Add MacPorts to path
+        lineinfile:
+          line: /opt/local/sbin
+          path: /etc/paths
+          state: present
+          insertbefore: /usr/local/bin
+        become: yes
+
       - name: Clone nvm
         git:
           repo: https://github.com/nvm-sh/nvm
           dest: "{{ '~/.nvm' | expanduser }}"
+
+      - name: Install node.js
+        shell: "source ~/.nvm/nvm.sh && nvm install {{ 'v' + node_version }}"
+        args:
+          creates: "{{ '~/.nvm/versions/node/v' + node_version | expanduser }}"
 
     # Install separately, since some ports require it, or at least look for it, causing prompts.
       - name: Install OpenJDK
@@ -145,6 +158,10 @@
           dest: "{{ '~/src/emacs' | expanduser }}"
 
     # TODO build emacs and copy to /Applications
+    # Ideally as a stanadalone app using
+    # $ mkdir nextstep/Emacs.app/Contents/Frameworks
+    # $ /usr/bin/python -m macholib standalone nextstep/Emacs.app
+
 
       - name: Clone .emacs.d
         git:

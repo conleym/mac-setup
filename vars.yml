@@ -1,3 +1,4 @@
 ---
 macports_version: 2.6.2
 xquartz_version: 2.7.11
+node_version: 12.13.1
