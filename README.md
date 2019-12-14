@@ -9,7 +9,7 @@
 
 ## How do?
 
-1. Run `ansible-playbook -i inventory -K playbook.yml` (omit `-K` if you're set up with passwordless `sudo` or whatever).
+1. Run `ansible-playbook -K playbook.yml` (omit `-K` if you're set up with passwordless `sudo` or whatever).
 
 
 ## What it does
