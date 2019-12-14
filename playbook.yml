@@ -115,6 +115,11 @@
           insertbefore: /usr/local/bin
         become: yes
 
+      - name: Clone nvm
+        git:
+          repo: https://github.com/nvm-sh/nvm
+          dest: "{{ '~/.nvm' | expanduser }}"
+
     # Install separately, since some ports require it, or at least look for it, causing prompts.
       - name: Install OpenJDK
         macports:
