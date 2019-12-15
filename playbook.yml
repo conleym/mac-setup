@@ -4,6 +4,7 @@
   connection: local
   vars_files:
       - vars.yml
+      - pip.yml
       - ports.yml
       - mas.yml
       - dmgs.yml
@@ -106,6 +107,20 @@
         command: mas install "{{ item }}"
         with_items: "{{ mas_apps_to_install }}"
         when: (item | string) not in mas_list_stdout.stdout
+
+      - name: Install global Python packages
+        pip:
+          executable: pip3
+          name: "{{ pip_global_packages_to_install }}"
+          state: present
+          become: yes
+
+      - name: Install user Python packages
+        pip:
+          executable: pip3
+          name: "{{ pip_user_packages_to_install }}"
+          state: present
+          extra_args: --user --upgrade
 
       - name: Add MacPorts to path
         lineinfile:
