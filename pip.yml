@@ -1,0 +1,33 @@
+# Packages to install with pip (for python 3 only)
+---
+pip_global_packages_to_install: []
+
+pip_user_packages_to_install:
+  # Start with the basics (upgrading these if necessary)
+  - pip
+  - virtualenv
+  - virtualenvwrapper
+
+  # AWS
+  - botocore
+  - boto
+  - boto3
+  - awscli
+  - awsebcli
+  - aws-sam-cli
+  - aws-shell
+
+  # Command line and such
+  - thefuck
+
+
+  ## Python dev
+  - format-sql
+
+  # These are used by elpy.
+  - autopep8
+  - flake8
+  - importmagic
+  - jedi # offers a choice of either rope or jedi. Let's have both though.
+  - rope
+  - yapf
