@@ -1,5 +1,7 @@
 # Ansible macOS setup
 
+Tested on Catalina. Requires python3.
+
 ## Prerequisites
 
 1. xcode command line tools (`xcode-select --install`), includes `python3` with `pip3`.
