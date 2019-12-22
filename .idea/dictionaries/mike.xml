@@ -2,8 +2,12 @@
   <dictionary name="mike">
     <words>
       <w>coreutils</w>
+      <w>expanduser</w>
       <w>getopt</w>
       <w>harfbuzz</w>
+      <w>macports</w>
+      <w>mactex</w>
+      <w>xquartz</w>
     </words>
   </dictionary>
 </component>
