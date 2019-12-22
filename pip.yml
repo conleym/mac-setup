@@ -20,7 +20,6 @@ pip_user_packages_to_install:
   # Command line and such
   - thefuck
 
-
   ## Python dev
   - format-sql
 
@@ -31,3 +30,6 @@ pip_user_packages_to_install:
   - jedi # offers a choice of either rope or jedi. Let's have both though.
   - rope
   - yapf
+
+  # Misc
+  - requests
