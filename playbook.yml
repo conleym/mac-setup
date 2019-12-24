@@ -42,29 +42,8 @@
           state: directory
           mode: u=rwx
 
-      - name: Download XQuartz
-        get_url:
-          url: "https://dl.bintray.com/xquartz/downloads/XQuartz-{{ xquartz_version }}.dmg"
-          dest: "{{ downloads }}/xquartz.dmg"
-
-      - block:
-        - name: Mount XQuartz disk image
-          include_role:
-            name: mount_dmg
-          vars:
-            path: "{{ downloads }}/xquartz.dmg"
-            mountpoint: xquartz
-        - name: Install XQuartz
-          command: "installer -pkg /Volumes/xquartz/XQuartz.pkg -target /"
-          become: yes
-          args:
-            creates: /usr/X11/bin/Xquartz
-        always:
-          - name: Unmount XQuartz disk image
-            include_role:
-              name: unmount_dmg
-            vars:
-              mountpoint: xquartz
+      - include_role:
+          name: xquartz
 
       - name: Download MacTeX
         get_url:
@@ -76,13 +55,13 @@
         args:
           creates: /usr/local/texlive
 
-          # TODO why is this not found on catalina?
-          #        - name: Download MacPorts
-          #          get_url:
-          #            url: "https://distfiles.macports.org/MacPorts/MacPorts-{{ macports_version }}-{{ macos_major_version }}-{{ macos_marketing_version }}.pkg"
-          #            dest: "{{ downloads }}/macports.pkg"
-          #            # TODO why does validation fail on catalina?
-          #            validate_certs: no
+      # TODO why is this not found on catalina?
+      - name: Download MacPorts
+        get_url:
+          url: "https://distfiles.macports.org/MacPorts/MacPorts-{{ macports_version }}-{{ macos_major_version }}-{{ macos_marketing_version }}.pkg"
+          dest: "{{ downloads }}/macports.pkg"
+          # TODO why does validation fail on catalina?
+          validate_certs: no
 
       - name: Install MacPorts
         command: "installer -pkg {{ downloads }}/macports.pkg -target /"
@@ -148,7 +127,7 @@
         args:
           creates: "{{ '~/.nvm/versions/node/v' + node_version | expanduser }}"
 
-    # Install separately, since some ports require it, or at least look for it, causing prompts.
+      # Install separately, since some ports require it, or at least look for it, causing prompts.
       - name: Install OpenJDK
         macports:
           selfupdate: yes
