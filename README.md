@@ -17,6 +17,7 @@ Tested on Catalina. Requires python3.
 ## What it does
 
 1. Install MacPorts and a configurable list of ports/variants.
-1. Install JetBrains toolbox (you'll have to manually install the apps you want -- there doesn't seem to be a way to automate this).
+1. Install MacTeX.
+1. Download and copy apps from a configurable list of disk image URLs. 
 1. Install apps from a configurable list of App Store apps (using `mas`).
 1. Install a configurable list of python3 packages using `pip3`.
