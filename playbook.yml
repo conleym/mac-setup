@@ -22,7 +22,7 @@
         shell: >-
             awk '/SOFTWARE LICENSE AGREEMENT FOR (macOS|OS X)/' '/System/Library/CoreServices/Setup Assistant.app/Contents/Resources/en.lproj/OSXSoftwareLicense.rtf' |
             awk -F '(macOS|OS X)' '{ print $NF }' |
-            awk '{ gsub(/^[ \t]+|[ \t]+$/, ""); print }'
+            awk '{ gsub(/^[^a-zA-Z]*|[^a-zA-Z]*$/, ""); print }'
         register: awk_stdout
 
       - set_fact:
@@ -48,19 +48,8 @@
       - include_role:
           name: mactex
 
-      # TODO why is this not found on catalina?
-      - name: Download MacPorts
-        get_url:
-          url: "https://distfiles.macports.org/MacPorts/MacPorts-{{ macports_version }}-{{ macos_major_version }}-{{ macos_marketing_version }}.pkg"
-          dest: "{{ downloads }}/macports.pkg"
-          # TODO why does validation fail on catalina?
-          validate_certs: no
-
-      - name: Install MacPorts
-        command: "installer -pkg {{ downloads }}/macports.pkg -target /"
-        become: yes
-        args:
-          creates: /opt/local/bin/port
+      - include_role:
+          name: macports
 
       - name: Download and install apps from disk images
         include_role:
@@ -85,7 +74,7 @@
           executable: pip3
           name: "{{ pip_global_packages_to_install }}"
           state: present
-          become: yes
+        become: yes
 
       - name: Install user Python packages
         pip:
