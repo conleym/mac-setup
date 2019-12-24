@@ -1,0 +1,19 @@
+# Download and install MacPorts
+---
+- stat:
+    path: /opt/local/bin/port
+  register: throwaway
+
+- block:
+    - name: Download MacPorts
+      get_url:
+        url: "https://distfiles.macports.org/MacPorts/MacPorts-{{ macports_version }}-{{ macos_major_version }}-{{ macos_marketing_version }}.pkg"
+        dest: "{{ downloads }}/macports.pkg"
+        # TODO why does validation fail on catalina?
+        validate_certs: no
+
+    - name: Install MacPorts
+      command: "installer -pkg {{ downloads }}/macports.pkg -target /"
+      become: yes
+
+  when: not throwaway.stat.executable
