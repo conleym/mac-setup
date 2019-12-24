@@ -45,15 +45,8 @@
       - include_role:
           name: xquartz
 
-      - name: Download MacTeX
-        get_url:
-          url: https://tug.org/cgi-bin/mactex-download/MacTeX.pkg
-          dest: "{{ downloads }}/mactex.pkg"
-      - name: Install MacTeX
-        command: "installer -pkg {{ downloads }}/mactex.pkg -target /"
-        become: yes
-        args:
-          creates: /usr/local/texlive
+      - include_role:
+          name: mactex
 
       # TODO why is this not found on catalina?
       - name: Download MacPorts

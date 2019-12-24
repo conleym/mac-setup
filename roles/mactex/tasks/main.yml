@@ -1,0 +1,17 @@
+# Download and install MacTeX
+---
+- stat:
+    path: /usr/local/texlive
+  register: throwaway
+
+- block:
+    - name: Download MacTeX
+      get_url:
+        url: https://tug.org/cgi-bin/mactex-download/MacTeX.pkg
+        dest: "{{ downloads }}/mactex.pkg"
+
+    - name: Install MacTeX
+      command: "installer -pkg {{ downloads }}/mactex.pkg -target /"
+      become: yes
+
+  when: not throwaway.stat.isdir
