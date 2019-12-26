@@ -12,12 +12,16 @@ Tested on Catalina. Requires python3.
 ## How do?
 
 1. Run `ansible-playbook -K playbook.yml` (omit `-K` if you're set up with passwordless `sudo` or whatever).
-
+1. The following `tags` are defined:
+    - ports
+    - tex
+    - emacs
 
 ## What it does
 
 1. Install MacPorts and a configurable list of ports/variants.
 1. Install MacTeX.
+1. Install XQuartz.
 1. Download and copy apps from a configurable list of disk image URLs. 
 1. Install apps from a configurable list of App Store apps (using `mas`).
 1. Install a configurable list of python3 packages using `pip3`.

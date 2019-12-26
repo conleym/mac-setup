@@ -47,9 +47,13 @@
 
       - include_role:
           name: mactex
+        tags:
+          - tex
 
       - include_role:
           name: macports
+        tags:
+          - ports
 
       - name: Download and install apps from disk images
         include_role:
@@ -90,6 +94,8 @@
           state: present
           insertbefore: /usr/local/bin
         become: yes
+        tags:
+          - ports
 
       - name: Add MacPorts to path
         lineinfile:
@@ -98,6 +104,8 @@
           state: present
           insertbefore: /usr/local/bin
         become: yes
+        tags:
+          - ports
 
       - name: Clone nvm
         git:
@@ -117,6 +125,8 @@
           name: openjdk8
           state: present
         become: yes
+        tags:
+          - ports
 
       - name: Install ports
         macports:
@@ -127,19 +137,43 @@
           state: present
         become: yes
         with_dict: "{{ ports_to_install }}"
-
-      - name: Clone emacs
-        git:
-          repo: https://github.com/emacs-mirror/emacs
-          dest: "{{ '~/src/emacs' | expanduser }}"
-
-    # TODO build emacs and copy to /Applications
-    # Ideally as a stanadalone app using
-    # $ mkdir nextstep/Emacs.app/Contents/Frameworks
-    # $ /usr/bin/python -m macholib standalone nextstep/Emacs.app
-
+        tags:
+          - ports
 
       - name: Clone .emacs.d
         git:
           repo: git@github.com:conleym/dot-emacs.git
           dest: "{{  '~/.emacs.d' | expanduser }}"
+        tags:
+          - emacs
+
+      - set_fact:
+          emacs_src_dir: "{{ '~/src/emacs' | expanduser }}"
+        tags:
+          - emacs
+
+      - name: Clone emacs
+        git:
+          repo: https://github.com/emacs-mirror/emacs
+          dest: "{{ emacs_src_dir }}"
+        tags:
+          - emacs
+
+      - name: Build emacs
+        command: gmake install
+        args:
+          chdir: "{{  emacs_src_dir }}"
+        tags:
+          - emacs
+
+      - name: Make emacs standalone
+        shell: >-
+          mkdir nextstep/Emacs.app/Contents/Frameworks &&
+            /usr/bin/python -m macholib standalone nextstep/Emacs.app
+        args:
+          chdir: "{{  emacs_src_dir }}"
+        tags:
+          - emacs
+
+      # TODO copy to /Applications?
+

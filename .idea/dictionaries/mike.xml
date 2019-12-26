@@ -1,12 +1,17 @@
 <component name="ProjectDictionaryState">
   <dictionary name="mike">
     <words>
+      <w>ansible</w>
       <w>coreutils</w>
       <w>expanduser</w>
       <w>getopt</w>
       <w>harfbuzz</w>
+      <w>macholib</w>
       <w>macports</w>
       <w>mactex</w>
+      <w>nextstep</w>
+      <w>passwordless</w>
+      <w>skitch</w>
       <w>xquartz</w>
     </words>
   </dictionary>
