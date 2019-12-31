@@ -67,11 +67,15 @@
       - name: List installed apps
         command: mas list
         register: mas_list_stdout
+        tags:
+          - apps
 
       - name: Install AppStore apps
         command: mas install "{{ item }}"
         with_items: "{{ mas_apps_to_install }}"
         when: (item | string) not in mas_list_stdout.stdout
+        tags:
+          - apps
 
       - name: Install global Python packages
         pip:
@@ -166,10 +170,14 @@
         tags:
           - emacs
 
+      - file:
+          path: "{{ emacs_src_dir }}/nextstep/Emacs.app/Contents/Frameworks"
+          state: directory
+        tags:
+          - emacs
+
       - name: Make emacs standalone
-        shell: >-
-          mkdir nextstep/Emacs.app/Contents/Frameworks &&
-            /usr/bin/python -m macholib standalone nextstep/Emacs.app
+        command: /usr/bin/python -m macholib standalone nextstep/Emacs.app
         args:
           chdir: "{{  emacs_src_dir }}"
         tags:
