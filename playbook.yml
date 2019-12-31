@@ -47,22 +47,33 @@
 
       - include_role:
           name: mactex
+          apply:
+            tags:
+              - tex
         tags:
           - tex
 
       - include_role:
           name: macports
+          apply:
+            tags:
+              - ports
         tags:
           - ports
 
       - name: Download and install apps from disk images
         include_role:
           name: install_app_from_dmg
+          apply:
+            tags:
+              - apps
         vars:
           dmg_url: "{{ item.dmg_url }}"
           dmg_destination: "{{ downloads }}/{{ item.app_name }}.dmg"
           app_name: "{{ item.app_name }}"
         with_items: "{{ dmgs_to_download_and_install }}"
+        tags:
+          - apps
 
       - name: List installed apps
         command: mas list
