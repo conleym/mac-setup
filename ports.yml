@@ -2,7 +2,7 @@
 ---
 ports_to_install:
     autoconf:
-    # GNU coreutils.
+    bash:
     coreutils:
     getopt:
     gmake:
