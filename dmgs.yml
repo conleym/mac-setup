@@ -12,5 +12,8 @@ dmgs_to_download_and_install:
   - app_name: Steam
     dmg_url: https://steamcdn-a.akamaihd.net/client/installer/steam.dmg
 
+  - app_name: Minecraft
+    dmg_url: https://launcher.mojang.com/download/Minecraft.dmg
+
     # TODO VLC seems not to have a "latest" link. Find latest somehow?
     # TODO ditto parallels, vagrant, docker. docker also wants you to be logged in...
