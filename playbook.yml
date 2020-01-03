@@ -61,6 +61,15 @@
         tags:
           - ports
 
+      - name: Install GPG tools
+        include_role:
+          name: gpgtools
+          apply:
+            tags:
+              - gpgtools
+        tags:
+          - gpgtools
+
       - name: Download and install apps from disk images
         include_role:
           name: install_app_from_dmg
