@@ -1,2 +1,8 @@
 ---
 app_destination: /Applications
+
+# Available options are cp (the dmg contains an app, just copy it), some_file.pkg (the dmg contains an installer package
+# with the given name to run to install the app).
+#
+# Defalut is to copy.
+install_method: cp

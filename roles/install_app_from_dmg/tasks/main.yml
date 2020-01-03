@@ -21,8 +21,15 @@
       vars:
         path: "{{ dmg_destination }}"
         mountpoint: "{{ app_name }}"
+
     - name: Copy app to destination
       shell: "cp -aR '/Volumes/{{ app_name }}/{{ app_name }}.app' '{{ app_destination }}'"
+      when: install_method is 'cp'
+
+    - name: Install package
+      command: "installer -pkg /Volumes/{{ app_name }}/{{ install_method }} -target /"
+      when: install_method is regex(^'.*\.pkg'$)
+
   always:
     - include_role:
         name: unmount_dmg
