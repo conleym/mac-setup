@@ -1,0 +1,9 @@
+# Install software from a .pkg installer file
+---
+- name: Install package
+  command: "installer -pkg {{ pkg_path }} -target {{ pkg_target }}"
+
+- name: Remove package
+  file: "{{ pkg_path }}"
+    state: absent
+  when: "{{ pkg_remove_after_install }}"
