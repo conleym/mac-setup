@@ -1,3 +1,0 @@
----
-pkg_target: /
-pkg_remove_after_install: False
