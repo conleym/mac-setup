@@ -6,10 +6,12 @@ ports_to_install:
     coreutils:
     getopt:
     gmake:
-    gmp: native
+    gmp: +native
+#    graphviz: +guile +java +lua +pangocairo +poppler +r +rsvg +tcl +x11
     gwhich:
     harfbuzz:
     harfbuzz-icu:
+    ImageMagick: +graphviz +pango +svrg +wmf
     jq:
     lastpass-cli-doc:
     lastpass-cli: +pientry
