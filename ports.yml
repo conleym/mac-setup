@@ -7,7 +7,8 @@ ports_to_install:
     getopt:
     gmake:
     gmp: +native
-#    graphviz: +guile +java +lua +pangocairo +poppler +r +rsvg +tcl +x11
+    graphviz: +guile +pangocairo +poppler +rsvg +x11
+    graphviz-gui:
     gwhich:
     harfbuzz:
     harfbuzz-icu:
