@@ -21,7 +21,6 @@ pip_user_packages_to_install:
   - thefuck
 
   ## Python dev
-  - format-sql
 
   # These are used by elpy.
   - autopep8
