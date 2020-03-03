@@ -13,10 +13,14 @@
       - name: Determine OS version
         command: sw_vers -productVersion
         register: sw_vers_stdout
+        tags:
+          - ports
 
       - set_fact:
           macos_version: "{{ sw_vers_stdout.stdout }}"
           macos_major_version: "{{ sw_vers_stdout.stdout | regex_replace('^(10\\.\\d+).*', '\\1') }}"
+        tags:
+          - ports
 
       - name: Determine marketing version
         shell: >-
@@ -24,12 +28,18 @@
             awk -F '(macOS|OS X)' '{ print $NF }' |
             awk '{ gsub(/^[^a-zA-Z]*|[^a-zA-Z]*$/, ""); print }'
         register: awk_stdout
+        tags:
+          - ports
 
       - set_fact:
           macos_marketing_version: "{{ awk_stdout.stdout }}"
+        tags:
+          - ports
 
       - set_fact:
           downloads: "{{ '~/Downloads/setup' | expanduser }}"
+        tags:
+          - always
 
       - name: Ensure downloads directory exists
         file:
@@ -60,6 +70,17 @@
               - ports
         tags:
           - ports
+
+      - include_role:
+          name: postman
+          apply:
+            tags:
+              - apps
+        vars:
+            postman_app_path: /Applications/Postman.app
+            postman_zip_path: "{{ downloads }}/postman.zip"
+        tags:
+          - apps
 
       - name: Install GPG tools
         include_role:
