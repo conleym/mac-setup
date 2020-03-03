@@ -23,6 +23,7 @@ Tested on Catalina. Requires python3.
 1. Install [MacTeX](https://www.tug.org/mactex/).
 1. Install [XQuartz](https://www.xquartz.org/).
 1. Install [GPG tools](https://gpgtools.org/).
+1. Install [Postman]().
 1. Download and copy apps from a configurable list of disk image URLs. 
 1. Install apps from a configurable list of App Store apps (using `mas`).
 1. Install a configurable list of python3 packages using `pip3`.

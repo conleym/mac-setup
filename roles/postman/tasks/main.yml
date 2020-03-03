@@ -1,0 +1,18 @@
+# Download and install Postman.
+---
+- stat:
+    path: "{{ postman_app_path }}"
+  register: throwaway
+
+- block:
+    - name: Download Postman
+      get_url:
+        url:  "https://dl.pstmn.io/download/latest/osx"
+        dest: "{{ postman_zip_path }}"
+    - name: Unzip Postman
+      unarchive:
+        dest: "{{ downloads }}"
+        src: "{{ postman_zip_path }}"
+    - name: Install Postman
+      command: "mv {{ downloads }}/Postman.app {{ postman_app_path }}"
+  when: not (throwaway.stat.isdir is defined and throwaway.stat.isdir)

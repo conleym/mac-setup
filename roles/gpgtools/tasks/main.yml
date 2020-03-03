@@ -1,5 +1,7 @@
 # Download and install gpgtools.
 ---
+# stat /usr/local/MacGPG2/bin/gpg first!
+
 - name: Download and install GPG tools
   import_role:
     name: install_app_from_dmg
