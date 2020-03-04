@@ -3,6 +3,7 @@
 ports_to_install:
     autoconf:
     bash:
+    bash-completion:
     coreutils:
     editorconfig-core-c:    
     getopt:
