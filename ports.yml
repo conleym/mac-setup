@@ -22,6 +22,7 @@ ports_to_install:
     multimarkdown:
     poppler:
     postgresql12:
+    shellcheck:
     siege:
     texinfo:
     the_silver_searcher:
