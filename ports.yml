@@ -20,7 +20,7 @@ ports_to_install:
     lesspipe:
     multimarkdown:
     poppler:
-    postgresql10:
+    postgresql12:
     siege:
     texinfo:
     the_silver_searcher:
