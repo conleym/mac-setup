@@ -1,11 +1,12 @@
 # Apps to install via the app store, with identifiers.
 ---
 mas_apps_to_install:
+    - 453114608   # JSON Helper
     - 926036361   # LastPass
     - 803453959   # Slack
     - 425955336   # Skitch
-    - 406479348   # Decked Builder
     - 715768417   # MS remote desktop 8
     - 1295203466  # MS remote desktop 10
-    - 453114608   # JSON Helper
+    - 1496833156  # Playgrounds
     - 1066107760  # Star Realms
+    - 406479348   # Decked Builder
