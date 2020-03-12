@@ -20,6 +20,7 @@ ports_to_install:
     lastpass-cli-doc:
     lesspipe:
     multimarkdown:
+    maven3:
     poppler:
     postgresql12:
     shellcheck:
