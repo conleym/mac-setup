@@ -226,5 +226,10 @@
         tags:
           - emacs
 
-      # TODO copy to /Applications?
+      - name: Copy emacs to /Applications
+        command: cp -af nextstep/Emacs.app /Applications/
+        args:
+          chdir: "{{ emacs_src_dir }}"
+        tags:
+          - emacs
 
