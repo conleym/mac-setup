@@ -194,42 +194,11 @@
         tags:
           - emacs
 
-      - set_fact:
-          emacs_src_dir: "{{ '~/src/emacs' | expanduser }}"
+      - name: Install Emacs
+        include_role:
+          name: emacs
+          apply:
+            tags:
+              - emacs
         tags:
           - emacs
-
-      - name: Clone emacs
-        git:
-          repo: https://github.com/emacs-mirror/emacs
-          dest: "{{ emacs_src_dir }}"
-        tags:
-          - emacs
-
-      - name: Build emacs
-        command: gmake install
-        args:
-          chdir: "{{  emacs_src_dir }}"
-        tags:
-          - emacs
-
-      - file:
-          path: "{{ emacs_src_dir }}/nextstep/Emacs.app/Contents/Frameworks"
-          state: directory
-        tags:
-          - emacs
-
-      - name: Make emacs standalone
-        command: /usr/bin/python -m macholib standalone nextstep/Emacs.app
-        args:
-          chdir: "{{  emacs_src_dir }}"
-        tags:
-          - emacs
-
-      - name: Copy emacs to /Applications
-        command: cp -af nextstep/Emacs.app /Applications/
-        args:
-          chdir: "{{ emacs_src_dir }}"
-        tags:
-          - emacs
-
