@@ -34,4 +34,5 @@ ports_to_install:
     tree:
     watch:
     wget: +gnutls
+    zsh:
     zsh-completions:
