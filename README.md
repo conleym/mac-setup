@@ -16,6 +16,7 @@ Tested on Catalina. Requires python3.
     - ports
     - tex
     - emacs
+    - pip
 
 ## What it does
 
