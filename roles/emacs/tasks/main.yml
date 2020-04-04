@@ -1,0 +1,28 @@
+---
+- set_fact:
+    emacs_src_dir: "{{ '~/src/emacs' | expanduser }}"
+
+- name: Clone emacs
+  git:
+    repo: https://github.com/emacs-mirror/emacs
+    dest: "{{ emacs_src_dir }}"
+
+- name: Build emacs
+  command: gmake install
+  args:
+    chdir: "{{  emacs_src_dir }}"
+
+- file:
+    path: "{{ emacs_src_dir }}/nextstep/Emacs.app/Contents/Frameworks"
+    state: directory
+
+- name: Make emacs standalone
+  command: /usr/bin/python -m macholib standalone nextstep/Emacs.app
+  args:
+    chdir: "{{  emacs_src_dir }}"
+
+- name: Copy emacs to /Applications
+  command: cp -af nextstep/Emacs.app /Applications/
+  args:
+    chdir: "{{ emacs_src_dir }}"
+
