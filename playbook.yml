@@ -124,6 +124,8 @@
           name: "{{ pip_global_packages_to_install }}"
           state: present
         become: yes
+        tags:
+          - pip
 
       - name: Install user Python packages
         pip:
@@ -131,6 +133,18 @@
           name: "{{ pip_user_packages_to_install }}"
           state: present
           extra_args: --user --upgrade
+        tags:
+          - pip
+
+      - name: Clone nvm
+        git:
+          repo: https://github.com/nvm-sh/nvm
+          dest: "{{ '~/.nvm' | expanduser }}"
+
+      - name: Install node.js
+        shell: "source ~/.nvm/nvm.sh && nvm install {{ 'v' + node_version }}"
+        args:
+          creates: "{{ '~/.nvm/versions/node/v' + node_version | expanduser }}"
 
       - name: Add MacPorts to path
         lineinfile:
@@ -151,16 +165,6 @@
         become: yes
         tags:
           - ports
-
-      - name: Clone nvm
-        git:
-          repo: https://github.com/nvm-sh/nvm
-          dest: "{{ '~/.nvm' | expanduser }}"
-
-      - name: Install node.js
-        shell: "source ~/.nvm/nvm.sh && nvm install {{ 'v' + node_version }}"
-        args:
-          creates: "{{ '~/.nvm/versions/node/v' + node_version | expanduser }}"
 
       # Install separately, since some ports require it, or at least look for it, causing prompts.
       - name: Install OpenJDK
