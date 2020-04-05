@@ -197,6 +197,7 @@
           dest: "{{  '~/.emacs.d' | expanduser }}"
         tags:
           - emacs
+          - dotfiles
 
       - name: Install Emacs
         include_role:
@@ -206,3 +207,23 @@
               - emacs
         tags:
           - emacs
+
+      - name: Clone oh my zsh
+        git:
+          repo: git@github.com:ohmyzsh/ohmyzsh
+          dest: "{{  '~/.zsh/ohmyzsh' | expanduser }}"
+        tags:
+          - dotfiles
+
+      - name: Clone dotfiles
+        git:
+          repo: git@github.com:conleym/dotfiles.git
+          dest: "{{  '~/.cfg' | expanduser }}"
+          bare: yes
+        tags:
+          - dotfiles
+
+      - name: Check out dotfiles
+        command: "git --git-dir={{ '~/.cfg' | expanduser }} --work-tree={{ '~' | expanduser }} checkout"
+        tags:
+          - dotfiles
