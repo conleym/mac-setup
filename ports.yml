@@ -9,14 +9,14 @@ ports_to_install:
     getopt:
     gmake:
     gmp: +native
-    graphviz: +guile +pangocairo +poppler +rsvg +x11
-    graphviz-gui:
+#    graphviz: +guile +pangocairo +poppler +rsvg +x11
+#    graphviz-gui:
     gwhich:
     harfbuzz:
     harfbuzz-icu:
     ImageMagick: +graphviz +pango +svrg +wmf +x11
     jq:
-    lastpass-cli: +pientry  # reports ok but not installed. why?
+    lastpass-cli: +pientry
     lastpass-cli-doc:
     lesspipe:
     multimarkdown:
