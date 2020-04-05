@@ -16,4 +16,4 @@
       command: "installer -pkg {{ downloads }}/macports.pkg -target /"
       become: yes
 
-  when: not throwaway.stat.executable
+  when: not (throwaway.stat.executable is defined and throwaway.stat.executable)
