@@ -17,6 +17,7 @@ Tested on Catalina. Requires python3.
     - tex
     - emacs
     - pip
+    - dotfiles
 
 ## What it does
 
