@@ -136,15 +136,14 @@
         tags:
           - pip
 
-      - name: Clone nvm
-        git:
-          repo: https://github.com/nvm-sh/nvm
-          dest: "{{ '~/.nvm' | expanduser }}"
-
-      - name: Install node.js
-        shell: "source ~/.nvm/nvm.sh && nvm install {{ 'v' + node_version }}"
-        args:
-          creates: "{{ '~/.nvm/versions/node/v' + node_version | expanduser }}"
+      - name: Install node.js with nvm
+        include_role:
+          name: node
+          apply:
+            tags:
+              - node
+        tags:
+          - node
 
       - name: Add MacPorts to path
         lineinfile:
