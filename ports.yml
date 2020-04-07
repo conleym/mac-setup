@@ -4,17 +4,23 @@ ports_to_install:
     autoconf:
     bash:
     bash-completion:
+    bison:
     coreutils:
-    editorconfig-core-c:    
+    editorconfig-core-c:
+    flex:
+    gawk: +mpfr
     getopt:
     gmake:
     gmp: +native
 #    graphviz: +guile +pangocairo +poppler +rsvg +x11
 #    graphviz-gui:
     gwhich:
+    gzip:
     harfbuzz:
     harfbuzz-icu:
-    ImageMagick: +graphviz +pango +svrg +wmf +x11
+#    ImageMagick: +graphviz +pango +svrg +wmf +x11
+#  needed for native json support in emacs.
+    jansson:
     jq:
     lastpass-cli: +pientry
     lastpass-cli-doc:
