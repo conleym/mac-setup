@@ -45,6 +45,6 @@ Docker, Vagrant, etc.
 
 ### Other stuff
 
-Iterm2, with integration, dotfiles, various settings via the `defaults` command, etc.
+Iterm2, with integration, various settings via the `defaults` command, etc.
 
 Select ports role with list of ports to select, etc.
