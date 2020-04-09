@@ -7,6 +7,11 @@
     repo: https://github.com/emacs-mirror/emacs
     dest: "{{ emacs_src_dir }}"
 
+- name: Configure emacs
+  command: "./configure"
+  args:
+    chdir: "{{ emacs_src_dir }}"
+
 - name: Build emacs
   command: gmake install
   args:
