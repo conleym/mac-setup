@@ -25,6 +25,7 @@ Tested on Catalina. Requires python3.
 1. [XQuartz](https://www.xquartz.org/)
 1. [GPG tools](https://gpgtools.org/)
 1. [Postman](https://www.postman.com/)
+1. [R](https://cran.r-project.org/)
 
 ## TODO
 

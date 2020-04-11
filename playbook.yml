@@ -110,6 +110,15 @@
         tags:
           - gpgtools
 
+      - name: Install R
+        include_role:
+          name: r
+          apply:
+            tags:
+              - r
+        tags:
+          - r
+
       - name: Download and install apps from disk images
         include_role:
           name: install_app_from_dmg
