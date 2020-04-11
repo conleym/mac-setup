@@ -13,23 +13,18 @@ Tested on Catalina. Requires python3.
 
 1. Run `ansible-playbook -K playbook.yml` (omit `-K` if you're set up with passwordless `sudo` or whatever).
 1. The following `tags` are defined:
-    - ports
-    - tex
-    - emacs
-    - pip
-    - dotfiles
+    - ports:    Install [MacPorts](https://www.macports.org/) and a configurable list of ports/variants (see `ports.yml`).
+    - tex:      Install [MacTeX](https://www.tug.org/mactex/).
+    - emacs:    Clone emacs from github, build, and install. Clones my emacs config.
+    - pip:      Install pip packages (see `pip.yml`).
+    - dotfiles: Clone my [dotfiles](https://github.com/conleym/dotfiles) and [emacs config](https://github.com/conleym/dot-emacs).
+    - apps:     Install applications from the app store using `mas` and from non-app-store disk images (see `mas.yml` and `dmgs.yml`).
 
-## What it does
+### Other software installed
 
-1. Install [MacPorts](https://www.macports.org/) and a configurable list of ports/variants.
-1. Install [MacTeX](https://www.tug.org/mactex/).
-1. Install [XQuartz](https://www.xquartz.org/).
-1. Install [GPG tools](https://gpgtools.org/).
-1. Install [Postman](https://www.postman.com/).
-1. Download and copy apps from a configurable list of disk image URLs. 
-1. Install apps from a configurable list of App Store apps (using `mas`).
-1. Install a configurable list of python3 packages using `pip3`.
-
+1. [XQuartz](https://www.xquartz.org/)
+1. [GPG tools](https://gpgtools.org/)
+1. [Postman](https://www.postman.com/)
 
 ## TODO
 
@@ -40,7 +35,7 @@ and check the box next to the GPGMailLoader plugin.
 
 ### More disk images
 
-Docker, Vagrant, etc.
+Vagrant, etc.
 
 
 ### Other stuff
@@ -48,3 +43,5 @@ Docker, Vagrant, etc.
 Iterm2, with integration, various settings via the `defaults` command, etc.
 
 Select ports role with list of ports to select, etc.
+
+Log in to docker hub and other accounts.
