@@ -125,9 +125,6 @@
           apply:
             tags:
               - apps
-        vars:
-            postman_app_path: /Applications/Postman.app
-            postman_zip_path: "{{ downloads }}/postman.zip"
         tags:
           - apps
 
