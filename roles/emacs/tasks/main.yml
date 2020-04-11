@@ -21,6 +21,8 @@
     path: "{{ emacs_src_dir }}/nextstep/Emacs.app/Contents/Frameworks"
     state: directory
 
+# From a handy tip here
+# https://www.reddit.com/r/emacs/comments/bclyyc/building_emacs_from_source_on_macos/
 - name: Make emacs standalone
   command: /usr/bin/python3 -m macholib standalone nextstep/Emacs.app
   args:
