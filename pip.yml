@@ -32,3 +32,4 @@ pip_user_packages_to_install:
 
   # Misc
   - requests
+  - macholib
