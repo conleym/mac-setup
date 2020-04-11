@@ -28,7 +28,7 @@
         tags:
           - pip
 
-    # See https://unix.stackexchange.com/questions/234104/get-osx-codename-from-command-line
+      # See https://unix.stackexchange.com/questions/234104/get-osx-codename-from-command-line
       - name: Determine OS version
         command: sw_vers -productVersion
         register: sw_vers_stdout
