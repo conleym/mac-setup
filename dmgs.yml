@@ -46,4 +46,8 @@ dmgs_to_download_and_install:
   - app_name: VLC
     dmg_url: "https://get.videolan.org/vlc/{{ vlc_version }}/macosx/vlc-{{ vlc_version }}.dmg"
 
+  - app_name: R
+    dmg_url: "https://cran.r-project.org/bin/macosx/R-{{ r_version }}.pkg"
+    install_method: R.pkg
+
     # TODO parallels?
