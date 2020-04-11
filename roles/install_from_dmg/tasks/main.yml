@@ -34,6 +34,7 @@
     - name: Install package
       command: "installer -pkg '/Volumes/{{ app_name }}/{{ install_method }}' -target /"
       when: install_method is regex('^.*\.pkg$')
+      become: yes
 
   always:
     - include_role:
