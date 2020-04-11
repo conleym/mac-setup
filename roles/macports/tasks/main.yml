@@ -16,4 +16,19 @@
       command: "installer -pkg {{ downloads }}/macports.pkg -target /"
       become: yes
 
+    - name: Add MacPorts to path
+      lineinfile:
+        line: /opt/local/bin
+        path: /etc/paths
+        state: present
+        insertbefore: /usr/local/bin
+      become: yes
+
+    - name: Add MacPorts to path
+      lineinfile:
+        line: /opt/local/sbin
+        path: /etc/paths
+        state: present
+        insertbefore: /usr/local/bin
+      become: yes
   when: not (throwaway.stat.executable is defined and throwaway.stat.executable)
