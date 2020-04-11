@@ -73,6 +73,11 @@
 
       - include_role:
           name: xquartz
+          apply:
+            tags:
+              - xquartz
+        tags:
+          - xquartz
 
       - include_role:
           name: mactex

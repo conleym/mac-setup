@@ -6,7 +6,6 @@ Tested on Catalina. Requires python3.
 
 1. xcode command line tools (`xcode-select --install`), includes `python3` with `pip3`.
 1. ansible (`pip3 install [--user] ansible`)
-1. mas (https://github.com/mas-cli/mas/releases), because the MacPorts version is old and broken.
 
 ## How do?
 
@@ -19,6 +18,7 @@ Tested on Catalina. Requires python3.
     - pip:      Install pip packages (see `pip.yml`).
     - dotfiles: Clone my [dotfiles](https://github.com/conleym/dotfiles) and [emacs config](https://github.com/conleym/dot-emacs).
     - apps:     Install applications from the app store using `mas` and from non-app-store disk images (see `mas.yml` and `dmgs.yml`).
+     Note that some apps require `mas`, installed via MacPorts (use the `ports` tag).
 
 ### Other software installed
 
