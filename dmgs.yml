@@ -43,5 +43,7 @@ dmgs_to_download_and_install:
     install_method: XQuartz.pkg
     path_to_stat: /usr/X11/bin/Xquartz
 
-    # TODO VLC seems not to have a "latest" link. Find latest somehow?
-    # TODO ditto parallels.
+  - app_name: VLC
+    dmg_url: "https://get.videolan.org/vlc/{{ vlc_version }}/macosx/vlc-{{ vlc_version }}.dmg"
+
+    # TODO parallels?
