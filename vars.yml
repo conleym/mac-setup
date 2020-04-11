@@ -3,3 +3,4 @@ macports_version: 2.6.2
 xquartz_version: 2.7.11
 node_version: 13.12.0
 gpgtools_version: 2019.2
+skim_version: 1.5.8
