@@ -22,6 +22,7 @@ Tested on Catalina. Requires python3.
 ### Other software installed
 
 1. [Postman](https://www.postman.com/)
+1. [Iterm2](https://https://www.iterm2.com/downloads.html)
 
 ## TODO
 

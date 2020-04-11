@@ -1,0 +1,11 @@
+---
+- stat:
+    path: "{{ iterm2_app_path }}/{{ iterm2_app_name }}.app"
+  register: throwaway
+
+- block:
+    - name: Install iTerm2
+      unarchive:
+        src: "https://iterm2.com/downloads/stable/iTerm2-{{ iterm2_version | replace('.', '_') }}.zip"
+        dest: "{{ iterm2_app_path }}/ {{ iterm2_app_name }}.app"
+  when: not (throwaway.stat.isdir is defined and throwaway.stat.isdir)
