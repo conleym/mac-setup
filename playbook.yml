@@ -9,7 +9,26 @@
       - mas.yml
       - dmgs.yml
   tasks:
-      # See https://unix.stackexchange.com/questions/234104/get-osx-codename-from-command-line
+      # Do this first, as we rely on the presence of certain modules (e.g., macholib) later.
+      - name: Install global Python packages
+        pip:
+          executable: pip3
+          name: "{{ pip_global_packages_to_install }}"
+          state: present
+        become: yes
+        tags:
+          - pip
+
+      - name: Install user Python packages
+        pip:
+          executable: pip3
+          name: "{{ pip_user_packages_to_install }}"
+          state: present
+          extra_args: --user --upgrade
+        tags:
+          - pip
+
+    # See https://unix.stackexchange.com/questions/234104/get-osx-codename-from-command-line
       - name: Determine OS version
         command: sw_vers -productVersion
         register: sw_vers_stdout
@@ -117,24 +136,6 @@
         when: (item | string) not in mas_list_stdout.stdout
         tags:
           - apps
-
-      - name: Install global Python packages
-        pip:
-          executable: pip3
-          name: "{{ pip_global_packages_to_install }}"
-          state: present
-        become: yes
-        tags:
-          - pip
-
-      - name: Install user Python packages
-        pip:
-          executable: pip3
-          name: "{{ pip_user_packages_to_install }}"
-          state: present
-          extra_args: --user --upgrade
-        tags:
-          - pip
 
       - name: Install node.js with nvm
         include_role:
