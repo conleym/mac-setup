@@ -24,5 +24,8 @@ dmgs_to_download_and_install:
   - app_name: Skim
     dmg_url: "https://sourceforge.net/projects/skim-app/files/Skim/Skim-{{ skim_version }}/Skim-{{ skim_version }}.dmg/download"
 
+  - app_name: MusicBrainz Picard
+    dmg_url: "https://musicbrainz.osuosl.org/pub/musicbrainz/picard/MusicBrainz-Picard-{{ picard_version }}.dmg"
+
     # TODO VLC seems not to have a "latest" link. Find latest somehow?
     # TODO ditto parallels, vagrant.
