@@ -14,6 +14,7 @@ Tested on Catalina. Requires python3.
 1. The following `tags` are defined:
     - ports:    Install [MacPorts](https://www.macports.org/) and a configurable list of ports/variants (see `ports.yml`).
     - tex:      Install [MacTeX](https://www.tug.org/mactex/).
+    - r:        Install [R](https://cran.r-project.org/).
     - emacs:    Clone emacs from github, build, and install. Clones my emacs config.
     - pip:      Install pip packages (see `pip.yml`).
     - dotfiles: Clone my [dotfiles](https://github.com/conleym/dotfiles) and [emacs config](https://github.com/conleym/dot-emacs).
@@ -24,7 +25,6 @@ Tested on Catalina. Requires python3.
 1. [XQuartz](https://www.xquartz.org/)
 1. [GPG tools](https://gpgtools.org/)
 1. [Postman](https://www.postman.com/)
-1. [R](https://cran.r-project.org/)
 
 ## TODO
 
