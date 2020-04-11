@@ -129,6 +129,15 @@
         tags:
           - apps
 
+      - name: Install Iterm2
+        include_role:
+          name: iterm2
+          apply:
+            tags:
+              - apps
+        tags:
+          - apps
+
       - name: Download and install apps from disk images
         include_role:
           name: install_from_dmg
