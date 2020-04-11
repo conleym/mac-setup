@@ -95,6 +95,31 @@
         tags:
           - ports
 
+    # Install separately, since some ports require it, or at least look for it, causing prompts.
+      - name: Install OpenJDK
+        macports:
+          selfupdate: yes
+          upgrade: yes
+          name: openjdk8
+          state: present
+        become: yes
+        tags:
+          - ports
+
+      - name: Install ports
+        macports:
+          selfupdate: yes
+          upgrade: yes
+          name: "{{ item.key }}"
+          variant: "{{ item.value }}"
+          state: present
+        become: yes
+        with_dict: "{{ ports_to_install }}"
+        tags:
+          - ports
+
+    # TODO port select.
+
       - include_role:
           name: postman
           apply:
@@ -159,51 +184,6 @@
               - node
         tags:
           - node
-
-      - name: Add MacPorts to path
-        lineinfile:
-          line: /opt/local/bin
-          path: /etc/paths
-          state: present
-          insertbefore: /usr/local/bin
-        become: yes
-        tags:
-          - ports
-
-      - name: Add MacPorts to path
-        lineinfile:
-          line: /opt/local/sbin
-          path: /etc/paths
-          state: present
-          insertbefore: /usr/local/bin
-        become: yes
-        tags:
-          - ports
-
-      # Install separately, since some ports require it, or at least look for it, causing prompts.
-      - name: Install OpenJDK
-        macports:
-          selfupdate: yes
-          upgrade: yes
-          name: openjdk8
-          state: present
-        become: yes
-        tags:
-          - ports
-
-      - name: Install ports
-        macports:
-          selfupdate: yes
-          upgrade: yes
-          name: "{{ item.key }}"
-          variant: "{{ item.value }}"
-          state: present
-        become: yes
-        with_dict: "{{ ports_to_install }}"
-        tags:
-          - ports
-
-      # TODO port select.
 
       - name: Clone .emacs.d
         git:
