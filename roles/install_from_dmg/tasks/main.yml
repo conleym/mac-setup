@@ -1,19 +1,26 @@
 ---
-- name: Check for app
+- set_fact:
+    install_from_dmg_path_to_stat: "{{ app_destination }}/{{ app_name }}.app"
+  when: path_to_stat is not defined or path_to_stat == ''
+
+- set_fact:
+    install_from_dmg_path_to_stat: "{{ path_to_stat }}"
+  when: path_to_stat is defined and path_to_stat != ''
+
+- name: Check for existing install
   stat:
-    path: "/Applications/{{ app_name }}.app"
+    path: "{{ install_from_dmg_path_to_stat }}"
   register: install_app_from_dmg_st
 
 - set_fact:
     install_app_from_dmg_st: "{{ install_app_from_dmg_st.stat }}"
 
-- name: Download disk image
-  get_url:
-    url: "{{ dmg_url }}"
-    dest: "{{ dmg_destination }}"
-  when: not (install_app_from_dmg_st.exists and install_app_from_dmg_st.isdir)
-
 - block:
+    - name: Download disk image
+      get_url:
+        url: "{{ dmg_url }}"
+        dest: "{{ dmg_destination }}"
+
     - include_role:
         name: mount_dmg
       vars:
@@ -25,7 +32,7 @@
       when: install_method == 'cp'
 
     - name: Install package
-      command: "installer -pkg /Volumes/{{ app_name }}/{{ install_method }} -target /"
+      command: "installer -pkg '/Volumes/{{ app_name }}/{{ install_method }}' -target /"
       when: install_method is regex('^.*\.pkg$')
 
   always:
@@ -33,4 +40,4 @@
         name: unmount_dmg
       vars:
         mountpoint: "{{ app_name }}"
-  when: not (install_app_from_dmg_st.exists and install_app_from_dmg_st.isdir)
+  when: not (install_app_from_dmg_st.exists)

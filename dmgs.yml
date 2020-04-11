@@ -27,5 +27,21 @@ dmgs_to_download_and_install:
   - app_name: MusicBrainz Picard
     dmg_url: "https://musicbrainz.osuosl.org/pub/musicbrainz/picard/MusicBrainz-Picard-{{ picard_version }}.dmg"
 
+  - app_name: GPG Keychain
+    dmg_url: "https://releases.gpgtools.org/GPG_Suite-{{ gpgtools_version }}.dmg"
+    dmg_destination: "{{ downloads }}/gpgtools.dmg"
+    install_method: Install.pkg
+    path_to_stat: /usr/local/MacGPG2/bin/gpg
+
+  - app_name: Vagrant
+    dmg_url: "https://releases.hashicorp.com/vagrant/{{ vagrant_version }}/vagrant_{{ vagrant_version }}_x86_64.dmg"
+    install_method: vagrant.pkg
+    path_to_stat: /usr/local/bin/vagrant
+
+  - app_name: XQuartz
+    dmg_url: "https://dl.bintray.com/xquartz/downloads/XQuartz-{{ xquartz_version }}.dmg"
+    install_method: XQuartz.pkg
+    path_to_stat: /usr/X11/bin/Xquartz
+
     # TODO VLC seems not to have a "latest" link. Find latest somehow?
-    # TODO ditto parallels, vagrant.
+    # TODO ditto parallels.
