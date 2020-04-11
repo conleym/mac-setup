@@ -120,22 +120,14 @@
 
     # TODO port select.
 
-      - include_role:
+      - name: Install Postman
+        include_role:
           name: postman
           apply:
             tags:
               - apps
         tags:
           - apps
-
-      - name: Install R
-        include_role:
-          name: r
-          apply:
-            tags:
-              - r
-        tags:
-          - r
 
       - name: Download and install apps from disk images
         include_role:
