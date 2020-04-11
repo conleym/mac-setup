@@ -13,7 +13,6 @@ Tested on Catalina. Requires python3.
 1. The following `tags` are defined:
     - ports:    Install [MacPorts](https://www.macports.org/) and a configurable list of ports/variants (see `ports.yml`).
     - tex:      Install [MacTeX](https://www.tug.org/mactex/).
-    - r:        Install [R](https://cran.r-project.org/).
     - emacs:    Clone emacs from github, build, and install. Clones my emacs config.
     - pip:      Install pip packages (see `pip.yml`).
     - dotfiles: Clone my [dotfiles](https://github.com/conleym/dotfiles) and [emacs config](https://github.com/conleym/dot-emacs).
@@ -30,11 +29,6 @@ Tested on Catalina. Requires python3.
 
 GPG tools on requires additional setup -- open Mail > Preferences > General, click on Manage Plug-ins...
 and check the box next to the GPGMailLoader plugin.
-
-### More disk images
-
-Vagrant, etc.
-
 
 ### Other stuff
 

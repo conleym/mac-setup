@@ -5,7 +5,6 @@
   register: throwaway
 
 - block:
-
     - name: Download MacPorts
       get_url:
         url: "https://distfiles.macports.org/MacPorts/MacPorts-{{ macports_version }}-{{ macos_major_version }}-{{ macos_marketing_version }}.pkg"
