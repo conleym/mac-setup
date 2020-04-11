@@ -22,7 +22,7 @@
     state: directory
 
 - name: Make emacs standalone
-  command: /usr/bin/python -m macholib standalone nextstep/Emacs.app
+  command: /usr/bin/python3 -m macholib standalone nextstep/Emacs.app
   args:
     chdir: "{{  emacs_src_dir }}"
 
