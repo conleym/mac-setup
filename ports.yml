@@ -16,8 +16,6 @@ ports_to_install:
 #    graphviz-gui:
     gwhich:
     gzip:
-    harfbuzz:
-    harfbuzz-icu:
 #    ImageMagick: +graphviz +pango +svrg +wmf +x11
     ImageMagick: +pango +svrg +wmf +x11
 #  needed for native json support in emacs.
