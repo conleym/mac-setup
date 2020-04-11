@@ -22,8 +22,6 @@ Tested on Catalina. Requires python3.
 
 ### Other software installed
 
-1. [XQuartz](https://www.xquartz.org/)
-1. [GPG tools](https://gpgtools.org/)
 1. [Postman](https://www.postman.com/)
 
 ## TODO

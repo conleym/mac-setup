@@ -131,15 +131,6 @@
         tags:
           - apps
 
-      - name: Install GPG tools
-        include_role:
-          name: gpgtools
-          apply:
-            tags:
-              - gpgtools
-        tags:
-          - gpgtools
-
       - name: Install R
         include_role:
           name: r
@@ -151,7 +142,7 @@
 
       - name: Download and install apps from disk images
         include_role:
-          name: install_app_from_dmg
+          name: install_from_dmg
           apply:
             tags:
               - apps
@@ -159,6 +150,8 @@
           dmg_url: "{{ item.dmg_url }}"
           dmg_destination: "{{ downloads }}/{{ item.app_name }}.dmg"
           app_name: "{{ item.app_name }}"
+          path_to_stat: "{{ item.path_to_stat | default('') }}"
+          install_method: "{{ item.install_method | default('') }}"
         with_items: "{{ dmgs_to_download_and_install }}"
         tags:
           - apps
