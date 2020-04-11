@@ -11,8 +11,6 @@
   get_url:
     url: "{{ dmg_url }}"
     dest: "{{ dmg_destination }}"
-    # TODO why does this fail on catalina?
-    validate_certs: no
   when: not (install_app_from_dmg_st.exists and install_app_from_dmg_st.isdir)
 
 - block:
@@ -28,7 +26,7 @@
 
     - name: Install package
       command: "installer -pkg /Volumes/{{ app_name }}/{{ install_method }} -target /"
-      when: install_method is regex('^.*\.pkg'$)
+      when: install_method is regex('^.*\.pkg$')
 
   always:
     - include_role:
