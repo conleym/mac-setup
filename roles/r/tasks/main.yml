@@ -1,0 +1,16 @@
+# Download and install R
+---
+- name: Check for existing installation
+  stat:
+    path: /usr/local/bin/R
+  register: throwaway
+
+- block:
+  - name: Download R installer
+    get_url:
+      url: "https://cran.r-project.org/bin/macosx/R-{{ r_version }}.pkg"
+      dest: "{{ downloads }}/R.pkg"
+  - name: Install R
+    command: "installer -pkg {{ downloads }}/R.pkg -target /"
+    become: yes
+  when: not (throwaway.stat.executable is defined and throwaway.stat.executable)
