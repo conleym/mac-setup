@@ -10,3 +10,9 @@
     key: com.apple.swipescrolldirection
     type: bool
     value: false
+
+- name: Autohide the Dock
+  osx_defaults:
+    key: com.apple.dock.autohide
+    type: bool
+    value: true
