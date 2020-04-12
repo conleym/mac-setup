@@ -11,18 +11,20 @@ Tested on Catalina. Requires python3.
 
 1. Run `ansible-playbook -K playbook.yml` (omit `-K` if you're set up with passwordless `sudo` or whatever).
 1. The following `tags` are defined:
-    - ports:    Install [MacPorts](https://www.macports.org/) and a configurable list of ports/variants (see `ports.yml`).
-    - tex:      Install [MacTeX](https://www.tug.org/mactex/).
-    - emacs:    Clone emacs from github, build, and install. Clones my emacs config.
-    - pip:      Install pip packages (see `pip.yml`).
-    - dotfiles: Clone my [dotfiles](https://github.com/conleym/dotfiles) and [emacs config](https://github.com/conleym/dot-emacs).
-    - apps:     Install applications from the app store using `mas` and from non-app-store disk images (see `mas.yml` and `dmgs.yml`).
+    - ports:     Install [MacPorts](https://www.macports.org/) and a configurable list of ports/variants (see `ports.yml`).
+    - tex:       Install [MacTeX](https://www.tug.org/mactex/).
+    - emacs:     Clone emacs from github, build, and install. Clones my emacs config.
+    - pip:       Install pip packages (see `pip.yml`).
+    - dotfiles:  Clone my [dotfiles](https://github.com/conleym/dotfiles) and
+     [emacs config](https://github.com/conleym/dot-emacs).
+    - apps:      Install applications from the app store using `mas` and from non-app-store disk images (see `mas.yml` and `dmgs.yml`).
+    - customize: Customize app and OS settings. 
      Note that some apps require `mas`, installed via MacPorts (use the `ports` tag).
 
 ### Other software installed
 
 1. [Postman](https://www.postman.com/)
-1. [Iterm2](https://https://www.iterm2.com/downloads.html)
+1. [iTerm2](https://https://www.iterm2.com/downloads.html)
 
 ## TODO
 
