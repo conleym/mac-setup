@@ -212,3 +212,16 @@
         command: "git --git-dir={{ '~/.cfg' | expanduser }} --work-tree={{ '~' | expanduser }} checkout"
         tags:
           - dotfiles
+
+      - name: Show ~/Library
+        command: chflags nohidden "{{ '~/Library' | expanduser }}"
+        tags:
+          - customize
+
+      - include_role:
+          name: defaults
+          apply:
+            tags:
+              - customize
+        tags:
+          - customize

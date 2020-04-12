@@ -1,0 +1,6 @@
+---
+- name: Show all file extensions in Finder
+  osx_defaults:
+    key: AppleShowAllExtensions
+    type: bool
+    value: true
