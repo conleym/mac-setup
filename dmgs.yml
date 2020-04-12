@@ -21,6 +21,10 @@ dmgs_to_download_and_install:
   - app_name: Docker
     dmg_url: https://download.docker.com/mac/stable/Docker.dmg
 
+  - app_name: Dropbox
+    dmg_url: https://www.dropbox.com/download?plat=mac
+    install_method: Dropbox.app
+
   - app_name: Skim
     dmg_url: "https://sourceforge.net/projects/skim-app/files/Skim/Skim-{{ skim_version }}/Skim-{{ skim_version }}.dmg/download"
 
@@ -29,7 +33,6 @@ dmgs_to_download_and_install:
 
   - app_name: GPG Keychain
     dmg_url: "https://releases.gpgtools.org/GPG_Suite-{{ gpgtools_version }}.dmg"
-    dmg_destination: "{{ downloads }}/gpgtools.dmg"
     install_method: Install.pkg
     path_to_stat: /usr/local/MacGPG2/bin/gpg
 
