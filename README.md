@@ -35,8 +35,10 @@ and check the box next to the GPGMailLoader plugin.
 
 ### Other stuff
 
-Iterm2, with integration, various settings via the `defaults` command, etc.
-
-Select ports role with list of ports to select, etc.
-
-Log in to docker hub and other accounts.
+* iTerm2 integration and settings.
+* More settings via `osx_defaults`.
+* Select ports role with list of ports to select, etc.
+* Secrets via lastpass.
+    * SSH public/private keys.
+    * GPG public/private keys.
+    * Log in to docker hub and other accounts.
