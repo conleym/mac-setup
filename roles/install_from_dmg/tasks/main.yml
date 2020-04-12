@@ -36,6 +36,12 @@
       when: install_method is regex('^.*\.pkg$')
       become: yes
 
+    # TODO test this.
+    - name: Run installer app
+      command: "open -a '/Volumes/{{ app_name }}/{{ install_method }}'"
+      when: install_method is regex('^.*\.app$')
+      become: yes
+
   always:
     - include_role:
         name: unmount_dmg
