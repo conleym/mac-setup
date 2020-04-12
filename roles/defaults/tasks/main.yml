@@ -4,3 +4,9 @@
     key: AppleShowAllExtensions
     type: bool
     value: true
+
+- name: Disable "Natural" (backwards) scrolling
+  osx_defaults:
+    key: com.apple.swipescrolldirection
+    type: bool
+    value: false
