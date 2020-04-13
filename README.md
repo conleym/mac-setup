@@ -39,6 +39,7 @@ and check the box next to the GPGMailLoader plugin.
     * [Noto](https://www.google.com/get/noto/)
     * [ProFont](https://tobiasjung.name/profont/)
     * [JetBrains Mono](https://www.jetbrains.com/lp/mono/)
+    * [STIX](https://www.stixfonts.org/)
 * iTerm2 integration and settings.
 * More settings via `osx_defaults`.
 * Select ports role with list of ports to select, etc.
