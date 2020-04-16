@@ -1,0 +1,49 @@
+---
+- name: Create temporary directory
+  command: mktemp -d
+  register: throwaway
+
+- set_fact:
+    install_fonts_from_archive_tempdir: "{{ throwaway.stdout }}"
+
+- block:
+    - name: Download archive
+      get_url:
+        url: "{{ font_archive_url }}"
+        dest: "{{ install_fonts_from_archive_tempdir }}/font.zip"
+
+    - name: Unzip archive
+      unarchive:
+        src: "{{ install_fonts_from_archive_tempdir }}/font.zip"
+        dest: "{{ install_fonts_from_archive_tempdir }}"
+
+    - name: Find font files
+      find:
+        recurse: yes
+        paths:
+          - "{{ install_fonts_from_archive_tempdir }}"
+        patterns:
+          - "*.ttf"
+          - "*.otf"
+      register: install_fonts_from_archive_font_files
+
+    - set_fact:
+        install_fonts_from_archive_font_files: "{{
+          install_fonts_from_archive_font_files.files
+            | map(attribute='path')
+            | list
+        }}"
+
+    - name: Install fonts
+      copy:
+        src: "{{ install_fonts_from_archive_item }}"
+        dest: "{{ fonts_dir }}"
+      with_items: "{{ install_fonts_from_archive_font_files }}"
+      loop_control:
+        loop_var: install_fonts_from_archive_item
+
+  always:
+    - name: Delete temporary directory
+      file:
+        path: "{{ install_fonts_from_archive_tempdir }}"
+        state: absent
