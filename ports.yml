@@ -6,6 +6,7 @@ ports_to_install:
     bash-completion:
     bison:
     coreutils:
+    cowsay:
     editorconfig-core-c:
     flex:
     gawk: +mpfr
