@@ -19,12 +19,19 @@ Tested on Catalina. Requires python3.
      [emacs config](https://github.com/conleym/dot-emacs).
     - apps:      Install applications from the app store using `mas` and from non-app-store disk images (see `mas.yml` and `dmgs.yml`).
     - customize: Customize app and OS settings. 
-     Note that some apps require `mas`, installed via MacPorts (use the `ports` tag).
+    - fonts:     Install fonts (see fonts.yml).
+ 
+Note that some apps require `mas`, installed via MacPorts (use the `ports` tag).
 
 ### Other software installed
 
 1. [Postman](https://www.postman.com/)
 1. [iTerm2](https://https://www.iterm2.com/downloads.html)
+
+### Fonts installed
+
+1. [JetBrains Mono](https://www.jetbrains.com/lp/mono/)
+
 
 ## TODO
 
@@ -38,7 +45,6 @@ and check the box next to the GPGMailLoader plugin.
 * Fonts.
     * [Noto](https://www.google.com/get/noto/)
     * [ProFont](https://tobiasjung.name/profont/)
-    * [JetBrains Mono](https://www.jetbrains.com/lp/mono/)
     * [STIX](https://www.stixfonts.org/)
 * iTerm2 integration and settings.
 * More settings via `osx_defaults`.
