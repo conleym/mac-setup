@@ -4,6 +4,7 @@
   connection: local
   vars_files:
       - vars.yml
+      - fonts.yml
       - pip.yml
       - ports.yml
       - mas.yml
@@ -225,3 +226,14 @@
               - customize
         tags:
           - customize
+
+      - include_role:
+          name: install_fonts_from_archive
+          apply:
+            tags:
+              - fonts
+        vars:
+          font_archive_url: "{{ item }}"
+        with_items: "{{ font_archives }}"
+        tags:
+          - fonts

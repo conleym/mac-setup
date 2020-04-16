@@ -1,0 +1,3 @@
+---
+- name: rebuild fontconfig cache
+  command: fc-cache -v -f
