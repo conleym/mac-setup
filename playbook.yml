@@ -3,199 +3,199 @@
   become: no
   connection: local
   vars_files:
-      - vars.yml
-      - fonts.yml
-      - pip.yml
-      - ports.yml
-      - mas.yml
-      - dmgs.yml
+    - vars/dmgs.yml
+    - vars/fonts.yml
+    - vars/mas.yml
+    - vars/pip.yml
+    - vars/ports.yml
+    - vars/vars.yml
   tasks:
-      - import_tasks: tasks/preliminaries.yml
-        tags:
-          - always
+    - import_tasks: tasks/preliminaries.yml
+      tags:
+        - always
 
-      # Do this early, as we rely on the presence of certain modules (e.g., macholib) later.
-      - import_tasks: tasks/pip.yml
-        tags:
-          - pip
+    # Do this early, as we rely on the presence of certain modules (e.g., macholib) later.
+    - import_tasks: tasks/pip.yml
+      tags:
+        - pip
 
-      # See https://unix.stackexchange.com/questions/234104/get-osx-codename-from-command-line
-      - name: Determine OS version
-        command: sw_vers -productVersion
-        register: sw_vers_stdout
-        tags:
-          - ports
+    # See https://unix.stackexchange.com/questions/234104/get-osx-codename-from-command-line
+    - name: Determine OS version
+      command: sw_vers -productVersion
+      register: sw_vers_stdout
+      tags:
+        - ports
 
-      - set_fact:
-          macos_version: "{{ sw_vers_stdout.stdout }}"
-          macos_major_version: "{{ sw_vers_stdout.stdout | regex_replace('^(10\\.\\d+).*', '\\1') }}"
-        tags:
-          - ports
+    - set_fact:
+        macos_version: "{{ sw_vers_stdout.stdout }}"
+        macos_major_version: "{{ sw_vers_stdout.stdout | regex_replace('^(10\\.\\d+).*', '\\1') }}"
+      tags:
+        - ports
 
-      - name: Determine marketing version
-        shell: >-
-            awk '/SOFTWARE LICENSE AGREEMENT FOR (macOS|OS X)/' '/System/Library/CoreServices/Setup Assistant.app/Contents/Resources/en.lproj/OSXSoftwareLicense.rtf' |
-            awk -F '(macOS|OS X)' '{ print $NF }' |
-            awk '{ gsub(/^[^a-zA-Z]*|[^a-zA-Z]*$/, ""); print }'
-        register: awk_stdout
-        tags:
-          - ports
+    - name: Determine marketing version
+      shell: >-
+        awk '/SOFTWARE LICENSE AGREEMENT FOR (macOS|OS X)/' '/System/Library/CoreServices/Setup Assistant.app/Contents/Resources/en.lproj/OSXSoftwareLicense.rtf' |
+        awk -F '(macOS|OS X)' '{ print $NF }' |
+        awk '{ gsub(/^[^a-zA-Z]*|[^a-zA-Z]*$/, ""); print }'
+      register: awk_stdout
+      tags:
+        - ports
 
-      - set_fact:
-          macos_marketing_version: "{{ awk_stdout.stdout }}"
-        tags:
-          - ports
+    - set_fact:
+        macos_marketing_version: "{{ awk_stdout.stdout }}"
+      tags:
+        - ports
 
-      - include_role:
-          name: macports
-          apply:
-            tags:
-              - ports
-        tags:
-          - ports
+    - include_role:
+        name: macports
+        apply:
+          tags:
+            - ports
+      tags:
+        - ports
 
-      - import_tasks: tasks/install_ports.yml
-        tags:
-          - ports
+    - import_tasks: tasks/install_ports.yml
+      tags:
+        - ports
 
-      - include_role:
-          name: xquartz
-          apply:
-            tags:
-              - xquartz
-        tags:
-          - xquartz
+    - include_role:
+        name: xquartz
+        apply:
+          tags:
+            - xquartz
+      tags:
+        - xquartz
 
-      - include_role:
-          name: mactex
-          apply:
-            tags:
-              - tex
-        tags:
-          - tex
+    - include_role:
+        name: mactex
+        apply:
+          tags:
+            - tex
+      tags:
+        - tex
 
-      - name: Install Postman
-        include_role:
-          name: postman
-          apply:
-            tags:
-              - apps
-        tags:
-          - apps
+    - name: Install Postman
+      include_role:
+        name: postman
+        apply:
+          tags:
+            - apps
+      tags:
+        - apps
 
-      - name: Install Iterm2
-        include_role:
-          name: iterm2
-          apply:
-            tags:
-              - apps
-        tags:
-          - apps
+    - name: Install Iterm2
+      include_role:
+        name: iterm2
+        apply:
+          tags:
+            - apps
+      tags:
+        - apps
 
-      - name: Download and install apps from disk images
-        include_role:
-          name: install_from_dmg
-          apply:
-            tags:
-              - apps
-        vars:
-          dmg_url: "{{ item.dmg_url }}"
-          dmg_destination: "{{ downloads }}/{{ item.app_name }}.dmg"
-          app_name: "{{ item.app_name }}"
-          path_to_stat: "{{ item.path_to_stat | default('') }}"
-          install_method: "{{ item.install_method | default('') }}"
-        with_items: "{{ dmgs_to_download_and_install }}"
-        tags:
-          - apps
+    - name: Download and install apps from disk images
+      include_role:
+        name: install_from_dmg
+        apply:
+          tags:
+            - apps
+      vars:
+        dmg_url: "{{ item.dmg_url }}"
+        dmg_destination: "{{ downloads }}/{{ item.app_name }}.dmg"
+        app_name: "{{ item.app_name }}"
+        path_to_stat: "{{ item.path_to_stat | default('') }}"
+        install_method: "{{ item.install_method | default('') }}"
+      with_items: "{{ dmgs_to_download_and_install }}"
+      tags:
+        - apps
 
-      - name: List installed apps
-        command: mas list
-        register: mas_list_stdout
-        tags:
-          - apps
+    - name: List installed apps
+      command: mas list
+      register: mas_list_stdout
+      tags:
+        - apps
 
-      - name: Install AppStore apps
-        command: mas install "{{ item }}"
-        with_items: "{{ mas_apps_to_install }}"
-        when: (item | string) not in mas_list_stdout.stdout
-        tags:
-          - apps
+    - name: Install AppStore apps
+      command: mas install "{{ item }}"
+      with_items: "{{ mas_apps_to_install }}"
+      when: (item | string) not in mas_list_stdout.stdout
+      tags:
+        - apps
 
-      - name: Install Terraform
-        include_role:
-          name: terraform
-          apply:
-            tags:
-              - apps
-        tags:
-          - apps
+    - name: Install Terraform
+      include_role:
+        name: terraform
+        apply:
+          tags:
+            - apps
+      tags:
+        - apps
 
-      - name: Install node.js with nvm
-        include_role:
-          name: node
-          apply:
-            tags:
-              - node
-        tags:
-          - node
+    - name: Install node.js with nvm
+      include_role:
+        name: node
+        apply:
+          tags:
+            - node
+      tags:
+        - node
 
-      - name: Clone .emacs.d
-        git:
-          repo: git@github.com:conleym/dot-emacs.git
-          dest: "{{  '~/.emacs.d' | expanduser }}"
-        tags:
-          - emacs
-          - dotfiles
+    - name: Clone .emacs.d
+      git:
+        repo: git@github.com:conleym/dot-emacs.git
+        dest: "{{  '~/.emacs.d' | expanduser }}"
+      tags:
+        - emacs
+        - dotfiles
 
-      - name: Install Emacs
-        include_role:
-          name: emacs
-          apply:
-            tags:
-              - emacs
-        tags:
-          - emacs
+    - name: Install Emacs
+      include_role:
+        name: emacs
+        apply:
+          tags:
+            - emacs
+      tags:
+        - emacs
 
-      - name: Clone oh my zsh
-        git:
-          repo: git@github.com:ohmyzsh/ohmyzsh
-          dest: "{{  '~/.zsh/ohmyzsh' | expanduser }}"
-        tags:
-          - dotfiles
+    - name: Clone oh my zsh
+      git:
+        repo: git@github.com:ohmyzsh/ohmyzsh
+        dest: "{{  '~/.zsh/ohmyzsh' | expanduser }}"
+      tags:
+        - dotfiles
 
-      - name: Clone dotfiles
-        git:
-          repo: git@github.com:conleym/dotfiles.git
-          dest: "{{  '~/.cfg' | expanduser }}"
-          bare: yes
-        tags:
-          - dotfiles
+    - name: Clone dotfiles
+      git:
+        repo: git@github.com:conleym/dotfiles.git
+        dest: "{{  '~/.cfg' | expanduser }}"
+        bare: yes
+      tags:
+        - dotfiles
 
-      - name: Check out dotfiles
-        command: "git --git-dir={{ '~/.cfg' | expanduser }} --work-tree={{ '~' | expanduser }} checkout"
-        tags:
-          - dotfiles
+    - name: Check out dotfiles
+      command: "git --git-dir={{ '~/.cfg' | expanduser }} --work-tree={{ '~' | expanduser }} checkout"
+      tags:
+        - dotfiles
 
-      - name: Show ~/Library
-        command: chflags nohidden "{{ '~/Library' | expanduser }}"
-        tags:
-          - customize
+    - name: Show ~/Library
+      command: chflags nohidden "{{ '~/Library' | expanduser }}"
+      tags:
+        - customize
 
-      - include_role:
-          name: defaults
-          apply:
-            tags:
-              - customize
-        tags:
-          - customize
+    - include_role:
+        name: defaults
+        apply:
+          tags:
+            - customize
+      tags:
+        - customize
 
-      - include_role:
-          name: install_fonts_from_archive
-          apply:
-            tags:
-              - fonts
-        vars:
-          font_archive_url: "{{ item }}"
-        with_items: "{{ font_archives }}"
-        tags:
-          - fonts
+    - include_role:
+        name: install_fonts_from_archive
+        apply:
+          tags:
+            - fonts
+      vars:
+        font_archive_url: "{{ item }}"
+      with_items: "{{ font_archives }}"
+      tags:
+        - fonts
