@@ -1,5 +1,4 @@
 ---
-- name: Enable location database
-  commnand: launchctl load -w /System/Library/LaunchDaemons/com.apple.locate.plist
+- name: Enable the locate database
+  command: launchctl load -w /System/Library/LaunchDaemons/com.apple.locate.plist
   become: yes
-
