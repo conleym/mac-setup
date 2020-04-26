@@ -1,0 +1,18 @@
+# Install terraform
+---
+- stat:
+    path: "/usr/local/bin/terraform"
+  register: throwaway
+
+- block:
+  - name: Download terraform
+    get_url:
+      url: "https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_darwin_amd64.zip"
+      dest: "{{ downloads }}/terraform.zip"
+  - name: Install terraform
+    unarchive:
+      src: "{{ downloads }}/terraform.zip"
+      dest: "/usr/local/bin"
+    become: yes
+
+  when: not throwaway.stat.exists

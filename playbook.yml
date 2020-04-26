@@ -168,6 +168,15 @@
         tags:
           - apps
 
+      - name: Install Terraform
+        include_role:
+          name: terraform
+          apply:
+            tags:
+              - apps
+        tags:
+          - apps
+
       - name: Install node.js with nvm
         include_role:
           name: node
