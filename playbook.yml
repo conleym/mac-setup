@@ -74,59 +74,7 @@
       tags:
         - tex
 
-    - name: Install Postman
-      include_role:
-        name: postman
-        apply:
-          tags:
-            - apps
-      tags:
-        - apps
-
-    - name: Install Iterm2
-      include_role:
-        name: iterm2
-        apply:
-          tags:
-            - apps
-      tags:
-        - apps
-
-    - name: Download and install apps from disk images
-      include_role:
-        name: install_from_dmg
-        apply:
-          tags:
-            - apps
-      vars:
-        dmg_url: "{{ item.dmg_url }}"
-        dmg_destination: "{{ downloads }}/{{ item.app_name }}.dmg"
-        app_name: "{{ item.app_name }}"
-        path_to_stat: "{{ item.path_to_stat | default('') }}"
-        install_method: "{{ item.install_method | default('') }}"
-      with_items: "{{ dmgs_to_download_and_install }}"
-      tags:
-        - apps
-
-    - name: List installed apps
-      command: mas list
-      register: mas_list_stdout
-      tags:
-        - apps
-
-    - name: Install AppStore apps
-      command: mas install "{{ item }}"
-      with_items: "{{ mas_apps_to_install }}"
-      when: (item | string) not in mas_list_stdout.stdout
-      tags:
-        - apps
-
-    - name: Install Terraform
-      include_role:
-        name: terraform
-        apply:
-          tags:
-            - apps
+    - import_tasks: tasks/install_apps.yml
       tags:
         - apps
 
@@ -142,7 +90,7 @@
     - name: Clone .emacs.d
       git:
         repo: git@github.com:conleym/dot-emacs.git
-        dest: "{{  '~/.emacs.d' | expanduser }}"
+        dest: "{{ '~/.emacs.d' | expanduser }}"
       tags:
         - emacs
         - dotfiles
