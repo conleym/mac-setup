@@ -21,7 +21,9 @@ Tested on Catalina. Requires python3.
     - customize: Customize app and OS settings. 
     - fonts:     Install fonts (see fonts.yml).
  
-Note that some apps require `mas`, installed via MacPorts (use the `ports` tag).
+Note that some apps require `mas`, installed via MacPorts (use the `ports` tag),
+and that `emacs` requires both `ports` (for dependencies)
+and `pip` (to install [macholib](https://github.com/ronaldoussoren/macholib/), used to make the app standalone).
 
 ### Other software installed
 
