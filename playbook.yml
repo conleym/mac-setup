@@ -29,6 +29,14 @@
         tags:
           - pip
 
+      - name: Ensure ~/.ssh exists
+        file:
+          path: "{{ '~/.ssh' | expanduser }}"
+          state: directory
+          mode: u=rwx
+        tags:
+          - dotfiles
+
       # See https://unix.stackexchange.com/questions/234104/get-osx-codename-from-command-line
       - name: Determine OS version
         command: sw_vers -productVersion
@@ -65,12 +73,6 @@
         file:
           path: "{{ downloads }}"
           state: directory
-
-      - name: Ensure ~/.ssh exists
-        file:
-          path: "{{ '~/.ssh' | expanduser }}"
-          state: directory
-          mode: u=rwx
 
       - include_role:
           name: xquartz
