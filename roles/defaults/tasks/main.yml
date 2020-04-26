@@ -4,15 +4,17 @@
     key: AppleShowAllExtensions
     type: bool
     value: true
-
-- name: Disable "Natural" (backwards) scrolling
-  osx_defaults:
-    key: com.apple.swipescrolldirection
-    type: bool
-    value: false
+  notify: restart finder
 
 - name: Autohide the Dock
   osx_defaults:
     key: com.apple.dock.autohide
     type: bool
     value: true
+  notify: restart dock
+
+- name: Disable "Natural" (backwards) scrolling
+  osx_defaults:
+    key: com.apple.swipescrolldirection
+    type: bool
+    value: false
