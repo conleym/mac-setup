@@ -8,7 +8,17 @@
     dest: "{{ emacs_src_dir }}"
 
 - name: Configure emacs
-  command: "./configure"
+  shell: |-
+    # Standalone step can fail with "New Mach-O header is too large to relocate" without this.
+    # https://py2app.readthedocs.io/en/latest/faq.html
+    # Vaguely related: https://ylluminarious.github.io/2019/06/13/how-i-solved-a-cryptic-emacs-dumping-error/
+    # Interestingly, configure will fail if LDFLAGS is set via LDFLAGS=... ./configure, or if it's done via
+    # `environment:` on ansible's command module.
+    #
+    export LDFLAGS=-Wl,-headerpad_max_install_names
+
+    ./configure
+
   args:
     chdir: "{{ emacs_src_dir }}"
 
@@ -33,3 +43,8 @@
   args:
     chdir: "{{ emacs_src_dir }}"
 
+# https://www.emacswiki.org/emacs/EmacsAsDaemon#toc8
+- name: Create launchd service for emacs server
+  template:
+    src: templates/emacs.plist.jinja2
+    dest: "{{ '~/Library/LaunchDaemons' | expanduser }}/org.gnu.emacs.daemon.plist"
