@@ -50,7 +50,6 @@ and check the box next to the GPGMailLoader plugin.
     * [STIX](https://www.stixfonts.org/)
 * iTerm2 integration and settings.
 * More settings via `osx_defaults`.
-* Select ports role with list of ports to select, etc.
 * Secrets via lastpass.
     * SSH public/private keys.
     * GPG public/private keys.
