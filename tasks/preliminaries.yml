@@ -1,0 +1,14 @@
+---
+- set_fact:
+    downloads: "{{ '~/Downloads/setup' | expanduser }}"
+
+- name: Ensure downloads directory exists
+  file:
+    path: "{{ downloads }}"
+    state: directory
+
+- name: Ensure ~/.ssh exists
+  file:
+    path: "{{ '~/.ssh' | expanduser }}"
+    state: directory
+    mode: u=rwx

@@ -10,32 +10,14 @@
       - mas.yml
       - dmgs.yml
   tasks:
-      # Do this first, as we rely on the presence of certain modules (e.g., macholib) later.
-      - name: Install global Python packages
-        pip:
-          executable: pip3
-          name: "{{ pip_global_packages_to_install }}"
-          state: present
-        become: yes
+      - import_tasks: tasks/preliminaries.yml
+        tags:
+          - always
+
+      # Do this early, as we rely on the presence of certain modules (e.g., macholib) later.
+      - import_tasks: tasks/pip.yml
         tags:
           - pip
-
-      - name: Install user Python packages
-        pip:
-          executable: pip3
-          name: "{{ pip_user_packages_to_install }}"
-          state: present
-          extra_args: --user --upgrade
-        tags:
-          - pip
-
-      - name: Ensure ~/.ssh exists
-        file:
-          path: "{{ '~/.ssh' | expanduser }}"
-          state: directory
-          mode: u=rwx
-        tags:
-          - dotfiles
 
       # See https://unix.stackexchange.com/questions/234104/get-osx-codename-from-command-line
       - name: Determine OS version
@@ -64,15 +46,17 @@
         tags:
           - ports
 
-      - set_fact:
-          downloads: "{{ '~/Downloads/setup' | expanduser }}"
+      - include_role:
+          name: macports
+          apply:
+            tags:
+              - ports
         tags:
-          - always
+          - ports
 
-      - name: Ensure downloads directory exists
-        file:
-          path: "{{ downloads }}"
-          state: directory
+      - import_tasks: tasks/install_ports.yml
+        tags:
+          - ports
 
       - include_role:
           name: xquartz
@@ -89,39 +73,6 @@
               - tex
         tags:
           - tex
-
-      - include_role:
-          name: macports
-          apply:
-            tags:
-              - ports
-        tags:
-          - ports
-
-    # Install separately, since some ports require it, or at least look for it, causing prompts.
-      - name: Install OpenJDK
-        macports:
-          selfupdate: yes
-          upgrade: yes
-          name: openjdk8
-          state: present
-        become: yes
-        tags:
-          - ports
-
-      - name: Install ports
-        macports:
-          selfupdate: yes
-          upgrade: yes
-          name: "{{ item.key }}"
-          variant: "{{ item.value }}"
-          state: present
-        become: yes
-        with_dict: "{{ ports_to_install }}"
-        tags:
-          - ports
-
-    # TODO port select.
 
       - name: Install Postman
         include_role:
