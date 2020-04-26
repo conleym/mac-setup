@@ -42,3 +42,7 @@ ports_to_install:
     wget: +gnutls
     zsh:
     zsh-completions:
+# Work
+    ffmpeg: +nonfree +x11 +gpl3
+    sox:
+    xmlsec:
