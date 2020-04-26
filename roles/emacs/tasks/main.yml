@@ -37,8 +37,8 @@
 
 # https://www.emacswiki.org/emacs/EmacsAsDaemon#toc8
 - name: Create launchd service for emacs server
-  template:
-    src: templates/emacs.plist.jinja2
+  copy:
+    src: emacs.plist
     dest: "{{ '~/Library/LaunchAgents' | expanduser }}/org.gnu.emacs.daemon.plist"
 
 - name: Copy emacs to /Applications
