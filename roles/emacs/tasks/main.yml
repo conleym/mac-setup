@@ -35,13 +35,13 @@
   args:
     chdir: "{{  emacs_src_dir }}"
 
-- name: Copy emacs to /Applications
-  command: cp -af nextstep/Emacs.app /Applications/
-  args:
-    chdir: "{{ emacs_src_dir }}"
-
 # https://www.emacswiki.org/emacs/EmacsAsDaemon#toc8
 - name: Create launchd service for emacs server
   template:
     src: templates/emacs.plist.jinja2
-    dest: "{{ '~/Library/LaunchDaemons' | expanduser }}/org.gnu.emacs.daemon.plist"
+    dest: "{{ '~/Library/LaunchAgents' | expanduser }}/org.gnu.emacs.daemon.plist"
+
+- name: Copy emacs to /Applications
+  command: cp -af nextstep/Emacs.app /Applications/
+  args:
+    chdir: "{{ emacs_src_dir }}"
