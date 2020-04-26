@@ -1,0 +1,32 @@
+---
+- name: Install Postman
+  include_role:
+    name: postman
+
+- name: Install Iterm2
+  include_role:
+    name: iterm2
+
+- name: Download and install apps from disk images
+  include_role:
+    name: install_from_dmg
+  vars:
+    dmg_url: "{{ item.dmg_url }}"
+    dmg_destination: "{{ downloads }}/{{ item.app_name }}.dmg"
+    app_name: "{{ item.app_name }}"
+    path_to_stat: "{{ item.path_to_stat | default('') }}"
+    install_method: "{{ item.install_method | default('') }}"
+  with_items: "{{ dmgs_to_download_and_install }}"
+
+- name: List installed apps
+  command: mas list
+  register: mas_list_stdout
+
+- name: Install AppStore apps
+  command: mas install "{{ item }}"
+  with_items: "{{ mas_apps_to_install }}"
+  when: (item | string) not in mas_list_stdout.stdout
+
+- name: Install Terraform
+  include_role:
+    name: terraform
