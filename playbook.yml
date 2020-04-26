@@ -8,7 +8,7 @@
     - vars/mas.yml
     - vars/pip.yml
     - vars/ports.yml
-    - vars/vars.yml
+    - vars/versions.yml
   tasks:
     - import_tasks: tasks/preliminaries.yml
       tags:
