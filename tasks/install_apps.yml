@@ -14,8 +14,9 @@
     dmg_url: "{{ item.dmg_url }}"
     dmg_destination: "{{ downloads }}/{{ item.app_name }}.dmg"
     app_name: "{{ item.app_name }}"
-    path_to_stat: "{{ item.path_to_stat | default('') }}"
-    install_method: "{{ item.install_method | default('') }}"
+    # default(omit) doesn't work here, annoyingly
+    path_to_stat: "{{ item.path_to_stat | default(None) }}"
+    install_method: "{{ item.install_method | default('cp') }}"
   with_items: "{{ dmgs_to_download_and_install }}"
 
 - name: List installed apps
