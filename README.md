@@ -4,10 +4,12 @@ Tested on Catalina. Requires python3.
 
 ## Prerequisites
 
-1. Run `init/init.sh`, which installs the following:
-    1. xcode command line tools (`xcode-select --install`), includes `python3` with `pip3`.
+1. Install XCode (long story, but python3 seems to be unable to verify ssl certificates without it).
+1. Run `init/init.sh`, which does the following:
+    1. Xcode command line tools (`xcode-select --install`), includes `python3` with `pip3`.
+    1. Accepts the Xcode license.
     1. ansible (`pip3 install [--user] ansible`)
-1. Install XCode (long story, but python3 seems to be unable to verify ssl certificates without it.).
+The first two will prompt you for your admin password.
 
 ## How do?
 
