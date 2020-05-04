@@ -1,7 +1,5 @@
-# install xcode command line tools.
+# Accept the Xcode license
 sudo xcodebuild -license accept
-sudo xcode-select --install
-
 
 # Install ansible
 pip3 install --user --upgrade ansible
