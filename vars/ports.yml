@@ -14,6 +14,9 @@ ports_to_install:
     getopt:
     gmake:
     gmp: +native
+# Install this explicitly first. It seems like graphviz is applying its own variants to this dependency,
+# leading to massive failure later on.
+    librsvg: +quartz
     graphviz: +guile +pangocairo +poppler +rsvg +x11
     graphviz-gui:
     gwhich:
