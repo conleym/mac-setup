@@ -19,6 +19,6 @@
   with_dict: "{{ ports_to_install }}"
 
 - name: Select port
-  command: "port select {{ item.key }} {{ item.value }}"
+  command: "/opt/local/bin/port select {{ item.key }} {{ item.value }}"
   become: yes
   with_dict: "{{ ports_to_select }}"
