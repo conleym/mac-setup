@@ -1,57 +1,57 @@
 ---
 dmgs_to_download_and_install:
-#  - app_name: Google Chrome
-#    dmg_url:  https://dl.google.com/chrome/mac/stable/CHFA/googlechrome.dmg
-#
-#  - app_name: Firefox
-#    dmg_url:  https://download.mozilla.org/?product=firefox-latest-ssl&os=osx&lang=en-US
-#
-#  - app_name: Jetbrains Toolbox
-#    dmg_url:  https://data.services.jetbrains.com/products/download?platform=mac&code=TBA
-#
-#  - app_name: Steam
-#    dmg_url: https://steamcdn-a.akamaihd.net/client/installer/steam.dmg
-#
-#  - app_name: Minecraft
-#    dmg_url: https://launcher.mojang.com/download/Minecraft.dmg
-#
-#  - app_name: Discord
-#    dmg_url: https://discordapp.com/api/download?platform=osx
-#
-#  - app_name: Docker
-#    dmg_url: https://download.docker.com/mac/stable/Docker.dmg
-#
-#  - app_name: Dropbox
-#    dmg_url: https://www.dropbox.com/download?plat=mac
-#    install_method: Dropbox.app
-#
-#  - app_name: Skim
-#    dmg_url: "https://sourceforge.net/projects/skim-app/files/Skim/Skim-{{ skim_version }}/Skim-{{ skim_version }}.dmg/download"
-#
-#  - app_name: MusicBrainz Picard
-#    dmg_url: "https://musicbrainz.osuosl.org/pub/musicbrainz/picard/MusicBrainz-Picard-{{ picard_version }}.dmg"
-#
-#  - app_name: GPG Keychain
-#    dmg_url: "https://releases.gpgtools.org/GPG_Suite-{{ gpgtools_version }}.dmg"
-#    install_method: Install.pkg
-#    path_to_stat: /usr/local/MacGPG2/bin/gpg
-#
-#  - app_name: Vagrant
-#    dmg_url: "https://releases.hashicorp.com/vagrant/{{ vagrant_version }}/vagrant_{{ vagrant_version }}_x86_64.dmg"
-#    install_method: vagrant.pkg
-#    path_to_stat: /usr/local/bin/vagrant
-#
-#  - app_name: XQuartz
-#    dmg_url: "https://dl.bintray.com/xquartz/downloads/XQuartz-{{ xquartz_version }}.dmg"
-#    install_method: XQuartz.pkg
-#    path_to_stat: /usr/X11/bin/Xquartz
-#
-#  - app_name: VLC
-#    dmg_url: "https://get.videolan.org/vlc/{{ vlc_version }}/macosx/vlc-{{ vlc_version }}.dmg"
-#
-#  - app_name: R
-#    dmg_url: "https://cran.r-project.org/bin/macosx/R-{{ r_version }}.pkg"
-#    install_method: R.pkg
+  - app_name: Google Chrome
+    dmg_url:  https://dl.google.com/chrome/mac/stable/CHFA/googlechrome.dmg
+
+  - app_name: Firefox
+    dmg_url:  https://download.mozilla.org/?product=firefox-latest-ssl&os=osx&lang=en-US
+
+  - app_name: Jetbrains Toolbox
+    dmg_url:  https://data.services.jetbrains.com/products/download?platform=mac&code=TBA
+
+  - app_name: Steam
+    dmg_url: https://steamcdn-a.akamaihd.net/client/installer/steam.dmg
+
+  - app_name: Minecraft
+    dmg_url: https://launcher.mojang.com/download/Minecraft.dmg
+
+  - app_name: Discord
+    dmg_url: https://discordapp.com/api/download?platform=osx
+
+  - app_name: Docker
+    dmg_url: https://download.docker.com/mac/stable/Docker.dmg
+
+  - app_name: Dropbox
+    dmg_url: https://www.dropbox.com/download?plat=mac
+    install_method: Dropbox.app
+
+  - app_name: Skim
+    dmg_url: "https://sourceforge.net/projects/skim-app/files/Skim/Skim-{{ skim_version }}/Skim-{{ skim_version }}.dmg/download"
+
+  - app_name: MusicBrainz Picard
+    dmg_url: "https://musicbrainz.osuosl.org/pub/musicbrainz/picard/MusicBrainz-Picard-{{ picard_version }}.dmg"
+
+  - app_name: GPG Keychain
+    dmg_url: "https://releases.gpgtools.org/GPG_Suite-{{ gpgtools_version }}.dmg"
+    install_method: Install.pkg
+    path_to_stat: /usr/local/MacGPG2/bin/gpg
+
+  - app_name: Vagrant
+    dmg_url: "https://releases.hashicorp.com/vagrant/{{ vagrant_version }}/vagrant_{{ vagrant_version }}_x86_64.dmg"
+    install_method: vagrant.pkg
+    path_to_stat: /usr/local/bin/vagrant
+
+  - app_name: XQuartz
+    dmg_url: "https://dl.bintray.com/xquartz/downloads/XQuartz-{{ xquartz_version }}.dmg"
+    install_method: XQuartz.pkg
+    path_to_stat: /usr/X11/bin/Xquartz
+
+  - app_name: VLC
+    dmg_url: "https://get.videolan.org/vlc/{{ vlc_version }}/macosx/vlc-{{ vlc_version }}.dmg"
+
+  - app_name: R
+    dmg_url: "https://cran.r-project.org/bin/macosx/R-{{ r_version }}.pkg"
+    install_method: R.pkg
 
   - app_name: VisualVM
     dmg_url: "https://github.com/visualvm/visualvm.src/releases/download/{{ visualvm_version }}/VisualVM_{{ visualvm_version | replace('.', '') }}.dmg"
