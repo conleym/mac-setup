@@ -22,3 +22,7 @@
   command: "/opt/local/bin/port select {{ item.key }} {{ item.value }}"
   become: yes
   with_dict: "{{ ports_to_select }}"
+
+- name: Reclaim space
+  command: /opt/local/bin/port reclaim
+  become: yes
