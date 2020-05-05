@@ -28,6 +28,7 @@ ports_to_install:
     lastpass-cli: +pientry
     lastpass-cli-doc:
     lesspipe:
+    mas:
     multimarkdown:
     maven3:
     poppler:
