@@ -1,0 +1,33 @@
+# Add a user to the sudoers database, optionally with the ability to sudo without a password.
+# Extra vars:
+#   user: name of the user to add to the sudoers database. Default is the current user.
+#   nopasswd: boolean indicating whether the user has passwordless sudo. Default is false.
+#
+#  Example -- add passwordless sudo for user Bob
+#     ansible-playbook -K sudoers-playbook.yml -e nopasswd=yes -e user=Bob
+---
+- hosts: localhost
+  become: no
+  connection: local
+  vars:
+    nopasswd: no
+    user: "{{ ansible_user }}"
+  tasks:
+    - set_fact:
+        sudoers_line: "{{ user }}            ALL = (ALL) NOPASSWD:ALL"
+      when: nopasswd | bool
+
+    - set_fact:
+        sudoers_line: "{{ user }}            ALL = (ALL) ALL"
+      when: not (nopasswd | bool)
+
+    - name: Add new file to /etc/sudoers.d
+      copy:
+        dest: "/etc/sudoers.d/{{ user }}"
+        content: "{{ sudoers_line }}"
+        validate: /usr/sbin/visudo -cf %s
+        owner: root
+        group: wheel
+        mode: ug=r
+      become: yes
+
