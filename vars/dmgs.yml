@@ -21,9 +21,10 @@ dmgs_to_download_and_install:
   - app_name: Docker
     dmg_url: https://download.docker.com/mac/stable/Docker.dmg
 
-  - app_name: Dropbox
-    dmg_url: https://www.dropbox.com/download?plat=mac
-    install_method: Dropbox.app
+# The app has prompts and junk, so it's unsuitable for anything but interactive use.
+#  - app_name: Dropbox
+#    dmg_url: https://www.dropbox.com/download?plat=mac
+#    install_method: Dropbox.app
 
   - app_name: Skim
     dmg_url: "https://sourceforge.net/projects/skim-app/files/Skim/Skim-{{ skim_version }}/Skim-{{ skim_version }}.dmg/download"
