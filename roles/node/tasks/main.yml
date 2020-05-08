@@ -1,3 +1,4 @@
+# Install node via nvm.
 ---
 - set_fact:
     node_nvm_home: "{{ '~/.nvm' | expanduser }}"

@@ -1,8 +1,14 @@
 ---
+# selfupdate here, once, so that we don't stupidly do it for every port we install...
+- name: Run port selfupdate
+  macports:
+    selfupdate: yes
+  become: yes
+
 # Install separately, since some ports require it, or at least look for it, causing prompts.
 - name: Install OpenJDK
   macports:
-    selfupdate: yes
+    selfupdate: no
     upgrade: yes
     name: openjdk8
     state: present
@@ -10,7 +16,7 @@
 
 - name: Install ports
   macports:
-    selfupdate: yes
+    selfupdate: no
     upgrade: yes
     name: "{{ item.key }}"
     variant: "{{ item.value }}"
