@@ -17,8 +17,8 @@
     type: bool
     value: false
 
-# Dock
-- name: Autohide the Dock
+
+- name: Dock -- autohide the Dock
   osx_defaults:
     domain: com.apple.dock
     key: autohide
@@ -26,7 +26,7 @@
     value: true
   notify: restart dock
 
-- name: Minimize windows to Dock icon
+- name: Dock -- minimize windows to Dock icon
   osx_defaults:
     domain: com.apple.dock
     key: minimize-to-application
@@ -34,16 +34,15 @@
     value: true
   notify: restart dock
 
-# Finder
 
-- name: Show all file extensions in Finder
+- name: Finder -- show all file extensions
   osx_defaults:
     key: AppleShowAllExtensions
     type: bool
     value: true
   notify: restart finder
 
-- name: Disable Finder's warning when changing file extensions
+- name: Finder -- disable warning when changing file extensions
   osx_defaults:
     domain: com.apple.finder
     key: FXEnableExtensionChangeWarning
@@ -51,7 +50,7 @@
     value: false
   notify: restart finder
 
-- name: Show Finder path bar
+- name: Finder -- show path bar
   osx_defaults:
     domain: com.apple.finder
     key: ShowPathbar
@@ -59,7 +58,7 @@
     value: true
   notify: restart finder
 
-- name: Show Finder status bar
+- name: Finder -- show status bar
   osx_defaults:
     domain: com.apple.finder
     key: ShowStatusBar
@@ -67,3 +66,40 @@
     value: true
   notify: restart finder
 
+
+# You'll have to restart safari for it to pick these changes up.
+- name: Safari -- disable opening of safe downloads on completion
+  osx_defaults:
+    domain: com.apple.Safari
+    key: AutoOpenSafeDownloads
+    type: bool
+    value: false
+
+- name: Safari -- show the URL
+  osx_defaults:
+    domain: com.apple.Safari
+    key: ShowFullURLInSmartSearchField
+    type: bool
+    value: true
+
+# Not working...for reasons.
+#
+#- name: Safari -- enable developer menu
+#  block:
+#    - osx_defaults:
+#        domain: com.apple.Safari
+#        key: IncludeDevelopMenu
+#        type: bool
+#        value: true
+#
+#    - osx_defaults:
+#        domain: com.apple.Safari
+#        key: WebKitDeveloperExtrasEnabledPreferenceKey
+#        type: bool
+#        value: true
+#
+#    - osx_defaults:
+#        domain: com.apple.Safari
+#        key: WebKitPreferences.developerExtrasEnabled
+#        type: bool
+#        value: true
