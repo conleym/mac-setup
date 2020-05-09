@@ -1,4 +1,41 @@
+# Some settings gleaned from, among other sources,
+# https://github.com/geerlingguy/dotfiles/blob/master/.osx
+# and
+# https://github.com/mathiasbynens/dotfiles/blob/master/.macos
 ---
+
+- name: Use dark interface style
+  osx_defaults:
+    key: AppleInterfaceStyle
+    type: string
+    value: Dark
+
+- name: Disable "Natural" (backwards) scrolling
+  osx_defaults:
+    # No, that's not a typo. It really is a global property with this name.
+    key: com.apple.swipescrolldirection
+    type: bool
+    value: false
+
+# Dock
+- name: Autohide the Dock
+  osx_defaults:
+    domain: com.apple.dock
+    key: autohide
+    type: bool
+    value: true
+  notify: restart dock
+
+- name: Minimize windows to Dock icon
+  osx_defaults:
+    domain: com.apple.dock
+    key: minimize-to-application
+    type: bool
+    value: true
+  notify: restart dock
+
+# Finder
+
 - name: Show all file extensions in Finder
   osx_defaults:
     key: AppleShowAllExtensions
@@ -6,15 +43,27 @@
     value: true
   notify: restart finder
 
-- name: Autohide the Dock
+- name: Disable Finder's warning when changing file extensions
   osx_defaults:
-    key: com.apple.dock.autohide
-    type: bool
-    value: true
-  notify: restart dock
-
-- name: Disable "Natural" (backwards) scrolling
-  osx_defaults:
-    key: com.apple.swipescrolldirection
+    domain: com.apple.finder
+    key: FXEnableExtensionChangeWarning
     type: bool
     value: false
+  notify: restart finder
+
+- name: Show Finder path bar
+  osx_defaults:
+    domain: com.apple.finder
+    key: ShowPathbar
+    type: bool
+    value: true
+  notify: restart finder
+
+- name: Show Finder status bar
+  osx_defaults:
+    domain: com.apple.finder
+    key: ShowStatusBar
+    type: bool
+    value: true
+  notify: restart finder
+
