@@ -121,6 +121,11 @@
       tags:
         - customize
 
+    - name: No, really, show ~/Library
+      command: SetFile -a v "{{ '~/Library' | expanduser }}"
+      tags:
+        - customize
+
     - include_role:
         name: defaults
         apply:
