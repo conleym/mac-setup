@@ -82,6 +82,13 @@
     type: bool
     value: true
 
+- name: Safari -- enable debug menu
+  osx_defaults:
+    domain: com.apple.Safari
+    key: IncludeInternalDebugMenu
+    type: bool
+    value: true
+
 # Not working...for reasons.
 #
 #- name: Safari -- enable developer menu
