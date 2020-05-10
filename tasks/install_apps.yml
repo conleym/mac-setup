@@ -31,3 +31,7 @@
 - name: Install Terraform
   include_role:
     name: terraform
+
+- name: Install steamcmd
+  include_role:
+    name: steamcmd
