@@ -1,0 +1,32 @@
+# Install steamcmd (the command line interface to the steam console)
+# https://developer.valvesoftware.com/wiki/SteamCMD#macOS
+---
+- set_fact:
+    steamcmd_dest_dir: "{{ '~/steamcmd' | expanduser }}"
+- set_fact:
+    steamcmd_script: "{{ steamcmd_dest_dir }}/steamcmd.sh"
+
+- stat:
+    path: "{{ steamcmd_script }}"
+  register: throwaway
+
+- block:
+    - name: Download steamcmd
+      get_url:
+        url: https://steamcdn-a.akamaihd.net/client/installer/steamcmd_osx.tar.gz
+        dest: "{{ downloads }}/steamcmd.tar.gz"
+
+    - name: Create steamcmd directory
+      file:
+        path: "{{ steamcmd_dest_dir}}"
+        state: directory
+
+    - name: Install steamcmd
+      unarchive:
+        src: "{{ downloads }}/steamcmd.tar.gz"
+        dest: "{{ steamcmd_dest_dir }}"
+
+    - name: Update steamcmd
+      command: "{{ steamcmd_script }} +quit"
+
+  when: not throwaway.stat.exists
