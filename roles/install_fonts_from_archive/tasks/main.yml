@@ -1,3 +1,5 @@
+# Install font files from an archive.
+# TODO fontconfig files if included (see DejaVu).
 ---
 - name: Create temporary directory
   command: mktemp -d
