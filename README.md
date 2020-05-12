@@ -36,6 +36,7 @@ and `pip` (to install [macholib](https://github.com/ronaldoussoren/macholib/), u
 ### Fonts installed
 
 1. [JetBrains Mono](https://www.jetbrains.com/lp/mono/)
+1. [DejaVu](https://dejavu-fonts.github.io/)
 
 
 ## TODO
@@ -51,6 +52,7 @@ and check the box next to the GPGMailLoader plugin.
     * [Noto](https://www.google.com/get/noto/)
     * [ProFont](https://tobiasjung.name/profont/)
     * [STIX](https://www.stixfonts.org/)
+    * [Source Code Pro](https://github.com/adobe-fonts/source-code-pro), etc.
 * iTerm2 integration and settings.
 * More settings via `osx_defaults`.
 * Secrets via lastpass.
