@@ -20,11 +20,11 @@
   with_items: "{{ dmgs_to_download_and_install }}"
 
 - name: List installed apps
-  command: mas list
+  command: /opt/local/bin/mas list
   register: mas_list_stdout
 
 - name: Install AppStore apps
-  command: mas install "{{ item }}"
+  command: /opt/local/bin/mas install "{{ item }}"
   with_items: "{{ mas_apps_to_install }}"
   when: (item | string) not in mas_list_stdout.stdout
 
