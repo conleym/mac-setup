@@ -17,7 +17,7 @@
         src: "{{ install_fonts_from_archive_tempdir }}/font.zip"
         dest: "{{ install_fonts_from_archive_tempdir }}"
 
-    - name: Find font templates
+    - name: Find font files
       find:
         recurse: yes
         paths:
@@ -29,7 +29,7 @@
 
     - set_fact:
         install_fonts_from_archive_font_files: "{{
-          install_fonts_from_archive_font_files.templates
+          install_fonts_from_archive_font_files.files
             | map(attribute='path')
             | list
         }}"
