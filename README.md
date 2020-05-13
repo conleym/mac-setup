@@ -12,7 +12,8 @@ Tested on Catalina. Requires python3.
 
 ## How do?
 
-1. Run `ansible-playbook -K playbook.yml` (omit `-K` if you're set up with passwordless `sudo` or whatever).
+1. Run `./setup.sh -K` (omit `-K` if you're set up with passwordless `sudo` or whatever). The script passes all 
+arguments on to `ansible-playbook`.
 1. The following `tags` are defined:
     - ports:     Install [MacPorts](https://www.macports.org/) and a configurable list of ports/variants (see `ports.yml`).
     - tex:       Install [MacTeX](https://www.tug.org/mactex/).
@@ -27,6 +28,8 @@ Tested on Catalina. Requires python3.
 Note that some apps require `mas`, installed via MacPorts (use the `ports` tag),
 and that `emacs` requires both `ports` (for dependencies)
 and `pip` (to install [macholib](https://github.com/ronaldoussoren/macholib/), used to make the app standalone).
+
+Some fonts require `gnutar`, also installed via the `ports` tag.
 
 ### Other software installed
 
