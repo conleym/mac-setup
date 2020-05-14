@@ -14,13 +14,16 @@ ports_to_install:
     getopt:
     gmake:
     gmp: +native
-# Install this explicitly first. It seems like graphviz is applying its own variants to this dependency,
-# leading to massive failure later on.
+# Graphviz
+    # Install this explicitly first. It seems like graphviz is applying its own variants to this dependency,
+    # leading to massive failure later on.
     librsvg: +quartz
     graphviz: +guile +pangocairo +poppler +rsvg +x11
     graphviz-gui:
+# End Graphviz
     gwhich:
     gzip:
+    htop:
     ImageMagick: +graphviz +pango +svrg +wmf +x11
 #  needed for native json support in emacs.
     jansson:
@@ -33,6 +36,7 @@ ports_to_install:
     maven3:
     poppler:
     postgresql12:
+    pstree:
     python38: +optimizations
     py38-pip:
     shellcheck:
