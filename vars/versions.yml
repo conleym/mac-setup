@@ -6,7 +6,7 @@ gpgtools_version: 2019.2
 skim_version: 1.5.8
 r_version: 4.0.0
 picard_version: 2.3.1
-vagrant_version: 2.2.7
+vagrant_version: 2.2.9
 vlc_version: 3.0.8
 iterm2_version: 3.3.9
 terraform_version: 0.12.24
