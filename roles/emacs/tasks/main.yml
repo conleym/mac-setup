@@ -20,7 +20,7 @@
     chdir: "{{ emacs_src_dir }}"
 
 - name: Build emacs
-  command: gmake install
+  command: /opt/local/bin/gmake install
   args:
     chdir: "{{  emacs_src_dir }}"
 
