@@ -4,7 +4,8 @@ Tested on Catalina. Requires python3.
 
 ## Prerequisites
 
-1. Install XCode (long story, but python3 seems to be unable to verify ssl certificates without it).
+1. Install XCode. (The command line tools are insufficient. 
+python3 seems to be unable to verify ssl certificates without the full app).
 1. Run `init.sh`, which does the following:
     1. Accepts the Xcode license (may prompt for admin password)
     1. ansible (`pip3 install --user ansible`)
@@ -56,6 +57,7 @@ and check the box next to the GPGMailLoader plugin.
     * [ProFont](https://tobiasjung.name/profont/)
     * [STIX](https://www.stixfonts.org/)
     * [Source Code Pro](https://github.com/adobe-fonts/source-code-pro), etc.
+    * fontconfig settings for DejaVu.
 * iTerm2 integration and settings.
 * More settings via `osx_defaults`.
 * Secrets via lastpass.
