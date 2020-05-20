@@ -9,22 +9,31 @@ python3 seems to be unable to verify ssl certificates without the full app).
 1. Run `init.sh`, which does the following:
     1. Accepts the Xcode license (may prompt for admin password)
     1. ansible (`pip3 install --user ansible`)
-1. Optionally grant users the ability to use sudo with `ansible-playbook -K sudoers-playbook.yml`.
 
 ## How do?
 
-1. Run `./setup.sh -K` (omit `-K` if you're set up with passwordless `sudo` or whatever). The script passes all 
+### For the impatient
+
+1. Grant yourself passwordless sudo permission: `sudoers.sh -K -e nopasswd=yes`
+1. Run the playbook `setup.sh`.
+
+### For the more patient
+
+1. Optionally grant users the ability to use sudo with `sudoers.sh -K`. See the playbook for
+options.
+1. Run `setup.sh -K` (omit `-K` if you're set up with passwordless `sudo` or whatever). The script passes all 
 arguments on to `ansible-playbook`.
 1. The following `tags` are defined:
-    - ports:     Install [MacPorts](https://www.macports.org/) and a configurable list of ports/variants (see `ports.yml`).
+    - ports:     Install [MacPorts](https://www.macports.org/) and a configurable list of ports/variants (see `vars/ports.yml`).
     - tex:       Install [MacTeX](https://www.tug.org/mactex/).
     - emacs:     Clone emacs from github, build, and install. Clones my emacs config.
-    - pip:       Install pip packages (see `pip.yml`).
+    - pip:       Install pip packages (see `vars/pip.yml`).
     - dotfiles:  Clone my [dotfiles](https://github.com/conleym/dotfiles) and
      [emacs config](https://github.com/conleym/dot-emacs).
-    - apps:      Install applications from the app store using `mas` and from non-app-store disk images (see `mas.yml` and `dmgs.yml`).
+    - apps:      Install applications from the app store using `mas` and from non-app-store disk images 
+                 (see `vars/mas.yml` and `vars/dmgs.yml`).
     - customize: Customize app and OS settings. 
-    - fonts:     Install fonts (see fonts.yml).
+    - fonts:     Install fonts (see `vars/fonts.yml`).
  
 Note that some apps require `mas`, installed via MacPorts (use the `ports` tag),
 and that `emacs` requires both `ports` (for dependencies)
