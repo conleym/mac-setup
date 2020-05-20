@@ -1,8 +1,11 @@
 # Some settings gleaned from, among other sources,
-# https://github.com/geerlingguy/dotfiles/blob/master/.osx
-# and
 # https://github.com/mathiasbynens/dotfiles/blob/master/.macos
+# https://github.com/geerlingguy/dotfiles/blob/master/.osx
+# and, of course, the original
+# https://gist.github.com/brandonb927/3195465#file-osx-for-hackers-sh
 ---
+- name: Close system preferences
+  command: osascript -e 'tell application "System Preferences" to quit'
 
 - name: Use dark interface style
   osx_defaults:
