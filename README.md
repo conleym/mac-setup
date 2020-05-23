@@ -32,6 +32,7 @@ arguments on to `ansible-playbook`.
      [emacs config](https://github.com/conleym/dot-emacs).
     - apps:      Install applications from the app store using `mas` and from non-app-store disk images 
                  (see `vars/mas.yml` and `vars/dmgs.yml`).
+    - launchd:   Load launchd jobs (see `vars/launchd.yml`).             
     - customize: Customize app and OS settings. 
     - fonts:     Install fonts (see `vars/fonts.yml`).
  

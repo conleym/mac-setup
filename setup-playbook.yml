@@ -5,6 +5,7 @@
   vars_files:
     - vars/dmgs.yml
     - vars/fonts.yml
+    - vars/launchd.yml
     - vars/mas.yml
     - vars/pip.yml
     - vars/ports.yml
@@ -115,6 +116,10 @@
       command: "git --git-dir={{ '~/.cfg' | expanduser }} --work-tree={{ '~' | expanduser }} checkout"
       tags:
         - dotfiles
+
+    - import_tasks: tasks/launchd_load.yml
+      tags:
+        - launchd
 
     - name: Show ~/Library
       command: chflags nohidden "{{ '~/Library' | expanduser }}"
