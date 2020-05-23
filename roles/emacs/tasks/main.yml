@@ -35,13 +35,32 @@
   args:
     chdir: "{{  emacs_src_dir }}"
 
+- set_fact:
+    emacs_launchd_plist: "{{ '~/Library/LaunchAgents' | expanduser }}/org.gnu.emacs.daemon.plist"
+
 # https://www.emacswiki.org/emacs/EmacsAsDaemon#toc8
 - name: Create launchd service for emacs server
   copy:
     src: emacs.plist
-    dest: "{{ '~/Library/LaunchAgents' | expanduser }}/org.gnu.emacs.daemon.plist"
+    dest: "{{ emacs_launchd_plist }}"
+
+- name: Unload emacs server launchd service
+  include_role:
+    name: launchd_unload
+  vars:
+    launchd_label: org.gnu.emacs.daemon
+    launchd_plist: "{{ emacs_launchd_plist }}"
+    launchd_become: no
 
 - name: Copy emacs to /Applications
   command: cp -af nextstep/Emacs.app /Applications/
   args:
     chdir: "{{ emacs_src_dir }}"
+
+- name: Unload emacs server launchd service
+  include_role:
+    name: launchd_load
+  vars:
+    launchd_label: org.gnu.emacs.daemon
+    launchd_plist: "{{ emacs_launchd_plist }}"
+    launchd_become: no
