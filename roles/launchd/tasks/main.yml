@@ -1,4 +1,0 @@
----
-- name: Enable the locate database
-  command: launchctl load -w /System/Library/LaunchDaemons/com.apple.locate.plist
-  become: yes

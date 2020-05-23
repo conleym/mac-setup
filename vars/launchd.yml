@@ -1,0 +1,6 @@
+# Jobs to load into launchd.
+---
+launchd_jobs:
+  - label: com.apple.locate
+    plist: /System/Library/LaunchDaemons/com.apple.locate.plist
+    become: yes

@@ -1,0 +1,12 @@
+# Load a launchd plist if it's not already loaded.
+---
+- name: Check for job
+  command: "launchctl list {{ launchd_label }}"
+  become: "{{ launchd_load_become | default(True) }}"
+  register: launchctl_check_result
+  ignore_errors: yes
+
+- name: Load job
+  command: "launchctl load -w {{ launchd_plist }}"
+  become: "{{ launchd_load_become | default(True) }}"
+  when: launchctl_check_result.rc != 0
