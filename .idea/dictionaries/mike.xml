@@ -4,8 +4,11 @@
       <w>ansible</w>
       <w>coreutils</w>
       <w>expanduser</w>
+      <w>fontconfig</w>
       <w>getopt</w>
       <w>harfbuzz</w>
+      <w>lastpass</w>
+      <w>launchd</w>
       <w>macholib</w>
       <w>macports</w>
       <w>mactex</w>

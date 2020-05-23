@@ -24,12 +24,13 @@ options.
 1. Run `setup.sh -K` (omit `-K` if you're set up with passwordless `sudo` or whatever). The script passes all 
 arguments on to `ansible-playbook`.
 1. The following `tags` are defined:
-    - ports:     Install [MacPorts](https://www.macports.org/) and a configurable list of ports/variants (see `vars/ports.yml`).
+    - ports:     Install [MacPorts](https://www.macports.org/) and a configurable list of ports/variants 
+                (see `vars/ports.yml`).
     - tex:       Install [MacTeX](https://www.tug.org/mactex/).
     - emacs:     Clone emacs from github, build, and install. Clones my emacs config.
     - pip:       Install pip packages (see `vars/pip.yml`).
     - dotfiles:  Clone my [dotfiles](https://github.com/conleym/dotfiles) and
-     [emacs config](https://github.com/conleym/dot-emacs).
+                [emacs config](https://github.com/conleym/dot-emacs).
     - apps:      Install applications from the app store using `mas` and from non-app-store disk images 
                  (see `vars/mas.yml` and `vars/dmgs.yml`).
     - launchd:   Load launchd jobs (see `vars/launchd.yml`).             
@@ -57,7 +58,7 @@ Some fonts require `gnutar`, also installed via the `ports` tag.
 
 ### GPG tools
 
-GPG tools on requires additional setup -- open Mail > Preferences > General, click on Manage Plug-ins...
+GPG tools on requires some manual setup. Open Mail > Preferences > General, click on "Manage Plug-ins...",
 and check the box next to the GPGMailLoader plugin.
 
 ### Other stuff
