@@ -7,6 +7,18 @@
   include_role:
     name: iterm2
 
+- name: Install xACT
+  include_role:
+    name: xact
+
+- name: Install Terraform
+  include_role:
+    name: terraform
+
+- name: Install steamcmd
+  include_role:
+    name: steamcmd
+
 - name: Download and install apps from disk images
   include_role:
     name: install_from_dmg
@@ -28,10 +40,4 @@
   with_items: "{{ mas_apps_to_install }}"
   when: (item | string) not in mas_list_stdout.stdout
 
-- name: Install Terraform
-  include_role:
-    name: terraform
 
-- name: Install steamcmd
-  include_role:
-    name: steamcmd
