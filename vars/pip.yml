@@ -32,4 +32,5 @@ pip_user_packages_to_install:
 
   # Misc
   - requests
+  - psycopg2-binary
   - macholib
