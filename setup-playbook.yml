@@ -1,7 +1,6 @@
 ---
 - hosts: localhost
   become: no
-  connection: local
   vars_files:
     - vars/dmgs.yml
     - vars/fonts.yml

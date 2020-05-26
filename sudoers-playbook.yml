@@ -8,7 +8,6 @@
 ---
 - hosts: localhost
   become: no
-  connection: local
   vars:
     nopasswd: no
     user: "{{ ansible_user }}"
