@@ -5,8 +5,16 @@
     selfupdate: yes
   become: yes
 
-# TODO force deactivation of poppler on condition that it's about to be upgraded.
+# force deactivation of poppler on condition that it's about to be upgraded.
 # check port list outdated output after selfupdate but before upgrade.
+- name: Check for poppler upgrade
+  shell: "port outdated | grep '^poppler'"
+  register: throwaway
+
+- name: Deactivate poppler
+  command: port deactivate -f poppler
+  become: yes
+  when: throwaway.rc == 0
 
 - name: Upgrade installed ports
   macports:
