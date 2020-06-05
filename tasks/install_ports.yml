@@ -10,6 +10,7 @@
 - name: Check for poppler upgrade
   shell: "port outdated | grep '^poppler'"
   register: throwaway
+  ignore_errors: yes  # yes, it's fine if we _don't_ find poppler...
 
 - name: Deactivate poppler
   command: port deactivate -f poppler
