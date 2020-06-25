@@ -24,6 +24,7 @@ ports_to_install:
     gwhich:
     gzip:
     htop:
+    hunspell:
     ImageMagick: +graphviz +pango +svrg +wmf +x11
 #  needed for native json support in emacs.
     jansson:
