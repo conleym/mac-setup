@@ -79,23 +79,6 @@
       tags:
         - node
 
-    - name: Clone .emacs.d
-      git:
-        repo: git@github.com:conleym/dot-emacs.git
-        dest: "{{ '~/.emacs.d' | expanduser }}"
-      tags:
-        - emacs
-        - dotfiles
-
-    - name: Install Emacs
-      include_role:
-        name: emacs
-        apply:
-          tags:
-            - emacs
-      tags:
-        - emacs
-
     - name: Clone oh my zsh
       git:
         repo: git@github.com:ohmyzsh/ohmyzsh
@@ -115,6 +98,23 @@
       command: "git --git-dir={{ '~/.cfg' | expanduser }} --work-tree={{ '~' | expanduser }} checkout"
       tags:
         - dotfiles
+
+    - name: Clone .emacs.d
+      git:
+        repo: git@github.com:conleym/dot-emacs.git
+        dest: "{{ '~/.emacs.d' | expanduser }}"
+      tags:
+        - emacs
+        - dotfiles
+
+    - name: Install Emacs
+      include_role:
+        name: emacs
+        apply:
+          tags:
+            - emacs
+      tags:
+        - emacs
 
     - import_tasks: tasks/launchd_load.yml
       tags:
