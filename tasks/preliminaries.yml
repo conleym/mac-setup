@@ -12,3 +12,12 @@
     path: "{{ '~/.ssh' | expanduser }}"
     state: directory
     mode: u=rwx
+
+- name: Ensure ~/var directories exist
+  file:
+    path: "{{ '~/var' | expanduser }}/{{ item }}"
+    state: directory
+    mode: u=rwx
+  with_items:
+    - run
+    - log

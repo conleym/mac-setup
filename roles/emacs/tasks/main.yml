@@ -1,6 +1,7 @@
 ---
 - set_fact:
     emacs_src_dir: "{{ '~/src/emacs' | expanduser }}"
+    emacs_log_file: "{{ '~/var/log/emacs.log' | expanduser }}"
 
 - name: Clone emacs
   git:
@@ -40,8 +41,8 @@
 
 # https://www.emacswiki.org/emacs/EmacsAsDaemon#toc8
 - name: Create launchd service for emacs server
-  copy:
-    src: emacs.plist
+  template:
+    src: emacs.plist.j2
     dest: "{{ emacs_launchd_plist }}"
 
 - name: Unload emacs server launchd service

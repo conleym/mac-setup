@@ -5,14 +5,20 @@
     <dict>
         <key>Label</key>
         <string>org.gnu.emacs.daemon</string>
+
         <key>ProgramArguments</key>
         <array>
             <string>/Applications/Emacs.app/Contents/MacOS/Emacs</string>
             <string>--daemon</string>
         </array>
+
+        <key>StandardOutPath</key>
+        <string>{{ emacs_log_file }}</string>
+
+        <key>StandardErrorPath</key>
+        <string>{{ emacs_log_file }}</string>
+
         <key>RunAtLoad</key>
         <true/>
-        <key>ServiceDescription</key>
-        <string>Emacs Daemon</string>
     </dict>
 </plist>
