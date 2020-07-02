@@ -2,6 +2,9 @@
 - set_fact:
     emacs_src_dir: "{{ '~/src/emacs' | expanduser }}"
     emacs_log_file: "{{ '~/var/log/emacs.log' | expanduser }}"
+    # TODO This might be different if dotfiles isn't run first. Could be a problem.
+    # TODO will annoyingly have macports paths out front if run via setup.sh.
+    emacs_daemon_path: "{{ lookup('env', 'PATH') }}"
 
 - name: Clone emacs
   git:

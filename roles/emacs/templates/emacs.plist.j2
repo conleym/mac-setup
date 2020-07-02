@@ -9,8 +9,16 @@
         <key>ProgramArguments</key>
         <array>
             <string>/Applications/Emacs.app/Contents/MacOS/Emacs</string>
-            <string>--daemon</string>
+            <!-- launchctl unload won't stop a backgrounded daemon, probably because it sends SIGTERM to the parent or
+             something like that. Start a foreground daemon instead so that unloading stops the emacs process. -->
+            <string>--fg-daemon</string>
         </array>
+
+        <key>EnvironmentVariables</key>
+        <dict>
+        	<key>PATH</key>
+        	<string>{{ emacs_daemon_path }}</string>
+        </dict>
 
         <key>StandardOutPath</key>
         <string>{{ emacs_log_file }}</string>
