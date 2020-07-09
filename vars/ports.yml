@@ -53,6 +53,7 @@ ports_to_install:
     zsh-completions:
 # Work
     ffmpeg: +nonfree +x11 +gpl3
+    portaudio:
     sox:
     xmlsec:
 
