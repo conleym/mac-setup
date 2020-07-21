@@ -1,5 +1,5 @@
-# List of ports with optional variants
 ---
+# List of ports with optional variants
 ports_to_install:
     autoconf:
     autossh:
@@ -57,6 +57,7 @@ ports_to_install:
     sox:
     xmlsec:
 
+# Mapping of port group to specific implementation to select.
 ports_to_select:
     maven: maven3
     postgresql: postgresql12

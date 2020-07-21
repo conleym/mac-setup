@@ -1,4 +1,5 @@
 # Add a user to the sudoers database, optionally with the ability to sudo without a password.
+#
 # Extra vars:
 #   user: name of the user to add to the sudoers database. Default is the current user.
 #   nopasswd: boolean indicating whether the user has passwordless sudo. Default is false.

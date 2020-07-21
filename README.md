@@ -2,6 +2,7 @@
 
 Tested on Catalina. Requires python3.
 
+
 ## Prerequisites
 
 1. Install XCode. (The command line tools are insufficient. 
@@ -9,6 +10,7 @@ python3 seems to be unable to verify ssl certificates without the full app).
 1. Run `init.sh`, which does the following:
     1. Accepts the Xcode license (may prompt for admin password)
     1. ansible (`pip3 install --user ansible`)
+
 
 ## How do?
 
@@ -19,7 +21,7 @@ python3 seems to be unable to verify ssl certificates without the full app).
 
 ### For the more patient
 
-1. Optionally grant users the ability to use sudo with `sudoers.sh -K`. See the playbook for
+1. Optionally grant users the ability to use sudo with `sudoers.sh -K`. See `sudoers-playbook.yml` for
 options.
 1. Run `setup.sh -K` (omit `-K` if you're set up with passwordless `sudo` or whatever). The script passes all 
 arguments on to `ansible-playbook`.
@@ -27,7 +29,9 @@ arguments on to `ansible-playbook`.
     - ports:     Install [MacPorts](https://www.macports.org/) and a configurable list of ports/variants 
                 (see `vars/ports.yml`).
     - tex:       Install [MacTeX](https://www.tug.org/mactex/).
-    - emacs:     Clone emacs from github, build, and install. Clones my emacs config.
+    - emacs:     Clone emacs from github, build, and install. 
+                Clones my [emacs config](https://github.com/conleym/dot-emacs).
+                Creates a launchd service for the emacs daemon.
     - pip:       Install pip packages (see `vars/pip.yml`).
     - dotfiles:  Clone my [dotfiles](https://github.com/conleym/dotfiles) and
                 [emacs config](https://github.com/conleym/dot-emacs).
@@ -55,6 +59,10 @@ Some fonts require `gnutar`, also installed via the `ports` tag.
 
 
 ## TODO
+
+### Emacs
+
+The daemon doesn't always start up properly. Investigate and fix.
 
 ### GPG tools
 
