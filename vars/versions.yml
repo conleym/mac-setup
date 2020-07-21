@@ -1,14 +1,14 @@
 ---
 macports_version: 2.6.3
 xquartz_version: 2.7.11
-node_version: 13.12.0
-gpgtools_version: 2019.2
-skim_version: 1.5.8
-r_version: 4.0.0
-picard_version: 2.3.1
+node_version: 14.5.0
+gpgtools_version: 2020.1
+skim_version: 1.5.10
+r_version: 4.0.2
+picard_version: 2.3.2
 vagrant_version: 2.2.9
-vlc_version: 3.0.8
-iterm2_version: 3.3.9
-terraform_version: 0.12.24
-visualvm_version: 2.0.1
+vlc_version: 3.0.11
+iterm2_version: 3.3.12
+terraform_version: 0.12.28
+visualvm_version: 2.0.3
 
