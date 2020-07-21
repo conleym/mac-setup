@@ -5,14 +5,14 @@
   register: throwaway
 
 - block:
-    - name: Download iTerm2
+    - name: Download xACT
       get_url:
         url:  " http://xact.scottcbrown.org/xACT{{ xact_version }}.zip"
         dest: "{{ downloads }}/xact.zip"
-    - name: Unzip iTerm2
+    - name: Unzip xACT
       unarchive:
         dest: "{{ downloads }}"
         src: "{{ downloads }}/xact.zip"
-    - name: Install iTerm2
+    - name: Install xACT
       command: "mv {{ downloads }}/{{ xact_app_name }}.app {{ xact_app_path }}"
   when: not (throwaway.stat.isdir is defined and throwaway.stat.isdir)
