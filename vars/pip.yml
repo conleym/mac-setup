@@ -1,4 +1,11 @@
 # Packages to install with pip (for python 3 only)
+#
+# Defines two lists, one for global packages (installed for all users in the python system library directory), and
+# another for the current user. The latter is strongly recommended.
+#
+# Full requirements.txt syntax is supported for each package in the list.
+# See https://pip.pypa.io/en/stable/reference/pip_install/#pip-install-examples for examples, and
+# https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format for details.
 ---
 pip_global_packages_to_install: []
 
