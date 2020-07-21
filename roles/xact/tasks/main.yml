@@ -4,15 +4,26 @@
     path: "{{ xact_app_path }}/{{ xact_app_name }}.app"
   register: throwaway
 
+- set_fact:
+    xact_local_zip: "{{ downloads }}/xact.zip"
+    xact_unarchive_dir: "{{ downloads }}/xACT"
+
 - block:
+    - file:
+        path: "{{ xact_unarchive_dir }}"
+        state: directory
     - name: Download xACT
       get_url:
-        url:  " http://xact.scottcbrown.org/xACT{{ xact_version }}.zip"
-        dest: "{{ downloads }}/xact.zip"
+        url:  "http://xact.scottcbrown.org/xACT{{ xact_version }}.zip"
+        dest: "{{ xact_local_zip }}"
     - name: Unzip xACT
       unarchive:
-        dest: "{{ downloads }}"
-        src: "{{ downloads }}/xact.zip"
+        dest: "{{ xact_unarchive_dir }}"
+        src: "{{ xact_local_zip }}"
     - name: Install xACT
-      command: "mv {{ downloads }}/{{ xact_app_name }}.app {{ xact_app_path }}"
+      command: "mv {{ downloads }}/xACT/xACT{{xact_version}}/{{ xact_app_name }}.app {{ xact_app_path }}"
+  always:
+    - file:
+        path: "{{ xact_unarchive_dir }}"
+        state: absent
   when: not (throwaway.stat.isdir is defined and throwaway.stat.isdir)
