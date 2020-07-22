@@ -60,9 +60,21 @@ Some fonts require `gnutar`, also installed via the `ports` tag.
 
 ## TODO
 
+In general, more app preferences...
+
 ### Emacs
 
 The daemon doesn't always start up properly. Investigate and fix.
+
+### Jetbrains toolbox
+
+1. Accept the agreement.
+1. Install selected IDEs. The toolbox seems to be missing functionality to do this from the command line. Investigate
+AppleScript, Automator, etc.
+
+### VLC
+
+Automatically enable metadata retrieval, so I don't have to click on the popup, or even see the popup.
 
 ### GPG tools
 
@@ -82,4 +94,4 @@ and check the box next to the GPGMailLoader plugin.
 * Secrets via lastpass.
     * SSH public/private keys.
     * GPG public/private keys.
-    * Log in to docker hub and other accounts.
+    * Log in to docker hub, jetbrains, and other accounts.
