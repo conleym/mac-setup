@@ -5,6 +5,8 @@
     selfupdate: yes
   become: yes
 
+# We need poppler for pdftools in emacs, but it frequently misbehaves during upgrades.
+#
 # force deactivation of poppler on condition that it's about to be upgraded.
 # check port list outdated output after selfupdate but before upgrade.
 - name: Check for poppler upgrade
@@ -58,6 +60,7 @@
   with_dict: "{{ ports_to_select }}"
 
 
+# TODO seems not to actually reclaim space :(
 - name: Reclaim space
-  command: /opt/local/bin/port reclaim --disable-reminders
+  command: /opt/local/bin/port reclaim -N --disable-reminders
   become: yes
