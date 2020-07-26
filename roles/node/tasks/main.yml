@@ -19,4 +19,4 @@
   shell: "{{ node_source_nvm }} && nvm alias default {{ node_version_string }}"
 
 - name: Update npm and yarn to latest
-  shell: "{{ node_source_nvm }} && npm install -g npm && npm install -g yarn"
+  shell: "{{ node_source_nvm }} && nvm use default && npm install -g npm && npm install -g yarn"
