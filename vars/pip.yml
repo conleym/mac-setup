@@ -17,7 +17,6 @@ pip_user_packages_to_install:
 
   # AWS
   - botocore
-  - boto
   - boto3
   - awscli
   - awsebcli
