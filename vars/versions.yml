@@ -2,9 +2,9 @@
 ---
 macports_version: 2.6.3
 xquartz_version: 2.7.11
-node_version: 14.6.0
+node_version: "14.6.0"
 gpgtools_version: 2020.1
-skim_version: 1.5.10
+skim_version: 1.5.11
 r_version: 4.0.2
 picard_version: 2.3.2
 vagrant_version: 2.2.9
