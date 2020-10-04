@@ -6,9 +6,9 @@ node_version: "14.6.0"
 gpgtools_version: 2020.1
 skim_version: 1.5.11
 r_version: 4.0.2
-picard_version: 2.3.2
-vagrant_version: 2.2.9
-vlc_version: 3.0.11
+picard_version: 2.4.4
+vagrant_version: 2.2.10
+vlc_version: 3.0.11.1
 iterm2_version: 3.3.12
 terraform_version: 0.12.28
 visualvm_version: 2.0.3
