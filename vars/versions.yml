@@ -9,7 +9,7 @@ r_version: 4.0.2
 picard_version: 2.4.4
 vagrant_version: 2.2.10
 vlc_version: 3.0.11.1
-iterm2_version: 3.4.1
+iterm2_version: 3.4.2
 terraform_version: 0.12.28
 visualvm_version: 2.0.3
 xact_version: "2.50"
