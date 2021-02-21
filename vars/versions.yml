@@ -8,8 +8,8 @@ skim_version: 1.5.13
 r_version: 4.0.3
 picard_version: 2.5.5
 vagrant_version: 2.2.14
-vlc_version: 3.0.11.1
-iterm2_version: 3.4.3
+vlc_version: 3.0.12
+iterm2_version: 3.4.4
 terraform_version: 0.14.3
 visualvm_version: 2.0.5
 xact_version: "2.50"
