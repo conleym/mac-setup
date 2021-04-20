@@ -4,14 +4,14 @@ macports_version: 2.6.4
 xquartz_version: 2.7.11
 node_version: 14.15.4
 gpgtools_version: 2020.2
-skim_version: 1.6.1
-r_version: 4.0.4
-picard_version: 2.5.6
-vagrant_version: 2.2.14
+skim_version: 1.6.3
+r_version: 4.0.5
+picard_version: 2.6.1
+vagrant_version: 2.2.15
 vlc_version: 3.0.12
-iterm2_version: 3.4.4
-terraform_version: 0.14.3
-visualvm_version: 2.0.5
+iterm2_version: 3.4.5
+terraform_version: "0.15.0"
+visualvm_version: 2.0.7
 xact_version: "2.50"
 
 # Versions as reported by VBoxManage --version are of the form {{ virtualbox_version }}-r{{ virtualbox_revision }}.
