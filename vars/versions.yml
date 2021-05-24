@@ -18,3 +18,6 @@ xact_version: "2.50"
 # Both numbers appear in the dmg URL. These two must be kept in sync with each release.
 virtualbox_version: 6.1.18
 virtualbox_revision: 142142
+
+# Ngrok stores binaries using some sort of hash.
+ngrok_hash: 4VmDzA7iaHb
