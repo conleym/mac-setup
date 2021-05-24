@@ -19,6 +19,10 @@
   include_role:
     name: steamcmd
 
+- name: Install ngrok
+  include_role:
+    name: ngrok
+
 - name: Download and install apps from disk images
   include_role:
     name: install_from_dmg
