@@ -43,6 +43,7 @@ ports_to_install:
     py38-pip:
     shellcheck:
     siege:
+    tealdeer:
     texinfo:
     the_silver_searcher:
     tidy:
