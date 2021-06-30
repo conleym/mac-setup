@@ -10,7 +10,7 @@
   git:
     repo: https://github.com/emacs-mirror/emacs
     dest: "{{ emacs_src_dir }}"
-    force: yes # build-aux/discard config.{sub,guess}
+    force: yes # discard build-aux/config.{sub,guess}
 
 # Standalone step can fail with "New Mach-O header is too large to relocate" without LDFLAGS.
 # https://py2app.readthedocs.io/en/latest/faq.html
@@ -24,8 +24,10 @@
   args:
     chdir: "{{ emacs_src_dir }}"
 
+# make bootstrap is sometimes necessary. See INSTALL.REPO and
+# https://lists.gnu.org/archive/html/emacs-devel/2019-11/msg00630.html
 - name: Build emacs
-  command: /opt/local/bin/gmake install
+  command: /opt/local/bin/gmake bootstrap install
   args:
     chdir: "{{  emacs_src_dir }}"
 
@@ -62,7 +64,7 @@
   args:
     chdir: "{{ emacs_src_dir }}"
 
-- name: Unload emacs server launchd service
+- name: Load emacs server launchd service
   include_role:
     name: launchd_load
   vars:
