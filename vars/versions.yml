@@ -8,7 +8,7 @@ skim_version: 1.6.3
 r_version: 4.0.5
 picard_version: 2.6.1
 vagrant_version: 2.2.15
-vlc_version: 3.0.12
+vlc_version: 3.0.16
 iterm2_version: 3.4.5
 terraform_version: "0.15.0"
 visualvm_version: 2.0.7
