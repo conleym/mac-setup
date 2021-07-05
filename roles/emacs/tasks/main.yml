@@ -26,8 +26,13 @@
 
 # make bootstrap is sometimes necessary. See INSTALL.REPO and
 # https://lists.gnu.org/archive/html/emacs-devel/2019-11/msg00630.html
+#- name: Bootstrap emacs.
+#  command: /opt/local/bin/gmake bootstrap
+#  args:
+#    chdir: "{{  emacs_src_dir }}"
+
 - name: Build emacs
-  command: /opt/local/bin/gmake bootstrap install
+  command: /opt/local/bin/gmake install
   args:
     chdir: "{{  emacs_src_dir }}"
 
