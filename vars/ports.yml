@@ -15,6 +15,8 @@ ports_to_install:
     gmake:
     gmp: +native
 # Graphviz
+    # Graphviz requires this to build, apparently, but doesn't install it first.
+    swig-python:
     # Install this explicitly first. It seems like graphviz is applying its own variants to this dependency,
     # leading to massive failure later on.
     librsvg: +quartz
