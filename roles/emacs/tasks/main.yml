@@ -36,7 +36,7 @@
   command: /opt/local/bin/gmake bootstrap
   args:
     chdir: "{{  emacs_src_dir }}"
-  when: bootstrap_emacs
+  when: emacs_bootstrap
 
 - name: Build emacs
   command: /opt/local/bin/gmake install
