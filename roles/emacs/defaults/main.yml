@@ -1,0 +1,4 @@
+# Whether to run the (fairly slow and expensive) bootstrap build step.
+emacs_bootstrap: no
+# Whether to run make distclean before configuring emacs.
+emacs_distclean: no
