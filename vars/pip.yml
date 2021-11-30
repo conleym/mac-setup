@@ -19,12 +19,13 @@ pip_user_packages_to_install:
   - botocore
   - boto3
   - awscli
-  - awsebcli
   - aws-sam-cli
   - aws-shell
 
   # Command line and such
   - thefuck
+  - chat-downloader
+  - youtube-dl
 
   ## Python dev
 
@@ -37,6 +38,5 @@ pip_user_packages_to_install:
   - yapf
 
   # Misc
-  - requests
   - psycopg2-binary
   - macholib
