@@ -11,7 +11,7 @@
   become: no
   vars:
     nopasswd: no
-    user: "{{ ansible_user }}"
+    user: "{{ ansible_user_id }}"
   tasks:
     - set_fact:
         sudoers_line: "{{ user }}            ALL = (ALL) NOPASSWD:ALL"
