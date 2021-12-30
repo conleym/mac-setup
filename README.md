@@ -17,10 +17,7 @@ python3 seems to be unable to verify ssl certificates without the full app).
 ### For the impatient
 
 1. Grant yourself passwordless sudo permission: `sudoers.sh -K -e nopasswd=yes`
-2. Either:
-   1. Open XCode and, when prompted, install the additional components.
-   2. Run `install-xcode-packages.sh`.
-3. Run the playbook `setup.sh`.
+2. Run the playbook `setup.sh`.
 
 ### For the more patient
 
