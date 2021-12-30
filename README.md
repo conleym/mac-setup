@@ -7,9 +7,9 @@ Tested on Catalina. Requires python3.
 
 1. Install XCode. (The command line tools are insufficient. 
 python3 seems to be unable to verify ssl certificates without the full app).
-1. Run `init.sh`, which does the following:
+2. Run `init.sh`, which does the following:
     1. Accepts the Xcode license (may prompt for admin password)
-    1. ansible (`pip3 install --user ansible`)
+    2. ansible (`pip3 install --user ansible`)
 
 
 ## How do?
@@ -17,7 +17,10 @@ python3 seems to be unable to verify ssl certificates without the full app).
 ### For the impatient
 
 1. Grant yourself passwordless sudo permission: `sudoers.sh -K -e nopasswd=yes`
-1. Run the playbook `setup.sh`.
+2. Either:
+   1. Open XCode and, when prompted, install the additional components.
+   2. Run `install-xcode-packages.sh`.
+3. Run the playbook `setup.sh`.
 
 ### For the more patient
 
@@ -27,18 +30,19 @@ options.
 arguments on to `ansible-playbook`.
 1. The following `tags` are defined:
     - ports:     Install [MacPorts](https://www.macports.org/) and a configurable list of ports/variants 
-                (see `vars/ports.yml`).
+                    (see `vars/ports.yml`).
     - tex:       Install [MacTeX](https://www.tug.org/mactex/).
     - emacs:     Clone emacs from github, build, and install. 
-                Clones my [emacs config](https://github.com/conleym/dot-emacs).
-                Creates a launchd service for the emacs daemon.
+                    Clones my [emacs config](https://github.com/conleym/dot-emacs).
+                    Creates a launchd service for the emacs daemon.
     - pip:       Install pip packages (see `vars/pip.yml`).
     - dotfiles:  Clone my [dotfiles](https://github.com/conleym/dotfiles) and
-                [emacs config](https://github.com/conleym/dot-emacs).
+                    [emacs config](https://github.com/conleym/dot-emacs).
     - apps:      Install applications from the app store using `mas` and from non-app-store disk images 
-                 (see `vars/mas.yml` and `vars/dmgs.yml`).
+                     (see `vars/mas.yml` and `vars/dmgs.yml`).
     - launchd:   Load launchd jobs (see `vars/launchd.yml`).             
-    - customize: Customize app and OS settings. 
+    - customize: Customize app and OS settings.
+                   You need to log out and log back in to apply many of the changes.
     - fonts:     Install fonts (see `vars/fonts.yml`).
  
 Note that some apps require `mas`, installed via MacPorts (use the `ports` tag),
