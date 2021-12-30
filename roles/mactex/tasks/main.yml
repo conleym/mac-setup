@@ -7,7 +7,7 @@
 - block:
     - name: Download MacTeX
       get_url:
-        url: https://tug.org/cgi-bin/mactex-download/MacTeX.pkg
+        url: https://mirror.ctan.org/systems/mac/mactex/MacTeX.pkg
         dest: "{{ downloads }}/mactex.pkg"
 
     - name: Install MacTeX
