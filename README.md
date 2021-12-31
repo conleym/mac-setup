@@ -9,8 +9,11 @@ Tested on Catalina. Requires python3. Only supports intel macs for now.
 python3 seems to be unable to verify ssl certificates without the full app).
 2. Run `init.sh`, which does the following:
     1. Accepts the Xcode license (may prompt for admin password)
-    2. ansible (`pip3 install --user ansible`)
-3. Sign into the app store app (`mas` cannot install apps unless you do so).
+    1. Installs ansible (`pip3 install --user ansible`)
+    1. Installs dependencies in `requirements.yml` using `ansible-galaxy`.
+3. Sign in to the app store app. 
+`mas` cannot install apps unless you do so, and sign in via the command line no longer works.
+See [mas known issues](https://github.com/mas-cli/mas#%EF%B8%8F-known-issues).
 
 ## How do?
 
@@ -23,9 +26,9 @@ python3 seems to be unable to verify ssl certificates without the full app).
 
 1. Optionally grant users the ability to use sudo with `sudoers.sh -K`. See `sudoers-playbook.yml` for
 options.
-1. Run `setup.sh -K` (omit `-K` if you're set up with passwordless `sudo` or whatever). The script passes all 
+2. Run `setup.sh -K` (omit `-K` if you're set up with passwordless `sudo` or whatever). The script passes all 
 arguments on to `ansible-playbook`.
-1. The following `tags` are defined:
+3. The following `tags` are defined:
     - ports:     Install [MacPorts](https://www.macports.org/) and a configurable list of ports/variants 
                     (see `vars/ports.yml`).
     - tex:       Install [MacTeX](https://www.tug.org/mactex/).
@@ -52,12 +55,20 @@ Some fonts require `gnutar`, also installed via the `ports` tag.
 ### Other software installed
 
 1. [Postman](https://www.postman.com/)
-1. [iTerm2](https://https://www.iterm2.com/downloads.html)
+2. [iTerm2](https://www.iterm2.com/downloads.html)
+3. [R](https://r-project.org/)
+4. [terraform](https://www.terraform.io/)
+5. [ngrok](https://ngrok.com/download)
+6. [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
+(includes the extension pack and accepts the license for same)
+7. [Vagrant](https://www.vagrantup.com/downloads)
+
+...and more.
 
 ### Fonts installed
 
 1. [JetBrains Mono](https://www.jetbrains.com/lp/mono/)
-1. [DejaVu](https://dejavu-fonts.github.io/)
+2. [DejaVu](https://dejavu-fonts.github.io/)
 
 
 ## TODO
