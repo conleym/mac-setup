@@ -9,6 +9,8 @@
     get_url:
       url: "https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_darwin_amd64.zip"
       dest: "{{ downloads }}/terraform.zip"
+      checksum: "sha256:https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_SHA256SUMS"
+
   - name: Install terraform
     unarchive:
       src: "{{ downloads }}/terraform.zip"
