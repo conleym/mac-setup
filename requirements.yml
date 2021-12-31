@@ -1,0 +1,5 @@
+# Ansible galaxy requirements.
+---
+roles: []
+collections:
+  - name: community.general
