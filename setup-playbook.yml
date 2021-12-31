@@ -47,7 +47,8 @@
       tags:
         - ports
 
-    - include_role:
+    - name: Install MacPorts
+      include_role:
         name: macports
         apply:
           tags:
@@ -55,11 +56,13 @@
       tags:
         - ports
 
-    - import_tasks: tasks/install_ports.yml
+    - name: Install ports
+      import_tasks: tasks/install_ports.yml
       tags:
         - ports
 
-    - include_role:
+    - name: Install MacTeX
+      include_role:
         name: mactex
         apply:
           tags:
@@ -67,11 +70,13 @@
       tags:
         - tex
 
-    - import_tasks: tasks/install_apps.yml
+    - name: Install Applications
+      import_tasks: tasks/install_apps.yml
       tags:
         - apps
 
-    - include_role:
+    - name: Install VirtualBox
+      include_role:
         name: virtualbox
         apply:
           tags:
