@@ -33,6 +33,7 @@
   vars:
     dmg_url: "{{ item.dmg_url }}"
     dmg_destination: "{{ downloads }}/{{ item.app_name }}.dmg"
+    dmg_checksum: "{{ item.checksum | default(None) }}"
     app_name: "{{ item.app_name }}"
     # default(omit) doesn't work here, annoyingly
     path_to_stat: "{{ item.path_to_stat | default(None) }}"
