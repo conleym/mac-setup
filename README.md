@@ -1,6 +1,6 @@
 # Ansible macOS setup
 
-Tested on Catalina. Requires python3.
+Tested on Catalina. Requires python3. Only supports intel macs for now.
 
 
 ## Prerequisites
