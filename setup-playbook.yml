@@ -91,7 +91,7 @@
 
     - name: Clone oh my zsh
       git:
-        repo: git@github.com:ohmyzsh/ohmyzsh
+        repo: https://github.com/ohmyzsh/ohmyzsh
         dest: "{{  '~/.zsh/ohmyzsh' | expanduser }}"
       tags:
         - dotfiles
