@@ -19,7 +19,7 @@ dmgs_to_download_and_install:
     dmg_url: https://discordapp.com/api/download?platform=osx
 
   - app_name: Docker
-    dmg_url: https://download.docker.com/mac/stable/Docker.dmg
+    dmg_url: https://desktop.docker.com/mac/main/amd64/Docker.dmg
 
 # The app has prompts and junk, so it's unsuitable for anything but interactive use.
 #  - app_name: Dropbox
