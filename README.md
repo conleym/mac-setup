@@ -10,7 +10,7 @@ python3 seems to be unable to verify ssl certificates without the full app).
 2. Run `init.sh`, which does the following:
     1. Accepts the Xcode license (may prompt for admin password)
     2. ansible (`pip3 install --user ansible`)
-
+3. Sign into the app store app (`mas` cannot install apps unless you do so).
 
 ## How do?
 
@@ -37,9 +37,10 @@ arguments on to `ansible-playbook`.
                     [emacs config](https://github.com/conleym/dot-emacs).
     - apps:      Install applications from the app store using `mas` and from non-app-store disk images 
                      (see `vars/mas.yml` and `vars/dmgs.yml`).
+                     You must be signed into the app store for `mas` to function properly.
     - launchd:   Load launchd jobs (see `vars/launchd.yml`).             
     - customize: Customize app and OS settings.
-                   You need to log out and log back in to apply many of the changes.
+                     You need to log out and log back in to apply many of the changes.
     - fonts:     Install fonts (see `vars/fonts.yml`).
  
 Note that some apps require `mas`, installed via MacPorts (use the `ports` tag),
