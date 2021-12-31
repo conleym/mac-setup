@@ -1,0 +1,15 @@
+# Install the R app.
+---
+- stat:
+    path: /Applications/R.app"
+  register: throwaway
+
+- block:
+    - name: Download R package
+      get_url:
+        src: "https://cloud.r-project.org/bin/macosx/R-{{ r_version }}.pkg"
+        dest: "{{ downloads }}/R.pkg"
+
+    - name: Install R
+      command: "installer -pkg {{ downloads }}/R.pkg -target /"
+  when: not (throwaway.stat.isdir is defined and throwaway.stat.isdir)

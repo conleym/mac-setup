@@ -23,6 +23,10 @@
   include_role:
     name: ngrok
 
+- name: Install R
+  include_role:
+    name: r_app
+
 - name: Download and install apps from disk images
   include_role:
     name: install_from_dmg
