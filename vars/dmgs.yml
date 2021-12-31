@@ -18,6 +18,7 @@ dmgs_to_download_and_install:
   - app_name: Discord
     dmg_url: https://discordapp.com/api/download?platform=osx
 
+  # arch
   - app_name: Docker
     dmg_url: https://desktop.docker.com/mac/main/amd64/Docker.dmg
 
@@ -37,6 +38,7 @@ dmgs_to_download_and_install:
     install_method: Install.pkg
     path_to_stat: /usr/local/MacGPG2/bin/gpg
 
+  # arch
   - app_name: Vagrant
     dmg_url: "https://releases.hashicorp.com/vagrant/{{ vagrant_version }}/vagrant_{{ vagrant_version }}_x86_64.dmg"
     install_method: vagrant.pkg
@@ -47,6 +49,7 @@ dmgs_to_download_and_install:
     install_method: XQuartz.pkg
     path_to_stat: /usr/X11/bin/Xquartz
 
+  # arch
   - app_name: VLC
     dmg_url: "https://get.videolan.org/vlc/{{ vlc_version }}/macosx/vlc-{{ vlc_version }}-intel64.dmg"
 
