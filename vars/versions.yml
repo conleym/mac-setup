@@ -6,7 +6,7 @@ xquartz_version: 2.8.1
 node_version: 14.15.4
 gpgtools_version: 2021.3
 skim_version: 1.6.7
-r_version: 4.0.5
+r_version: 4.1.3
 picard_version: 2.7.1
 vagrant_version: 2.2.19
 vlc_version: 3.0.16

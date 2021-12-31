@@ -50,15 +50,7 @@ dmgs_to_download_and_install:
   - app_name: VLC
     dmg_url: "https://get.videolan.org/vlc/{{ vlc_version }}/macosx/vlc-{{ vlc_version }}-intel64.dmg"
 
-#  - app_name: R
-#    dmg_url: "https://cran.r-project.org/bin/macosx/R-{{ r_version }}.pkg"
-#    install_method: R.pkg
-
   - app_name: VisualVM
     dmg_url: "https://github.com/visualvm/visualvm.src/releases/download/{{ visualvm_version }}/VisualVM_{{ visualvm_version | replace('.', '') }}.dmg"
-
-  - app_name: VirtualBox
-    dmg_url: "https://download.virtualbox.org/virtualbox/{{ virtualbox_version }}/VirtualBox-{{ virtualbox_version }}-{{ virtualbox_revision }}-OSX.dmg"
-    install_method: VirtualBox.pkg
 
     # TODO parallels?

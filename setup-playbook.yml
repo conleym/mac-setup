@@ -2,6 +2,7 @@
 - hosts: localhost
   become: no
   vars_files:
+    - vars/const.yml
     - vars/dmgs.yml
     - vars/fonts.yml
     - vars/launchd.yml
@@ -69,6 +70,15 @@
     - import_tasks: tasks/install_apps.yml
       tags:
         - apps
+
+    - include_role:
+        name: virtualbox
+        apply:
+          tags:
+            - apps
+      tags:
+        - apps
+      when: ansible_architecture == arch_intel
 
     - name: Install node.js with nvm
       include_role:
