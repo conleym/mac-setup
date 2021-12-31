@@ -43,12 +43,12 @@ dmgs_to_download_and_install:
     path_to_stat: /usr/local/bin/vagrant
 
   - app_name: XQuartz
-    dmg_url: "https://dl.bintray.com/xquartz/downloads/XQuartz-{{ xquartz_version }}.dmg"
+    dmg_url: "https://github.com/XQuartz/XQuartz/releases/download/XQuartz-{{ xquartz_version }}/XQuartz-{{ xquartz_version }}.dmg"
     install_method: XQuartz.pkg
     path_to_stat: /usr/X11/bin/Xquartz
 
   - app_name: VLC
-    dmg_url: "https://get.videolan.org/vlc/{{ vlc_version }}/macosx/vlc-{{ vlc_version }}.dmg"
+    dmg_url: "https://get.videolan.org/vlc/{{ vlc_version }}/macosx/vlc-{{ vlc_version }}-intel64.dmg"
 
 #  - app_name: R
 #    dmg_url: "https://cran.r-project.org/bin/macosx/R-{{ r_version }}.pkg"
