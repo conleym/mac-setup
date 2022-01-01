@@ -4,7 +4,16 @@
 # Allows use of git@github.com in git tasks, etc.
 ---
 - set_fact:
+    ssh_config_dir: "{{ '~/.ssh' | expanduser }}"
+
+- set_fact:
     ssh_known_hosts_file: "{{ ssh_config_dir }}/known_hosts"
+
+- name: Ensure ~/.ssh exists
+  file:
+    path: "{{ ssh_config_dir }}"
+    state: directory
+    mode: u=rwx
 
 - name: Ensure known_hosts exists
   file:
