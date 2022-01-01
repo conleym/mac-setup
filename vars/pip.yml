@@ -10,7 +10,7 @@
 pip_global_packages_to_install: []
 
 pip_user_packages_to_install:
-  # Start with the basics (upgrading these if necessary)
+  ## Start with the basics (upgrading these if necessary)
 #  - pip  # pip upgrade breaks pip3 bundled with xcode somehow.
   - virtualenv
   - virtualenvwrapper
@@ -27,6 +27,10 @@ pip_user_packages_to_install:
   - chat-downloader
   - youtube-dl
 
+  ## Ansible development
+  - ansible-lint
+
+
   ## Python dev
 
   # These are used by elpy.
@@ -39,4 +43,3 @@ pip_user_packages_to_install:
 
   # Misc
   - psycopg2-binary
-  - macholib

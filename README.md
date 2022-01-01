@@ -9,8 +9,9 @@ Tested on Catalina. Requires python3. Only supports intel macs for now.
 python3 seems to be unable to verify ssl certificates without the full app).
 2. Run `init.sh`, which does the following:
     1. Accepts the Xcode license (may prompt for admin password)
-    1. Installs ansible (`pip3 install --user ansible`)
-    1. Installs dependencies in `requirements.yml` using `ansible-galaxy`.
+    2. Installs ansible (`pip3 install --user ansible`)
+    3. Installs task dependencies in `requirements.txt` (again, with `pip3 install --user`).
+    4. Installs dependencies in `requirements.yml` using `ansible-galaxy`.
 3. Sign in to the app store app. 
 `mas` cannot install apps unless you do so, and sign in via the command line no longer works.
 See [mas known issues](https://github.com/mas-cli/mas#%EF%B8%8F-known-issues).
@@ -47,8 +48,7 @@ arguments on to `ansible-playbook`.
     - fonts:     Install fonts (see `vars/fonts.yml`).
  
 Note that some apps require `mas`, installed via MacPorts (use the `ports` tag),
-and that `emacs` requires both `ports` (for dependencies)
-and `pip` (to install [macholib](https://github.com/ronaldoussoren/macholib/), used to make the app standalone).
+and that `emacs` requires `ports` (for dependencies).
 
 Some fonts require `gnutar`, also installed via the `ports` tag.
 
