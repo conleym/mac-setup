@@ -30,7 +30,8 @@
       command: "ssh-keyscan -t ecdsa github.com"
       register: github_ssh_keyscan
 
-    # does not work with default ansible_shell_executable (/bin/sh).
+    # does not work with default ansible_shell_executable (/bin/sh), an absolutely ancient version of bash.
+    # for this reason, we're using zsh (see the inventory file).
     - name: Get github ssh host key fingerprint
       shell: "ssh-keygen -lf - <<< '{{ github_ssh_keyscan.stdout }}'"
       register: github_ssh_fingerprint
