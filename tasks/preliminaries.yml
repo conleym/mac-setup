@@ -1,18 +1,12 @@
+# Ensure common directories are in place and that Xcode is ready to go.
 ---
 - set_fact:
     downloads: "{{ '~/Downloads/setup' | expanduser }}"
-    ssh_config_dir: "{{ '~/.ssh' | expanduser }}"
 
 - name: Ensure downloads directory exists
   file:
     path: "{{ downloads }}"
     state: directory
-
-- name: Ensure ~/.ssh exists
-  file:
-    path: "{{ ssh_config_dir }}"
-    state: directory
-    mode: u=rwx
 
 - name: Ensure ~/var directories exist
   file:
