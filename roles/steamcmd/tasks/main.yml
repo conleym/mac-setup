@@ -2,8 +2,6 @@
 # https://developer.valvesoftware.com/wiki/SteamCMD#macOS
 ---
 - set_fact:
-    steamcmd_dest_dir: "{{ '~/steamcmd' | expanduser }}"
-- set_fact:
     steamcmd_script: "{{ steamcmd_dest_dir }}/steamcmd.sh"
 
 - stat:
@@ -18,7 +16,7 @@
 
     - name: Create steamcmd directory
       file:
-        path: "{{ steamcmd_dest_dir}}"
+        path: "{{ steamcmd_dest_dir }}"
         state: directory
 
     - name: Install steamcmd

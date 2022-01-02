@@ -1,0 +1,2 @@
+---
+steamcmd_dest_dir: "{{ '~/steamcmd' | expanduser }}"
