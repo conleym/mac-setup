@@ -22,12 +22,14 @@
       when: not (nopasswd | bool)
 
     - name: Add new file to /etc/sudoers.d
-      copy:
+      template:
         dest: "/etc/sudoers.d/{{ user }}"
-        content: "{{ sudoers_line }}"
+        src: "templates/content.j2"
         validate: /usr/sbin/visudo -cf %s
         owner: root
         group: wheel
         mode: ug=r
       become: yes
+      vars:
+        content: "{{ sudoers_line }}"
 
