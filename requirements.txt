@@ -1,3 +1,4 @@
 # Python requirements for ansible tasks used in this playbook. Will be installed by init.sh
 
+ansible  # Obviously.
 macholib # Dependency of `emacs` role. Used to make emacs standalone.

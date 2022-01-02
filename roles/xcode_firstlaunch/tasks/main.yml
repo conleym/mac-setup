@@ -1,0 +1,14 @@
+# Ensure Xcode's 'additional components' are installed, because things can fail to build if they aren't.
+#
+# See also https://trac.macports.org/ticket/54982#comment:2
+#
+---
+- name: Check Xcode first run status
+  command: xcodebuild -checkFirstLaunchStatus
+  register: throwaway
+  ignore_errors: yes  # Don't blow up if this fails...we're going to fix it below.
+
+- name: Execute Xcode first run tasks
+  command: xcodebuild -runFirstLaunch
+  when: throwaway.rc != 0
+  become: yes

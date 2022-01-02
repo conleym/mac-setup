@@ -1,0 +1,24 @@
+# Install ports needed by setup-playbook.
+---
+# ansible's unarchive task requires gnu tar.
+- name: Install gnutar
+  macports:
+    name: gnutar
+    state: present
+  become: yes
+
+# unarchive will not use the `gnutar` binary. It will, however, use `gtar`.
+- name: Link gnutar to gtar
+  file:
+    src: /opt/local/bin/gnutar
+    path: /opt/local/bin/gtar
+    state: link
+  become: yes
+
+- name: Install ports
+  macports:
+    name: "{{ item.key }}"
+    variant: "{{ item.value }}"
+    state: present
+  become: yes
+  with_dict: "{{ bootstrap_ports_to_install }}"

@@ -43,21 +43,6 @@
     state: present
   become: yes
 
-# ansible's unarchive task requires gnu tar.
-- name: Install gnutar
-  macports:
-    name: gnutar
-    state: present
-  become: yes
-
-# unarchive will not use the `gnutar` binary. It will, however, use `gtar`.
-- name: Link gnutar to gtar
-  file:
-    src: /opt/local/bin/gnutar
-    path: /opt/local/bin/gtar
-    state: link
-  become: yes
-
 - name: Install ports
   macports:
     name: "{{ item.key }}"
@@ -66,11 +51,10 @@
   become: yes
   with_dict: "{{ ports_to_install }}"
 
-- name: Select port
+- name: Select ports
   command: "/opt/local/bin/port select {{ item.key }} {{ item.value }}"
   become: yes
   with_dict: "{{ ports_to_select }}"
-
 
 # TODO seems not to actually reclaim space :(
 - name: Reclaim space

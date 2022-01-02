@@ -1,5 +1,11 @@
 ---
-# List of ports with optional variants
+# List of ports that must be installed in bootstrap.
+bootstrap_ports_to_install:
+    mas:
+    lastpass-cli: +pientry
+    lastpass-cli-doc:
+
+# List of ports with optional variants _not_ installed in bootstrap.
 ports_to_install:
     autoconf:
     autossh:
@@ -31,10 +37,7 @@ ports_to_install:
 #  needed for native json support in emacs.
     jansson:
     jq:
-    lastpass-cli: +pientry
-    lastpass-cli-doc:
     lesspipe:
-    mas:
     multimarkdown:
     maven3:
     parallel:

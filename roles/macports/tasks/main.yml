@@ -5,9 +5,22 @@
   register: throwaway
 
 - block:
+    - set_fact:
+        macports_macos_version: "{{ macos_major_minor_version }}"
+      when: macos_major_version == "10"
+
+    # Starting with Big Sur, macOS major version numbers get bumped, and MacPorts package files are named with only the major version.
+    - set_fact:
+        macports_macos_version: "{{ macos_major_version }}"
+      when: macos_major_version != "10"
+
+    - set_fact:
+        # Marketing version has no spaces, e.g., Big Sur -> BigSur.
+        macports_macos_package_name: "MacPorts-{{ macports_version }}-{{ macports_macos_version }}-{{ macos_marketing_version | regex_replace('\\s', '') }}.pkg"
+
     - name: Download MacPorts
       get_url:
-        url: "https://distfiles.macports.org/MacPorts/MacPorts-{{ macports_version }}-{{ macos_major_version }}-{{ macos_marketing_version }}.pkg"
+        url: "https://distfiles.macports.org/MacPorts/{{ macports_macos_package_name }}"
         dest: "{{ downloads }}/macports.pkg"
 
     - name: Install MacPorts

@@ -1,0 +1,37 @@
+# Bootstrap further playbooks, installing essentials.
+#   This playbook is run by bootstrap.sh during initial setup. It is also included in setup-playbook so that everything's
+#   kept up to date.
+# Does the following:
+#  1. Ensures Xcode's first launch setup is complete.
+#  2. Installs MacPorts
+#  3. Installs the ports required by setup-playbook. See bootstrap_ports_to_install in `vars/ports.yml` for the list.
+---
+- hosts: localhost
+  become: no
+  vars_files:
+    - vars/ports.yml
+    - vars/versions.yml
+  tasks:
+
+    - import_tasks: tasks/preliminaries.yml
+      tags:
+        - always
+
+    - name: Ensure Xcode is ready
+      include_role:
+        name: xcode_firstlaunch
+      tags:
+        - always
+
+    # Ensure MacPorts is installed, and that the ports required by setup-playbook are installed.
+
+    - name: Install MacPorts
+      include_role:
+        name: macports
+      tags:
+        - always
+
+    - name: Install essential ports
+      include_tasks: tasks/install_bootstrap_ports.yml
+      tags:
+        - always

@@ -10,12 +10,12 @@
 pip_global_packages_to_install: []
 
 pip_user_packages_to_install:
-  ## Start with the basics (upgrading these if necessary)
-#  - pip  # pip upgrade breaks pip3 bundled with xcode somehow.
+  ## Start with the basics (upgrading already installed versions if necessary)
+  - pip
   - virtualenv
   - virtualenvwrapper
 
-  # AWS
+  ## AWS
   - botocore
   - boto3
   - awscli
@@ -37,7 +37,7 @@ pip_user_packages_to_install:
   - autopep8
   - flake8
   - importmagic
-  - jedi # offers a choice of either rope or jedi. Let's have both though.
+  - jedi # elpy offers a choice of either rope or jedi. Let's have both though.
   - rope
   - yapf
 
