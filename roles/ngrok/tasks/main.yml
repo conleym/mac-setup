@@ -1,8 +1,11 @@
 # Download and install ngrok
+#
+# Set ngrok_force_install to reinstall.
 ---
 - stat:
     path: /usr/local/bin/ngrok
   register: throwaway
+  when: not ngrok_force_install
 
 - block:
   - name: Download ngrok
@@ -16,4 +19,4 @@
   - name: Install ngrok
     command: "mv {{ downloads }}/ngrok /usr/local/bin"
     become: yes
-  when: not(throwaway.stat.executable is defined and throwaway.stat.executable)
+  when: ngrok_force_install or not(throwaway.stat.executable is defined and throwaway.stat.executable)

@@ -1,8 +1,11 @@
 # Install terraform
+#
+# Set terraform_force_install to true to reinstall.
 ---
 - stat:
     path: "/usr/local/bin/terraform"
   register: throwaway
+  when: not terraform_force_install
 
 - block:
   - name: Download terraform
@@ -17,4 +20,4 @@
       dest: "/usr/local/bin"
     become: yes
 
-  when: not throwaway.stat.exists
+  when: terraform_force_install or not throwaway.stat.exists
