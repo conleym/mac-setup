@@ -1,4 +1,4 @@
-# Ensure common directories are in place and that Xcode is ready to go.
+# Ensure common directories are in place.
 ---
 - set_fact:
     downloads: "{{ '~/Downloads/setup' | expanduser }}"

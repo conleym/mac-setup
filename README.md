@@ -37,23 +37,31 @@ python3 seems to be unable to verify ssl certificates without the full app).
 6. Run `setup.sh -K` (omit `-K` if you're set up with passwordless `sudo`). The script passes all 
 arguments on to `ansible-playbook`.
 7. The following `tags` are defined (which you can pass to the script, e.g., `setup.sh --tags ports`):
-    - ports:     Install/update a configurable list of ports/variants 
-                    (see `vars/ports.yml`).
-    - tex:       Install [MacTeX](https://www.tug.org/mactex/).
-    - emacs:     Clone emacs from github, build, and install. 
-                    Clones my [emacs config](https://github.com/conleym/dot-emacs).
-                    Creates a launchd service for the emacs daemon.
-    - pip:       Install pip packages (see `vars/pip.yml`).
-    - dotfiles:  Clone my [dotfiles](https://github.com/conleym/dotfiles) and
-                    [emacs config](https://github.com/conleym/dot-emacs).
-    - apps:      Install applications from the app store using `mas` and from non-app-store disk images 
-                     (see `vars/mas.yml` and `vars/dmgs.yml`).
-                     You must be signed in to the app store for `mas` to function properly.
-    - launchd:   Load launchd jobs (see `vars/launchd.yml`).             
-    - customize: Customize app and OS settings.
-                     You need to log out and log back in to apply many of the changes.
-    - fonts:     Install fonts (see `vars/fonts.yml`).
- 
+    - **apps**:      Install applications from the app store using `mas` and from non-app-store disk images
+      (see `vars/mas.yml` and `vars/dmgs.yml`).
+      You must be signed in to the app store for `mas` to function properly.
+
+    - **customize**: Customize app and OS settings.
+      You need to log out and log back in to apply many of the changes.
+
+    - **dotfiles**:  Clone my [dotfiles](https://github.com/conleym/dotfiles) and
+     [emacs config](https://github.com/conleym/dot-emacs).
+
+    - **emacs**:     Clone emacs from github, build, and install.
+      Clones my [emacs config](https://github.com/conleym/dot-emacs).
+      Creates a launchd service for the emacs daemon.
+
+    - **fonts**:     Install fonts (see `vars/fonts.yml`).
+
+    - **launchd**:   Load launchd jobs (see `vars/launchd.yml`).
+
+    - **pip**:       Install pip packages (see `vars/pip.yml`).
+
+    - **ports**:     Install/update a configurable list of ports/variants
+      (see `vars/ports.yml`).
+
+    - **tex**:       Install [MacTeX](https://www.tug.org/mactex/).
+
 ### Other software installed
 
 1. [Postman](https://www.postman.com/)
