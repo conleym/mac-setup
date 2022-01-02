@@ -43,6 +43,10 @@
     state: present
   become: yes
 
+- name: Install GNU parallel
+  include_role:
+    name: gnu_parallel
+
 - name: Install ports
   macports:
     name: "{{ item.key }}"

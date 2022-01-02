@@ -1,0 +1,21 @@
+# Install GNU parallel using MacPorts, and disable its nagging.
+---
+- name: Install parallel
+  macports:
+    name: parallel
+    state: present
+  become: yes
+
+- set_fact:
+    throwaway: "{{ '~/.parallel' | expanduser }}"
+
+- name: Ensure configuration directory exists
+  file:
+    path: "{{ throwaway }}"
+    state: directory
+
+  # I'm never publishing a paper...
+- name: Silence citation warning.
+  file:
+    path: "{{ throwaway }}/will-cite"
+    state: touch

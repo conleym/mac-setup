@@ -3,6 +3,9 @@
 SCRIPT="${(%):-%x}"
 DIR="$( cd "$( dirname "${SCRIPT}" )" >/dev/null 2>&1 && pwd )"
 
+# Accept the Xcode license, install python and ansible-galaxy dependencies, including ansible itself.
+# Can be run again to upgrade any of the python or ansible-galaxy dependencies.
+
 # Accept the Xcode license. Can't run pip without doing this first.
 sudo xcodebuild -license accept
 

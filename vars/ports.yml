@@ -40,7 +40,6 @@ ports_to_install:
     lesspipe:
     multimarkdown:
     maven3:
-    parallel:
     poppler:
     postgresql12:
     pstree:
