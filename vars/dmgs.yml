@@ -43,7 +43,7 @@ dmgs_to_download_and_install:
     dmg_url: "https://releases.hashicorp.com/vagrant/{{ vagrant_version }}/vagrant_{{ vagrant_version }}_x86_64.dmg"
     install_method: vagrant.pkg
     path_to_stat: /usr/local/bin/vagrant
-    checksum: "https://releases.hashicorp.com/vagrant/{{ vagrant_version }}/vagrant_{{ vagrant_version }}_SHA256SUMS"
+    checksum: "sha256:https://releases.hashicorp.com/vagrant/{{ vagrant_version }}/vagrant_{{ vagrant_version }}_SHA256SUMS"
 
   - app_name: XQuartz
     dmg_url: "https://github.com/XQuartz/XQuartz/releases/download/XQuartz-{{ xquartz_version }}/XQuartz-{{ xquartz_version }}.dmg"
