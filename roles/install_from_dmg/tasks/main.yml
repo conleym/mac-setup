@@ -20,14 +20,14 @@
       get_url:
         url: "{{ dmg_url }}"
         dest: "{{ dmg_destination }}"
-      when: dmg_checksum is None
+      when: not dmg_checksum
 
     - name: Download disk image and verify checksum
       get_url:
         url: "{{ dmg_url }}"
         dest: "{{ dmg_destination }}"
         checksum: "{{ dmg_checksum }}"
-      when: dmg_checksum is not None
+      when: dmg_checksum
 
     - include_role:
         name: mount_dmg
