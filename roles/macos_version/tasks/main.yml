@@ -1,0 +1,27 @@
+# Determine macOS version.
+# Sets the following facts:
+#   macos_version: the full version number (e.g., 10.15.7).
+#   macos_major_minor_version: the major and minor version number (e.g., 10.15).
+#   macos_major_version: the major version number (e.g., 10).
+#   macos_marketing_version: the marketing version (e.g., High Sierra, Catalina).
+#
+# See https://unix.stackexchange.com/questions/234104/get-osx-codename-from-command-line
+---
+- name: Determine OS version
+  command: sw_vers -productVersion
+  register: throwaway
+
+- set_fact:
+    macos_version: "{{ throwaway.stdout }}"
+    macos_major_minor_version: "{{ throwaway.stdout | regex_replace('^(\\d+\\.\\d+).*', '\\1') }}"
+    macos_major_version: "{{ throwaway.stdout | regex_replace('(^\\d+)\\..*', '\\1') }}"
+
+- name: Determine marketing version
+  shell: >-
+    awk '/SOFTWARE LICENSE AGREEMENT FOR (macOS|OS X)/' '/System/Library/CoreServices/Setup Assistant.app/Contents/Resources/en.lproj/OSXSoftwareLicense.rtf' |
+    awk -F '(macOS|OS X)' '{ print $NF }' |
+    awk '{ gsub(/^[^a-zA-Z]*|[^a-zA-Z]*$/, ""); print }'
+  register: throwaway
+
+- set_fact:
+    macos_marketing_version: "{{ throwaway.stdout }}"

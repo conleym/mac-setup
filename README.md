@@ -5,32 +5,39 @@ Tested on Catalina. Requires python3. Only supports intel macs for now.
 
 ## Prerequisites
 
-1. Install XCode. (The command line tools are insufficient. 
+Install XCode. (The command line tools are insufficient. 
 python3 seems to be unable to verify ssl certificates without the full app).
-2. Run `init.sh`, which does the following:
-    1. Accepts the Xcode license (may prompt for admin password)
-    2. Installs ansible (`pip3 install --user ansible`)
-    3. Installs task dependencies in `requirements.txt` (again, with `pip3 install --user`).
-    4. Installs dependencies in `requirements.yml` using `ansible-galaxy`.
-3. Sign in to the app store app. 
-`mas` cannot install apps unless you do so, and sign in via the command line no longer works.
-See [mas known issues](https://github.com/mas-cli/mas#%EF%B8%8F-known-issues).
 
 ## How do?
 
 ### For the impatient
 
-1. Grant yourself passwordless sudo permission: `sudoers.sh -K -e nopasswd=yes`
-2. Run the playbook `setup.sh`.
+1. Run `init.sh`. You'll be prompted for your password.
+2. Grant yourself passwordless sudo permission: `sudoers.sh -K -e nopasswd=yes`
+3. Run the bootstrap script `bootstrap.sh`
+4. Run the playbook `setup.sh`.
 
 ### For the more patient
 
-1. Optionally grant users the ability to use sudo with `sudoers.sh -K`. See `sudoers-playbook.yml` for
-options.
-2. Run `setup.sh -K` (omit `-K` if you're set up with passwordless `sudo` or whatever). The script passes all 
+1. Run `init.sh`, which does the following:
+    1. Accepts the Xcode license (may prompt for admin password)
+    2. Installs ansible (`pip3 install --user ansible`)
+    3. Installs task dependencies in `requirements.txt` (again, with `pip3 install --user`).
+    4. Installs dependencies in `requirements.yml` using `ansible-galaxy`.
+2. Optionally grant users the ability to use sudo with `sudoers.sh -K`. See `sudoers-playbook.yml` for
+   options.
+3. Run `bootstrap.sh -K` (omit `-K` if you're set up with passwordless `sudo`). This runs `bootstrap-playbook.yml`,
+   which runs Xcode's first launch tasks (if necessary) and installs [MacPorts](https://www.macports.org/), along with
+   several ports needed to make setup tasks work properly. You only need to do this once. The playbook is imported in
+   `setup-playbook.yml`, so the tasks will run again if necessary.
+4. Sign in to the app store app.
+   `mas` cannot install apps unless you do so, and sign in via the command line no longer works.
+   See [mas known issues](https://github.com/mas-cli/mas#%EF%B8%8F-known-issues).
+5. Sign in to lastpass: `lpass login USERNAME`.
+6. Run `setup.sh -K` (omit `-K` if you're set up with passwordless `sudo`). The script passes all 
 arguments on to `ansible-playbook`.
-3. The following `tags` are defined:
-    - ports:     Install [MacPorts](https://www.macports.org/) and a configurable list of ports/variants 
+7. The following `tags` are defined (which you can pass to the script, e.g., `setup.sh --tags ports`):
+    - ports:     Install/update a configurable list of ports/variants 
                     (see `vars/ports.yml`).
     - tex:       Install [MacTeX](https://www.tug.org/mactex/).
     - emacs:     Clone emacs from github, build, and install. 
@@ -41,17 +48,12 @@ arguments on to `ansible-playbook`.
                     [emacs config](https://github.com/conleym/dot-emacs).
     - apps:      Install applications from the app store using `mas` and from non-app-store disk images 
                      (see `vars/mas.yml` and `vars/dmgs.yml`).
-                     You must be signed into the app store for `mas` to function properly.
+                     You must be signed in to the app store for `mas` to function properly.
     - launchd:   Load launchd jobs (see `vars/launchd.yml`).             
     - customize: Customize app and OS settings.
                      You need to log out and log back in to apply many of the changes.
     - fonts:     Install fonts (see `vars/fonts.yml`).
  
-Note that some apps require `mas`, installed via MacPorts (use the `ports` tag),
-and that `emacs` requires `ports` (for dependencies).
-
-Some fonts require `gnutar`, also installed via the `ports` tag.
-
 ### Other software installed
 
 1. [Postman](https://www.postman.com/)

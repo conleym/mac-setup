@@ -1,4 +1,6 @@
 ---
+- import_playbook: bootstrap-playbook.yml
+
 - hosts: localhost
   become: no
   vars_files:
@@ -11,50 +13,10 @@
     - vars/ports.yml
     - vars/versions.yml
   tasks:
-    - import_tasks: tasks/preliminaries.yml
-      tags:
-        - always
-
-    # Do this early, as we rely on the presence of certain modules (e.g., macholib) later.
-    - import_tasks: tasks/pip.yml
+    - name: Install python modules
+      import_tasks: tasks/pip.yml
       tags:
         - pip
-
-    # See https://unix.stackexchange.com/questions/234104/get-osx-codename-from-command-line
-    - name: Determine OS version
-      command: sw_vers -productVersion
-      register: sw_vers_stdout
-      tags:
-        - ports
-
-    - set_fact:
-        macos_version: "{{ sw_vers_stdout.stdout }}"
-        macos_major_version: "{{ sw_vers_stdout.stdout | regex_replace('^(10\\.\\d+).*', '\\1') }}"
-      tags:
-        - ports
-
-    - name: Determine marketing version
-      shell: >-
-        awk '/SOFTWARE LICENSE AGREEMENT FOR (macOS|OS X)/' '/System/Library/CoreServices/Setup Assistant.app/Contents/Resources/en.lproj/OSXSoftwareLicense.rtf' |
-        awk -F '(macOS|OS X)' '{ print $NF }' |
-        awk '{ gsub(/^[^a-zA-Z]*|[^a-zA-Z]*$/, ""); print }'
-      register: awk_stdout
-      tags:
-        - ports
-
-    - set_fact:
-        macos_marketing_version: "{{ awk_stdout.stdout }}"
-      tags:
-        - ports
-
-    - name: Install MacPorts
-      include_role:
-        name: macports
-        apply:
-          tags:
-            - ports
-      tags:
-        - ports
 
     - name: Install ports
       import_tasks: tasks/install_ports.yml
