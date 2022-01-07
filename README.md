@@ -15,7 +15,8 @@ python3 seems to be unable to verify ssl certificates without the full app).
 1. Run `init.sh`. You'll be prompted for your password.
 2. Grant yourself passwordless sudo permission: `sudoers.sh -K -e nopasswd=yes`.
 3. Run the bootstrap script: `bootstrap.sh`.
-4. Run the playbook: `setup.sh`.
+4. Sign in to the app store app and lastpass (`lpass login USERNAME`).
+5. Run the playbook: `setup.sh`.
 
 ### For the more patient
 
@@ -27,7 +28,7 @@ python3 seems to be unable to verify ssl certificates without the full app).
 2. Optionally grant users the ability to use sudo with `sudoers.sh -K`. See `sudoers-playbook.yml` for
    options.
 3. Run `bootstrap.sh -K` (omit `-K` if you're set up with passwordless `sudo`). This runs `bootstrap-playbook.yml`,
-   which runs Xcode's first launch tasks (if necessary) and installs [MacPorts](https://www.macports.org/), along with
+   which runs the Xcode first launch tasks (if necessary) and installs [MacPorts](https://www.macports.org/), along with
    several ports needed to make setup tasks work properly. You only need to do this once. The playbook is imported in
    `setup-playbook.yml`, so the tasks will run again if necessary.
 4. Sign in to the app store app.
