@@ -18,5 +18,10 @@
 - name: Use correct node.js version
   shell: "{{ node_source_nvm }} && nvm alias default {{ node_version_string }}"
 
-- name: Update npm and yarn to latest
-  shell: "{{ node_source_nvm }} && nvm use default && npm install -g npm && npm install -g yarn"
+- name: Install npm
+  shell: "{{ node_source_nvm }} && nvm use default && npm install -g npm@{{ node_npm_version }}"
+  when: node_npm_version != None
+
+- name: Install yarn
+  shell: "{{ node_source_nvm }} && nvm use default && npm install -g yarn@{{ node_yarn_version }}"
+  when: node_yarn_version != None
