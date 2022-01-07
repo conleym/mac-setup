@@ -3,6 +3,7 @@
     <words>
       <w>ansible</w>
       <w>coreutils</w>
+      <w>distclean</w>
       <w>expanduser</w>
       <w>fontconfig</w>
       <w>getopt</w>
@@ -13,8 +14,10 @@
       <w>macports</w>
       <w>mactex</w>
       <w>nextstep</w>
+      <w>noto</w>
       <w>passwordless</w>
       <w>skitch</w>
+      <w>stix</w>
       <w>xcode</w>
       <w>xquartz</w>
     </words>
