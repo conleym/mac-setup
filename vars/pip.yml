@@ -23,6 +23,7 @@ pip_user_packages_to_install:
   - aws-shell
 
   # Command line and such
+  - six # thefuck needs this, but somewhat inexplicably does not depend on it.
   - thefuck
   - chat-downloader
   - youtube-dl
