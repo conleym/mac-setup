@@ -19,7 +19,6 @@ pip_user_packages_to_install:
   - botocore
   - boto3
   - awscli
-  - aws-sam-cli
   - aws-shell
 
   # Command line and such
