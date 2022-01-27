@@ -1,6 +1,6 @@
 # Ansible macOS setup
 
-Tested on Catalina. Requires python3. Only supports intel macs for now.
+Tested on Catalina, Big Sur, and Monterey. Requires python3. Only supports intel macs for now.
 
 
 ## Prerequisites
@@ -99,6 +99,9 @@ AppleScript, Automator, etc.
 ### VLC
 
 Automatically enable metadata retrieval, so I don't have to click on the popup, or even see the popup.
+
+See https://forum.videolan.org/viewtopic.php?t=126302 and
+https://community.jamf.com/t5/jamf-pro/suppressing-quot-enable-metadata-retrieval-quot-prompt-in-vlc/m-p/130327
 
 ### GPG tools
 

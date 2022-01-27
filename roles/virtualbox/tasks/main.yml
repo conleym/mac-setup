@@ -1,4 +1,6 @@
 # Install VirtualBox and the extension pack.
+#
+# You'll need to enable the system extension in the security preferences.
 ---
 - stat:
     path: "/Applications/VirtualBox.app"
