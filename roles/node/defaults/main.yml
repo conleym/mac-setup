@@ -2,4 +2,4 @@
 # Version of node to install. None => use the default that came with node. 'latest' => install latest version.
 node_npm_version:
 # Version of yarn to install. None => don't install any. 'latest' => install latest version.
-node_yarn_version: 
+node_yarn_version:
