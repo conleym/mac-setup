@@ -12,7 +12,7 @@
     force: yes # discard build-aux/config.{sub,guess}
 
 - name: Run make distclean
-  shell: /opt/local/bin/gmake distclean
+  command: /opt/local/bin/gmake distclean
   args:
     chdir: "{{ emacs_src_dir }}"
   when: emacs_distclean
@@ -26,7 +26,7 @@
   when: emacs_bootstrap
 
 - name: Generate configure script
-  shell: ./autogen.sh
+  command: ./autogen.sh
   args:
     chdir: "{{ emacs_src_dir }}"
   when: not emacs_bootstrap  # bootstrap runs autogen.
@@ -48,7 +48,8 @@
   args:
     chdir: "{{ emacs_src_dir }}"
 
-- file:
+- name: Create app's Frameworks directory (for standalone app libraries)
+  file:
     path: "{{ emacs_src_dir }}/nextstep/Emacs.app/Contents/Frameworks"
     state: directory
 
