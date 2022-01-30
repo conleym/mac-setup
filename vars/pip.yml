@@ -29,17 +29,3 @@ pip_user_packages_to_install:
 
   ## Ansible development
   - ansible-lint
-
-
-  ## Python dev
-
-  # These are used by elpy.
-  - autopep8
-  - flake8
-  - importmagic
-  - jedi # elpy offers a choice of either rope or jedi. Let's have both though.
-  - rope
-  - yapf
-
-  # Misc
-  - psycopg2-binary
