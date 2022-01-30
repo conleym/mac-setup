@@ -2,7 +2,8 @@
 # TODO fontconfig files if included (see DejaVu).
 ---
 - name: Create temporary directory
-  command: mktemp -d
+  tempfile:
+    state: directory
   register: throwaway
 
 - set_fact:

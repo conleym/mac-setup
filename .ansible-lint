@@ -1,0 +1,12 @@
+exclude_paths:
+  - .idea/
+  - .cache/
+
+enable_list:
+  - no-log-password
+#  - yaml
+
+skip_list:
+  - git-latest
+  - meta-no-info
+  - unnamed-task
