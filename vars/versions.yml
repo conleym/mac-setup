@@ -5,20 +5,20 @@ gpgtools_version: 2021.3
 iterm2_version: 3.4.15
 macports_version: 2.7.1
 node_version: 14.15.4
-picard_version: 2.7.1
+picard_version: 2.7.3
 r_version: 4.1.2
 skim_version: 1.6.7
 terraform_version: 1.1.2
 vagrant_version: 2.2.19
-visualvm_version: 2.1.1
+visualvm_version: 2.1.2
 vlc_version: 3.0.16
 xact_version: "2.50"
 xquartz_version: 2.8.1
 
 # Versions as reported by VBoxManage --version are of the form {{ virtualbox_version }}-r{{ virtualbox_revision }}.
 # Both numbers appear in the dmg URL. These two must be kept in sync with each release.
-virtualbox_version: "6.1.30"
-virtualbox_revision: 148432
+virtualbox_version: "6.1.32"
+virtualbox_revision: 149290
 
 # Ngrok stores binaries using some sort of hash.
 ngrok_hash: 4VmDzA7iaHb
