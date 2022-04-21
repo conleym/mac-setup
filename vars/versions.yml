@@ -1,24 +1,24 @@
 # Explicit software versions to install.
 # Remember to enclose versions ending in .0 in quotes.
 ---
-gpgtools_version: 2021.3
+gpgtools_version: 2022.1
 iterm2_version: 3.4.15
 macports_version: 2.7.2
 node_version: 14.15.4
 picard_version: 2.7.3
-r_version: 4.1.2
-skim_version: 1.6.7
-terraform_version: 1.1.2
+r_version: 4.1.3
+skim_version: 1.6.9
+terraform_version: 1.1.9
 vagrant_version: 2.2.19
-visualvm_version: 2.1.2
-vlc_version: 3.0.16
+visualvm_version: 2.1.3
+vlc_version: 3.0.17.3
 xact_version: "2.50"
 xquartz_version: 2.8.1
 
 # Versions as reported by VBoxManage --version are of the form {{ virtualbox_version }}-r{{ virtualbox_revision }}.
 # Both numbers appear in the dmg URL. These two must be kept in sync with each release.
-virtualbox_version: "6.1.32"
-virtualbox_revision: 149290
+virtualbox_version: "6.1.34"
+virtualbox_revision: "150636"
 
 # Ngrok stores binaries using some sort of hash.
-ngrok_hash: 4VmDzA7iaHb
+ngrok_hash: bNyj1mQVY4c

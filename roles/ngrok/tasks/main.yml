@@ -10,7 +10,7 @@
 - block:
   - name: Download ngrok
     get_url:
-      url: "https://bin.equinox.io/c/{{ ngrok_hash }}/ngrok-stable-darwin-amd64.zip"
+      url: "https://bin.equinox.io/c/{{ ngrok_hash }}/ngrok-v3-stable-darwin-amd64.zip"
       dest: "{{ downloads }}/ngrok.zip"
   - name: Unzip ngrok
     unarchive:
