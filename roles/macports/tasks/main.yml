@@ -15,7 +15,7 @@
       when: macos_major_version != "10"
 
     - set_fact:
-        # Marketing version has no spaces, e.g., Big Sur -> BigSur.
+        # Marketing version has no spaces in package name, e.g., Big Sur -> BigSur.
         macports_macos_package_name: "MacPorts-{{ macports_version }}-{{ macports_macos_version }}-{{ macos_marketing_version | regex_replace('\\s', '') }}.pkg"
 
     - name: Download MacPorts
