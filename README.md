@@ -50,7 +50,6 @@ arguments on to `ansible-playbook`.
 
     - **emacs**:     Clone emacs from github, build, and install.
       Clones my [emacs config](https://github.com/conleym/dot-emacs).
-      Creates a launchd service for the emacs daemon.
 
     - **fonts**:     Install fonts (see `vars/fonts.yml`).
 
@@ -85,10 +84,6 @@ arguments on to `ansible-playbook`.
 ## TODO
 
 In general, more app preferences...
-
-### Emacs
-
-The daemon doesn't always start up properly. Investigate and fix.
 
 ### Jetbrains toolbox
 
