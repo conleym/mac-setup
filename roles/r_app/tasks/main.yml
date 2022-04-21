@@ -3,6 +3,7 @@
 - stat:
     path: /Applications/R.app
   register: throwaway
+  when: not r_app_force_install
 
 - block:
     - name: Download R package
@@ -14,4 +15,4 @@
       command: "installer -pkg {{ downloads }}/R.pkg -target /"
       become: yes
 
-  when: not (throwaway.stat.isdir is defined and throwaway.stat.isdir)
+  when: r_app_force_install or not (throwaway.stat.isdir is defined and throwaway.stat.isdir)
