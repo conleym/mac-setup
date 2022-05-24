@@ -11,6 +11,7 @@ ports_to_install:
     autossh:
     bash:
     bash-completion:
+    bat:
     bison:
     coreutils:
     cowsay:
