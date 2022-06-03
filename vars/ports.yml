@@ -35,7 +35,7 @@ ports_to_install:
     htop:
     hunspell:
     ImageMagick: +graphviz +pango +svrg +wmf +x11
-#  needed for native json support in emacs.
+    # needed for native json support in emacs.
     jansson:
     jq:
     lesspipe:
@@ -46,6 +46,8 @@ ports_to_install:
     pstree:
     python38: +optimizations
     py38-pip:
+    python310: +optimizations
+    py310-pip:
     ripgrep:
     shellcheck:
     siege:
@@ -64,6 +66,7 @@ ports_to_install:
     portaudio:
     sox:
     xmlsec:
+# End Work.
 
 # Mapping of port group to specific implementation to select.
 ports_to_select:
