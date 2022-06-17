@@ -44,8 +44,6 @@ ports_to_install:
     poppler:
     postgresql12:
     pstree:
-    python38: +optimizations
-    py38-pip:
     python310: +optimizations
     py310-pip:
     ripgrep:
