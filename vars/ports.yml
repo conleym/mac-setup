@@ -11,7 +11,7 @@ ports_to_install:
     autossh:
     bash:
     bash-completion:
-    bat:
+#    bat:  # messes up less, so no good.
     bison:
     coreutils:
     cowsay:
