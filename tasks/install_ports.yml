@@ -39,7 +39,7 @@
 
 - name: Install OpenJDK 17
   macports:
-    name: openjdk17-zulu
+    name: openjdk17
     state: present
   become: yes
 
