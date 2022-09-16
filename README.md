@@ -1,6 +1,6 @@
 # Ansible macOS setup
 
-Tested on Catalina, Big Sur, and Monterey. Requires python3. Only supports intel macs for now.
+Tested on Monterey. Requires python3. Only supports intel macs for now.
 
 
 ## Prerequisites
