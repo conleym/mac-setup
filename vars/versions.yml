@@ -2,7 +2,7 @@
 # Remember to enclose versions ending in .0 in quotes.
 ---
 gpgtools_version: 2022.1
-iterm2_version: 3.4.15
+iterm2_version: 3.4.16
 macports_version: 2.7.2
 node_version: 14.15.4
 picard_version: 2.8.3
