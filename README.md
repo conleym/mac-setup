@@ -13,7 +13,7 @@ python3 seems to be unable to verify ssl certificates without the full app).
 ### For the impatient
 
 1. Run `init.sh`. You'll be prompted for your password.
-2. Grant yourself passwordless sudo permission: `sudoers.sh -K -e nopasswd=yes`.
+2. Grant yourself passwordless sudo permission: `sudoers.sh -K -e nopasswd=yes`. You'll be prompted for your password.
 3. Run the bootstrap script: `bootstrap.sh`.
 4. Sign in to the app store app and lastpass (`lpass login USERNAME`).
 5. Run the playbook: `setup.sh`.
