@@ -18,16 +18,22 @@
         - always
 
     - name: Ensure Xcode is ready
-      import_role:
+      include_role:
         name: xcode_firstlaunch
+        apply:
+          tags:
+            - always
       tags:
         - always
 
     # Ensure MacPorts is installed, and that the ports required by setup-playbook are installed.
 
     - name: Install MacPorts
-      import_role:
+      include_role:
         name: macports
+        apply:
+          tags:
+            -always
       tags:
         - always
 
