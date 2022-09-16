@@ -8,7 +8,7 @@ node_version: 14.15.4
 picard_version: 2.7.3
 r_version: 4.1.3
 skim_version: 1.6.12
-terraform_version: 1.1.9
+terraform_version: 1.2.9
 vagrant_version: "2.3.0"
 visualvm_version: 2.1.4
 vlc_version: 3.0.17.3
