@@ -18,7 +18,6 @@ ports_to_install:
     editorconfig-core-c:
     flex:
     gawk: +mpfr
-    getopt:
     gmake:
     gmp: +native
 # Graphviz
@@ -55,6 +54,7 @@ ports_to_install:
     tidy:
     trash:
     tree:
+    util-linux:
     watch:
     wget: +gnutls
     zsh:
