@@ -38,6 +38,6 @@
         - always
 
     - name: Install essential ports
-      include_tasks: tasks/install_bootstrap_ports.yml
+      import_tasks: tasks/install_bootstrap_ports.yml
       tags:
         - always
