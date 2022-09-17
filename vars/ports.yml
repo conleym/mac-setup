@@ -3,7 +3,7 @@
 bootstrap_ports_to_install:
     mas:
     lastpass-cli: +pinentry
-    lastpass-cli-doc:
+    lastpass-cli-doc: +pinentry
 
 # List of ports with optional variants _not_ installed in bootstrap.
 ports_to_install:
