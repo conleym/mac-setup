@@ -2,3 +2,4 @@
 
 ansible  # Obviously.
 macholib # Dependency of `emacs` role. Used to make emacs standalone.
+typing-extensions # Because ansible fucked up their dependencies...
