@@ -2,17 +2,17 @@
 # Remember to enclose versions ending in .0 in quotes.
 ---
 gpgtools_version: 2022.2
-iterm2_version: 3.4.16
-macports_version: 2.7.2
+iterm2_version: 3.4.18
+macports_version: 2.8.0
 node_version: 14.15.4
-picard_version: 2.8.3
-r_version: 4.2.1
-skim_version: 1.6.12
-terraform_version: 1.2.9
-vagrant_version: "2.3.0"
-visualvm_version: 2.1.4
+picard_version: 2.8.5
+r_version: 4.2.2
+skim_version: 1.6.13
+terraform_version: 1.3.6
+vagrant_version: "2.3.4"
+visualvm_version: 2.1.5
 vlc_version: 3.0.18
-xact_version: "2.50"
+xact_version: "2.51"
 xquartz_version: 2.8.3
 
 # Versions as reported by VBoxManage --version are of the form {{ virtualbox_version }}-r{{ virtualbox_revision }}.
