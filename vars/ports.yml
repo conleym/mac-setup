@@ -40,6 +40,7 @@ ports_to_install:
     maven3:
     poppler:
     postgresql12:
+    postgresql14:
     pstree:
     python310: +optimizations
     py310-pip:
