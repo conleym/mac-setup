@@ -61,6 +61,7 @@ ports_to_install:
 # Work
     ffmpeg: +nonfree +x11 +gpl3
     portaudio:
+    redis:
     sox:
     xmlsec:
 # End Work.
