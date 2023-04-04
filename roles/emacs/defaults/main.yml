@@ -1,4 +1,7 @@
+---
 # Whether to run the (fairly slow and expensive) bootstrap build step.
 emacs_bootstrap: no
-# Whether to run make distclean before configuring emacs.
+# Whether to run make distclean before configuring emacs. Mutually exclusive with extraclean.
 emacs_distclean: no
+# Whether to run make extraclean before configuring emacs. Mutually exclusive with distclean.
+emacs_extraclean: no
