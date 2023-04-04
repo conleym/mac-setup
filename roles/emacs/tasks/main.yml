@@ -8,11 +8,11 @@
     dest: "{{ emacs_src_dir }}"
     force: yes # discard build-aux/config.{sub,guess}
 
-- name: Run make distclean
-  command: /opt/local/bin/gmake distclean
+- name: Run make extraclean
+  command: /opt/local/bin/gmake extraclean
   args:
     chdir: "{{ emacs_src_dir }}"
-  when: emacs_distclean
+  when: emacs_extraclean and not emacs_distclean
 
 # make bootstrap is sometimes necessary. See INSTALL.REPO and
 # https://lists.gnu.org/archive/html/emacs-devel/2019-11/msg00630.html
