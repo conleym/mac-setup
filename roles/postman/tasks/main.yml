@@ -7,7 +7,7 @@
 - block:
     - name: Download Postman
       get_url:
-        url:  "https://dl.pstmn.io/download/latest/osx"
+        url: "https://dl.pstmn.io/download/latest/osx"
         dest: "{{ downloads }}/postman.zip"
     - name: Unzip Postman
       unarchive:

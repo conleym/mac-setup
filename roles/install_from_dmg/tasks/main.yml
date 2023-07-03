@@ -42,7 +42,7 @@
     - name: Install package
       command: "installer -pkg '/Volumes/{{ app_name }}/{{ install_method }}' -target /"
       when: install_method is regex('^.*\.pkg$')
-      become: yes
+      become: true
 
     - name: Run installer app
       command: "open -a '/Volumes/{{ app_name }}/{{ install_method }}'"

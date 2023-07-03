@@ -12,5 +12,5 @@
 
     - name: Install MacTeX
       command: "installer -pkg {{ downloads }}/mactex.pkg -target /"
-      become: yes
+      become: true
   when: not (throwaway.stat.isdir is defined and throwaway.stat.isdir)

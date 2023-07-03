@@ -3,4 +3,4 @@
 launchd_jobs:
   - label: com.apple.locate
     plist: /System/Library/LaunchDaemons/com.apple.locate.plist
-    become: yes
+    become: true

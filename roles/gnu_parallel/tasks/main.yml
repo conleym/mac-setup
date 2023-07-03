@@ -4,7 +4,7 @@
   macports:
     name: parallel
     state: present
-  become: yes
+  become: true
 
 - set_fact:
     throwaway: "{{ '~/.parallel' | expanduser }}"

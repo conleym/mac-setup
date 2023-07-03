@@ -18,6 +18,6 @@
     unarchive:
       src: "{{ downloads }}/terraform.zip"
       dest: "/usr/local/bin"
-    become: yes
+    become: true
 
   when: terraform_force_install or not throwaway.stat.exists

@@ -2,7 +2,7 @@
 - import_playbook: bootstrap-playbook.yml
 
 - hosts: localhost
-  become: no
+  become: false
   vars_files:
     - vars/const.yml
     - vars/dmgs.yml
@@ -67,7 +67,7 @@
       git:
         repo: git@github.com:conleym/dotfiles.git
         dest: "{{  '~/.cfg' | expanduser }}"
-        bare: yes
+        bare: true
       tags:
         - dotfiles
 

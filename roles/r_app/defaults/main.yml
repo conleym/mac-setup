@@ -1,2 +1,2 @@
 ---
-r_app_force_install: no
+r_app_force_install: false

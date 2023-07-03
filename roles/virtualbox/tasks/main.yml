@@ -21,7 +21,7 @@
 
     - name: Install VirtualBox
       command: "installer -pkg /Volumes/VirtualBox/VirtualBox.pkg -target /"
-      become: yes
+      become: true
 
   always:
     - include_role:
@@ -66,6 +66,6 @@
 
     - name: Install VirtualBox extensions
       command: "VBoxManage extpack install --replace {{ vbox_extpack_file }} --accept-license={{ vbox_license_sha256.stdout }}"
-      become: yes
+      become: true
 
   when: not throwaway.stdout is search("Oracle VM VirtualBox Extension Pack")

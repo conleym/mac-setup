@@ -5,7 +5,7 @@
     name: "{{ pip_global_packages_to_install }}"
     state: present
     extra_args: --upgrade
-  become: yes
+  become: true
 
 - name: Install user Python packages
   pip:

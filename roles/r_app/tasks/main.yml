@@ -13,6 +13,6 @@
 
     - name: Install R
       command: "installer -pkg {{ downloads }}/R.pkg -target /"
-      become: yes
+      become: true
 
   when: r_app_force_install or not (throwaway.stat.isdir is defined and throwaway.stat.isdir)

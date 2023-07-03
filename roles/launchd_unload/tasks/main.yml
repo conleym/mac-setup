@@ -4,7 +4,7 @@
   command: "launchctl list {{ launchd_label }}"
   become: "{{ launchd_unload_become | default(True) }}"
   register: launchctl_check_result
-  ignore_errors: yes
+  ignore_errors: true
 
 - name: Unload job
   command: "launchctl unload -w {{ launchd_plist }}"

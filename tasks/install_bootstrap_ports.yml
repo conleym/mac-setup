@@ -5,7 +5,7 @@
   macports:
     name: gnutar
     state: present
-  become: yes
+  become: true
 
 # unarchive will not use the `gnutar` binary. It will, however, use `gtar`.
 - name: Link gnutar to gtar
@@ -13,12 +13,12 @@
     src: /opt/local/bin/gnutar
     path: /opt/local/bin/gtar
     state: link
-  become: yes
+  become: true
 
 - name: Install ports
   macports:
     name: "{{ item.key }}"
     variant: "{{ item.value }}"
     state: present
-  become: yes
+  become: true
   with_dict: "{{ bootstrap_ports_to_install }}"

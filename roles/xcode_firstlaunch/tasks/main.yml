@@ -6,9 +6,9 @@
 - name: Check Xcode first run status
   command: xcodebuild -checkFirstLaunchStatus
   register: throwaway
-  ignore_errors: yes  # Don't blow up if this fails...we're going to fix it below.
+  ignore_errors: true  # Don't blow up if this fails...we're going to fix it below.
 
 - name: Execute Xcode first run tasks
   command: xcodebuild -runFirstLaunch
   when: throwaway.rc != 0
-  become: yes
+  become: true

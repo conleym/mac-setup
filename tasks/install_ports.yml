@@ -2,8 +2,8 @@
 # selfupdate here, once, so that we don't stupidly do it for every port we install...
 - name: Run port selfupdate
   macports:
-    selfupdate: yes
-  become: yes
+    selfupdate: true
+  become: true
 
 # We need poppler for pdftools in emacs, but it frequently misbehaves during upgrades.
 #
@@ -12,36 +12,36 @@
 - name: Check for poppler upgrade
   shell: "port outdated | grep '^poppler'"
   register: throwaway
-  ignore_errors: yes  # yes, it's fine if we _don't_ find poppler...
+  ignore_errors: true  # yes, it's fine if we _don't_ find poppler...
 
 - name: Deactivate poppler
   command: port deactivate -f poppler
-  become: yes
+  become: true
   when: throwaway.rc == 0
 
 - name: Upgrade installed ports
   macports:
-    upgrade: yes
-  become: yes
+    upgrade: true
+  become: true
 
 # Install separately, since some ports require it, or at least look for it, causing prompts.
 - name: Install OpenJDK 8
   macports:
     name: openjdk8
     state: present
-  become: yes
+  become: true
 
 - name: Install OpenJDK 11
   macports:
     name: openjdk11
     state: present
-  become: yes
+  become: true
 
 - name: Install OpenJDK 17
   macports:
     name: openjdk17
     state: present
-  become: yes
+  become: true
 
 - name: Install GNU parallel
   include_role:
@@ -52,15 +52,15 @@
     name: "{{ item.key }}"
     variant: "{{ item.value }}"
     state: present
-  become: yes
+  become: true
   with_dict: "{{ ports_to_install }}"
 
 - name: Select ports
   command: "/opt/local/bin/port select {{ item.key }} {{ item.value }}"
-  become: yes
+  become: true
   with_dict: "{{ ports_to_select }}"
 
 # TODO seems not to actually reclaim space :(
 - name: Reclaim space
   command: /opt/local/bin/port reclaim -N --disable-reminders
-  become: yes
+  become: true

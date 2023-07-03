@@ -4,7 +4,7 @@
   command: "launchctl list {{ launchd_label }}"
   become: "{{ launchd_load_become | default(True) }}"
   register: launchctl_check_result
-  ignore_errors: yes
+  ignore_errors: true
 
 - name: Load job
   command: "launchctl load -w {{ launchd_plist }}"

@@ -1,2 +1,2 @@
 ---
-ngrok_force_install: no
+ngrok_force_install: false
