@@ -1,3 +1,3 @@
 ---
-- name: rebuild fontconfig cache
+- name: Rebuild fontconfig cache
   command: fc-cache -v -f

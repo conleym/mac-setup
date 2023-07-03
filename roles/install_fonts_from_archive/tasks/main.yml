@@ -45,6 +45,8 @@
       loop_control:
         loop_var: install_fonts_from_archive_item
 
+    # TODO notify the handler if fonts were installed...
+
   always:
     - name: Delete temporary directory
       file:
