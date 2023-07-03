@@ -23,7 +23,7 @@
 - name: Check for github in known_hosts
   shell: "grep '^github\\.com' {{ ssh_known_hosts_file }}"
   register: throwaway
-  ignore_errors: yes
+  ignore_errors: true
 
 - block:
     - name: Get github ssh host key

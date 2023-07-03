@@ -18,5 +18,5 @@
       src: "{{ downloads }}/ngrok.zip"
   - name: Install ngrok
     command: "mv {{ downloads }}/ngrok /usr/local/bin"
-    become: yes
+    become: true
   when: ngrok_force_install or not(throwaway.stat.executable is defined and throwaway.stat.executable)

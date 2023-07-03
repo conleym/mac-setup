@@ -8,9 +8,9 @@
 #     ansible-playbook -K sudoers-playbook.yml -e nopasswd=yes -e user=Bob
 ---
 - hosts: localhost
-  become: no
+  become: false
   vars:
-    nopasswd: no
+    nopasswd: false
     user: "{{ ansible_user_id }}"
   tasks:
     - set_fact:
@@ -29,7 +29,6 @@
         owner: root
         group: wheel
         mode: ug=r
-      become: yes
+      become: true
       vars:
         content: "{{ sudoers_line }}"
-

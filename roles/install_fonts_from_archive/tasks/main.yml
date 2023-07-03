@@ -22,7 +22,7 @@
 
     - name: Find font files
       find:
-        recurse: yes
+        recurse: true
         paths:
           - "{{ install_fonts_from_archive_tempdir }}"
         patterns:

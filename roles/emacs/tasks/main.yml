@@ -6,7 +6,7 @@
   git:
     repo: https://github.com/emacs-mirror/emacs
     dest: "{{ emacs_src_dir }}"
-    force: yes # discard build-aux/config.{sub,guess}
+    force: false # discard build-aux/config.{sub,guess}
 
 - name: Run make extraclean
   command: /opt/local/bin/gmake extraclean

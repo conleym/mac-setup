@@ -14,7 +14,7 @@
         state: directory
     - name: Download xACT
       get_url:
-        url:  "http://xact.scottcbrown.org/xACT{{ xact_version }}.zip"
+        url: "http://xact.scottcbrown.org/xACT{{ xact_version }}.zip"
         dest: "{{ xact_local_zip }}"
     - name: Unzip xACT
       unarchive:

@@ -4,7 +4,6 @@ exclude_paths:
 
 enable_list:
   - no-log-password
-#  - yaml
 
 skip_list:
   - git-latest
