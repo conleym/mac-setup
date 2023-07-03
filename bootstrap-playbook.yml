@@ -6,7 +6,8 @@
 #  2. Installs MacPorts
 #  3. Installs the ports required by setup-playbook. See bootstrap_ports_to_install in `vars/ports.yml` for the list.
 ---
-- hosts: localhost
+- name: Bootstrap
+  hosts: localhost
   become: false
   vars_files:
     - vars/ports.yml

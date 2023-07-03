@@ -1,7 +1,8 @@
 ---
 - import_playbook: bootstrap-playbook.yml
 
-- hosts: localhost
+- name: Setup
+  hosts: localhost
   become: false
   vars_files:
     - vars/const.yml
