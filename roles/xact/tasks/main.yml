@@ -22,7 +22,7 @@
         dest: "{{ xact_unarchive_dir }}"
         src: "{{ xact_local_zip }}"
     - name: Install xACT
-      command: "mv {{ downloads }}/xACT/xACT{{xact_version}}/{{ xact_app_name }}.app {{ xact_app_path }}"
+      command: "mv {{ downloads }}/xACT/xACT{{ xact_version }}/{{ xact_app_name }}.app {{ xact_app_path }}"
   always:
     - file:
         path: "{{ xact_unarchive_dir }}"
