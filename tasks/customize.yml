@@ -1,7 +1,7 @@
 # Customize macOS and app settings.
 ---
 - include_role:
-    name: defaults
+    name: settings
     apply:
       tags:
         - customize
