@@ -19,6 +19,7 @@
   file:
     path: "{{ ssh_known_hosts_file }}"
     state: touch
+    mode: u=rw
 
 - name: Check for github in known_hosts
   shell: "grep '^github\\.com' {{ ssh_known_hosts_file }}"
@@ -49,4 +50,4 @@
 
   when: throwaway.rc != 0
 
-# TODO ssh keys from lastpass
+# TODO ssh keys from secrets
