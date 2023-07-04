@@ -1,4 +1,3 @@
-# TODO...
 # Set up ssh keys, known_hosts, etc.
 #
 # Allows use of git@github.com in git tasks, etc.
@@ -24,17 +23,20 @@
 - name: Check for github in known_hosts
   shell: "grep '^github\\.com' {{ ssh_known_hosts_file }}"
   register: throwaway
+  changed_when: false  # Does not change anything. Checks status.
   ignore_errors: true
 
 - block:
     - name: Get github ssh host key
       command: "ssh-keyscan -t ecdsa github.com"
+      changed_when: false  # Does not change anything. Just loads data into a variable.
       register: github_ssh_keyscan
 
     # does not work with default ansible_shell_executable (/bin/sh), an absolutely ancient version of bash.
     # for this reason, we're using zsh (see the inventory file).
     - name: Get github ssh host key fingerprint
       shell: "ssh-keygen -lf - <<< '{{ github_ssh_keyscan.stdout }}'"
+      changed_when: false  # Does not change anything. Just loads data into a variable.
       register: github_ssh_fingerprint
 
     # Compare fingerprint to https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints
