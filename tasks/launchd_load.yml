@@ -3,7 +3,7 @@
   include_role:
     name: launchd_load
   vars:
-    launchd_label: "{{ item.label }}"
-    launchd_plist: "{{ item.plist }}"
+    launchd_load_label: "{{ item.label }}"
+    launchd_load_plist: "{{ item.plist }}"
     launchd_load_become: "{{ item.become | default(True) }}"
   with_items: "{{ launchd_jobs }}"
