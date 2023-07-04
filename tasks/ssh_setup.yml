@@ -21,7 +21,7 @@
     mode: u=rw
 
 - name: Check for github in known_hosts
-  shell: "grep '^github\\.com' {{ ssh_known_hosts_file }}"
+  command: "grep '^github\\.com' {{ ssh_known_hosts_file }}"
   register: throwaway
   changed_when: false  # Does not change anything. Checks status.
   ignore_errors: true
