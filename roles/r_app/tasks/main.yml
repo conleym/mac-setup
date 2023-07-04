@@ -5,7 +5,8 @@
   register: throwaway
   when: not r_app_force_install
 
-- block:
+- when: r_app_force_install or not (throwaway.stat.isdir is defined and throwaway.stat.isdir)
+  block:
     - name: Download R package
       get_url:
         url: "https://cloud.r-project.org/bin/macosx/base/R-{{ r_version }}.pkg"
@@ -14,5 +15,3 @@
     - name: Install R
       command: "installer -pkg {{ downloads }}/R.pkg -target /"
       become: true
-
-  when: r_app_force_install or not (throwaway.stat.isdir is defined and throwaway.stat.isdir)

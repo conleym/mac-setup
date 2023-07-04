@@ -15,7 +15,8 @@
 - set_fact:
     install_app_from_dmg_st: "{{ install_app_from_dmg_st.stat }}"
 
-- block:
+- when: not (install_app_from_dmg_st.exists)
+  block:
     - name: Download disk image
       get_url:
         url: "{{ dmg_url }}"
@@ -53,4 +54,3 @@
         name: unmount_dmg
       vars:
         mountpoint: "{{ app_name }}"
-  when: not (install_app_from_dmg_st.exists)

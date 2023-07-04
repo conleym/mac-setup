@@ -7,7 +7,8 @@
   register: throwaway
   when: not terraform_force_install
 
-- block:
+- when: terraform_force_install or not throwaway.stat.exists
+  block:
     - name: Download terraform
       get_url:
         url: "https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_darwin_amd64.zip"
@@ -19,5 +20,3 @@
         src: "{{ downloads }}/terraform.zip"
         dest: "/usr/local/bin"
       become: true
-
-  when: terraform_force_install or not throwaway.stat.exists

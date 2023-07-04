@@ -8,7 +8,8 @@
     path: "{{ steamcmd_script }}"
   register: throwaway
 
-- block:
+- when: not throwaway.stat.exists
+  block:
     - name: Download steamcmd
       get_url:
         url: https://steamcdn-a.akamaihd.net/client/installer/steamcmd_osx.tar.gz
@@ -26,5 +27,3 @@
 
     - name: Update steamcmd
       command: "{{ steamcmd_script }} +quit"
-
-  when: not throwaway.stat.exists

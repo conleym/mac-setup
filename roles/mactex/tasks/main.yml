@@ -4,7 +4,8 @@
     path: /usr/local/texlive
   register: throwaway
 
-- block:
+- when: not (throwaway.stat.isdir is defined and throwaway.stat.isdir)
+  block:
     - name: Download MacTeX
       get_url:
         url: https://mirror.ctan.org/systems/mac/mactex/MacTeX.pkg
@@ -13,4 +14,3 @@
     - name: Install MacTeX
       command: "installer -pkg {{ downloads }}/mactex.pkg -target /"
       become: true
-  when: not (throwaway.stat.isdir is defined and throwaway.stat.isdir)

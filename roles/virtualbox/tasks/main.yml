@@ -6,7 +6,8 @@
     path: "/Applications/VirtualBox.app"
   register: throwaway
 
-- block:
+- when: not (throwaway.stat.isdir is defined and throwaway.stat.isdir)
+  block:
     - name: Download VirtualBox
       get_url:
         url: "https://download.virtualbox.org/virtualbox/{{ virtualbox_version }}/VirtualBox-{{ virtualbox_version }}-{{ virtualbox_revision }}-OSX.dmg"
@@ -28,13 +29,13 @@
         name: unmount_dmg
       vars:
         mountpoint: "VirtualBox"
-  when: not (throwaway.stat.isdir is defined and throwaway.stat.isdir)
 
 - name: Check for VirtualBox extensions
   command: VBoxManage list extpacks
   register: throwaway
 
-- block:
+- when: not throwaway.stdout is search("Oracle VM VirtualBox Extension Pack")
+  block:
     - set_fact:
         vbox_extpack_file: "{{ downloads }}/Oracle_VM_VirtualBox_Extension_Pack.vbox-extpack"
 
@@ -67,5 +68,3 @@
     - name: Install VirtualBox extensions
       command: "VBoxManage extpack install --replace {{ vbox_extpack_file }} --accept-license={{ vbox_license_sha256.stdout }}"
       become: true
-
-  when: not throwaway.stdout is search("Oracle VM VirtualBox Extension Pack")

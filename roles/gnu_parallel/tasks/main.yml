@@ -15,7 +15,7 @@
     state: directory
 
   # I'm never publishing a paper...
-- name: Silence citation warning.
+- name: Silence citation warning
   file:
     path: "{{ throwaway }}/will-cite"
     state: touch

@@ -7,7 +7,8 @@
   register: throwaway
   when: not ngrok_force_install
 
-- block:
+- when: ngrok_force_install or not(throwaway.stat.executable is defined and throwaway.stat.executable)
+  block:
     - name: Download ngrok
       get_url:
         url: "https://bin.equinox.io/c/{{ ngrok_hash }}/ngrok-v3-stable-darwin-amd64.zip"
@@ -19,4 +20,3 @@
     - name: Install ngrok
       command: "mv {{ downloads }}/ngrok /usr/local/bin"
       become: true
-  when: ngrok_force_install or not(throwaway.stat.executable is defined and throwaway.stat.executable)

@@ -26,7 +26,8 @@
   changed_when: false  # Does not change anything. Checks status.
   ignore_errors: true
 
-- block:
+- when: throwaway.rc != 0
+  block:
     - name: Get github ssh host key
       command: "ssh-keyscan -t ecdsa github.com"
       changed_when: false  # Does not change anything. Just loads data into a variable.
@@ -49,7 +50,5 @@
       lineinfile:
         path: "{{ ssh_known_hosts_file }}"
         line: "{{ github_ssh_keyscan.stdout }}"
-
-  when: throwaway.rc != 0
 
 # TODO ssh keys from secrets

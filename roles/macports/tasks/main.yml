@@ -4,7 +4,8 @@
     path: /opt/local/bin/port
   register: throwaway
 
-- block:
+- when: not (throwaway.stat.executable is defined and throwaway.stat.executable)
+  block:
     - set_fact:
         macports_macos_version: "{{ macos_major_minor_version }}"
       when: macos_major_version == "10"
@@ -42,4 +43,3 @@
         state: present
         insertbefore: /usr/local/bin
       become: true
-  when: not (throwaway.stat.executable is defined and throwaway.stat.executable)
