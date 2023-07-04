@@ -1,3 +1,9 @@
+# ansible-lint configuration.
+# Note that ansible-lint must be installed manually.
+#
+# Docs at https://ansible.readthedocs.io/projects/lint/
+# Rules: https://ansible.readthedocs.io/projects/lint/rules/
+---
 exclude_paths:
   - .idea/
   - .cache/
