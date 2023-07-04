@@ -37,7 +37,7 @@
         mountpoint: "{{ app_name }}"
 
     - name: Copy app to destination
-      shell: "cp -a '/Volumes/{{ app_name }}/{{ app_name }}.app' '{{ app_destination }}'"
+      command: "cp -a '/Volumes/{{ app_name }}/{{ app_name }}.app' '{{ app_destination }}'"
       when: install_method == 'cp'
 
     - name: Install package
