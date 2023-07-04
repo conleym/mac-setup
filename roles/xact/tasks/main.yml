@@ -8,7 +8,8 @@
     xact_local_zip: "{{ downloads }}/xact.zip"
     xact_unarchive_dir: "{{ downloads }}/xACT"
 
-- block:
+- when: not (throwaway.stat.isdir is defined and throwaway.stat.isdir)
+  block:
     - file:
         path: "{{ xact_unarchive_dir }}"
         state: directory
@@ -26,4 +27,3 @@
     - file:
         path: "{{ xact_unarchive_dir }}"
         state: absent
-  when: not (throwaway.stat.isdir is defined and throwaway.stat.isdir)
