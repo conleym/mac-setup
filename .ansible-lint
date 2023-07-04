@@ -6,6 +6,8 @@ enable_list:
   - no-log-password
 
 skip_list:
+  - fqcn[action]
+  - fqcn[action-core]
   - git-latest
   - meta-no-info
   - unnamed-task
