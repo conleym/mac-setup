@@ -76,7 +76,7 @@ arguments on to `ansible-playbook`.
 ### Fonts installed
 
 1. [JetBrains Mono](https://www.jetbrains.com/lp/mono/)
-1[DejaVu](https://dejavu-fonts.github.io/)
+1. [DejaVu](https://dejavu-fonts.github.io/)
 
 
 ## TODO
