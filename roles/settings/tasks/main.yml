@@ -91,25 +91,3 @@
     key: IncludeInternalDebugMenu
     type: bool
     value: true
-
-# Not working...for reasons.
-#
-#- name: Safari -- enable developer menu
-#  block:
-#    - osx_defaults:
-#        domain: com.apple.Safari
-#        key: IncludeDevelopMenu
-#        type: bool
-#        value: true
-#
-#    - osx_defaults:
-#        domain: com.apple.Safari
-#        key: WebKitDeveloperExtrasEnabledPreferenceKey
-#        type: bool
-#        value: true
-#
-#    - osx_defaults:
-#        domain: com.apple.Safari
-#        key: WebKitPreferences.developerExtrasEnabled
-#        type: bool
-#        value: true

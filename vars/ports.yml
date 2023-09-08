@@ -53,6 +53,8 @@ ports_to_install:
     tidy:
     trash:
     tree:
+    # Required for new emacs parsing fanciness.
+    tree-sitter:
     util-linux:
     watch:
     wget: +gnutls
