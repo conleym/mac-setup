@@ -6,14 +6,14 @@ DIR="$( cd "$( dirname "${SCRIPT}" )" >/dev/null 2>&1 && pwd )"
 # Accept the Xcode license, install python and ansible-galaxy dependencies, including ansible itself.
 # Can be run again to upgrade any of the python or ansible-galaxy dependencies.
 
+# Accept the Xcode license. Can't run pip without doing this first.
+sudo xcodebuild -license accept
+
 if ! xcodebuild -checkFirstLaunchStatus; then
   echo "Running Xcode first launch tasks."
   sudo xcodebuild -runFirstLaunch
   echo "Done."
 fi
-
-# Accept the Xcode license. Can't run pip without doing this first.
-sudo xcodebuild -license accept
 
 # Install the latest version of pip. Some older versions won't download cryptography wheels for some reason, causing
 # the ansible install to fail.
