@@ -69,7 +69,6 @@ arguments on to `ansible-playbook`.
 1. [ngrok](https://ngrok.com/download)
 1. [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
    (includes the extension pack and accepts the license for same)
-1. [Vagrant](https://www.vagrantup.com/downloads)
 
 ...and more.
 
