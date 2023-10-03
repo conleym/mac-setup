@@ -38,16 +38,6 @@
       tags:
         - apps
 
-    - name: Install VirtualBox
-      include_role:
-        name: virtualbox
-        apply:
-          tags:
-            - apps
-      tags:
-        - apps
-      when: ansible_architecture == arch_intel
-
     - name: Install node.js with nvm
       include_role:
         name: node

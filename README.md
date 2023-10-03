@@ -67,8 +67,6 @@ arguments on to `ansible-playbook`.
 1. [R](https://r-project.org/)
 1. [terraform](https://www.terraform.io/)
 1. [ngrok](https://ngrok.com/download)
-1. [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
-   (includes the extension pack and accepts the license for same)
 
 ...and more.
 
