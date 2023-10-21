@@ -2,7 +2,6 @@
 ---
 mas_apps_to_install:
     - 453114608   # JSON Helper
-    - 926036361   # LastPass
     - 803453959   # Slack
     - 425955336   # Skitch
     - 1295203466  # MS remote desktop 10
