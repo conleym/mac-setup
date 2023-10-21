@@ -53,12 +53,12 @@
     variant: "{{ item.value }}"
     state: present
   become: true
-  with_dict: "{{ ports_to_install }}"
+  loop: "{{ ports_to_install | dict2items }}"
 
 - name: Select ports
   command: "/opt/local/bin/port select {{ item.key }} {{ item.value }}"
   become: true
-  with_dict: "{{ ports_to_select }}"
+  loop: "{{ ports_to_select | dict2items }}"
 
 # TODO seems not to actually reclaim space :(
 - name: Reclaim space
