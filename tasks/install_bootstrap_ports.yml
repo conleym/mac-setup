@@ -21,4 +21,4 @@
     variant: "{{ item.value }}"
     state: present
   become: true
-  with_dict: "{{ bootstrap_ports_to_install }}"
+  loop: "{{ bootstrap_ports_to_install | dict2items }}"
