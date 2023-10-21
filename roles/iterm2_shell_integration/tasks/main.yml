@@ -18,9 +18,9 @@
     mode: u=rwx,g=r,o=r
 - name: Install utilities
   get_url:
-    url: "https://iterm2.com/utilities/{{ utility }}"
+    url: "https://iterm2.com/utilities/{{ iterm2_shell_integration }}"
     dest: "{{ iterm2_shell_integration_utilities_dir }}/{{ utility }}"
     mode: "u=rx,g=r,o=r"
   loop: "{{ iterm2_shell_integration_utilities }}"
   loop_control:
-    loop_var: utility
+    loop_var: iterm2_shell_integration_utility
