@@ -31,12 +31,6 @@
     state: present
   become: true
 
-- name: Install OpenJDK 11
-  macports:
-    name: openjdk11
-    state: present
-  become: true
-
 - name: Install OpenJDK 17
   macports:
     name: openjdk17
