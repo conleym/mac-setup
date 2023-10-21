@@ -103,6 +103,6 @@
             - fonts
       vars:
         font_archive_url: "{{ item }}"
-      with_items: "{{ font_archives }}"
+      loop: "{{ font_archives }}"
       tags:
         - fonts

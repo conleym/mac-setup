@@ -41,7 +41,7 @@
     # default(omit) doesn't work here, annoyingly
     path_to_stat: "{{ item.path_to_stat | default(None) }}"
     install_method: "{{ item.install_method | default('cp') }}"
-  with_items: "{{ dmgs_to_download_and_install }}"
+  loop: "{{ dmgs_to_download_and_install }}"
 
 - name: List installed apps
   command: /opt/local/bin/mas list
@@ -49,5 +49,5 @@
 
 - name: Install AppStore apps
   command: /opt/local/bin/mas install "{{ item }}"
-  with_items: "{{ mas_apps_to_install }}"
+  loop: "{{ mas_apps_to_install }}"
   when: (item | string) not in mas_list_stdout.stdout

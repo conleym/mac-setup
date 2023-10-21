@@ -41,7 +41,7 @@
       copy:
         src: "{{ install_fonts_from_archive_item }}"
         dest: "{{ fonts_dir }}"
-      with_items: "{{ install_fonts_from_archive_font_files }}"
+      loop: "{{ install_fonts_from_archive_font_files }}"
       loop_control:
         loop_var: install_fonts_from_archive_item
 
