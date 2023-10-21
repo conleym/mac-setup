@@ -1,0 +1,26 @@
+# Download and install iterm2 shell integration and utilities for zsh.
+# Note that this DOES NOT attempt to modify any shell configuration files.
+---
+- set_fact:
+    iterm2_shell_integration_zsh_dir: "{{ lookup('ansible.builtin.env', 'ZDOTDIR', default='~/') | expanduser }}"
+- set_fact:
+    iterm2_shell_integration_utilities_dir: "{{ iterm2_shell_integration_zsh_dir }}/.iterm2"
+
+- name: Install integration for zsh
+  get_url:
+    url: "https://iterm2.com/shell_integration/zsh"
+    # Dotfiles already assume this exists, so no need to add it to .zshrc or whatever.
+    dest: "{{ iterm2_shell_integration_zsh_dir }}/.iterm2_shell_integration.zsh"
+- name: Ensure utilities directory exists
+  file:
+    path: "{{ iterm2_shell_integration_utilities_dir }}"
+    state: directory
+    mode: u=rwx,g=r,o=r
+- name: Install utilities
+  get_url:
+    url: "https://iterm2.com/utilities/{{ utility }}"
+    dest: "{{ iterm2_shell_integration_utilities_dir }}/{{ utility }}"
+    mode: "u=rx,g=r,o=r"
+  loop: "{{ iterm2_shell_integration_utilities }}"
+  loop_control:
+    loop_var: utility
