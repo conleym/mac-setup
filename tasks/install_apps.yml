@@ -3,9 +3,12 @@
   include_role:
     name: postman
 
-- name: Install Iterm2
+- name: Install iTerm2
   include_role:
     name: iterm2
+- name: Install iTerm2 shell integration for zsh
+  include_role:
+    name: iterm2_shell_integration
 
 - name: Install xACT
   include_role:
