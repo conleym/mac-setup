@@ -61,6 +61,7 @@ ports_to_install:
     zsh:
     zsh-completions:
 # Work
+    aws-vault:
     ffmpeg: +nonfree +x11 +gpl3
     portaudio:
     redis:
