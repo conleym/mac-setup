@@ -30,6 +30,10 @@
   include_role:
     name: r_app
 
+- name: Install AWS CLI
+  include_role:
+    name: aws_cli
+
 - name: Download and install app from disk images
   include_role:
     name: install_from_dmg
