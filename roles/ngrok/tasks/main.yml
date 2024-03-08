@@ -7,7 +7,7 @@
   register: throwaway
   when: not ngrok_force_install
 
-- when: ngrok_force_install or not(throwaway.stat.executable is defined and throwaway.stat.executable)
+- when: ngrok_force_install or not (throwaway.stat.executable is defined and throwaway.stat.executable)
   block:
     - name: Download ngrok
       get_url:
