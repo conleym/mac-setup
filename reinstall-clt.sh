@@ -20,7 +20,7 @@ fi
 
 if [ -e "${IN_PROGRESS_FILE}" ]; then
     echo "Removing in-progress file."
-    
+
     rm "${IN_PROGRESS_FILE}"
     softwareupdate -l
 
@@ -28,3 +28,9 @@ if [ -e "${IN_PROGRESS_FILE}" ]; then
 fi
 
 echo "Everything looks OK. Nothing to do."
+
+
+# Local Variables:
+# mode: sh
+# sh-shell: zsh
+# End:

@@ -12,3 +12,9 @@ export PATH=/opt/local/bin:/opt/local/sbin:"${PATH}"
 
 # Assumes ansible was installed with pip3 --user (see init.sh).
 "$(python3 -m site --user-base)"/bin/ansible-playbook "${DIR}"/setup-playbook.yml "$@"
+
+
+# Local Variables:
+# mode: sh
+# sh-shell: zsh
+# End:

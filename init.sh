@@ -24,3 +24,9 @@ pip3 install --user --upgrade -r "${DIR}"/requirements.txt --no-warn-script-loca
 
 # Install playbook requirements from ansible galaxy.
 "$(python3 -m site --user-base)"/bin/ansible-galaxy install -r "${DIR}"/requirements.yml
+
+
+# Local Variables:
+# mode: sh
+# sh-shell: zsh
+# End:
