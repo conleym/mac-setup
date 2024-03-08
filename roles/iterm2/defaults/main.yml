@@ -1,3 +1,5 @@
 ---
 iterm2_app_path: /Applications
 iterm2_app_name: iTerm
+iterm2_force_download: false
+iterm2_force_install: false
