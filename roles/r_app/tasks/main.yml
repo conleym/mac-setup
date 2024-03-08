@@ -11,6 +11,7 @@
       get_url:
         url: "https://cloud.r-project.org/bin/macosx/base/R-{{ r_version }}-{{ ansible_machine }}.pkg"
         dest: "{{ downloads }}/R.pkg"
+        force: "{{ r_app_force_download }}"
 
     - name: Install R
       command: "installer -pkg {{ downloads }}/R.pkg -target /"

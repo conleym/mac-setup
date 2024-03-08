@@ -13,6 +13,7 @@
       get_url:
         url: "https://bin.equinox.io/c/{{ ngrok_hash }}/ngrok-v3-stable-darwin-amd64.zip"
         dest: "{{ downloads }}/ngrok.zip"
+        force: "{{ ngrok_force_download }}"
     - name: Unzip ngrok
       unarchive:
         dest: "{{ downloads }}"
