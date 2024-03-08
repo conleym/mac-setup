@@ -15,14 +15,9 @@ pip_user_packages_to_install:
   - virtualenv
   - virtualenvwrapper
 
-  ## AWS
-  - botocore
-  - boto3
-  - awscli
-  - aws-shell
-
   # Command line and such
   - thefuck
+  # Download stuff from YouTube.
   - chat-downloader
   - youtube-dl
 
