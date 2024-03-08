@@ -1,0 +1,15 @@
+---
+- stat:
+    path: /usr/local/bin/aws
+  register: throwaway
+
+- name: Download AWS CLI installer
+  get_url:
+    url: "https://awscli.amazonaws.com/{{ aws_cli_package_name }}"
+    dest: "{{ downloads }}/{{ aws_cli_package_name }}"
+    force: "{{ aws_cli_force_download }}"
+
+- name: Install AWS CLI
+  command: "installer -pkg {{ downloads }}/{{ aws_cli_package_name }} -target /"
+  become: yes
+  when: aws_cli_force_install or not(throwaway.stat.executable is defined and throwaway.stat.executable)

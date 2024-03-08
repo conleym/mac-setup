@@ -1,0 +1,4 @@
+---
+aws_cli_package_name: AWSCLIV2.pkg
+aws_cli_force_download: false
+aws_cli_force_install: false
