@@ -13,7 +13,7 @@
   register: throwaway
   when: not iterm2_shell_integration_force_install
 
-- when: iterm2_shell_integration_force_install or not(throwaway.stat.isreg is defined and throwaway.stat.isreg)
+- when: iterm2_shell_integration_force_install or not (throwaway.stat.isreg is defined and throwaway.stat.isreg)
   block:
     - name: Install integration for zsh
       get_url:

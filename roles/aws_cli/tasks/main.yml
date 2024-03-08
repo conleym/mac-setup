@@ -12,4 +12,4 @@
 - name: Install AWS CLI
   command: "installer -pkg {{ downloads }}/{{ aws_cli_package_name }} -target /"
   become: yes
-  when: aws_cli_force_install or not(throwaway.stat.executable is defined and throwaway.stat.executable)
+  when: aws_cli_force_install or not (throwaway.stat.executable is defined and throwaway.stat.executable)
