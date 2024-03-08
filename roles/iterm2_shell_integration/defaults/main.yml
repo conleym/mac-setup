@@ -1,4 +1,5 @@
 ---
+iterm2_shell_integration_force_install: false
 # Utilities to install.
 # See https://github.com/gnachman/iTerm2-shell-integration/blob/main/shell_integration/install_shell_integration_and_utilities.sh
 iterm2_shell_integration_utilities:
