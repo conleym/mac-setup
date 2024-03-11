@@ -15,6 +15,7 @@
       <w>macholib</w>
       <w>macports</w>
       <w>mactex</w>
+      <w>mkcert</w>
       <w>nextstep</w>
       <w>noto</w>
       <w>passwordless</w>
@@ -23,6 +24,7 @@
       <w>tempfile</w>
       <w>unarchive</w>
       <w>xcode</w>
+      <w>xmlsec</w>
       <w>xquartz</w>
     </words>
   </dictionary>
