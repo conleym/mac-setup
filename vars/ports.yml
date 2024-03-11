@@ -63,6 +63,9 @@ ports_to_install:
 # Work
     aws-vault:
     ffmpeg: +nonfree +x11 +gpl3
+    # https://github.com/FiloSottile/mkcert
+    # for local https.
+    mkcert:
     portaudio:
     redis:
     sox:
