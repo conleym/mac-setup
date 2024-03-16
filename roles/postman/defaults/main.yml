@@ -1,3 +1,5 @@
 ---
 postman_app_path: /Applications
 postman_app_name: Postman
+postman_force_download: false
+postman_force_install: false
