@@ -3,13 +3,15 @@
 - stat:
     path: /usr/local/texlive
   register: throwaway
+  when: not mactex_force_install
 
-- when: not (throwaway.stat.isdir is defined and throwaway.stat.isdir)
+- when: mactex_force_install or not (throwaway.stat.isdir is defined and throwaway.stat.isdir)
   block:
     - name: Download MacTeX
       get_url:
         url: https://mirror.ctan.org/systems/mac/mactex/MacTeX.pkg
         dest: "{{ downloads }}/mactex.pkg"
+        force: "{{ mactex_force_download }}"
 
     - name: Install MacTeX
       command: "installer -pkg {{ downloads }}/mactex.pkg -target /"
