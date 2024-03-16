@@ -1,7 +1,4 @@
 ---
-- set_fact:
-    emacs_src_dir: "{{ '~/src/emacs' | expanduser }}"
-
 - name: Clone emacs
   git:
     repo: https://github.com/emacs-mirror/emacs
