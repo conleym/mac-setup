@@ -7,13 +7,15 @@
 - stat:
     path: "{{ steamcmd_script }}"
   register: throwaway
+  when: not steamcmd_force_install
 
-- when: not throwaway.stat.exists
+- when: steamcmd_force_install or not throwaway.stat.exists
   block:
     - name: Download steamcmd
       get_url:
         url: https://steamcdn-a.akamaihd.net/client/installer/steamcmd_osx.tar.gz
         dest: "{{ downloads }}/steamcmd.tar.gz"
+        force: "{{ steamcmd_force_download }}"
 
     - name: Create steamcmd directory
       file:

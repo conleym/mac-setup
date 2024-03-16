@@ -3,12 +3,13 @@
 - stat:
     path: "{{ xact_app_path }}/{{ xact_app_name }}.app"
   register: throwaway
+  when: not xact_force_install
 
 - set_fact:
     xact_local_zip: "{{ downloads }}/xact.zip"
     xact_unarchive_dir: "{{ downloads }}/xACT"
 
-- when: not (throwaway.stat.isdir is defined and throwaway.stat.isdir)
+- when: xact_force_install or not (throwaway.stat.isdir is defined and throwaway.stat.isdir)
   block:
     - file:
         path: "{{ xact_unarchive_dir }}"
@@ -17,6 +18,7 @@
       get_url:
         url: "http://xact.scottcbrown.org/xACT{{ xact_version }}.zip"
         dest: "{{ xact_local_zip }}"
+        force: "{{ xact_force_download }}"
     - name: Unzip xACT
       unarchive:
         dest: "{{ xact_unarchive_dir }}"

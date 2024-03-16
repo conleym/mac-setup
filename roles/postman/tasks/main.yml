@@ -3,13 +3,15 @@
 - stat:
     path: "{{ postman_app_path }}/{{ postman_app_name }}.app"
   register: throwaway
+  when: not postman_force_install
 
-- when: not (throwaway.stat.isdir is defined and throwaway.stat.isdir)
+- when: postman_force_install or not (throwaway.stat.isdir is defined and throwaway.stat.isdir)
   block:
     - name: Download Postman
       get_url:
         url: "https://dl.pstmn.io/download/latest/osx"
         dest: "{{ downloads }}/postman.zip"
+        force: "{{ postman_force_download }}"
     - name: Unzip Postman
       unarchive:
         dest: "{{ downloads }}"
