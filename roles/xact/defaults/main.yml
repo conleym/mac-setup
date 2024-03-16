@@ -1,3 +1,5 @@
 ---
 xact_app_path: /Applications
 xact_app_name: xACT
+xact_force_download: false
+xact_force_install: false

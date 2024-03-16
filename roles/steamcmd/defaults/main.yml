@@ -1,2 +1,4 @@
 ---
 steamcmd_dest_dir: "{{ '~/steamcmd' | expanduser }}"
+steamcmd_force_download: false
+steamcmd_force_install: false
