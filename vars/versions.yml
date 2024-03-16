@@ -12,7 +12,7 @@ skim_version: "1.6.21"
 terraform_version: "1.3.6"
 visualvm_version: "2.1.5"
 vlc_version: "3.0.20"
-xact_version: "2.51"
+xact_version: "2.55"
 xquartz_version: "2.8.5"
 
 # Ngrok stores binaries using some sort of hash.
