@@ -3,8 +3,9 @@
 - stat:
     path: /opt/local/bin/port
   register: throwaway
+  when: not macports_force_install
 
-- when: not (throwaway.stat.executable is defined and throwaway.stat.executable)
+- when: macports_force_install or not (throwaway.stat.executable is defined and throwaway.stat.executable)
   block:
     - set_fact:
         macports_macos_version: "{{ macos_major_minor_version }}"
@@ -23,6 +24,7 @@
       get_url:
         url: "https://distfiles.macports.org/MacPorts/{{ macports_macos_package_name }}"
         dest: "{{ downloads }}/macports.pkg"
+        force: "{{ mactex_force_install }}"
 
     - name: Install MacPorts
       command: "installer -pkg {{ downloads }}/macports.pkg -target /"
