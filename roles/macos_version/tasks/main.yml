@@ -18,6 +18,7 @@
 
 - name: Determine marketing version
   shell: >-
+    set -o pipefail &&
     awk '/SOFTWARE LICENSE AGREEMENT FOR (macOS|OS X)/' '/System/Library/CoreServices/Setup Assistant.app/Contents/Resources/en.lproj/OSXSoftwareLicense.rtf' |
     awk -F '(macOS|OS X)' '{ print $NF }' |
     awk '{ gsub(/^[^a-zA-Z]*|[^a-zA-Z]*$/, ""); print }'
