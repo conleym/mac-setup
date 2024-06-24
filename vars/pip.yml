@@ -23,3 +23,7 @@ pip_user_packages_to_install:
 
   ## Ansible development
   - ansible-lint
+
+  ## Other development.
+  - localstack  # localstack CLI.
+  - awscli-local # localstack AWS CLI wrapper.
