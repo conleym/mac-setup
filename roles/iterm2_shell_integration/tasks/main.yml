@@ -20,11 +20,14 @@
         url: "https://iterm2.com/shell_integration/zsh"
         # Dotfiles already assume this exists, so no need to add it to .zshrc or whatever.
         dest: "{{ iterm2_shell_integration_script }}"
+        mode: u=rw,g=r,o=r
+
     - name: Ensure utilities directory exists
       file:
         path: "{{ iterm2_shell_integration_utilities_dir }}"
         state: directory
-        mode: u=rwx,g=r,o=r
+        mode: u=rwx,g=rx,o=rx
+
     - name: Install utilities
       get_url:
         url: "https://iterm2.com/utilities/{{ iterm2_shell_integration_utility }}"

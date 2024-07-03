@@ -12,9 +12,12 @@
         url: "https://iterm2.com/downloads/stable/iTerm2-{{ iterm2_version | replace('.', '_') }}.zip"
         dest: "{{ downloads }}/iterm2.zip"
         force: "{{ iterm2_force_download }}"
+        mode: u=rw
+
     - name: Unzip iTerm2
       unarchive:
         dest: "{{ downloads }}"
         src: "{{ downloads }}/iterm2.zip"
+
     - name: Install iTerm2
       command: "mv {{ downloads }}/{{ iterm2_app_name }}.app {{ iterm2_app_path }}"

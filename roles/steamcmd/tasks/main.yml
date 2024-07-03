@@ -16,11 +16,13 @@
         url: https://steamcdn-a.akamaihd.net/client/installer/steamcmd_osx.tar.gz
         dest: "{{ downloads }}/steamcmd.tar.gz"
         force: "{{ steamcmd_force_download }}"
+        mode: u=rw
 
     - name: Create steamcmd directory
       file:
         path: "{{ steamcmd_dest_dir }}"
         state: directory
+        mode: u=rwx
 
     - name: Install steamcmd
       unarchive:

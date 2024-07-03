@@ -15,6 +15,7 @@
         dest: "{{ downloads }}/terraform.zip"
         checksum: "sha256:https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_SHA256SUMS"
         force: "{{ terraform_force_download }}"
+        mode: u=rw
 
     - name: Install terraform
       unarchive:

@@ -14,10 +14,13 @@
         url: "https://bin.equinox.io/c/{{ ngrok_hash }}/ngrok-v3-stable-darwin-amd64.zip"
         dest: "{{ downloads }}/ngrok.zip"
         force: "{{ ngrok_force_download }}"
+        mode: u=rw
+
     - name: Unzip ngrok
       unarchive:
         dest: "{{ downloads }}"
         src: "{{ downloads }}/ngrok.zip"
+
     - name: Install ngrok
       command: "mv {{ downloads }}/ngrok /usr/local/bin"
       become: true
