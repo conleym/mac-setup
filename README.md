@@ -106,7 +106,7 @@ and check the box next to the GPGMailLoader plugin.
     * [STIX](https://www.stixfonts.org/)
     * [Source Code Pro](https://github.com/adobe-fonts/source-code-pro), etc.
     * fontconfig settings for DejaVu.
-* iTerm2 integration and settings.
+* iTerm2 settings.
 * More settings via `osx_defaults`.
 * Secrets.
     * SSH public/private keys.
