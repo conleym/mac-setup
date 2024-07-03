@@ -27,3 +27,4 @@ pip_user_packages_to_install:
   ## Other development.
   - localstack  # localstack CLI.
   - awscli-local # localstack AWS CLI wrapper.
+  - terraform-local # localstack Terraform CLI wrapper.
