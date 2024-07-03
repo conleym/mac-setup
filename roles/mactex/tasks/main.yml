@@ -12,6 +12,7 @@
         url: https://mirror.ctan.org/systems/mac/mactex/MacTeX.pkg
         dest: "{{ downloads }}/mactex.pkg"
         force: "{{ mactex_force_download }}"
+        mode: u=rw
 
     - name: Install MacTeX
       command: "installer -pkg {{ downloads }}/mactex.pkg -target /"

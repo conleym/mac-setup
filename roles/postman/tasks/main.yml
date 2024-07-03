@@ -12,6 +12,7 @@
         url: "https://dl.pstmn.io/download/latest/osx"
         dest: "{{ downloads }}/postman.zip"
         force: "{{ postman_force_download }}"
+        mode: u=rw
     - name: Unzip Postman
       unarchive:
         dest: "{{ downloads }}"

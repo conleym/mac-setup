@@ -14,6 +14,7 @@
       get_url:
         url: "{{ font_archive_url }}"
         dest: "{{ install_fonts_from_archive_tempdir }}/font.zip"
+        mode: u=rw
 
     - name: Unzip archive
       unarchive:
@@ -41,6 +42,7 @@
       copy:
         src: "{{ install_fonts_from_archive_item }}"
         dest: "{{ fonts_dir }}"
+        mode: u=rw,g=r,o=r
       loop: "{{ install_fonts_from_archive_font_files }}"
       loop_control:
         loop_var: install_fonts_from_archive_item

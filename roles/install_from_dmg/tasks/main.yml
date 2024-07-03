@@ -21,6 +21,7 @@
       get_url:
         url: "{{ dmg_url }}"
         dest: "{{ dmg_destination }}"
+        mode: u=rw
       when: not dmg_checksum
 
     - name: Download disk image and verify checksum
@@ -28,6 +29,7 @@
         url: "{{ dmg_url }}"
         dest: "{{ dmg_destination }}"
         checksum: "{{ dmg_checksum }}"
+        mode: u=rw
       when: dmg_checksum
 
     - include_role:

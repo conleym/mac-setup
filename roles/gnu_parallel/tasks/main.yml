@@ -13,9 +13,11 @@
   file:
     path: "{{ throwaway }}"
     state: directory
+    mode: u=rwx,g=rx,o=rx
 
   # I'm never publishing a paper...
 - name: Silence citation warning
   file:
     path: "{{ throwaway }}/will-cite"
     state: touch
+    mode: u=rw,g=r,o=r
