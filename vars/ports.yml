@@ -6,7 +6,6 @@ bootstrap_ports_to_install:
 # List of ports with optional variants _not_ installed in bootstrap.
 ports_to_install:
     autoconf:
-    autossh:
     bash:
     bash-completion:
 #    bat:  # messes up less, so no good.
