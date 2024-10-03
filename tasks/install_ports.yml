@@ -37,6 +37,12 @@
     state: present
   become: true
 
+- name: Install OpenJDK 21
+  macports:
+    name: openjdk21
+    state: present
+  become: true
+
 - name: Install GNU parallel
   include_role:
     name: gnu_parallel
