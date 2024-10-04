@@ -65,7 +65,6 @@ ports_to_install:
     portaudio:
     redis:
     sox:
-    xmlsec:
 # End Work.
 
 # Mapping of port group to specific implementation to select.
