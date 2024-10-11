@@ -17,6 +17,8 @@ ports_to_install:
     gawk: +mpfr
     gmake:
     gmp: +native
+    gradle:
+    gradle-completion:
 # Graphviz
     # Graphviz requires this to build, apparently, but doesn't install it first.
     swig-python:
