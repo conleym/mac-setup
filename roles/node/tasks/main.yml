@@ -25,3 +25,10 @@
 - name: Install yarn
   shell: "{{ node_source_nvm }} && nvm use default && npm install -g yarn@{{ node_yarn_version }}"
   when: node_yarn_version != None
+
+- name: Install global modules
+  community.general.npm:
+    name: "{{ item.key }}"
+    version: "{{ item.value | default(latest) }}"
+    global: true
+  loop: "{{ node_global_modules_to_install | dict2items }}"
