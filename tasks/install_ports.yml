@@ -25,11 +25,6 @@
   become: true
 
 # Install separately, since some ports require it, or at least look for it, causing prompts.
-- name: Install OpenJDK 8
-  macports:
-    name: openjdk8
-    state: present
-  become: true
 
 - name: Install OpenJDK 17
   macports:
