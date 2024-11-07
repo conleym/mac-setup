@@ -1,4 +1,5 @@
 # Determine macOS version.
+#
 # Sets the following facts:
 #   macos_version: the full version number (e.g., 10.15.7).
 #   macos_major_minor_version: the major and minor version number (e.g., 10.15).

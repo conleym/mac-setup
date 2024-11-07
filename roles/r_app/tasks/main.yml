@@ -9,7 +9,8 @@
   block:
     - name: Download R package
       get_url:
-        url: "https://cran.r-project.org/bin/macosx/big-sur-x86_64/base/R-{{ r_app_version }}-{{ ansible_machine }}.pkg"
+        # Requires big sur or later (note URL).
+        url: "https://cran.r-project.org/bin/macosx/big-sur-{{ ansible_machine }}/base/R-{{ r_app_version }}-{{ ansible_machine }}.pkg"
         dest: "{{ downloads }}/R.pkg"
         force: "{{ r_app_force_download }}"
         mode: u=rw
