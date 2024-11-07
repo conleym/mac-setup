@@ -24,7 +24,7 @@
       get_url:
         url: "https://distfiles.macports.org/MacPorts/{{ macports_macos_package_name }}"
         dest: "{{ downloads }}/macports.pkg"
-        force: "{{ mactex_force_install }}"
+        force: "{{ macports_force_install }}"
         mode: u=rw
 
     - name: Install MacPorts
