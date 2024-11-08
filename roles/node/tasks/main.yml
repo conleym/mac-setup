@@ -4,6 +4,8 @@
     node_nvm_home: "{{ '~/.nvm' | expanduser }}"
     node_version_string: "{{ 'v' + node_version }}"
     node_source_nvm: "source {{ '~/.nvm/nvm.sh' | expanduser }}"
+- set_fact:
+    node_version_root: "{{ node_nvm_home + '/versions/node/' + node_version_string }}"
 
 - name: Clone nvm
   git:
@@ -13,7 +15,7 @@
 - name: Install node.js
   shell: "{{ node_source_nvm }} && nvm install {{ node_version_string }}"
   args:
-    creates: "{{ node_nvm_home + '/versions/node/' + node_version_string }}"
+    creates: "{{ node_version_root }}"
 
 - name: Use correct node.js version
   shell: "{{ node_source_nvm }} && nvm alias default {{ node_version_string }}"
@@ -32,3 +34,5 @@
     version: "{{ item.value | default(latest) }}"
     global: true
   loop: "{{ node_global_modules_to_install | dict2items }}"
+  environment:
+    PATH: "{{ lookup('ansible.builtin.env', 'PATH') }}:{{ node_version_root }}/bin"
