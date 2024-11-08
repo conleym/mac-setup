@@ -1,5 +1,0 @@
-# Symbolic constants.
----
-# relevant ansible_architecture values.
-arch_intel: "x86_64"
-arch_m1: "arm64"

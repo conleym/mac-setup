@@ -5,7 +5,6 @@
   hosts: localhost
   become: false
   vars_files:
-    - vars/const.yml
     - vars/dmgs.yml
     - vars/fonts.yml
     - vars/launchd.yml
