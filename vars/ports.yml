@@ -63,8 +63,10 @@ ports_to_install:
     zsh-completions:
 # Work
     aws-vault:
+# ffmpeg +gpl3 will try to install samba3, which is obsolete, and fails on newer systems, without this.
+# See https://trac.macports.org/ticket/70753
+    samba4:
     ffmpeg: +nonfree +x11 +gpl3
-    portaudio:
     redis:
     sox:
 # End Work.
