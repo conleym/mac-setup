@@ -64,7 +64,6 @@ ports_to_install:
 # Work
     aws-vault:
     ffmpeg: +nonfree +x11 +gpl3
-    portaudio:
     redis:
     sox:
 # End Work.
