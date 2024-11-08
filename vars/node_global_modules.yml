@@ -1,0 +1,11 @@
+# Node modules to install globally.
+#
+# This variable must contain a list of items, each of which nas a name and optional version. The module with the given
+# name and version will be installed by the `node` role.
+#   name is required.
+#   version is optional. If omitted, the default is `latest`.
+---
+node_global_modules_to_install:
+  aws-cdk:
+  aws-cdk-local:
+  prettier:
