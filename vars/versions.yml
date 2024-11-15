@@ -2,7 +2,7 @@
 # Remember to enclose versions ending in .0 in quotes. Probably best to just quote them all, really.
 ---
 gpgtools_version: "2023.3"
-iterm2_version: "3.5.7"
+iterm2_version: "3.5.8"
 macports_version: "2.10.4"
 node_version: "20.10.0"
 node_npm_version: "10.2.5"
