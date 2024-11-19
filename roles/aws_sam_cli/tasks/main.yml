@@ -1,0 +1,19 @@
+---
+- stat:
+    path: /usr/local/bin/sam
+  register: throwaway
+
+- set_fact:
+    aws_sam_cli_package_name: "aws-sam-cli-macos-{{ ansible_machine }}.pkg"
+
+- name: Download AWS SAM CLI installer
+  get_url:
+    url: "https://github.com/aws/aws-sam-cli/releases/latest/download/{{ aws_sam_cli_package_name }}"
+    dest: "{{ downloads }}/{{ aws_sam_cli_package_name }}"
+    force: "{{ aws_sam_cli_force_download }}"
+    mode: u=rw
+
+- name: Install AWS SAM CLI
+  command: "installer -pkg {{ downloads }}/{{ aws_sam_cli_package_name }} -target /"
+  become: true
+  when: aws_sam_cli_force_install or not (throwaway.stat.executable is defined and throwaway.stat.executable)
