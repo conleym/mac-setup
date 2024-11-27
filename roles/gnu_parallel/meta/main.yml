@@ -1,3 +1,4 @@
+# Ensure macports (which the role uses to install parallel) is installed.
 ---
 dependencies:
   - role: macports
