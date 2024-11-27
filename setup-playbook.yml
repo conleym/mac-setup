@@ -92,6 +92,14 @@
       tags:
         - customize
 
+    - import_role:
+        name: set_screenshot_location
+        apply:
+          tags:
+            - customize
+      tags:
+        - customize
+
     - import_tasks: tasks/ssh_setup.yml
       tags:
         - dotfiles

@@ -1,0 +1,16 @@
+# Set the location for screen captures (images and videos).
+#
+# https://www.macrumors.com/how-to/change-screenshots-folder/
+---
+- name: Ensure screenshots folder exists
+  file:
+    path: "{{ set_screenshots_location_folder }}"
+    state: directory
+    mode: u=rwx
+
+- name: Set screenshots folder
+  osx_defaults:
+    domain: com.apple.screencapture
+    key: location
+    type: string
+    value: "{{ set_screenshots_location_folder }}"
