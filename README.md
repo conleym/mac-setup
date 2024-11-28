@@ -32,7 +32,7 @@ python3 seems to be unable to verify ssl certificates without the full app).
    `setup-playbook.yml`, so the tasks will run again if necessary.
 1. Sign in to the app store app.
    `mas` cannot install apps unless you do so, and sign in via the command line no longer works.
-   See [mas known issues](https://github.com/mas-cli/mas#%EF%B8%8F-known-issues).
+   See [mas known issues](https://github.com/mas-cli/mas?tab=readme-ov-file#known-issues).
 1. Run `setup.sh -K` (omit `-K` if you're set up with passwordless `sudo`). The script passes all 
 arguments on to `ansible-playbook`.
 1. The following `tags` are defined (which you can pass to the script, e.g., `setup.sh --tags ports`):
