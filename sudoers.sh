@@ -1,5 +1,8 @@
 #!/usr/bin/env zsh
 
+# Runs sudoers-playbook to add a user to sudoers.
+# Arguments passed to the script are passed to ansible.
+
 SCRIPT="${(%):-%x}"
 DIR="$( cd "$( dirname "${SCRIPT}" )" >/dev/null 2>&1 && pwd )"
 
