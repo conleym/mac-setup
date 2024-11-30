@@ -34,7 +34,7 @@ python3 seems to be unable to verify ssl certificates without the full app).
    `mas` cannot install apps unless you do so, and sign in via the command line no longer works.
    See [mas known issues](https://github.com/mas-cli/mas?tab=readme-ov-file#known-issues).
 1. Run `setup.sh -K` (omit `-K` if you're set up with passwordless `sudo`). The script passes all 
-arguments on to `ansible-playbook`.
+   arguments on to `ansible-playbook`.
 1. The following `tags` are defined (which you can pass to the script, e.g., `setup.sh --tags ports`):
     - **apps**:      Install applications from the app store using `mas` and from non-app-store disk images
       (see `vars/mas.yml` and `vars/dmgs.yml`).
@@ -74,41 +74,3 @@ arguments on to `ansible-playbook`.
 
 1. [JetBrains Mono](https://www.jetbrains.com/lp/mono/)
 1. [DejaVu](https://dejavu-fonts.github.io/)
-
-
-## TODO
-
-In general, more app preferences...
-
-### Jetbrains toolbox
-
-1. Accept the agreement.
-1. Install selected IDEs. The toolbox seems to be missing functionality to do this from the command line. Investigate
-AppleScript, Automator, etc.
-
-### VLC
-
-Automatically enable metadata retrieval, so I don't have to click on the popup, or even see the popup.
-
-See https://forum.videolan.org/viewtopic.php?t=126302 and
-https://community.jamf.com/t5/jamf-pro/suppressing-quot-enable-metadata-retrieval-quot-prompt-in-vlc/m-p/130327
-
-### GPG tools
-
-GPG tools on requires some manual setup. Open Mail > Preferences > General, click on "Manage Plug-ins...",
-and check the box next to the GPGMailLoader plugin.
-
-### Other stuff
-
-* Fonts.
-    * [Noto](https://www.google.com/get/noto/)
-    * [ProFont](https://tobiasjung.name/profont/)
-    * [STIX](https://www.stixfonts.org/)
-    * [Source Code Pro](https://github.com/adobe-fonts/source-code-pro), etc.
-    * fontconfig settings for DejaVu.
-* iTerm2 settings.
-* More settings via `osx_defaults`.
-* Secrets.
-    * SSH public/private keys.
-    * GPG public/private keys.
-    * Log in to docker hub, jetbrains, and other accounts.
