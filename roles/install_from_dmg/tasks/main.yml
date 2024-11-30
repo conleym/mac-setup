@@ -1,58 +1,54 @@
 ---
 - set_fact:
-    install_from_dmg_path_to_stat: "{{ app_destination }}/{{ app_name }}.app"
-  when: path_to_stat is not defined or path_to_stat == ''
-
-- set_fact:
-    install_from_dmg_path_to_stat: "{{ path_to_stat }}"
-  when: path_to_stat is defined and path_to_stat != ''
+    install_from_dmg_path_to_stat: "{{ app_destination }}/{{ install_from_dmg_app_name }}.app"
+  when: install_from_dmg_path_to_stat is not defined or install_from_dmg_path_to_stat == ''
 
 - name: Check for existing install
   stat:
     path: "{{ install_from_dmg_path_to_stat }}"
-  register: install_app_from_dmg_st
+  register: install_from_dmg_st
 
 - set_fact:
-    install_app_from_dmg_st: "{{ install_app_from_dmg_st.stat }}"
+    install_from_dmg_st: "{{ install_from_dmg_st.stat }}"
 
-- when: not (install_app_from_dmg_st.exists)
+- when: not (install_from_dmg_st.exists)
   block:
     - name: Download disk image
       get_url:
-        url: "{{ dmg_url }}"
-        dest: "{{ dmg_destination }}"
+        url: "{{ install_from_dmg_image_url }}"
+        dest: "{{ install_from_dmg_image_destination }}"
         mode: u=rw
-      when: not dmg_checksum
+      when: install_from_dmg_image_checksum is not defined
 
     - name: Download disk image and verify checksum
       get_url:
-        url: "{{ dmg_url }}"
-        dest: "{{ dmg_destination }}"
-        checksum: "{{ dmg_checksum }}"
+        url: "{{ install_from_dmg_image_url }}"
+        dest: "{{ install_from_dmg_image_destination }}"
+        checksum: "{{ install_from_dmg_image_checksum }}"
         mode: u=rw
-      when: dmg_checksum
+      when: install_from_dmg_image_checksum is defined
 
     - include_role:
         name: mount_dmg
       vars:
-        path: "{{ dmg_destination }}"
-        mountpoint: "{{ app_name }}"
+        path: "{{ install_from_dmg_image_destination }}"
+        mountpoint: "{{ install_from_dmg_app_name }}"
 
     - name: Copy app to destination
-      command: "cp -a '/Volumes/{{ app_name }}/{{ app_name }}.app' '{{ app_destination }}'"
+      command: "cp -a '/Volumes/{{ install_from_dmg_app_name }}/{{ install_from_dmg_app_name }}.app' /Applications"
       when: install_method == 'cp'
 
     - name: Install package
-      command: "installer -pkg '/Volumes/{{ app_name }}/{{ install_method }}' -target /"
+      command: "installer -pkg '/Volumes/{{ install_from_dmg_app_name }}/{{ install_from_dmg_install_method }}' -target /"
       when: install_method is regex('^.*\.pkg$')
       become: true
 
     - name: Run installer app
-      command: "open -a '/Volumes/{{ app_name }}/{{ install_method }}'"
+      command: "open -a '/Volumes/{{ install_from_dmg_app_name }}/{{ install_from_dmg_install_method }}'"
       when: install_method is regex('^.*\.app$')
 
   always:
     - include_role:
         name: unmount_dmg
       vars:
-        mountpoint: "{{ app_name }}"
+        mountpoint: "{{ install_from_dmg_app_name }}"
