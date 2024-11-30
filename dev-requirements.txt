@@ -1,0 +1,3 @@
+# Additional tools for ansible development. Install with `pip -r development-requirements.txt` (adjust args to taste).
+
+ansible-lint
