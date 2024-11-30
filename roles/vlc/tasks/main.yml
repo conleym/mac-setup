@@ -1,0 +1,16 @@
+# Install VLC version `vlc_version`.
+---
+- set_fact:
+    vlc_dmg_suffix: "{{ 'intel64' if (ansible_machine == 'x86_64') else ansible_machine }}"
+- set_fact:
+    vlc_dmg_url: "https://get.videolan.org/vlc/{{ vlc_version }}/macosx/vlc-{{ vlc_version }}-{{ vlc_dmg_suffix }}.dmg"
+
+- name: Download and install VLC
+  include_role:
+    name: install_from_dmg
+  vars:
+    install_from_dmg_app_name: "VLC"
+    install_from_dmg_image_url: "{{ vlc_dmg_url }}"
+    install_from_dmg_image_destination: "{{ downloads }}/VLC.dmg"
+    install_from_dmg_force_download: "{{ vlc_force_download }}"
+    install_from_dmg_install: "{{ vlc_force_install }}"

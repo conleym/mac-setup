@@ -1,0 +1,10 @@
+---
+# true forces redownload, even if dmg is already present.
+vlc_force_download: false
+# true forces reinstall, even if app is present.
+vlc_force_install: false
+
+# Destination for the disk image file in the download directory.
+vlc_dmg_name: VLC.dmg
+# Name of the pkg within the mounted disk image.
+vlc_package_name: VLC.pkg
