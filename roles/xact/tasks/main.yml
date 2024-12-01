@@ -18,7 +18,7 @@
 
     - name: Download xACT
       get_url:
-        url: "http://xact.scottcbrown.org/xACT{{ xact_version }}.zip"
+        url: "https://xact.scottcbrown.org/xACT{{ xact_version }}.zip"
         dest: "{{ xact_local_zip }}"
         force: "{{ xact_force_download }}"
         mode: u=rw
