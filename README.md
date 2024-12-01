@@ -92,3 +92,4 @@ works here.
 2. Pass an empty value, which will evaluate to false in conditionals: `-e 'something='`.
 
 See [ansible 17193](https://github.com/ansible/ansible/issues/17193) and 
+[this blog](https://fabianlee.org/2021/07/28/ansible-overriding-boolean-values-using-extra-vars-at-runtime/).
