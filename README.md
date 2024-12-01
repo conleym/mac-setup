@@ -74,3 +74,21 @@ python3 seems to be unable to verify ssl certificates without the full app).
 
 1. [JetBrains Mono](https://www.jetbrains.com/lp/mono/)
 1. [DejaVu](https://dejavu-fonts.github.io/)
+
+## Ansible footguns
+
+### Boolean extra vars
+
+Passing boolean values in `-e/--extra-vars`. If you pass `-e something=false` to ansible, `something` will have the 
+string value `"false"`. This string evaluates to `False` in most contexts when you type it in a playbook or in a vars
+file, but it does not do so as an extra var.  No, passing `-e something=False` doesn't work, either. `something` will
+have the string value `"False"`.
+
+Because many roles have boolean defaults that you may wish to override on the command line, this is a problem. There
+are several ways to deal with it:
+
+1. Use JSON. This syntax is cumbersome on the command line, but it works: `-e '{"something": false}'`. `False` also
+works here.
+2. Pass an empty value, which will evaluate to false in conditionals: `-e 'something='`.
+
+See [ansible 17193](https://github.com/ansible/ansible/issues/17193) and 
