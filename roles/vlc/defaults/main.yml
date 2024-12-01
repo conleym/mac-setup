@@ -8,3 +8,8 @@ vlc_force_install: false
 vlc_dmg_name: VLC.dmg
 # Name of the pkg within the mounted disk image.
 vlc_package_name: VLC.pkg
+
+# false to disable metadata retrieval.
+vlc_enable_metadata_retrieval: true
+# false to disable update checking
+vlc_enable_automatic_updates: true
