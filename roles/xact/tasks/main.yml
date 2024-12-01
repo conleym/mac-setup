@@ -30,6 +30,7 @@
 
     - name: Install xACT
       command: "mv {{ downloads }}/xACT/xACT{{ xact_version }}/{{ xact_app_name }}.app {{ xact_app_path }}"
+      changed_when: true
 
   always:
     - file:
