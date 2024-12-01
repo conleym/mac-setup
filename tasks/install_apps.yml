@@ -34,17 +34,21 @@
   include_role:
     name: aws_cli
 
+- name: Install VLC
+  include_role:
+    name: vlc
+
 - name: Download and install app from disk images
   include_role:
     name: install_from_dmg
   vars:
-    dmg_url: "{{ item.dmg_url }}"
-    dmg_destination: "{{ downloads }}/{{ item.app_name }}.dmg"
-    dmg_checksum: "{{ item.checksum | default(None) }}"
-    app_name: "{{ item.app_name }}"
+    install_from_dmg_image_url: "{{ item.dmg_url }}"
+    install_from_dmg_image_destination: "{{ downloads }}/{{ item.app_name }}.dmg"
+    install_from_dmg_image_checksum: "{{ item.checksum | default(None) }}"
+    install_from_dmg_app_name: "{{ item.app_name }}"
     # default(omit) doesn't work here, annoyingly
-    path_to_stat: "{{ item.path_to_stat | default(None) }}"
-    install_method: "{{ item.install_method | default('cp') }}"
+    install_from_dmg_path_to_stat: "{{ item.path_to_stat | default(None) }}"
+    install_from_dmg_install_method: "{{ item.install_method | default('cp') }}"
   loop: "{{ dmgs_to_download_and_install }}"
 
 - name: List installed apps

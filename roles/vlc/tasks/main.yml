@@ -1,0 +1,78 @@
+# Install VLC version `vlc_version`.
+---
+- set_fact:
+    vlc_dmg_suffix: "{{ 'intel64' if (ansible_machine == 'x86_64') else ansible_machine }}"
+- set_fact:
+    vlc_dmg_url: "https://get.videolan.org/vlc/{{ vlc_version }}/macosx/vlc-{{ vlc_version }}-{{ vlc_dmg_suffix }}.dmg"
+- set_fact:
+    vlc_config_file: "{{ '~/Library/Preferences/org.videolan.vlc/vlcrc' | expanduser }}"
+
+- name: Download and install VLC
+  include_role:
+    name: install_from_dmg
+  vars:
+    install_from_dmg_app_name: "VLC"
+    install_from_dmg_image_url: "{{ vlc_dmg_url }}"
+    install_from_dmg_image_destination: "{{ downloads }}/VLC.dmg"
+    install_from_dmg_force_download: "{{ vlc_force_download }}"
+    install_from_dmg_install: "{{ vlc_force_install }}"
+
+# See https://community.jamf.com/t5/jamf-pro/suppressing-quot-enable-metadata-retrieval-quot-prompt-in-vlc/m-p/130327
+# and https://forum.videolan.org/viewtopic.php?t=126302 (linked from above).
+- name: Disable the metadata retrieval popup
+  osx_defaults:
+    domain: org.videolan.vlc
+    key: VLCFirstRun
+    type: date
+    value: "2021-11-29 23:43:21 +0000"  # any valid date will do, apparently.
+
+- name: Ensure configuration directory exists
+  file:
+    path: "{{ vlc_config_file | dirname }}"
+    state: directory
+    mode: u=rwx
+
+- name: Ensure configuration file exists
+  file:
+    path: "{{ vlc_config_file }}"
+    state: touch
+    mode: u=rw
+
+# First remove the existing setting (which will not be present if the file is newly-created), then add the new setting.
+# lineinfile can't add a line to an empty file if we also want a replacement regex, so each toggle has to be done in
+# two steps.
+
+- when: vlc_enable_metadata_retrieval | bool
+  name: Enable metadata retrieval
+  block:
+    - name: Remove metadata retrieval disabled setting
+      lineinfile:
+        path: "{{ vlc_config_file }}"
+        regexp: "#?metadata-network-access=0"
+        state: absent
+    - name: Add metadata retrieval enabled setting
+      lineinfile:
+        path: "{{ vlc_config_file }}"
+        line: "metadata-network-access=1"
+        state: present
+
+- when: not(vlc_enable_metadata_retrieval | bool)
+  name: Disable metadata retrieval
+  block:
+    - name: Remove metadata retrieval enabled setting
+      lineinfile:
+        path: "{{ vlc_config_file }}"
+        regexp: "#?metadata-network-access=1"
+        state: absent
+    - name: Add metadata retrieval disabled setting
+      lineinfile:
+        path: "{{ vlc_config_file }}"
+        line: "#metadata-network-access=0"
+        state: present
+
+- name: Set automatic update preference
+  osx_defaults:
+    domain: org.videolan.vlc
+    key: SUEnableAutomaticChecks
+    type: bool
+    value: "{{ true if vlc_enable_automatic_updates else false }}"

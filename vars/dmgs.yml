@@ -43,10 +43,6 @@ dmgs_to_download_and_install:
     install_method: XQuartz.pkg
     path_to_stat: /usr/X11/bin/Xquartz
 
-  # arch
-  - app_name: VLC
-    dmg_url: "https://get.videolan.org/vlc/{{ vlc_version }}/macosx/vlc-{{ vlc_version }}-intel64.dmg"
-
   - app_name: VisualVM
     dmg_url: "https://github.com/visualvm/visualvm.src/releases/download/{{ visualvm_version }}/VisualVM_{{ visualvm_version | replace('.', '') }}.dmg"
 
