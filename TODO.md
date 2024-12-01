@@ -8,13 +8,6 @@ In general, more app preferences...
 1. Install selected IDEs. The toolbox seems to be missing functionality to do this from the command line. Investigate
    AppleScript, Automator, etc.
 
-### VLC
-
-Automatically enable metadata retrieval, so I don't have to click on the popup, or even see the popup.
-
-See https://forum.videolan.org/viewtopic.php?t=126302 and
-https://community.jamf.com/t5/jamf-pro/suppressing-quot-enable-metadata-retrieval-quot-prompt-in-vlc/m-p/130327
-
 ### GPG tools
 
 GPG tools on requires some manual setup. Open Mail > Preferences > General, click on "Manage Plug-ins...",
