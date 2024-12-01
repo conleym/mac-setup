@@ -42,8 +42,8 @@
 # lineinfile can't add a line to an empty file if we also want a replacement regex, so each toggle has to be done in
 # two steps.
 
-- when: vlc_enable_metadata_retrieval | bool
-  name: Enable metadata retrieval
+- name: Enable metadata retrieval
+  when: vlc_enable_metadata_retrieval
   block:
     - name: Remove metadata retrieval disabled setting
       lineinfile:
@@ -56,8 +56,8 @@
         line: "metadata-network-access=1"
         state: present
 
-- when: not(vlc_enable_metadata_retrieval | bool)
-  name: Disable metadata retrieval
+- name: Disable metadata retrieval
+  when: not(vlc_enable_metadata_retrieval)
   block:
     - name: Remove metadata retrieval enabled setting
       lineinfile:
