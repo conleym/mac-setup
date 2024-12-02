@@ -1,4 +1,3 @@
 # Default location for screenshots.
 ---
-set_screenshots_location_folder: "{{ '~/Documents/Screenshots' | expanduser }}"
-
+set_screenshot_location_folder: "{{ '~/Documents/Screenshots' | expanduser }}"
