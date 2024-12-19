@@ -1,0 +1,39 @@
+# Install Doppler.
+# https://docs.doppler.com/docs/install-cli
+#
+# I hate homebrew. The only thing I hate more is piping random shell scripts to a shell with sudo. And so here we are.
+---
+- set_fact:
+    doppler_binary_directory: "{{ '~/bin' | expanduser }}"
+  when: doppler_binary_directory is not defined
+
+- stat:
+    path: "{{ doppler_binary_directory }}/doppler"
+  register: throwaway
+
+# TODO gpg keys
+# sig_url="https://$DOPPLER_DOMAIN/download/signature?os=$os&arch=$arch&format=$format"
+# key_url="https://$DOPPLER_DOMAIN/keys/public"
+#
+# sig_filename="$filename.sig"
+# key_filename="$tempdir/publickey.gpg"
+#
+# gpgv --keyring "$key_filename" "$sig_filename" "$filename"
+#
+- name: Download Doppler
+  get_url:
+    url: "https://cli.doppler.com/download?os=Darwin&arch={{ ansible_machine }}&format=tar"
+    dest: "{{ downloads }}/doppler.tar.gz"
+    force: "{{ doppler_force_download }}"
+    mode: u=rw
+
+- when: doppler_force_install or not (throwaway.stat.executable is defined and throwaway.stat.executable)
+  block:
+  - name: Unarchive Doppler
+    unarchive:
+      dest: "{{ downloads }}"
+      src: "{{ downloads }}/doppler.tar.gz"
+
+  - name: Install Doppler
+    command: "mv {{ downloads }}/doppler {{ '~/bin' | expanduser }}"
+
