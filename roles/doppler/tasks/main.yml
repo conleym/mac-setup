@@ -35,5 +35,5 @@
       src: "{{ downloads }}/doppler.tar.gz"
 
   - name: Install Doppler
-    command: "mv {{ downloads }}/doppler {{ '~/bin' | expanduser }}"
+    command: "mv {{ downloads }}/doppler {{ doppler_binary_directory }}"
 
