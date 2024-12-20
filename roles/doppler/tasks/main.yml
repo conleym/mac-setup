@@ -3,10 +3,6 @@
 #
 # I hate homebrew. The only thing I hate more is piping random shell scripts to a shell with sudo. And so here we are.
 ---
-- set_fact:
-    doppler_binary_directory: "{{ '~/bin' | expanduser }}"
-  when: doppler_binary_directory is not defined
-
 - stat:
     path: "{{ doppler_binary_directory }}/doppler"
   register: throwaway

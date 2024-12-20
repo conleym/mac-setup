@@ -1,4 +1,4 @@
 ---
 doppler_force_download: false
 doppler_force_install: false
-doppler_binary_directory: None  # Will install to ~/bin
+doppler_binary_directory: "{{ '~/bin' | expanduser }}"  # Will install to ~/bin by default.
