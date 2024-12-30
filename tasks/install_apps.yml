@@ -38,6 +38,10 @@
   include_role:
     name: vlc
 
+- name: Install Docker
+  include_role:
+    name: docker
+
 - name: Download and install app from disk images
   include_role:
     name: install_from_dmg
