@@ -7,28 +7,43 @@
     path: "{{ doppler_binary_directory }}/doppler"
   register: throwaway
 
-# TODO gpg keys
-# sig_url="https://$DOPPLER_DOMAIN/download/signature?os=$os&arch=$arch&format=$format"
-# key_url="https://$DOPPLER_DOMAIN/keys/public"
-#
-# sig_filename="$filename.sig"
-# key_filename="$tempdir/publickey.gpg"
-#
-# gpgv --keyring "$key_filename" "$sig_filename" "$filename"
-#
+- set_fact:
+    doppler_download_scheme_and_host: "https://cli.doppler.com"
+    doppler_download_query_params: "os=Darwin&arch={{ ansible_machine }}&format=tar"
+    doppler_tar_gz: "{{ downloads }}/doppler.tar.gz"
+    doppler_pubkey: "{{ downloads }}/doppler-publickey.gpg"
+    doppler_signature: "{{ downloads }}/doppler.sig"
+
 - name: Download Doppler
   get_url:
-    url: "https://cli.doppler.com/download?os=Darwin&arch={{ ansible_machine }}&format=tar"
-    dest: "{{ downloads }}/doppler.tar.gz"
+    url: "{{ doppler_download_scheme_and_host }}/download?{{ doppler_download_query_params }}"
+    dest: "{{ doppler_tar_gz }}"
+    force: "{{ doppler_force_download }}"
+    mode: u=rw
+
+- name: Download Doppler GPG signature
+  get_url:
+    url: "{{ doppler_download_scheme_and_host }}/download/signature?{{ doppler_download_query_params }}"
+    dest: "{{ doppler_signature }}"
+    force: "{{ doppler_force_download }}"
+    mode: u=rw
+
+- name: Download Doppler GPG public key
+  get_url:
+    url: "{{ doppler_download_scheme_and_host }}/keys/public"
+    dest: "{{ doppler_pubkey }}"
     force: "{{ doppler_force_download }}"
     mode: u=rw
 
 - when: doppler_force_install or not (throwaway.stat.executable is defined and throwaway.stat.executable)
   block:
+  - name: Verify GPG Signature
+    command: gpgv --keyring "{{ doppler_pubkey }}" "{{doppler_signature  }}" "{{ doppler_tar_gz }}"
+    
   - name: Unarchive Doppler
     unarchive:
       dest: "{{ downloads }}"
-      src: "{{ downloads }}/doppler.tar.gz"
+      src: "{{ doppler_tar_gz }}"
 
   - name: Install Doppler
     command: "mv {{ downloads }}/doppler {{ doppler_binary_directory }}"
