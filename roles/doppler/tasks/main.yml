@@ -39,7 +39,7 @@
   block:
   - name: Verify GPG Signature
     command: gpgv --keyring "{{ doppler_pubkey }}" "{{doppler_signature  }}" "{{ doppler_tar_gz }}"
-    
+
   - name: Unarchive Doppler
     unarchive:
       dest: "{{ downloads }}"
