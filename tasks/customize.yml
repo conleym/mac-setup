@@ -8,6 +8,14 @@
   tags:
     - customize
 
+- include_role:
+    name: set_screenshot_location
+    apply:
+      tags:
+        - customize
+  tags:
+    - customize
+
 - name: Show ~/Library
   command: chflags nohidden "{{ '~/Library' | expanduser }}"
   tags:
