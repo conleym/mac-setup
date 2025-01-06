@@ -1,10 +1,12 @@
 # Apps to install via the app store, with identifiers.
 ---
 mas_apps_to_install:
-    - 453114608   # JSON Helper
-    - 803453959   # Slack
-    - 1295203466  # MS remote desktop 10
-    - 1496833156  # Playgrounds
-    - 1066107760  # Star Realms
-    - 406479348   # Decked Builder
-    - 1569813296  # 1Password for Safari
+    - "453114608"   # JSON Helper
+    - "803453959"   # Slack
+    - "1295203466"  # MS Remote Desktop 10
+    - "1496833156"  # Playgrounds
+    - "1066107760"  # Star Realms
+    - "406479348"   # Decked Builder
+    - "1569813296"  # 1Password for Safari
+    - "302584613"   # Kindle
+    - "405399194"   # Kindle Classic
