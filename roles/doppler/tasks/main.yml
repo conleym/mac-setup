@@ -11,8 +11,11 @@
     doppler_download_scheme_and_host: "https://cli.doppler.com"
     doppler_download_query_params: "os=Darwin&arch={{ ansible_machine }}&format=tar"
     doppler_tar_gz: "{{ downloads }}/doppler.tar.gz"
-    doppler_pubkey: "{{ downloads }}/doppler-publickey.gpg"
-    doppler_signature: "{{ downloads }}/doppler.sig"
+    doppler_unarchive: "{{ downloads }}/doppler"
+
+- set_fact:
+    doppler_pubkey: "{{ doppler_unarchive }}/doppler-publickey.gpg"
+    doppler_signature: "{{ doppler_unarchive }}/doppler.sig"
 
 - name: Download Doppler
   get_url:
@@ -40,11 +43,25 @@
   - name: Verify GPG Signature
     command: gpgv --keyring "{{ doppler_pubkey }}" "{{doppler_signature  }}" "{{ doppler_tar_gz }}"
 
+    # Ensure directory is clean before unzipping (by ensuring it's absent, then creating).
+  - name: Delete directory for unarchive
+    file:
+      path: "{{ doppler_unarchive }}"
+      state: absent
+
+  - name: Create directory for unarchive
+    file:
+      path: "{{ doppler_unarchive }}"
+      state: directory
+      mode: u=rwx
+
   - name: Unarchive Doppler
     unarchive:
-      dest: "{{ downloads }}"
+      dest: "{{ doppler_unarchive }}"
       src: "{{ doppler_tar_gz }}"
 
   - name: Install Doppler
-    command: "mv {{ downloads }}/doppler {{ doppler_binary_directory }}"
+    command: "mv {{ doppler_unarchive }}/doppler {{ doppler_binary_directory }}"
+
+# TODO install shell completion for bash and zsh.
 
