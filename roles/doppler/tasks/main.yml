@@ -62,6 +62,3 @@
 
   - name: Install Doppler
     command: "mv {{ doppler_unarchive }}/doppler {{ doppler_binary_directory }}"
-
-# TODO install shell completion for bash and zsh.
-
