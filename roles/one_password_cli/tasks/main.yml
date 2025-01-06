@@ -1,0 +1,52 @@
+# Install the 1password CLI.
+# See https://developer.1password.com/docs/cli
+---
+- set_fact:
+    one_password_cli_arch: "{{ 'amd64' if (ansible_machine == 'x86_64') else ansible_machine }}"
+    one_password_cli_zip: "{{ downloads }}/1password_cli.zip"
+    one_password_cli_uncompressed: "{{ downloads }}/1password_cli"
+- set_fact:
+    one_password_cli_url: "https://cache.agilebits.com/dist/1P/op2/pkg/v{{ one_password_cli_version }}/op_darwin_{{ one_password_cli_arch }}_v{{ one_password_cli_version }}.zip"
+
+- stat:
+    path: "{{ one_password_cli_binary_directory }}/doppler"
+  register: throwaway
+
+- name: Download 1password CLI
+  get_url:
+    url: "{{ one_password_cli_url }}"
+    dest: "{{ one_password_cli_zip }}"
+    force: "{{ one_password_cli_force_download }}"
+    mode: u=rw
+
+- when: one_password_cli_force_install or not (throwaway.stat.executable is defined and throwaway.stat.executable)
+  block:
+    # Ensure directory is clean before unzipping (by ensuring it's absent, then creating).
+  - name: Delete directory for unarchive
+    file:
+      path: "{{ one_password_cli_uncompressed }}"
+      state: absent
+
+  - name: Create directory for unarchive
+    file:
+      path: "{{ one_password_cli_uncompressed }}"
+      state: directory
+      mode: u=rwx
+
+  - name: Unarchive 1password CLI
+    unarchive:
+      dest: "{{ one_password_cli_uncompressed }}"
+      src: "{{ one_password_cli_zip }}"
+
+# TODO no route to host below. No obvious fix.
+#  - name: Get 1password GPG Key
+#    command: "gpg --keyserver keyserver.ubuntu.com --receive-keys 3FEF9748469ADBE15DA7CA80AC2D62742012EA22"
+#
+#  - name: Verify 1password CLI
+#    command: gpg --verify op.sig op
+#    args:
+#      chdir: "{{ one_password_cli_uncompressed }}"
+
+  - name: Install 1password CLI
+    command: "mv {{ one_password_cli_uncompressed }}/op {{ one_password_cli_binary_directory }}"
+    become: yes
