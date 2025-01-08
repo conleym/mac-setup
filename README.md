@@ -33,6 +33,7 @@ python3 seems to be unable to verify ssl certificates without the full app).
 1. Sign in to the app store app.
    `mas` cannot install apps unless you do so, and sign in via the command line no longer works.
    See [mas known issues](https://github.com/mas-cli/mas?tab=readme-ov-file#known-issues).
+1. (Currently optional) update everything to the latest python version (see [python versions](#python-versions) below). 
 1. Run `setup.sh -K` (omit `-K` if you're set up with passwordless `sudo`). The script passes all 
    arguments on to `ansible-playbook`.
 1. The following `tags` are defined (which you can pass to the script, e.g., `setup.sh --tags ports`):
@@ -74,6 +75,24 @@ python3 seems to be unable to verify ssl certificates without the full app).
 
 1. [JetBrains Mono](https://www.jetbrains.com/lp/mono/)
 1. [DejaVu](https://dejavu-fonts.github.io/)
+
+## Python versions
+
+The system python version is `3.9`, which is now quite outdated. It seems unlikely that Apple will be keeping it up to
+date. Because `ansible` requires a python installation to work, we're in a bit of a bind.
+
+In particular, `ansible-lint` is no longer actively maintained for `3.9` (newer versions require newer pythons). At 
+some point, ansible itself will surely move on as well, as will various dependencies.
+
+The easy solution is to init, then bootstrap, which sets everything up with the system python and installs macports.
+Adding the latest python to the _bootstrap_ ports means that it will be installed on bootstrap. So, the sequence of 
+steps to get properly set up is
+
+1. Run `init.sh` to install ansible for the default (`3.9`) python.
+1. Run `bootstrap.sh` to bootstrap using this installation. This installs a newer python version.
+1. Run `init.sh` again to install ansible in the new python.
+1. (Optional) install the development dependencies by running `dev-init.sh`.
+1. Run `setup.sh` as needed. This will run the ansible installed for the newer python version.
 
 ## Ansible footguns
 
