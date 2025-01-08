@@ -2,6 +2,8 @@
 # List of ports that must be installed in bootstrap.
 bootstrap_ports_to_install:
     mas:
+    python313: +optimizations +dtrace
+    py313-pip:
 
 # List of ports with optional variants _not_ installed in bootstrap.
 ports_to_install:
@@ -69,3 +71,7 @@ ports_to_install:
 ports_to_select:
     maven: maven3
     postgresql: postgresql16
+    python: python313
+    python3: python313
+    pip: py313-pip
+    pip3: py313-pip
