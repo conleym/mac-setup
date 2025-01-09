@@ -15,8 +15,6 @@ pip_user_packages_to_install:
   - virtualenv
   - virtualenvwrapper
 
-  # Command line and such
-  - thefuck
   # Download stuff from YouTube.
   - chat-downloader
   - youtube-dl
