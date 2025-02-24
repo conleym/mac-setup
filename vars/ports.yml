@@ -17,6 +17,7 @@ ports_to_install:
     gawk: +mpfr
     gmake:
     gmp: +native
+    go:
     gradle:
     gradle-completion:
 # Graphviz
