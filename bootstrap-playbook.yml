@@ -1,6 +1,7 @@
 # Bootstrap further playbooks, installing essentials.
-#   This playbook is run by bootstrap.sh during initial setup. It is also included in setup-playbook so that everything's
-#   kept up to date.
+#   This playbook is run by bootstrap.sh during initial setup. It is also included in setup-playbook so that
+#   everything's kept up to date.
+#
 # Does the following:
 #  1. Ensures Xcode's first launch setup is complete.
 #  2. Installs MacPorts
