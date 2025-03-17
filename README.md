@@ -1,6 +1,6 @@
 # Ansible macOS setup
 
-Tested on Monterey. Requires python3. Only supports intel macs for now.
+Tested on Monterey/Intel. Requires python3.
 
 
 ## Prerequisites
@@ -8,7 +8,8 @@ Tested on Monterey. Requires python3. Only supports intel macs for now.
 Install XCode. (The command line tools are insufficient. 
 python3 seems to be unable to verify ssl certificates without the full app).
 
-## How do?
+
+## How to
 
 ### For the impatient
 
@@ -33,6 +34,7 @@ python3 seems to be unable to verify ssl certificates without the full app).
 1. Sign in to the app store app.
    `mas` cannot install apps unless you do so, and sign in via the command line no longer works.
    See [mas known issues](https://github.com/mas-cli/mas?tab=readme-ov-file#known-issues).
+1. (Currently optional) update everything to the latest python version (see [python versions](#python-versions) below). 
 1. Run `setup.sh -K` (omit `-K` if you're set up with passwordless `sudo`). The script passes all 
    arguments on to `ansible-playbook`.
 1. The following `tags` are defined (which you can pass to the script, e.g., `setup.sh --tags ports`):
@@ -75,7 +77,38 @@ python3 seems to be unable to verify ssl certificates without the full app).
 1. [JetBrains Mono](https://www.jetbrains.com/lp/mono/)
 1. [DejaVu](https://dejavu-fonts.github.io/)
 
-## Ansible footguns
+
+## Python versions
+
+The system python version is `3.9`, which is now quite outdated. It seems unlikely that Apple will be keeping it up to
+date. Because `ansible` requires a python installation to work, and we want to use ansible to automate installing
+things (including newer python versions), we're in a bit of a bind.
+
+In particular, `ansible-lint` is no longer actively maintained for `3.9` (new versions require newer pythons). Other
+dependencies are likely to move on as well. Eventually, perhaps, even `ansible` itself (at which point we'll need to
+come up with some other solution for init and bootstrapping).
+
+The easy solution is to init, then bootstrap, which sets everything up with the system python and installs macports.
+Adding the latest python to the _bootstrap_ ports means that it will be installed on bootstrap. So, the sequence of 
+steps to get properly set up is
+
+1. Run `init.sh` to install ansible for the default (`3.9`) python.
+1. Run `bootstrap.sh` to bootstrap using this installation. This installs a newer python version.
+1. Run `init.sh` again to install ansible for the new python.
+1. (Optional) install the development dependencies by running `dev-init.sh`.
+1. Run `setup.sh` as needed. This will run the ansible installed for the newer python version.
+
+### Upgrading python.
+
+To upgrade python:
+
+1. First, change the version installed in the bootstrap ports. 
+1. Run `bootstrap.sh` to install this version. 
+1. Run `init.sh` to install ansible, etc., for the new python version.
+1. After verifying that things work with the new python version, optionally remove the old version.
+
+
+## Ansible foot guns
 
 ### Boolean extra vars
 
@@ -89,7 +122,7 @@ are several ways to deal with it:
 
 1. Use JSON. This syntax is cumbersome on the command line, but it works: `-e '{"something": false}'`. `False` also
 works here.
-2. Pass an empty value, which will evaluate to false in conditionals: `-e 'something='`.
+1. Pass an empty value, which will evaluate to false in conditionals: `-e 'something='`.
 
 See [ansible 17193](https://github.com/ansible/ansible/issues/17193) and 
 [this blog](https://fabianlee.org/2021/07/28/ansible-overriding-boolean-values-using-extra-vars-at-runtime/).
