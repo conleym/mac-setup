@@ -1,2 +1,2 @@
 ---
-fonts_dir: "{{ '~/Library/Fonts' | expanduser }}"
+install_fonts_from_archive_fonts_dir: "{{ '~/Library/Fonts' | expanduser }}"

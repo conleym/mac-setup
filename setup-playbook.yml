@@ -110,7 +110,7 @@
           tags:
             - fonts
       vars:
-        font_archive_url: "{{ item }}"
+        install_fonts_from_archive_url: "{{ item }}"
       loop: "{{ font_archives }}"
       tags:
         - fonts
