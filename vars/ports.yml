@@ -73,5 +73,5 @@ ports_to_select:
     postgresql: postgresql16
     python: python313
     python3: python313
-    pip: py313-pip
-    pip3: py313-pip
+    pip: pip313
+    pip3: pip313
