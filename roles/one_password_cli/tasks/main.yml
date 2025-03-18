@@ -4,7 +4,6 @@
 - set_fact:
     one_password_cli_arch: "{{ 'amd64' if (ansible_machine == 'x86_64') else ansible_machine }}"
     one_password_cli_zip: "{{ downloads }}/1password_cli.zip"
-    one_password_cli_uncompressed: "{{ downloads }}/1password_cli"
 - set_fact:
     one_password_cli_url: "https://cache.agilebits.com/dist/1P/op2/pkg/v{{ one_password_cli_version }}/op_darwin_{{ one_password_cli_arch }}_v{{ one_password_cli_version }}.zip"
 
@@ -21,17 +20,13 @@
 
 - when: one_password_cli_force_install or not (throwaway.stat.executable is defined and throwaway.stat.executable)
   block:
-    # Ensure directory is clean before unzipping (by ensuring it's absent, then creating).
-    - name: Delete directory for unarchive
-      file:
-        path: "{{ one_password_cli_uncompressed }}"
-        state: absent
-
     - name: Create directory for unarchive
-      file:
-        path: "{{ one_password_cli_uncompressed }}"
+      tempfile:
         state: directory
-        mode: u=rwx
+      register: one_password_cli_uncompressed
+
+    - set_fact:
+        one_password_cli_uncompressed: "{{ one_password_cli_uncompressed.path }}"
 
     - name: Unarchive 1password CLI
       unarchive:
