@@ -10,12 +10,18 @@
 - set_fact:
     doppler_download_scheme_and_host: "https://cli.doppler.com"
     doppler_download_query_params: "os=Darwin&arch={{ ansible_machine }}&format=tar"
-    doppler_tar_gz: "{{ downloads }}/doppler.tar.gz"
-    doppler_unarchive: "{{ downloads }}/doppler"
+    doppler_download_dir: "{{ downloads }}/doppler"
 
 - set_fact:
-    doppler_pubkey: "{{ doppler_unarchive }}/doppler-publickey.gpg"
-    doppler_signature: "{{ doppler_unarchive }}/doppler.sig"
+    doppler_pubkey: "{{ doppler_download_dir }}/doppler-publickey.gpg"
+    doppler_signature: "{{ doppler_download_dir }}/doppler.sig"
+    doppler_tar_gz: "{{ doppler_download_dir }}/doppler.tar.gz"
+
+- name: Ensure download directory exists
+  file:
+    path: "{{ doppler_download_dir }}"
+    state: directory
+    mode: u=rwx
 
 - name: Download Doppler
   get_url:
@@ -40,25 +46,21 @@
 
 - when: doppler_force_install or not (throwaway.stat.executable is defined and throwaway.stat.executable)
   block:
-  - name: Verify GPG Signature
-    command: gpgv --keyring "{{ doppler_pubkey }}" "{{doppler_signature  }}" "{{ doppler_tar_gz }}"
+    - name: Verify GPG Signature
+      command: gpgv --keyring "{{ doppler_pubkey }}" "{{ doppler_signature  }}" "{{ doppler_tar_gz }}"
 
-    # Ensure directory is clean before unzipping (by ensuring it's absent, then creating).
-  - name: Delete directory for unarchive
-    file:
-      path: "{{ doppler_unarchive }}"
-      state: absent
+    - name: Create directory for unarchive
+      tempfile:
+        state: directory
+      register: doppler_unarchive_dir
 
-  - name: Create directory for unarchive
-    file:
-      path: "{{ doppler_unarchive }}"
-      state: directory
-      mode: u=rwx
+    - set_fact:
+        doppler_unarchive_dir: "{{ doppler_unarchive_dir.path }}"
 
-  - name: Unarchive Doppler
-    unarchive:
-      dest: "{{ doppler_unarchive }}"
-      src: "{{ doppler_tar_gz }}"
+    - name: Unarchive Doppler
+      unarchive:
+        dest: "{{ doppler_unarchive_dir }}"
+        src: "{{ doppler_tar_gz }}"
 
-  - name: Install Doppler
-    command: "mv {{ doppler_unarchive }}/doppler {{ doppler_binary_directory }}"
+    - name: Install Doppler
+      command: "mv {{ doppler_unarchive_dir }}/doppler {{ doppler_binary_directory }}"
