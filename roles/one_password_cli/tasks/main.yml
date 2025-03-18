@@ -9,7 +9,7 @@
     one_password_cli_url: "https://cache.agilebits.com/dist/1P/op2/pkg/v{{ one_password_cli_version }}/op_darwin_{{ one_password_cli_arch }}_v{{ one_password_cli_version }}.zip"
 
 - stat:
-    path: "{{ one_password_cli_binary_directory }}/doppler"
+    path: "{{ one_password_cli_binary_directory }}/op"
   register: throwaway
 
 - name: Download 1password CLI
@@ -22,21 +22,21 @@
 - when: one_password_cli_force_install or not (throwaway.stat.executable is defined and throwaway.stat.executable)
   block:
     # Ensure directory is clean before unzipping (by ensuring it's absent, then creating).
-  - name: Delete directory for unarchive
-    file:
-      path: "{{ one_password_cli_uncompressed }}"
-      state: absent
+    - name: Delete directory for unarchive
+      file:
+        path: "{{ one_password_cli_uncompressed }}"
+        state: absent
 
-  - name: Create directory for unarchive
-    file:
-      path: "{{ one_password_cli_uncompressed }}"
-      state: directory
-      mode: u=rwx
+    - name: Create directory for unarchive
+      file:
+        path: "{{ one_password_cli_uncompressed }}"
+        state: directory
+        mode: u=rwx
 
-  - name: Unarchive 1password CLI
-    unarchive:
-      dest: "{{ one_password_cli_uncompressed }}"
-      src: "{{ one_password_cli_zip }}"
+    - name: Unarchive 1password CLI
+      unarchive:
+        dest: "{{ one_password_cli_uncompressed }}"
+        src: "{{ one_password_cli_zip }}"
 
 # TODO no route to host below. No obvious fix.
 #  - name: Get 1password GPG Key
@@ -47,6 +47,6 @@
 #    args:
 #      chdir: "{{ one_password_cli_uncompressed }}"
 
-  - name: Install 1password CLI
-    command: "mv {{ one_password_cli_uncompressed }}/op {{ one_password_cli_binary_directory }}"
-    become: yes
+    - name: Install 1password CLI
+      command: "mv {{ one_password_cli_uncompressed }}/op {{ one_password_cli_binary_directory }}"
+      become: yes
