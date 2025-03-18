@@ -2,4 +2,5 @@
 one_password_cli_binary_directory: "/usr/local/bin"
 one_password_cli_force_download: false
 one_password_cli_force_install: false
+one_password_cli_verify_gpg_signature: false
 one_password_cli_version: "2.30.3"

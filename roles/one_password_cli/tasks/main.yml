@@ -1,5 +1,7 @@
 # Install the 1password CLI.
 # See https://developer.1password.com/docs/cli
+# This basically automates the steps here
+#   https://developer.1password.com/docs/cli/get-started/
 ---
 - set_fact:
     one_password_cli_arch: "{{ 'amd64' if (ansible_machine == 'x86_64') else ansible_machine }}"
@@ -33,14 +35,21 @@
         dest: "{{ one_password_cli_uncompressed }}"
         src: "{{ one_password_cli_zip }}"
 
-# TODO no route to host below. No obvious fix.
-#  - name: Get 1password GPG Key
-#    command: "gpg --keyserver keyserver.ubuntu.com --receive-keys 3FEF9748469ADBE15DA7CA80AC2D62742012EA22"
-#
-#  - name: Verify 1password CLI
-#    command: gpg --verify op.sig op
-#    args:
-#      chdir: "{{ one_password_cli_uncompressed }}"
+    - when: one_password_cli_verify_gpg_signature
+      block:
+        # No route to host below can happen below. No obvious fix. Seems common. It sometimes works with a VPN.
+        # See, for example,
+        #  https://stackoverflow.com/questions/54801274/gpg-keyserver-receive-failed-no-route-to-host-stack-overflow
+        # and
+        #  https://github.com/rvm/rvm/issues/5004
+        # and
+        - name: Get 1password GPG Key
+          command: "gpg --keyserver keyserver.ubuntu.com --receive-keys 3FEF9748469ADBE15DA7CA80AC2D62742012EA22"
+    
+        - name: Verify 1password CLI
+          command: gpg --verify op.sig op
+          args:
+            chdir: "{{ one_password_cli_uncompressed }}"
 
     - name: Install 1password CLI
       command: "mv {{ one_password_cli_uncompressed }}/op {{ one_password_cli_binary_directory }}"
