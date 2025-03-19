@@ -8,9 +8,11 @@
 
 - when: terraform_force_install or not throwaway.stat.exists
   block:
+    - set_fact:
+        terraform_arch: "{{ 'amd64' if (ansible_machine == 'x86_64') else ansible_machine }}"
     - name: Download terraform
       get_url:
-        url: "https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_darwin_amd64.zip"
+        url: "https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_darwin_{{ terraform_arch }}.zip"
         dest: "{{ downloads }}/terraform.zip"
         checksum: "sha256:https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_SHA256SUMS"
         force: "{{ terraform_force_download }}"
