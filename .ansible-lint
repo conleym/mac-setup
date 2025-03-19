@@ -1,5 +1,5 @@
 # ansible-lint configuration.
-# Note that ansible-lint must be installed manually.
+# Note that `ansible-lint` must be installed manually via `dev-init.sh`.
 #
 # Docs at https://ansible.readthedocs.io/projects/lint/
 # Rules: https://ansible.readthedocs.io/projects/lint/rules/
