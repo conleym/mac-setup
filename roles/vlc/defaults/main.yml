@@ -1,4 +1,6 @@
 ---
+vlc_version: "3.0.21"
+
 # true forces redownload, even if dmg is already present.
 vlc_force_download: false
 # true forces reinstall, even if app is present.

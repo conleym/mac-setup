@@ -1,3 +1,4 @@
 ---
+macports_version: "2.10.5"
 macports_force_download: false
 macports_force_install: false
