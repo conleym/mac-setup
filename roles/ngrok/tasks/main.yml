@@ -7,11 +7,15 @@
   register: throwaway
   when: not ngrok_force_install
 
+
 - when: ngrok_force_install or not (throwaway.stat.executable is defined and throwaway.stat.executable)
   block:
+    - set_fact:
+        ngrok_zip_arch: "{{ 'amd64' if (ansible_machine == 'x86_64') else ansible_machine }}"
+
     - name: Download ngrok
       get_url:
-        url: "https://bin.equinox.io/c/{{ ngrok_hash }}/ngrok-v3-stable-darwin-amd64.zip"
+        url: "https://bin.equinox.io/c/{{ ngrok_hash }}/ngrok-v3-stable-darwin-{{ ngrok_zip_arch }}.zip"
         dest: "{{ downloads }}/ngrok.zip"
         force: "{{ ngrok_force_download }}"
         mode: u=rw
