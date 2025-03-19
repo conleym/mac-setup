@@ -11,7 +11,7 @@
 - set_fact:
     install_from_dmg_st: "{{ install_from_dmg_st.stat }}"
 
-- when: not (install_from_dmg_st.exists)
+- when: not (install_from_dmg_st.exists) or install_from_dmg_force_install
   block:
     - name: Download disk image
       get_url:
@@ -38,16 +38,16 @@
 
     - name: Copy app to destination
       command: "cp -a '/Volumes/{{ install_from_dmg_app_name }}/{{ install_from_dmg_app_name }}.app' /Applications"
-      when: install_method == 'cp'
+      when: install_from_dmg_install_method == 'cp'
 
     - name: Install package
       command: "installer -pkg '/Volumes/{{ install_from_dmg_app_name }}/{{ install_from_dmg_install_method }}' -target /"
-      when: install_method is regex('^.*\.pkg$')
+      when: install_from_dmg_install_method is regex('^.*\.pkg$')
       become: true
 
     - name: Run installer app
       command: "open -a '/Volumes/{{ install_from_dmg_app_name }}/{{ install_from_dmg_install_method }}'"
-      when: install_method is regex('^.*\.app$')
+      when: install_from_dmg_install_method is regex('^.*\.app$')
 
   always:
     - include_role:
