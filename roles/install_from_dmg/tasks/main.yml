@@ -36,6 +36,8 @@
         path: "{{ install_from_dmg_image_destination }}"
         mountpoint: "{{ install_from_dmg_app_name }}"
 
+      # TODO you can't copy over an existing app, so force reinstall will not work with this method.
+      #   Removing the app first is an option, but that will lose some customizations.
     - name: Copy app to destination
       command: "cp -a '/Volumes/{{ install_from_dmg_app_name }}/{{ install_from_dmg_app_name }}.app' /Applications"
       when: install_from_dmg_install_method == 'cp'
