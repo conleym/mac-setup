@@ -2,5 +2,4 @@
 # Remember to enclose versions ending in .0 in quotes. Probably best to just quote them all, really.
 ---
 gpgtools_version: "2023.3"
-picard_version: "2.12.3"
 visualvm_version: "2.1.10"
