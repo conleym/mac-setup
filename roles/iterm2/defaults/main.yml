@@ -1,4 +1,5 @@
 ---
+iterm2_version: "3.5.11"
 iterm2_app_path: /Applications
 iterm2_app_name: iTerm
 iterm2_force_download: false

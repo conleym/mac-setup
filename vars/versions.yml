@@ -2,13 +2,6 @@
 # Remember to enclose versions ending in .0 in quotes. Probably best to just quote them all, really.
 ---
 gpgtools_version: "2023.3"
-iterm2_version: "3.5.10"
-macports_version: "2.10.5"
-node_version: "22.12.0"
 picard_version: "2.12.3"
-r_app_version: "4.4.2"
 skim_version: "1.7.6"
-terraform_version: "1.10.0"
 visualvm_version: "2.1.10"
-vlc_version: "3.0.21"
-xact_version: "2.55"
