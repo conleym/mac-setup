@@ -47,6 +47,10 @@
   include_role:
     name: skim
 
+- name: Install MusicBrainz Picard
+  include_role:
+    name: picard
+
 - name: Download and install app from disk images
   include_role:
     name: install_from_dmg
