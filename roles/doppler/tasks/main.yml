@@ -47,7 +47,7 @@
 - when: doppler_force_install or not (throwaway.stat.executable is defined and throwaway.stat.executable)
   block:
     - name: Verify GPG Signature
-      command: gpgv --keyring "{{ doppler_pubkey }}" "{{ doppler_signature  }}" "{{ doppler_tar_gz }}"
+      command: gpgv --keyring "{{ doppler_pubkey }}" "{{ doppler_signature }}" "{{ doppler_tar_gz }}"
 
     - name: Create directory for unarchive
       tempfile:

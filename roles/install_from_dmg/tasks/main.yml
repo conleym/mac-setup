@@ -1,6 +1,6 @@
 ---
 - set_fact:
-    install_from_dmg_path_to_stat: "{{ app_destination }}/{{ install_from_dmg_app_name }}.app"
+    install_from_dmg_path_to_stat: "{{ install_from_dmg_app_destination }}/{{ install_from_dmg_app_name }}.app"
   when: install_from_dmg_path_to_stat is not defined or install_from_dmg_path_to_stat == ''
 
 - name: Check for existing install
