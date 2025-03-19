@@ -1,0 +1,12 @@
+# Install Skim, a pdf reader that plays nicely with TeX.
+#  https://skim-app.sourceforge.io/
+---
+- name: Download and install Skim
+  include_role:
+    name: install_from_dmg
+  vars:
+    install_from_dmg_app_name: "Skim"
+    install_from_dmg_image_url: "https://sourceforge.net/projects/skim-app/files/Skim/Skim-{{ skim_version }}/Skim-{{ skim_version }}.dmg/download"
+    install_from_dmg_image_destination: "{{ downloads }}/Skim.dmg"
+    install_from_dmg_force_download: "{{ skim_force_download }}"
+    install_from_dmg_force_install: "{{ skim_force_install }}"

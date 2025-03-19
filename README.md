@@ -69,6 +69,7 @@ python3 seems to be unable to verify ssl certificates without the full app).
 1. [R](https://r-project.org/)
 1. [terraform](https://www.terraform.io/)
 1. [ngrok](https://ngrok.com/download)
+1. [skim](https://skim-app.sourceforge.io/)
 
 ...and more.
 
