@@ -4,5 +4,10 @@ install_from_dmg_app_destination: "/Applications"
 # Available options are cp (the dmg contains an app, just copy it), some_file.pkg (the dmg contains an installer package
 # with the given name to run to install the app).
 #
-# Default is to copy.
+# Default is to copy with the `cp` command.
 install_from_dmg_install_method: cp
+
+# Try to download the image even if it's already downloaded.
+install_from_dmg_force_download: false
+# Try to install even if the app is already installed.
+install_from_dmg_force_install: false
