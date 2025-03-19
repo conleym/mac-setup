@@ -1,4 +1,6 @@
 ---
+xact_version: "2.57"
+
 xact_app_path: /Applications
 xact_app_name: xACT
 xact_force_download: false

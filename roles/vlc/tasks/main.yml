@@ -1,4 +1,5 @@
 # Install VLC version `vlc_version`.
+#  https://www.videolan.org/
 ---
 - set_fact:
     vlc_dmg_suffix: "{{ 'intel64' if (ansible_machine == 'x86_64') else ansible_machine }}"

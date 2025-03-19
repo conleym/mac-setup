@@ -1,6 +1,5 @@
 # Install terraform
-#
-# Set terraform_force_install to true to reinstall.
+#  https://www.terraform.io/
 ---
 - stat:
     path: "/usr/local/bin/terraform"
