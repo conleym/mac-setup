@@ -17,6 +17,7 @@
       get_url:
         url: "{{ install_from_dmg_image_url }}"
         dest: "{{ install_from_dmg_image_destination }}"
+        force: "{{ install_from_dmg_force_download }}"
         mode: u=rw
       when: install_from_dmg_image_checksum is not defined
 
@@ -25,6 +26,7 @@
         url: "{{ install_from_dmg_image_url }}"
         dest: "{{ install_from_dmg_image_destination }}"
         checksum: "{{ install_from_dmg_image_checksum }}"
+        force: "{{ install_from_dmg_force_download }}"
         mode: u=rw
       when: install_from_dmg_image_checksum is defined
 
