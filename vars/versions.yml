@@ -13,6 +13,3 @@ visualvm_version: "2.1.10"
 vlc_version: "3.0.21"
 xact_version: "2.55"
 xquartz_version: "2.8.5"
-
-# Ngrok stores binaries using some sort of hash.
-ngrok_hash: "bNyj1mQVY4c"
