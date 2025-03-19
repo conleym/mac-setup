@@ -11,4 +11,4 @@
     install_from_dmg_image_url: "https://desktop.docker.com/mac/main/{{ docker_dmg_arch }}/Docker.dmg"
     install_from_dmg_image_destination: "{{ downloads }}/Docker.dmg"
     install_from_dmg_force_download: "{{ docker_force_download }}"
-    install_from_dmg_install: "{{ docker_force_install }}"
+    install_from_dmg_force_install: "{{ docker_force_install }}"
