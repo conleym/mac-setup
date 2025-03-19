@@ -5,4 +5,4 @@ install_from_dmg_app_destination: "/Applications"
 # with the given name to run to install the app).
 #
 # Default is to copy.
-install_method: cp
+install_from_dmg_install_method: cp
