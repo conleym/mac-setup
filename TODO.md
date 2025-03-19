@@ -1,19 +1,28 @@
-## TODO
+# TODO
 
 In general, more app preferences...
 
-### Jetbrains toolbox
+## Fix the cp method of installing apps
+
+`cp` will often fail to copy over existing apps. Really, it's very likely that we want to first remove the app, then
+copy to avoid issues. The downside is that this will remove the app from wherever it lives in launchpad.
+
+## Jetbrains toolbox
 
 1. Accept the agreement.
 1. Install selected IDEs. The toolbox seems to be missing functionality to do this from the command line. Investigate
    AppleScript, Automator, etc.
 
-### GPG tools
+This probably requires a fix for [TBX-653](https://youtrack.jetbrains.com/issue/TBX-653).
+
+## GPG tools
 
 GPG tools on requires some manual setup. Open Mail > Preferences > General, click on "Manage Plug-ins...",
 and check the box next to the GPGMailLoader plugin.
 
-### Other stuff
+Can we automate that away?
+
+## Other stuff
 
 * Fonts.
     * [Noto](https://www.google.com/get/noto/)
