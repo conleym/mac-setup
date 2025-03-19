@@ -1,0 +1,27 @@
+# Install XQuartz.
+#  https://www.xquartz.org/
+#
+# The app is installed to /Applications/Utilities
+---
+- set_fact:
+    xquartz_v: "XQuartz-{{ xquartz_version }}"
+- set_fact:
+    xquartz_pkg_url: "https://github.com/XQuartz/XQuartz/releases/download/{{ xquartz_v }}/{{ xquartz_v }}.pkg"
+    xquartz_pkg: "{{ downloads }}/XQuartz.pkg"
+
+- stat:
+    path: "/usr/X11/bin/Xquartz"
+  register: throwaway
+  when: not xquartz_force_install
+
+- name: Download XQuartz
+  get_url:
+    url: "{{ xquartz_pkg_url }}"
+    dest: "{{ xquartz_pkg }}"
+    force: "{{ xquartz_force_download }}"
+    mode: u=rw
+
+- when: not (throwaway.stat.executable is defined and throwaway.stat.executable) or xquartz_force_install
+  name: Install XQuartz
+  command: "installer -pkg '{{ xquartz_pkg }}' -target /"
+  become: true
