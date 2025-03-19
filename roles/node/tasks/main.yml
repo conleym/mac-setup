@@ -1,4 +1,7 @@
 # Install node via nvm.
+#  https://github.com/nvm-sh/nvm
+#
+# This installs nvm by cloning its GitHub repository. It then uses nvm to install the requested node version.
 ---
 - set_fact:
     node_nvm_home: "{{ '~/.nvm' | expanduser }}"
