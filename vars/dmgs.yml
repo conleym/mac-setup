@@ -34,11 +34,6 @@ dmgs_to_download_and_install:
     install_method: Install.pkg
     path_to_stat: /usr/local/MacGPG2/bin/gpg
 
-  - app_name: XQuartz
-    dmg_url: "https://github.com/XQuartz/XQuartz/releases/download/XQuartz-{{ xquartz_version }}/XQuartz-{{ xquartz_version }}.dmg"
-    install_method: XQuartz.pkg
-    path_to_stat: /usr/X11/bin/Xquartz
-
   - app_name: VisualVM
     dmg_url: "https://github.com/visualvm/visualvm.src/releases/download/{{ visualvm_version }}/VisualVM_{{ visualvm_version | replace('.', '') }}.dmg"
 

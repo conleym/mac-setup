@@ -39,6 +39,10 @@
   include_role:
     name: docker
 
+- name: Install XQuartz
+  include_role:
+    name: xquartz
+
 - name: Download and install app from disk images
   include_role:
     name: install_from_dmg
