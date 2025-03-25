@@ -10,7 +10,7 @@ argument_specs:
           A dict of with required `name` and optional `version` keys. The `name` is the name of the npm module to
           install. The `version` is the specific version.
           
-          If `version` is omitted, the latest version is installed.
+          If `version` is omitted, the default is "latest", meaning the latest version will be installed.
         type: dict
         default: {}
       node_npm_version:
