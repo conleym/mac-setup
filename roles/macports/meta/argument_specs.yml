@@ -1,0 +1,21 @@
+---
+argument_specs:
+  main:
+    short_description: Install MacPorts.
+    description: >-
+      Downloads and installs MacPorts.
+    options:
+      macports_force_download:
+        description: >-
+          If True, download MacPorts, even if it's already been downloaded.
+        type: bool
+        default: false
+      macports_force_install:
+        description: >-
+          If True, install MacPorts, even if it's already installed.
+        default: false
+      macports_version:
+        description: >-
+          The version of MacPorts to install
+        required: false
+        # See defaults for default version.
