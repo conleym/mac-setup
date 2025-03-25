@@ -1,0 +1,13 @@
+---
+- set_fact:
+    visualvm_dmg_url: "https://github.com/visualvm/visualvm.src/releases/download/{{ visualvm_version }}/VisualVM_{{ visualvm_version | replace('.', '') }}.dmg"
+
+- name: Download and install VisualVM
+  include_role:
+    name: install_from_dmg
+  vars:
+    install_from_dmg_app_name: "VisualVM"
+    install_from_dmg_image_url: "{{ visualvm_dmg_url }}"
+    install_from_dmg_image_destination: "{{ downloads }}/VisualVM.dmg"
+    install_from_dmg_force_download: "{{ visualvm_force_download }}"
+    install_from_dmg_force_install: "{{ visualvm_force_install }}"
