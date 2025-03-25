@@ -28,7 +28,4 @@ dmgs_to_download_and_install:
     install_method: Install.pkg
     path_to_stat: /usr/local/MacGPG2/bin/gpg
 
-  - app_name: VisualVM
-    dmg_url: "https://github.com/visualvm/visualvm.src/releases/download/{{ visualvm_version }}/VisualVM_{{ visualvm_version | replace('.', '') }}.dmg"
-
     # TODO parallels?

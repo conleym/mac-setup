@@ -51,6 +51,10 @@
   include_role:
     name: picard
 
+- name: Install VisualVM
+  include_role:
+    name: visualvm
+
 - name: Download and install app from disk images
   include_role:
     name: install_from_dmg
