@@ -1,0 +1,23 @@
+---
+- name: Install node
+  include_role:
+    name: node
+    apply:
+      tags:
+        - node
+  vars:
+    node_version: "{{ setup_node_version }}"
+    node_global_modules_to_install: "{{ setup_node_global_modules_to_install }}"
+  tags:
+    - node
+
+- name: Set default node version
+  include_role:
+    name: node_default_version
+    apply:
+      tags:
+        - node
+  vars:
+    node_default_version_node_version: "{{ setup_node_version }}"
+  tags:
+    - node

@@ -1,11 +1,6 @@
 ---
-# Version of node to install.
-node_version: "22.12.0"
-
-# Version of node to install. None => use the default that came with node. 'latest' => install latest version.
+# Version of npm to install. None => use the default that came with node. 'latest' => install latest version.
 node_npm_version:
-# Version of yarn to install. None => don't install any. 'latest' => install latest version.
-node_yarn_version:
 
 # List of global modules to install.
 # This variable must contain a list of items, each of which nas a name and optional version. The module with the given

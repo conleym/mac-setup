@@ -39,11 +39,7 @@
         - apps
 
     - name: Install node.js with nvm
-      include_role:
-        name: node
-        apply:
-          tags:
-            - node
+      import_tasks: tasks/install_node.yml
       tags:
         - node
 

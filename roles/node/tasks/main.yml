@@ -20,16 +20,9 @@
   args:
     creates: "{{ node_version_root }}"
 
-- name: Use correct node.js version
-  shell: "{{ node_source_nvm }} && nvm alias default {{ node_version_string }}"
-
 - name: Install npm
-  shell: "{{ node_source_nvm }} && nvm use default && npm install -g npm@{{ node_npm_version }}"
+  shell: "{{ node_source_nvm }} && nvm use '{{ node_version_string }}' && npm install -g npm@{{ node_npm_version }}"
   when: node_npm_version != None
-
-- name: Install yarn
-  shell: "{{ node_source_nvm }} && nvm use default && npm install -g yarn@{{ node_yarn_version }}"
-  when: node_yarn_version != None
 
 - name: Install global modules
   community.general.npm:
