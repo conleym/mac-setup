@@ -1,0 +1,21 @@
+---
+argument_specs:
+  main:
+    short_description: Install VisualVM.
+    description: >-
+      Downloads and installs VisualVM.
+    options:
+      visualvm_force_download:
+        description: >-
+          If True, download VisualVM, even if it's already been downloaded.
+        type: bool
+        default: false
+      visualvm_force_install:
+        description: >-
+          If True, install VisualVM, even if it's already installed.
+        default: false
+      visualvm_version:
+        description: >-
+          The version of VisualVM to install.
+        required: false
+        # See defaults for default version.
