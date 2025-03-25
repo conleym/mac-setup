@@ -16,7 +16,7 @@
     install_from_dmg_image_url: "{{ vlc_dmg_url }}"
     install_from_dmg_image_destination: "{{ downloads }}/VLC.dmg"
     install_from_dmg_force_download: "{{ vlc_force_download }}"
-    install_from_dmg_install: "{{ vlc_force_install }}"
+    install_from_dmg_force_install: "{{ vlc_force_install }}"
 
 # See https://community.jamf.com/t5/jamf-pro/suppressing-quot-enable-metadata-retrieval-quot-prompt-in-vlc/m-p/130327
 # and https://forum.videolan.org/viewtopic.php?t=126302 (linked from above).
