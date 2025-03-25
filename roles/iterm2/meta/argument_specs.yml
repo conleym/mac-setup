@@ -12,8 +12,9 @@ argument_specs:
         default: iTerm2
       iterm2_app_path:
         description: >-
-          Directory where the iTerm2 application should be installed. For example, `/Applications` or 
-          `{{ '~/Applications' | expanduser }}` would be reasonable choices.
+          Directory where the iTerm2 application should be installed.
+          
+          For example, `/Applications` or `{{ '~/Applications' | expanduser }}` would be reasonable choices.
         type: path
         default: /Applications
       iterm2_force_download:
