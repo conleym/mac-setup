@@ -18,6 +18,7 @@
         force: "{{ steamcmd_force_download }}"
         mode: u=rw
 
+    # TODO what if this still exists? Should we wipe it?
     - name: Create steamcmd directory
       file:
         path: "{{ steamcmd_dest_dir }}"
@@ -29,5 +30,6 @@
         src: "{{ downloads }}/steamcmd.tar.gz"
         dest: "{{ steamcmd_dest_dir }}"
 
+    # TODO why does this open the directory in the finder?
     - name: Update steamcmd
       command: "{{ steamcmd_script }} +quit"
