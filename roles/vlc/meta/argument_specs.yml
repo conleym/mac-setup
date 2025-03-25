@@ -1,0 +1,29 @@
+---
+argument_specs:
+  main:
+    short_description: Install VLC.
+    description: >-
+      Downloads, installs, and configures VLC.
+    options:
+      vlc_enable_metadata_retrieval:
+        description: >-
+          Whether to enable metadata retrieval.
+        default: true
+      vlc_enable_automatic_updates:
+        description: >-
+          Whether to enable automatic updates.
+        default: true
+      vlc_force_download:
+        description: >-
+          If True, download VLC, even if it's already been downloaded.
+        type: bool
+        default: false
+      vlc_force_install:
+        description: >-
+          If True, install VLC, even if it's already installed.
+        default: false
+      vlc_version:
+        description: >-
+          The version of VLC to install.
+        required: false
+        # See defaults for default version.
