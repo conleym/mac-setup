@@ -1,0 +1,21 @@
+---
+argument_specs:
+  main:
+    short_description: Install Skim.
+    description: >-
+      Downloads and installs Skim.
+    options:
+      skim_force_download:
+        description: >-
+          If True, download Skim, even if it's already been downloaded.
+        type: bool
+        default: false
+      skim_force_install:
+        description: >-
+          If True, install Skim, even if it's already installed.
+        default: false
+      skim_version:
+        description: >-
+          The version of Skim to install.
+        required: false
+        # See defaults for default version.

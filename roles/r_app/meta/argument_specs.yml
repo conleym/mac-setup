@@ -1,0 +1,21 @@
+---
+argument_specs:
+  main:
+    short_description: Install R.app.
+    description: >-
+      Downloads and installs R.app.
+    options:
+      r_app_force_download:
+        description: >-
+          If True, download R.app, even if it's already been downloaded.
+        type: bool
+        default: false
+      r_app_force_install:
+        description: >-
+          If True, install R.app, even if it's already installed.
+        default: false
+      r_app_version:
+        description: >-
+          The version of R.app to install.
+        required: false
+        # See defaults for default version.

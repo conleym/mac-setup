@@ -15,7 +15,7 @@
 
     - name: Download ngrok
       get_url:
-        url: "https://bin.equinox.io/c/{{ ngrok_hash }}/ngrok-v3-stable-darwin-{{ ngrok_zip_arch }}.zip"
+        url: "https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-darwin-{{ ngrok_zip_arch }}.zip"
         dest: "{{ downloads }}/ngrok.zip"
         force: "{{ ngrok_force_download }}"
         mode: u=rw

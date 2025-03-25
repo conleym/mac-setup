@@ -5,7 +5,7 @@
 #   name is required.
 #   version is optional. If omitted, the default is `latest`.
 ---
-node_global_modules_to_install:
+setup_node_global_modules_to_install:
   aws-cdk:
   aws-cdk-local:
   prettier:

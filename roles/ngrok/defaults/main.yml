@@ -1,5 +1,3 @@
 ---
 ngrok_force_download: false
 ngrok_force_install: false
-# This is a component of the download URL. It used to change frequently. These days, not so much.
-ngrok_hash: "bNyj1mQVY4c"

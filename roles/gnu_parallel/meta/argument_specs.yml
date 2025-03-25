@@ -1,0 +1,8 @@
+---
+argument_specs:
+  main:
+    short_description: Install GNU parallel using MacPorts.
+    description: >-
+      Installs GNU parallel using MacPorts, and silences the citation warning.
+    options:
+

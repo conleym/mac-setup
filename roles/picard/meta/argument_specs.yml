@@ -1,0 +1,21 @@
+---
+argument_specs:
+  main:
+    short_description: Install MusicBrainz Picard.
+    description: >-
+      Downloads and installs MusicBrainz Picard.
+    options:
+      picard_force_download:
+        description: >-
+          If True, download MusicBrainz Picard, even if it's already been downloaded.
+        type: bool
+        default: false
+      picard_force_install:
+        description: >-
+          If True, install MusicBrainz Picard, even if it's already installed.
+        default: false
+      picard_version:
+        description: >-
+          The version of MusicBrainz Picard to install.
+        required: false
+        # See defaults for default version.

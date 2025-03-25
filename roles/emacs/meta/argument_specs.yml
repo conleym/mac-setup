@@ -1,0 +1,30 @@
+---
+argument_specs:
+  main:
+    short_description: Install emacs from source.
+    description: >-
+      Clones the emacs repo (github), then builds and installs the application.
+    options:
+      emacs_bootstrap:
+        description: >-
+          Whether to run the (fairly slow and expensive) bootstrap build step.
+        type: bool
+        default: false
+      emacs_distclean:
+        description: >-
+          Whether to run make distclean before configuring emacs. 
+          
+          Mutually exclusive with emacs_extraclean.
+        type: bool
+        default: false
+      emacs_extraclean:
+        description: >-
+          Whether to run make extraclean before configuring emacs.
+          
+          Mutually exclusive with emacs_distclean.
+        default: true
+      emacs_src_dir:
+        description: >-
+          Destination for the cloned emacs repository.
+        type: path
+        default: ~/src/emacs
