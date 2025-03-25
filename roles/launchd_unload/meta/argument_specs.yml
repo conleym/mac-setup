@@ -1,0 +1,22 @@
+---
+argument_specs:
+  main:
+    short_description: Unload a launchd service.
+    description: >-
+      Unload a service from launchd.
+    options:
+      launchd_unload_become:
+        description: >-
+          Whether to become when unloading.
+        type: boolean
+        default: false
+      launchd_unload_label:
+        description: >-
+          The name of the service (aka, its label).
+        type: str
+        required: true
+      launchd_unload_plist:
+        description: >-
+          The job's plist.
+        type: path
+        required: true

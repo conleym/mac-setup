@@ -1,12 +1,14 @@
 # Ensure a launchd job is unloaded.
+#
+# Not sure this role still works. Need to test.
 ---
 - name: Check for job
-  command: "launchctl list {{ launchd_label }}"
-  become: "{{ launchd_unload_become | default(True) }}"
+  command: "launchctl list {{ launchd_unload_label }}"
+  become: "{{ launchd_unload_become }}"
   register: launchctl_check_result
   ignore_errors: true
 
 - name: Unload job
-  command: "launchctl unload -w {{ launchd_plist }}"
-  become: "{{ launchd_unload_become | default(True) }}"
+  command: "launchctl unload -w {{ launchd_unload_plist }}"
+  become: "{{ launchd_unload_become }}"
   when: launchctl_check_result.rc != 0
