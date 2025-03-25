@@ -1,0 +1,21 @@
+---
+argument_specs:
+  main:
+    short_description: Install doppler.
+    description: >-
+      Downloads and installs doppler.
+    options:
+      doppler_binary_directory:
+        description: >-
+          Directory to which the doppler binary will be installed.
+        type: path
+        default: ~/bin
+      doppler_force_download:
+        description: >-
+          If True, download doppler, even if it's already been downloaded.
+        type: bool
+        default: false
+      doppler_force_install:
+        description: >-
+          If True, install doppler, even if it's already installed.
+        default: false

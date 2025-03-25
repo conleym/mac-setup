@@ -2,3 +2,4 @@
 terraform_version: "1.11.2"
 terraform_force_download: false
 terraform_force_install: false
+terraform_binary_directory: /usr/local/bin

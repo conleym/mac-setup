@@ -1,9 +1,5 @@
 ---
-# Whether to run the (fairly slow and expensive) bootstrap build step.
 emacs_bootstrap: false
-# Whether to run make distclean before configuring emacs. Mutually exclusive with extraclean.
 emacs_distclean: false
-# Whether to run make extraclean before configuring emacs. Mutually exclusive with distclean.
 emacs_extraclean: true
-# Directory where emacs source lives.
 emacs_src_dir: "{{ '~/src/emacs' | expanduser }}"

@@ -1,0 +1,7 @@
+---
+- set_fact:
+    node_default_version_string: "v{{ node_default_version_node_version }}"
+
+# node_source_nvm is set by the node role, on which this role depends.
+- name: Set default node.js version
+  shell: "{{ node_source_nvm }} && nvm alias default {{ node_default_version_string }}"

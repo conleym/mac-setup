@@ -3,6 +3,9 @@
     path: /usr/local/bin/aws
   register: throwaway
 
+- set_fact:
+    aws_cli_package_name: AWSCLIV2.pkg
+
 - name: Download AWS CLI installer
   get_url:
     url: "https://awscli.amazonaws.com/{{ aws_cli_package_name }}"

@@ -1,0 +1,16 @@
+---
+argument_specs:
+  main:
+    short_description: Install MacTeX.
+    description: >-
+      Downloads and installs MacTeX.
+    options:
+      mactex_force_download:
+        description: >-
+          If True, download MacTeX, even if it's already been downloaded.
+        type: bool
+        default: false
+      mactex_force_install:
+        description: >-
+          If True, install MacTeX, even if it's already installed.
+        default: false

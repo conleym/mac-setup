@@ -1,0 +1,32 @@
+---
+argument_specs:
+  main:
+    short_description: Install node using nvm.
+    description: >-
+      Downloads and installs nvm and uses it to install a specific node version.
+    options:
+      node_global_modules_to_install:
+        description: >-
+          A dict of with required `name` and optional `version` keys. The `name` is the name of the npm module to
+          install. The `version` is the specific version.
+          
+          If `version` is omitted, the latest version is installed.
+        type: dict
+        default: {}
+      node_npm_version:
+        description: >-
+          The version of npm to install.
+
+          The special string `latest` will install the latest version.
+          
+          If omitted (i.e., None), no version is installed (i.e., the version that comes with node will be used). This
+          is the default behavior.
+        type: str
+        # Default is None, but this makes validation explode.
+      node_version:
+        description: >-
+          The node version to install. Must be supported by nvm.
+          
+          Do not include the leading `v`. E.g., to install node version v20.0.0, pass "20.0.0".
+        type: str
+        required: true

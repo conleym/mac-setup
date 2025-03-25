@@ -1,0 +1,33 @@
+---
+argument_specs:
+  main:
+    short_description: Install xACT.
+    description: >-
+      Downloads and installs xACT.
+    options:
+      xact_app_name:
+        description: >-
+          Name of the xACT application
+        type: str
+        default: xACT
+      xact_app_path:
+        description: >-
+          Directory where the xACT application should be installed.
+
+          For example, `/Applications` or `{{ '~/Applications' | expanduser }}` would be reasonable choices.
+        type: path
+        default: /Applications
+      xact_force_download:
+        description: >-
+          If True, download xACT, even if it's already been downloaded.
+        type: bool
+        default: false
+      xact_force_install:
+        description: >-
+          If True, install xACT, even if it's already installed.
+        default: false
+      xact_version:
+        description: >-
+          The version of xACT to install.
+        required: false
+        # See defaults for default version.
