@@ -1,12 +1,14 @@
 # Load a launchd plist if it's not already loaded.
+#
+# Not sure this works anymore. See, e.g., https://www.reddit.com/r/MacOS/comments/kbko61/launchctl_broken/
 ---
 - name: Check for job
   command: "launchctl list {{ launchd_load_label }}"
-  become: "{{ launchd_load_become | default(True) }}"
+  become: "{{ launchd_load_become }}"
   register: throwaway
   ignore_errors: true
 
 - name: Load job
   command: "launchctl load -w {{ launchd_load_plist }}"
-  become: "{{ launchd_load_become | default(True) }}"
+  become: "{{ launchd_load_become }}"
   when: throwaway.rc != 0
