@@ -1,0 +1,20 @@
+---
+argument_specs:
+  main:
+    short_description: Install steamcmd.
+    description: >-
+      Downloads and installs steamcmd.
+    options:
+      steamcmd_dest_dir:
+        description: >-
+          Directory to which steamcmd will be installed.
+        default: true
+      steamcmd_force_download:
+        description: >-
+          If True, download steamcmd, even if it's already been downloaded.
+        type: bool
+        default: false
+      steamcmd_force_install:
+        description: >-
+          If True, install steamcmd, even if it's already installed.
+        default: false
