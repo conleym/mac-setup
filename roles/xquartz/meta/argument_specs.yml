@@ -1,0 +1,21 @@
+---
+argument_specs:
+  main:
+    short_description: Install XQuartz.
+    description: >-
+      Downloads and installs XQuartz.
+    options:
+      xquartz_force_download:
+        description: >-
+          If True, download XQuartz, even if it's already been downloaded.
+        type: bool
+        default: false
+      xquartz_force_install:
+        description: >-
+          If True, install XQuartz, even if it's already installed.
+        default: false
+      xquartz_version:
+        description: >-
+          The version of XQuartz to install.
+        required: false
+        # See defaults for default version.
