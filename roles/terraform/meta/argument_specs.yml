@@ -1,0 +1,26 @@
+---
+argument_specs:
+  main:
+    short_description: Install terraform.
+    description: >-
+      Downloads and installs terraform.
+    options:
+      terraform_binary_directory:
+        description: >-
+          Directory to which the terraform binary will be installed.
+        type: path
+        default: /usr/local/bin
+      terraform_force_download:
+        description: >-
+          If True, download terraform, even if it's already been downloaded.
+        type: bool
+        default: false
+      terraform_force_install:
+        description: >-
+          If True, install terraform, even if it's already installed.
+        default: false
+      terraform_version:
+        description: >-
+          The version of terraform to install.
+        required: false
+        # See defaults for default version.
