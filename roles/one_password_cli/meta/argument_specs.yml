@@ -1,0 +1,29 @@
+---
+argument_specs:
+  main:
+    short_description: Install the 1Password CLI.
+    description: >-
+      Downloads and installs the 1Password CLI.
+    options:
+      one_password_cli_binary_directory:
+        description: >-
+          Directory to which the op binary will be installed.
+        type: path
+        default: /usr/local/bin
+      one_password_cli_force_download:
+        description: >-
+          If True, download the 1Password CLI, even if it's already been downloaded.
+        type: bool
+        required: false
+      one_password_cli_force_install:
+        description: >-
+          If True, install the 1Password CLI, even if it's already been installed.
+        type: bool
+        required: false
+      one_password_cli_verify_gpg_signature:
+        description: >-
+          If True, verify the downloaded binary's GPG signature.
+          
+          Defaults to false, because gpg can be quite flaky.
+        required: false
+        default: false
