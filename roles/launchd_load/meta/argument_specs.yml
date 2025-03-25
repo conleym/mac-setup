@@ -1,0 +1,22 @@
+---
+argument_specs:
+  main:
+    short_description: Load a launchd service.
+    description: >-
+      Load a service into launchd.
+    options:
+      launchd_load_become:
+        description: >-
+          Whether to become when loading.
+        type: boolean
+        default: false
+      launchd_load_label:
+        description: >-
+          The name of the service (aka, its label).
+        type: str
+        required: true
+      launchd_load_plist:
+        description: >-
+          The job's plist.
+        type: path
+        required: true
