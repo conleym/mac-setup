@@ -1,0 +1,29 @@
+---
+argument_specs:
+  main:
+    short_description: Install Postman.
+    description: >-
+      Downloads and installs Postman.
+    options:
+      postman_app_name:
+        description: >-
+          Name of the Postman application
+        type: str
+        default: Postman
+      postman_app_path:
+        description: >-
+          Directory where the Postman application should be installed.
+
+          For example, `/Applications` or `{{ '~/Applications' | expanduser }}` would be reasonable choices.
+        type: path
+        default: /Applications
+      postman_force_download:
+        description: >-
+          If True, download Postman, even if it's already been downloaded.
+        type: bool
+        default: false
+      postman_force_install:
+        description: >-
+          If True, install Postman, even if it's already installed.
+        default: false
+
