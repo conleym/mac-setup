@@ -1,0 +1,2 @@
+---
+nvm_home: "{{ '~/.nvm' | expanduser }}"

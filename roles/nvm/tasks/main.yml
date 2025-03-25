@@ -1,0 +1,6 @@
+# Install nvm.
+---
+- name: Clone nvm
+  git:
+    repo: https://github.com/nvm-sh/nvm
+    dest: "{{ nvm_home }}"

@@ -1,0 +1,15 @@
+---
+argument_specs:
+  main:
+    short_description: Install nvm.
+    description: >-
+      Clones nvm from github.
+    options:
+      nvm_home:
+        description: >-
+          Directory into which nvm will be cloned.
+          
+          Once nvm is installed, you should adjust your dotfiles to add `source {{ nvm_home }}/nvm.sh` and, optionally
+          (if you want shell completion) `source {{ nvm_home }}/bash_completion`.
+        type: path
+        default: ~/.nvm

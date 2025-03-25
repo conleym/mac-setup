@@ -4,16 +4,10 @@
 # This installs nvm by cloning its GitHub repository. It then uses nvm to install the requested node version.
 ---
 - set_fact:
-    node_nvm_home: "{{ '~/.nvm' | expanduser }}"
     node_version_string: "{{ 'v' + node_version }}"
-    node_source_nvm: "source {{ '~/.nvm/nvm.sh' | expanduser }}"
+    node_source_nvm: "source {{ nvm_home }}/nvm.sh"
 - set_fact:
     node_version_root: "{{ node_nvm_home + '/versions/node/' + node_version_string }}"
-
-- name: Clone nvm
-  git:
-    repo: https://github.com/nvm-sh/nvm
-    dest: "{{ node_nvm_home }}"
 
 - name: Install node.js
   shell: "{{ node_source_nvm }} && nvm install {{ node_version_string }}"

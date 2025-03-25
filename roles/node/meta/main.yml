@@ -1,0 +1,5 @@
+---
+dependencies:
+  - role: nvm
+    vars:
+      nvm_home: "{{ node_nvm_home | default(omit) }}"

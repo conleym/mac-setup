@@ -10,7 +10,19 @@ argument_specs:
           A dict of with required `name` and optional `version` keys. The `name` is the name of the npm module to
           install. The `version` is the specific version.
           
-          If `version` is omitted, the latest version is installed.
+          If `version` is omitted, the default is the special string `latest`, which will install the latest version.
+          
+          For example, the following would install the latest version of `foo` and `bar, and would install version
+          `1.0.0` of `quux`: 
+          
+          ```
+            node_global_modules_to_install: 
+              - name: foo
+              - name: bar
+                version: "latest"
+              - name: quux
+                version: "1.0.0"
+          ```
         type: dict
         default: {}
       node_npm_version:
@@ -30,3 +42,10 @@ argument_specs:
           Do not include the leading `v`. E.g., to install node version v20.0.0, pass "20.0.0".
         type: str
         required: true
+      node_nvm_home:
+        description: >-
+          The directory into which nvm should be cloned.
+          
+          If not provided, this defers to the `nvm` role's defaults.
+        type: str
+        required: false
