@@ -1,3 +1,4 @@
 ---
+ngrok_binary_directory: "/usr/local/bin"
 ngrok_force_download: false
 ngrok_force_install: false
