@@ -5,6 +5,11 @@ argument_specs:
     description: >-
       Downloads and installs ngrok.
     options:
+      ngrok_binary_directory:
+        description: >-
+          Directory to which the ngrok binary will be installed.
+        type: path
+        default: /usr/local/bin
       ngrok_force_download:
         description: >-
           If True, download ngrok, even if it's already been downloaded.

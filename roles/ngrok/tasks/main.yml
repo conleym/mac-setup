@@ -26,5 +26,5 @@
         src: "{{ downloads }}/ngrok.zip"
 
     - name: Install ngrok
-      command: "mv {{ downloads }}/ngrok /usr/local/bin"
+      command: "mv {{ downloads }}/ngrok {{ ngrok_binary_directory }}/"
       become: true
