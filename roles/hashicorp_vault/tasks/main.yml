@@ -1,0 +1,25 @@
+# Install vault
+#  https://www.vaultproject.io/
+---
+- stat:
+    path: "{{ hashicorp_vault_binary_directory }}/vault"
+  register: throwaway
+  when: not hashicorp_vault_force_install
+
+- when: hashicorp_vault_force_install or not throwaway.stat.exists
+  block:
+    - set_fact:
+        hashicorp_vault_arch: "{{ 'amd64' if (ansible_machine == 'x86_64') else ansible_machine }}"
+    - name: Download vault
+      get_url:
+        url: "https://releases.hashicorp.com/vault/{{ hashicorp_vault_version }}/vault_{{ hashicorp_vault_version }}_darwin_{{ hashicorp_vault_arch }}.zip"
+        dest: "{{ downloads }}/vault.zip"
+        checksum: "sha256:https://releases.hashicorp.com/vault/{{ hashicorp_vault_version }}/vault_{{ hashicorp_vault_version }}_SHA256SUMS"
+        force: "{{ hashicorp_vault_force_download }}"
+        mode: u=rw
+
+    - name: Install vault
+      unarchive:
+        src: "{{ downloads }}/vault.zip"
+        dest: "{{ hashicorp_vault_binary_directory }}"
+      become: true
