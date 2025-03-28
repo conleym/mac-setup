@@ -13,7 +13,7 @@
 
 - name: Install Terraform
   include_role:
-    name: terraform
+    name: hashicorp_terraform
 
 - name: Install steamcmd
   include_role:

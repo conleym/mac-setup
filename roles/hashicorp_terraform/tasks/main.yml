@@ -1,0 +1,25 @@
+# Install terraform
+#  https://www.terraform.io/
+---
+- stat:
+    path: "{{ hashicorp_terraform_binary_directory }}/terraform"
+  register: throwaway
+  when: not hashicorp_terraform_force_install
+
+- when: hashicorp_terraform_force_install or not throwaway.stat.exists
+  block:
+    - set_fact:
+        hashicorp_terraform_arch: "{{ 'amd64' if (ansible_machine == 'x86_64') else ansible_machine }}"
+    - name: Download terraform
+      get_url:
+        url: "https://releases.hashicorp.com/terraform/{{ hashicorp_terraform_version }}/terraform_{{ hashicorp_terraform_version }}_darwin_{{ hashicorp_terraform_arch }}.zip"
+        dest: "{{ downloads }}/terraform.zip"
+        checksum: "sha256:https://releases.hashicorp.com/terraform/{{ hashicorp_terraform_version }}/terraform_{{ hashicorp_terraform_version }}_SHA256SUMS"
+        force: "{{ hashicorp_terraform_force_download }}"
+        mode: u=rw
+
+    - name: Install terraform
+      unarchive:
+        src: "{{ downloads }}/terraform.zip"
+        dest: "{{ hashicorp_terraform_binary_directory }}"
+      become: true
