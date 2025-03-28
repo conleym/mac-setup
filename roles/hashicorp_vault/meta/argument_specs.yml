@@ -1,0 +1,26 @@
+---
+argument_specs:
+  main:
+    short_description: Install vault.
+    description: >-
+      Downloads and installs vault.
+    options:
+      hashicorp_terraform_binary_directory:
+        description: >-
+          Directory to which the vault binary will be installed.
+        type: path
+        default: /usr/local/bin
+      hashicorp_vault_force_download:
+        description: >-
+          If True, download vault, even if it's already been downloaded.
+        type: bool
+        default: false
+      hashicorp_vault_force_install:
+        description: >-
+          If True, install vault, even if it's already installed.
+        default: false
+      hashicorp_vault_version:
+        description: >-
+          The version of vault to install.
+        required: false
+        # See defaults for default version.
