@@ -61,10 +61,6 @@ ports_to_install:
     wget: +gnutls
     zsh:
     zsh-completions:
-# ffmpeg +gpl3 will try to install samba3, which is obsolete, and fails on newer systems, without this.
-# See https://trac.macports.org/ticket/70753
-    samba4:
-    ffmpeg: +nonfree +x11 +gpl3
     redis:
 
 # Mapping of port group to specific implementation to select.
