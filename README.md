@@ -48,7 +48,7 @@ python3 seems to be unable to verify ssl certificates without the full app).
     - **dotfiles**:  Clone my [dotfiles](https://github.com/conleym/dotfiles) and
      [emacs config](https://github.com/conleym/dot-emacs).
 
-    - **emacs**:     Clone emacs from github, build, and install.
+    - **emacs**:     Clone emacs from GitHub, build, and install.
       Clones my [emacs config](https://github.com/conleym/dot-emacs).
 
     - **fonts**:     Install fonts (see `vars/fonts.yml`).
