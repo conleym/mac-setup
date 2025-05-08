@@ -1,0 +1,20 @@
+# Install IINA, the media player.
+#   https://iina.io/
+#   https://github.com/iina/iina
+#
+# Better than VLC in many cases, not least because it's specifically made for macOS.
+# For example, it understands and correctly applies color profiles. See
+# https://www.reddit.com/r/MacOS/comments/1kh40y1/iina_and_vlc_differences/
+---
+- set_fact:
+    iina_dmg_url: "https://dl-portal.iina.io/IINA.v{{ iina_version }}.dmg"
+
+- name: Download and install IINA
+  include_role:
+    name: install_from_dmg
+  vars:
+    install_from_dmg_app_name: "IINA"
+    install_from_dmg_image_url: "{{ iina_dmg_url }}"
+    install_from_dmg_image_destination: "{{ downloads }}/IINA.dmg"
+    install_from_dmg_force_download: "{{ iina_force_download }}"
+    install_from_dmg_force_install: "{{ iina_force_install }}"
