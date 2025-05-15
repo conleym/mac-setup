@@ -1,0 +1,11 @@
+# Install Discord
+---
+- name: Download and install Discord
+  include_role:
+    name: install_from_dmg
+  vars:
+    install_from_dmg_app_name: "Discord"
+    install_from_dmg_image_url: "https://discord.com/api/download?platform=osx"
+    install_from_dmg_image_destination: "{{ downloads }}/Discord.dmg"
+    install_from_dmg_force_download: "{{ discord_force_download }}"
+    install_from_dmg_force_install: "{{ discord_force_install }}"
