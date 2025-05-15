@@ -1,0 +1,17 @@
+---
+argument_specs:
+  main:
+    short_description: Install Discord.
+    description: >-
+      Installs the Discord app.
+    options:
+      discord_force_download:
+        description: >-
+          If True, download Discord, even if it's already been downloaded.
+        type: bool
+        default: false
+      discord_force_install:
+        description: >-
+          If True, install Discord, even if it's already been installed.
+        type: bool
+        default: false
