@@ -1,0 +1,5 @@
+---
+zoom_force_download: false
+zoom_force_install: false
+# In the about screen, this is rendered as 6.4.6 (53970).
+zoom_version: "6.4.6.53970"
