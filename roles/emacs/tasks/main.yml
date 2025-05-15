@@ -50,10 +50,10 @@
 
 # From a handy tip here
 # https://www.reddit.com/r/emacs/comments/bclyyc/building_emacs_from_source_on_macos/
-- name: Make emacs standalone
-  command: /usr/bin/python3 -m macholib standalone nextstep/Emacs.app
-  args:
-    chdir: "{{ emacs_src_dir }}"
+#- name: Make emacs standalone
+#  command: /usr/bin/python3 -m macholib standalone nextstep/Emacs.app
+#  args:
+#    chdir: "{{ emacs_src_dir }}"
 
 - name: Copy emacs to /Applications
   command: cp -af nextstep/Emacs.app /Applications/
