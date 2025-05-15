@@ -1,0 +1,23 @@
+# Install the R app.
+#  https://www.r-project.org/
+---
+- stat:
+    path: /Applications/zoom.us.app
+  register: throwaway
+  when: not zoom_force_install
+
+- set_fact:
+    zoom_pkg_arch: "{{ '' if (ansible_machine == 'x86_64') else '?archType=arm64' }}"
+
+- when: zoom_force_install or not (throwaway.stat.isdir is defined and throwaway.stat.isdir)
+  block:
+    - name: Download Zoom package
+      get_url:
+        url: "https://www.zoom.us/client/{{ zoom_version }}/zoomusInstallerFull.pkg{{ zoom_pkg_arch }}"
+        dest: "{{ downloads }}/Zoom.pkg"
+        force: "{{ zoom_force_download }}"
+        mode: u=rw
+
+    - name: Install Zoom
+      command: "installer -pkg {{ downloads }}/Zoom.pkg -target /"
+      become: true
