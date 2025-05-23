@@ -5,16 +5,16 @@ argument_specs:
     description: >-
       Downloads and installs Mozilla VPN.
     options:
-      r_app_force_download:
+      mozilla_vpn_force_download:
         description: >-
           If True, download Mozilla VPN, even if it's already been downloaded.
         type: bool
         default: false
-      r_app_force_install:
+      mozilla_vpn_force_install:
         description: >-
           If True, install Mozilla VPN, even if it's already installed.
         default: false
-      r_app_version:
+      mozilla_vpn_version:
         description: >-
           The version of Mozilla VPN to install.
         required: false
