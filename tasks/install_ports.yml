@@ -26,12 +26,6 @@
 
 # Install separately, since some ports require it, or at least look for it, causing prompts.
 
-- name: Install OpenJDK 17
-  macports:
-    name: openjdk17
-    state: present
-  become: true
-
 - name: Install OpenJDK 21
   macports:
     name: openjdk21
