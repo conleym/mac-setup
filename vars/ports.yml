@@ -43,7 +43,7 @@ ports_to_install:
     multimarkdown:
     maven3:
     poppler:
-    postgresql16:
+    postgresql17:
     pstree:
     ripgrep:
     shellcheck:
