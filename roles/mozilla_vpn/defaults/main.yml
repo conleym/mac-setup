@@ -1,0 +1,4 @@
+---
+mozilla_vpn_version: "2.27.0"
+mozilla_vpn_force_download: false
+mozilla_vpn_force_install: false

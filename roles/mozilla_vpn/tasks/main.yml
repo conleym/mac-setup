@@ -1,0 +1,20 @@
+# Install Mozilla VPN.
+#  https://www.mozilla.org/en-US/products/vpn/download/
+---
+- stat:
+    path: /Applications/Mozilla VPN.app
+  register: throwaway
+  when: not mozilla_vpn_force_install
+
+- when: mozilla_vpn_force_install or not (throwaway.stat.isdir is defined and throwaway.stat.isdir)
+  block:
+    - name: Download Mozilla VPN package
+      get_url:
+        url: "https://archive.mozilla.org/pub/vpn/releases/{{ mozilla_vpn_version }}/mac/MozillaVPN.pkg"
+        dest: "{{ downloads }}/MozillaVPN.pkg"
+        force: "{{ mozilla_vpn_force_install }}"
+        mode: u=rw
+
+    - name: Install Mozilla VPN
+      command: "installer -pkg {{ downloads }}/MozillaVPN.pkg -target /"
+      become: true
