@@ -1,0 +1,21 @@
+---
+argument_specs:
+  main:
+    short_description: Install Proton VPN.
+    description: >-
+      Downloads and installs Proton VPN.
+    options:
+      proton_vpn_force_download:
+        description: >-
+          If True, download Proton VPN, even if it's already been downloaded.
+        type: bool
+        default: false
+      proton_vpn_force_install:
+        description: >-
+          If True, install Proton VPN, even if it's already installed.
+        default: false
+      proton_vpn_version:
+        description: >-
+          The version of Proton VPN to install.
+        required: false
+        # See defaults for default version.
