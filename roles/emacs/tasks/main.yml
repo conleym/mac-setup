@@ -48,6 +48,7 @@
     state: directory
     mode: u=rwx,g=rx,o=rx
 
+# TODO this no longer seems to work on 15.5/arm. It breaks code signing, and the app won't start.
 # From a handy tip here
 # https://www.reddit.com/r/emacs/comments/bclyyc/building_emacs_from_source_on_macos/
 #- name: Make emacs standalone
