@@ -55,6 +55,10 @@
   include_role:
     name: visualvm
 
+- name: Install Discord
+  include_role:
+    name: discord
+
 - name: Download and install app from disk images
   include_role:
     name: install_from_dmg

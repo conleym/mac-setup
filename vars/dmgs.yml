@@ -15,9 +15,6 @@ dmgs_to_download_and_install:
   - app_name: Minecraft
     dmg_url: https://launcher.mojang.com/download/Minecraft.dmg
 
-  - app_name: Discord
-    dmg_url: https://discordapp.com/api/download?platform=osx
-
 # The app has prompts and junk, so it's unsuitable for anything but interactive use.
 #  - app_name: Dropbox
 #    dmg_url: https://www.dropbox.com/download?plat=mac
