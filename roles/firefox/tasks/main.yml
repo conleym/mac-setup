@@ -1,0 +1,12 @@
+# Install Firefox.
+#  https://www.mozilla.org/en-US/firefox/new/
+---
+- name: Download and install Firefox
+  include_role:
+    name: install_from_dmg
+  vars:
+    install_from_dmg_app_name: "Firefox"
+    install_from_dmg_image_url: "https://download.mozilla.org/?product=firefox-latest-ssl&os=osx&lang=en-US"
+    install_from_dmg_image_destination: "{{ downloads }}/Firefox.dmg"
+    install_from_dmg_force_download: "{{ firefox_force_download }}"
+    install_from_dmg_force_install: "{{ firefox_force_install }}"
