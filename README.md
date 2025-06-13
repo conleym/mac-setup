@@ -79,6 +79,20 @@ python3 seems to be unable to verify ssl certificates without the full app).
 1. [JetBrains Mono](https://www.jetbrains.com/lp/mono/)
 1. [DejaVu](https://dejavu-fonts.github.io/)
 
+## Virtual environment
+
+Our setup uses a python [virtual environment](https://docs.python.org/3/library/venv.html), created when you run
+`init.sh`. The python executable, libraries, etc., are _copied_ into this environment, protecting us against changes to
+the original files (e.g., if we upgrade the macports python version, we risk breaking symlinks in a linked virtual
+environment, whereas copies will continue to function).
+
+Each run of `init.sh` will try to create this virtual environment if it does not already exist. This is determined by
+checking for an executable `pip3` in the virtual environment's `bin` directory.
+
+You can pass the `-u|--upgrade-venv` option to this script. If the version of python in use is newer than that used to
+create the virtual environment, the virtual environment will be upgraded to use the newer python version. Note that
+this fails with a (harmless) error if the virtual environment's python executable is the same as the python executable
+on the path.
 
 ## Python versions
 
@@ -96,8 +110,8 @@ steps to get properly set up is
 
 1. Run `init.sh` to install ansible for the default (`3.9`) python.
 1. Run `bootstrap.sh` to bootstrap using this installation. This installs a newer python version.
-1. Remove (or rename) the `3.9` virtual environment in `.virtualenv`.
-1. Run `init.sh` again to recreate the virtual environment with the newer python version.
+1. (Optional) Remove (or rename for backup purposes) the `3.9` virtual environment in `.virtualenv`.
+1. Run `init.sh -u` to recreate the virtual environment with the newer python version.
 1. (Optional) install the development dependencies by running `dev-init.sh`.
 1. Run `setup.sh` as needed. This will now use the newer python virtual environment.
 
@@ -107,8 +121,8 @@ To upgrade python:
 
 1. First, change the version installed in the bootstrap ports. 
 1. Run `bootstrap.sh` to install this version. 
-1. Remove (or rename) the old virtual environment in `.virtualenv`.
-1. Run `init.sh` to create a new virtual environment using the new python version.
+1. (Optional) Remove (or rename for backup purposes) the old virtual environment in `.virtualenv`.
+1. Run `init.sh -u` to create a new virtual environment using the new python version.
 1. After verifying that things work with the new python version, optionally remove the old version.
 
 
