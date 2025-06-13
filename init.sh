@@ -22,7 +22,7 @@ PIP="$(_ansible_pip_ "${DIR}")"
 GALAXY="$(_ansible_galaxy_ "${DIR}")"
 
 # Create the virtual environment. This will use whatever version of python is on the path.
-python3 -m venv "${VENV}"
+python3 -m venv --copies --upgrade "${VENV}"
 
 # Install the latest version of pip. Some older versions won't download cryptography wheels for some reason, causing
 # the ansible install to fail.
