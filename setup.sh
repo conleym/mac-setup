@@ -11,10 +11,12 @@ DIR="$( cd "$( dirname "${SCRIPT}" )" >/dev/null 2>&1 && pwd )"
 export PATH=/opt/local/bin:/opt/local/sbin:"${PATH}"
 
 source "${DIR}/common.sh"
-PLAYBOOK="$(_ansible_playbook_ "${DIR}")"
+ANSIBLE_PLAYBOOK="$(_ansible_playbook_ "${DIR}")"
+ANSIBLE_HOME="$(_ansible_home_ "${DIR}")"
+export ANSIBLE_HOME
 
 # Run the setup playbook with any provided arguments.
-"${PLAYBOOK}" "${DIR}"/setup-playbook.yml "$@"
+"${ANSIBLE_PLAYBOOK}" "${DIR}"/setup-playbook.yml "$@"
 
 
 # Local Variables:

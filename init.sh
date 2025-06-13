@@ -24,6 +24,9 @@ VENV="$(_ansible_venv_ "${DIR}")"
 PIP="$(_ansible_pip_ "${DIR}")"
 GALAXY="$(_ansible_galaxy_ "${DIR}")"
 
+ANSIBLE_HOME="$(_ansible_home "${DIR}")"
+export ANSIBLE_HOME
+
 if [[ ! -e "${PIP}" ]]; then
   # Create the virtual environment. This will use whatever version of python is on the path, and will copy
   # that python and its libraries into the virtualenv rather than linking them.
