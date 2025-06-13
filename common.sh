@@ -30,3 +30,17 @@ function _ansible_home_() {
 
     echo "${script_dir}/.ansible"
 }
+
+function _run_ansible_playbook_() {
+    local script_dir="${1}"
+    local playbook="${2}"
+    shift 2 || return 1
+
+    local cmd
+    cmd="$(_ansible_playbook_ "${script_dir}")"
+
+    ANSIBLE_HOME="$(_ansible_home_ "${script_dir}")"
+    export ANSIBLE_HOME
+
+    "${cmd}" "${script_dir}/${playbook}" "$@"
+}
