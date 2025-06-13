@@ -6,22 +6,23 @@ function _ansible_venv_() {
   echo "${script_dir}/.virtualenv"
 }
 
+function _ansible_venv_exe_() {
+    local executable="${1}"
+    local script_dir="${2}"
+    shift || return 2
+    echo "$(_ansible_venv_ "${script_dir}")"/bin/"${executable}"
+}
+
 function _ansible_pip_() {
-    local script_dir="${1}"
-    shift || return 1
-    echo "$(_ansible_venv_ "${script_dir}")"/bin/pip3
+    _ansible_venv_exe_ pip3 "$@"
 }
 
 function _ansible_galaxy_() {
-    local script_dir="${1}"
-    shift || return 1
-    echo "$(_ansible_venv_ "${script_dir}")"/bin/ansible-galaxy
+    _ansible_venv_exe_ ansible-galaxy "$@"
 }
 
 function _ansible_playbook_() {
-    local script_dir="${1}"
-    shift || return 1
-    echo "$(_ansible_venv_ "${script_dir}")"/bin/ansible-playbook
+    _ansible_venv_exe_ ansible-playbook "$@"
 }
 
 function _ansible_home_() {
