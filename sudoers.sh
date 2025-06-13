@@ -7,10 +7,12 @@ SCRIPT="${(%):-%x}"
 DIR="$( cd "$( dirname "${SCRIPT}" )" >/dev/null 2>&1 && pwd )"
 
 source "${DIR}/common.sh"
-PLAYBOOK="$(_ansible_playbook_ "${DIR}")"
+ANSIBLE_PLAYBOOK="$(_ansible_playbook_ "${DIR}")"
+ANSIBLE_HOME="$(_ansible_home "${DIR}")"
+export ANSIBLE_HOME
 
 # Run the sudoers playbook with any provided arguments.
-"${PLAYBOOK}" "${DIR}"/sudoers-playbook.yml "$@"
+"${ANSIBLE_PLAYBOOK}" "${DIR}"/sudoers-playbook.yml "$@"
 
 
 # Local Variables:

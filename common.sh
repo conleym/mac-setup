@@ -23,3 +23,10 @@ function _ansible_playbook_() {
     shift || return 1
     echo "$(_ansible_venv_ "${script_dir}")"/bin/ansible-playbook
 }
+
+function _ansible_home_() {
+    local script_dir="${1}"
+    shift || return 1
+
+    echo "${script_dir}/.ansible"
+}
