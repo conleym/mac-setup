@@ -5,6 +5,12 @@
     dest: "{{ emacs_src_dir }}"
     force: false # discard build-aux/config.{sub,guess}
 
+- name: Run make distclean
+  command: /opt/local/bin/gmake distclean
+  args:
+    chdir: "{{ emacs_src_dir }}"
+  when: not emacs_extraclean and emacs_distclean
+
 - name: Run make extraclean
   command: /opt/local/bin/gmake extraclean
   args:
