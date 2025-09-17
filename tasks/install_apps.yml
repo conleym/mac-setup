@@ -59,6 +59,10 @@
   include_role:
     name: discord
 
+- name: Install Firefox
+  include_role:
+    name: firefox
+
 - name: Download and install app from disk images
   include_role:
     name: install_from_dmg
