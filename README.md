@@ -1,6 +1,6 @@
 # Ansible macOS setup
 
-Tested on Monterey/Intel. Requires python3.
+Tested on Sequoia. Requires python3.
 
 
 ## Prerequisites
