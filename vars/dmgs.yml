@@ -1,8 +1,5 @@
 ---
 dmgs_to_download_and_install:
-  - app_name: Google Chrome
-    dmg_url: https://dl.google.com/chrome/mac/stable/CHFA/googlechrome.dmg
-
   - app_name: Jetbrains Toolbox
     dmg_url: https://data.services.jetbrains.com/products/download?platform=mac&code=TBA
 

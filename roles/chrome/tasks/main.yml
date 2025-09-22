@@ -1,0 +1,12 @@
+# Install Chrome.
+#  https://www.mozilla.org/en-US/firefox/new/
+---
+- name: Download and install Chrome
+  include_role:
+    name: install_from_dmg
+  vars:
+    install_from_dmg_app_name: "Google Chrome"
+    install_from_dmg_image_url: "https://dl.google.com/chrome/mac/universal/stable/GGRO/googlechrome.dmg"
+    install_from_dmg_image_destination: "{{ downloads }}/Chrome.dmg"
+    install_from_dmg_force_download: "{{ chrome_force_download }}"
+    install_from_dmg_force_install: "{{ chrome_force_install }}"
