@@ -5,7 +5,7 @@ Tested on Sequoia. Requires python3.
 
 ## Prerequisites
 
-Install XCode. (The command line tools are insufficient. 
+Install Xcode. (The command line tools are insufficient. 
 python3 seems to be unable to verify ssl certificates without the full app).
 
 
