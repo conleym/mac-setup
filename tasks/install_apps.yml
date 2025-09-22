@@ -63,6 +63,10 @@
   include_role:
     name: firefox
 
+- name: Install Chrome
+  include_role:
+    name: chrome
+
 - name: Download and install app from disk images
   include_role:
     name: install_from_dmg
