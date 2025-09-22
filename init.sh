@@ -17,7 +17,7 @@ fi
 
 # Install the latest version of pip. Some older versions won't download cryptography wheels for some reason, causing
 # the ansible install to fail.
-pip3 install --user --upgrade pip
+pip3 install --user --upgrade pip --no-warn-script-location
 
 # Install ansible and python requirements needed by tasks used in these playbooks.
 pip3 install --user --upgrade -r "${DIR}"/requirements.txt --no-warn-script-location
