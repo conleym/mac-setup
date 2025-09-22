@@ -15,15 +15,24 @@ if ! xcodebuild -checkFirstLaunchStatus; then
   echo "Done."
 fi
 
+source "${DIR}/common.sh"
+
+VENV="$(_ansible_venv_ "${DIR}")"
+PIP="$(_ansible_pip_ "${DIR}")"
+GALAXY="$(_ansible_galaxy_ "${DIR}")"
+
+# Create the virtual environment. This will use whatever version of python is on the path.
+python3 -m venv "${VENV}"
+
 # Install the latest version of pip. Some older versions won't download cryptography wheels for some reason, causing
 # the ansible install to fail.
-pip3 install --user --upgrade pip --no-warn-script-location
+"${PIP}" install --upgrade pip --no-warn-script-location
 
 # Install ansible and python requirements needed by tasks used in these playbooks.
-pip3 install --user --upgrade -r "${DIR}"/requirements.txt --no-warn-script-location
+"${PIP}" install --upgrade -r "${DIR}"/requirements.txt --no-warn-script-location
 
 # Install playbook requirements from ansible galaxy.
-"$(python3 -m site --user-base)"/bin/ansible-galaxy install -r "${DIR}"/requirements.yml
+"${GALAXY}" install -r "${DIR}"/requirements.yml
 
 
 # Local Variables:

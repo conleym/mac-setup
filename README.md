@@ -22,8 +22,8 @@ python3 seems to be unable to verify ssl certificates without the full app).
 
 1. Run `init.sh`, which does the following:
     1. Accepts the Xcode license (may prompt for admin password)
-    1. Installs ansible (`pip3 install --user ansible`)
-    1. Installs task dependencies in `requirements.txt` (again, with `pip3 install --user`).
+    1. Installs ansible in a virtual environment (in the `.virtualenv` subdirectory)
+    1. Installs task dependencies in `requirements.txt` (in the virtual environment)
     1. Installs dependencies in `requirements.yml` using `ansible-galaxy`.
 1. Optionally grant users the ability to use sudo with `sudoers.sh -K`. See `sudoers-playbook.yml` for
    options.
@@ -96,9 +96,10 @@ steps to get properly set up is
 
 1. Run `init.sh` to install ansible for the default (`3.9`) python.
 1. Run `bootstrap.sh` to bootstrap using this installation. This installs a newer python version.
-1. Run `init.sh` again to install ansible for the new python.
+1. Remove (or rename) the `3.9` virtual environment in `.virtualenv`.
+1. Run `init.sh` again to recreate the virtual environment with the newer python version.
 1. (Optional) install the development dependencies by running `dev-init.sh`.
-1. Run `setup.sh` as needed. This will run the ansible installed for the newer python version.
+1. Run `setup.sh` as needed. This will now use the newer python virtual environment.
 
 ### Upgrading python.
 
@@ -106,7 +107,8 @@ To upgrade python:
 
 1. First, change the version installed in the bootstrap ports. 
 1. Run `bootstrap.sh` to install this version. 
-1. Run `init.sh` to install ansible, etc., for the new python version.
+1. Remove (or rename) the old virtual environment in `.virtualenv`.
+1. Run `init.sh` to create a new virtual environment using the new python version.
 1. After verifying that things work with the new python version, optionally remove the old version.
 
 

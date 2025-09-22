@@ -6,8 +6,11 @@
 SCRIPT="${(%):-%x}"
 DIR="$( cd "$( dirname "${SCRIPT}" )" >/dev/null 2>&1 && pwd )"
 
-# Assumes ansible was installed with pip3 --user (see init.sh).
-"$(python3 -m site --user-base)"/bin/ansible-playbook "${DIR}"/sudoers-playbook.yml "$@"
+source "${DIR}/common.sh"
+PLAYBOOK="$(_ansible_playbook_ "${DIR}")"
+
+# Run the sudoers playbook with any provided arguments.
+"${PLAYBOOK}" "${DIR}"/sudoers-playbook.yml "$@"
 
 
 # Local Variables:

@@ -5,7 +5,11 @@
 SCRIPT="${(%):-%x}"
 DIR="$( cd "$( dirname "${SCRIPT}" )" >/dev/null 2>&1 && pwd )"
 
-pip3 install --user --upgrade -r "${DIR}"/dev-requirements.txt --no-warn-script-location
+source "${DIR}/common.sh"
+
+PIP="$(_ansible_pip_ "${DIR}")"
+
+"${PIP}" install --upgrade -r "${DIR}"/dev-requirements.txt --no-warn-script-location
 
 
 # Local Variables:
