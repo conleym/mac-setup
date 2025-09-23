@@ -1,5 +1,8 @@
 # Install 1password.
-# https://downloads.1password.com/mac/1Password.zip
+# https://1password.com/downloads/mac
+# See also https://support.1password.com/deploy-1password/?mac
+#
+# This uses the .app installer, because the .pkg doesn't let you check for updates in-app.
 ---
 - set_fact:
     one_password_app: "/Applications/1Password.app"
@@ -18,21 +21,20 @@
         path: "{{ one_password_unarchive_dir }}"
         state: directory
         mode: u=rwx
-    - name: Download 1password
+    - name: Download the 1password Installer
       get_url:
         url: "https://downloads.1password.com/mac/1Password.zip"
         dest: "{{ one_password_local_zip }}"
         force: "{{ one_password_force_download }}"
         mode: u=rw
-    - name: Unzip 1password
+    - name: Unzip the 1password Installer
       unarchive:
         dest: "{{ one_password_unarchive_dir }}"
         src: "{{ one_password_local_zip }}"
     - name: Install 1password
       command: "open -a '{{ one_password_unarchive_dir }}/1Password Installer.app'"
-      creates: "{{ one_password_app }}"
 
-  always:
-    - file:
-        path: "{{ one_password_unarchive_dir }}"
-        state: absent
+#  always:
+#    - file:
+#        path: "{{ one_password_unarchive_dir }}"
+#        state: absent
