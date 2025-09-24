@@ -1,0 +1,17 @@
+---
+argument_specs:
+  main:
+    short_description: Install 1Password.
+    description: >-
+      Downloads and installs 1Password.
+    options:
+      one_password_force_download:
+        description: >-
+          If True, download 1Password, even if it's already been downloaded.
+        type: bool
+        required: false
+      one_password_force_install:
+        description: >-
+          If True, install 1Password CLI, even if it's already been installed.
+        type: bool
+        required: false
