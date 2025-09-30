@@ -1,5 +1,5 @@
 # Install Chrome.
-#  https://www.mozilla.org/en-US/firefox/new/
+#  https://www.google.com/chrome/
 ---
 - name: Download and install Chrome
   include_role:
