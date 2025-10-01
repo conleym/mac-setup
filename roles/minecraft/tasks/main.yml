@@ -1,0 +1,12 @@
+# Install Minecraft.
+#  https://www.minecraft.net/en-us/download
+---
+- name: Download and install Minecraft
+  include_role:
+    name: install_from_dmg
+  vars:
+    install_from_dmg_image_url: "https://launcher.mojang.com/download/Minecraft.dmg"
+    install_from_dmg_image_destination: "{{ downloads }}/Minecraft.dmg"
+    install_from_dmg_app_name: "Minecraft"
+    install_from_dmg_force_download: "{{ minecraft_force_download }}"
+    install_from_dmg_force_install: "{{ minecraft_force_install }}"
