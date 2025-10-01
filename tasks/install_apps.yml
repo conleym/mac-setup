@@ -67,6 +67,10 @@
   include_role:
     name: chrome
 
+- name: Install Minecraft
+  include_role:
+    name: minecraft
+
 - name: Download and install app from disk images
   include_role:
     name: install_from_dmg
