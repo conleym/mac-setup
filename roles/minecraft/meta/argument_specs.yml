@@ -1,0 +1,16 @@
+---
+argument_specs:
+  main:
+    short_description: Install Minecraft.
+    description: >-
+      Downloads and installs Minecraft.
+    options:
+      minecraft_force_download:
+        description: >-
+          If True, download Minecraft, even if it's already been downloaded.
+        type: bool
+        default: false
+      minecraft_force_install:
+        description: >-
+          If True, install Minecraft, even if it's already installed.
+        default: false
