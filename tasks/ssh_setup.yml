@@ -40,7 +40,8 @@
       changed_when: false  # Does not change anything. Just loads data into a variable.
       register: github_ssh_fingerprint
 
-    # Compare fingerprint to https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints
+    # Compare fingerprint to
+    # https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints
     - name: Fail if github ssh host key fingerprint doesn't match published value
       fail:
         msg: ssh key mismatch
@@ -50,5 +51,3 @@
       lineinfile:
         path: "{{ ssh_known_hosts_file }}"
         line: "{{ github_ssh_keyscan.stdout }}"
-
-# TODO ssh keys from secrets
