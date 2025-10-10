@@ -2,4 +2,5 @@
 emacs_bootstrap: false
 emacs_distclean: false
 emacs_extraclean: true
+emacs_git_version: "master"
 emacs_src_dir: "{{ '~/src/emacs' | expanduser }}"

@@ -23,6 +23,14 @@ argument_specs:
           
           Mutually exclusive with emacs_distclean.
         default: true
+      emacs_git_version:
+        description: >-
+          The git branch, tag, etc., to build.
+          
+          This can be any value accepted by the git task's 
+          [version](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/git_module.html#parameter-version)
+          argument.
+        type: "str"
       emacs_src_dir:
         description: >-
           Destination for the cloned emacs repository.

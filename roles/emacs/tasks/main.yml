@@ -4,6 +4,7 @@
     repo: https://github.com/emacs-mirror/emacs
     dest: "{{ emacs_src_dir }}"
     force: false # discard build-aux/config.{sub,guess}
+    version: "{{ emacs_git_version }}"
 
 - name: Run make distclean
   command: /opt/local/bin/gmake distclean
