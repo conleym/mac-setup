@@ -1,5 +1,6 @@
 ---
-hashicorp_terraform_version: "1.11.3"
+hashicorp_terraform_binary_directory: /usr/local/bin
 hashicorp_terraform_force_download: false
 hashicorp_terraform_force_install: false
-hashicorp_terraform_binary_directory: /usr/local/bin
+hashicorp_terraform_version: "1.11.3"
+
