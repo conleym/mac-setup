@@ -1,0 +1,4 @@
+---
+gpg_tools_version: "2023.3"
+gpg_tools_force_download: false
+gpg_tools_force_install: false
