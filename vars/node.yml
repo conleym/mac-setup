@@ -1,10 +1,15 @@
+# Node.js variables.
+---
+
+# Version of node to install and make the default (via nvm)
+setup_node_version: "22.12.0"
+
 # Node modules to install globally.
 #
 # This variable must contain a list of items, each of which has a name and optional version. The module with the given
 # name and version will be installed by the `node` role.
 #   name is required.
 #   version is optional. If omitted, the default is `latest`.
----
 setup_node_global_modules_to_install:
   aws-cdk:
   aws-cdk-local:
