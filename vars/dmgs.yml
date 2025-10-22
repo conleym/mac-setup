@@ -11,9 +11,4 @@ dmgs_to_download_and_install:
 #    dmg_url: https://www.dropbox.com/download?plat=mac
 #    install_method: Dropbox.app
 
-  - app_name: GPG Keychain
-    dmg_url: "https://releases.gpgtools.org/GPG_Suite-{{ gpgtools_version }}.dmg"
-    install_method: Install.pkg
-    path_to_stat: /usr/local/MacGPG2/bin/gpg
-
     # TODO parallels?
