@@ -1,7 +1,0 @@
-# Explicit software versions to install.
-# Remember to enclose versions ending in .0 in quotes. Probably best to just quote them all, really.
----
-gpgtools_version: "2023.3"
-
-# Version of node to install and make the default (via nvm)
-setup_node_version: "22.12.0"
