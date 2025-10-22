@@ -12,22 +12,22 @@ argument_specs:
         default: false
       emacs_distclean:
         description: >-
-          Whether to run make distclean before configuring emacs. 
-          
+          Whether to run make distclean before configuring emacs.
+
           Mutually exclusive with emacs_extraclean.
         type: bool
         default: false
       emacs_extraclean:
         description: >-
           Whether to run make extraclean before configuring emacs.
-          
+
           Mutually exclusive with emacs_distclean.
         default: true
       emacs_git_version:
         description: >-
           The git branch, tag, etc., to build.
-          
-          This can be any value accepted by the git task's 
+
+          This can be any value accepted by the git task's
           [version](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/git_module.html#parameter-version)
           argument.
         type: "str"

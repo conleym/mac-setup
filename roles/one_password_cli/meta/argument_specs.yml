@@ -23,7 +23,7 @@ argument_specs:
       one_password_cli_verify_gpg_signature:
         description: >-
           If True, verify the downloaded binary's GPG signature.
-          
+
           Defaults to false, because gpg can be quite flaky.
         required: false
         default: false
