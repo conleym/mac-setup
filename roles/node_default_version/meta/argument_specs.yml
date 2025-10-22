@@ -8,7 +8,7 @@ argument_specs:
       node_default_version_node_version:
         description: >-
           The version of node to make nvm's default.
-          
+
           Do not include the leading `v`. E.g., to make installed node version v20.0.0 the default, pass "20.0.0".
         type: str
         required: true

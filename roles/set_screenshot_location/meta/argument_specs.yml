@@ -8,9 +8,9 @@ argument_specs:
       set_screenshot_location_folder:
         description: >-
           Directory to which Screenshot.app will save screenshots.
-          
+
           This directory will be created if it doesn't exist. Permissions are granted only to the current user.
-          
+
           The default changes the macOS default (~/Desktop) to ~/Documents/Screenshots.
         type: path
         default: ~/Documents/Screenshots

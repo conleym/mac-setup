@@ -26,4 +26,3 @@ argument_specs:
         description: >-
           If True, install Postman, even if it's already installed.
         default: false
-
