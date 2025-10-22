@@ -21,7 +21,7 @@
     force: "{{ xquartz_force_download }}"
     mode: u=rw
 
-- when: not (throwaway.stat.executable is defined and throwaway.stat.executable) or xquartz_force_install
-  name: Install XQuartz
+- name: Install XQuartz
   command: "installer -pkg '{{ xquartz_pkg }}' -target /"
   become: true
+  when: not (throwaway.stat.executable is defined and throwaway.stat.executable) or xquartz_force_install
