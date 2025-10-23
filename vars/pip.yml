@@ -19,9 +19,6 @@ pip_user_packages_to_install:
   - chat-downloader
   - youtube-dl
 
-  ## Ansible development
-  - ansible-lint
-
   ## Other development.
   - localstack  # localstack CLI.
   - awscli-local # localstack AWS CLI wrapper.
