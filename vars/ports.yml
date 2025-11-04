@@ -45,6 +45,7 @@ ports_to_install:
     poppler:
     postgresql17:
     pstree:
+    redis:
     ripgrep:
     shellcheck:
 # siege fails to compile. The port seems to be unmaintained ATM.
@@ -60,9 +61,10 @@ ports_to_install:
     util-linux:
     watch:
     wget: +gnutls
+    # It's like jq, but for yaml.
+    yq:
     zsh:
     zsh-completions:
-    redis:
 
 # Mapping of port group to specific implementation to select.
 ports_to_select:
