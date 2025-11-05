@@ -10,9 +10,9 @@
     - vars/fonts.yml
     - vars/launchd.yml
     - vars/mas.yml
+    - vars/node.yml
     - vars/pip.yml
     - vars/ports.yml
-    - vars/versions.yml
   tasks:
     - import_tasks: tasks/preliminaries.yml
 
