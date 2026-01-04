@@ -2,4 +2,4 @@
 hashicorp_vault_binary_directory: /usr/local/bin
 hashicorp_vault_force_download: false
 hashicorp_vault_force_install: false
-hashicorp_vault_version: "1.19.0"
+hashicorp_vault_version: "1.21.1"
