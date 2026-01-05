@@ -7,6 +7,10 @@
   include_role:
     name: iterm2
 
+- name: Install the iTerm2 Browser Plugin
+  include_role:
+    name: iterm2_browser_plugin
+
 - name: Install xACT
   include_role:
     name: xact
