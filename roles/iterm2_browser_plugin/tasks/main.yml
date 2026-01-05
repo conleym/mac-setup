@@ -1,0 +1,24 @@
+# Download and install the iTerm2  browser plugin
+#  https://iterm2.com/browser-plugin.html
+---
+- stat:
+    path: "{{ iterm2_browser_plugin_app_path }}/{{ iterm2_browser_plugin_app_name }}.app"
+  register: throwaway
+  when: not(iterm2_browser_plugin_force_install)
+
+- when: iterm2_browser_plugin_force_install or not(throwaway.stat.isdir is defined and throwaway.stat.isdir)
+  block:
+    - name: Download iTerm2
+      get_url:
+        url: "https://iterm2.com/downloads/browser-plugin/iTermBrowserPlugin-{{ iterm2_browser_plugin_version }}.zip"
+        dest: "{{ downloads }}/iTermBrowserPlugin.zip"
+        force: "{{ iterm2_browser_plugin_force_download }}"
+        mode: u=rw
+
+    - name: Unzip iTerm2
+      unarchive:
+        dest: "{{ downloads }}"
+        src: "{{ downloads }}/iTermBrowserPlugin.zip"
+
+    - name: Install iTerm2
+      command: "mv {{ downloads }}/{{ iterm2_browser_plugin_app_name }}.app {{ iterm2_browser_plugin_app_path }}"
