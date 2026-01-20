@@ -18,3 +18,10 @@
 - name: Select cpanm 5.34
   command: "/opt/local/bin/port select cpanm cpanm-5.34"
   become: true
+
+# cpanm installs to local lib by default. It's much easier to use perl libs with this installed.
+- name: Install local::lib
+  macports:
+    name: p5.34-local-lib
+    state: present
+  become: true
