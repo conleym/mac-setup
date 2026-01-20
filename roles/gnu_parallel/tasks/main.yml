@@ -21,3 +21,10 @@
     path: "{{ throwaway }}/will-cite"
     state: touch
     mode: u=rw,g=r,o=r
+
+# Makes the --csv flag work.
+- name: Install Text::CSV
+  macports:
+    name: p5.34-text-csv
+    state: present
+  become: true

@@ -1,0 +1,27 @@
+# Install cpanm, which is a prerequisite for the cpanm module.
+# https://docs.ansible.com/projects/ansible/latest/collections/community/general/cpanm_module.html
+#
+# Requires macports as a prerequisite.
+---
+- name: Install cpanm
+  macports:
+    name: p5.34-app-cpanminus
+    state: present
+  become: true
+
+- name: Install cpanm-select
+  macports:
+    name: cpanm_select
+    state: present
+  become: true
+
+- name: Select cpanm 5.34
+  command: "/opt/local/bin/port select cpanm cpanm-5.34"
+  become: true
+
+# cpanm installs to local lib by default. It's much easier to use perl libs with this installed.
+- name: Install local::lib
+  macports:
+    name: p5.34-local-lib
+    state: present
+  become: true
