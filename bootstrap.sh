@@ -1,5 +1,6 @@
 #!/usr/bin/env zsh
 
+# shellcheck disable=SC2296
 SCRIPT="${(%):-%x}"
 DIR="$( cd "$( dirname "${SCRIPT}" )" >/dev/null 2>&1 && pwd )"
 

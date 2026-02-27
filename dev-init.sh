@@ -2,6 +2,7 @@
 
 # Install ansible development tools, etc., useful for those working on playbooks.
 
+# shellcheck disable=SC2296
 SCRIPT="${(%):-%x}"
 DIR="$( cd "$( dirname "${SCRIPT}" )" >/dev/null 2>&1 && pwd )"
 
