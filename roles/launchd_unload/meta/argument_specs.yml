@@ -8,7 +8,7 @@ argument_specs:
       launchd_unload_become:
         description: >-
           Whether to become when unloading.
-        type: boolean
+        type: bool
         default: false
       launchd_unload_label:
         description: >-
