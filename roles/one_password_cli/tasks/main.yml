@@ -11,7 +11,7 @@
 
 - stat:
     path: "{{ one_password_cli_binary_directory }}/op"
-  register: throwaway
+  register: one_password_cli_stat
 
 - name: Download 1password CLI
   get_url:
@@ -20,7 +20,9 @@
     force: "{{ one_password_cli_force_download }}"
     mode: u=rw
 
-- when: one_password_cli_force_install or not (throwaway.stat.executable is defined and throwaway.stat.executable)
+- when: >
+    one_password_cli_force_install
+      or not (one_password_cli_stat.stat.executable is defined and one_password_cli_stat.stat.executable)
   block:
     - name: Create directory for unarchive
       tempfile:
@@ -53,4 +55,4 @@
 
     - name: Install 1password CLI
       command: "mv {{ one_password_cli_uncompressed }}/op {{ one_password_cli_binary_directory }}"
-      become: yes
+      become: true

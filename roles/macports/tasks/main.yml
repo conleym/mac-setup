@@ -3,10 +3,10 @@
 ---
 - stat:
     path: /opt/local/bin/port
-  register: throwaway
+  register: macports_stat
   when: not macports_force_install
 
-- when: macports_force_install or not (throwaway.stat.executable is defined and throwaway.stat.executable)
+- when: macports_force_install or not (macports_stat.stat.executable is defined and macports_stat.stat.executable)
   block:
     - set_fact:
         macports_macos_version: "{{ macos_major_minor_version }}"

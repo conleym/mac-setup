@@ -4,11 +4,11 @@
 ---
 - stat:
     path: /usr/local/bin/ngrok
-  register: throwaway
+  register: ngrok_stat
   when: not ngrok_force_install
 
 
-- when: ngrok_force_install or not (throwaway.stat.executable is defined and throwaway.stat.executable)
+- when: ngrok_force_install or not (ngrok_stat.stat.executable is defined and ngrok_stat.stat.executable)
   block:
     - set_fact:
         ngrok_zip_arch: "{{ 'amd64' if (ansible_machine == 'x86_64') else ansible_machine }}"

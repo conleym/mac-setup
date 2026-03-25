@@ -33,8 +33,8 @@
     - include_role:
         name: mount_dmg
       vars:
-        path: "{{ install_from_dmg_image_destination }}"
-        mountpoint: "{{ install_from_dmg_app_name }}"
+        mount_dmg_path: "{{ install_from_dmg_image_destination }}"
+        mount_dmg_mountpoint: "{{ install_from_dmg_app_name }}"
 
       # TODO you can't copy over an existing app, so force reinstall will not work with this method.
       #   Removing the app first is an option, but that will lose some customizations.
@@ -55,4 +55,4 @@
     - include_role:
         name: unmount_dmg
       vars:
-        mountpoint: "{{ install_from_dmg_app_name }}"
+        unmount_dmg_mountpoint: "{{ install_from_dmg_app_name }}"

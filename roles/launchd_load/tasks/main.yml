@@ -5,10 +5,10 @@
 - name: Check for job
   command: "launchctl list {{ launchd_load_label }}"
   become: "{{ launchd_load_become }}"
-  register: throwaway
+  register: launchd_load_check_result
   ignore_errors: true
 
 - name: Load job
   command: "launchctl load -w {{ launchd_load_plist }}"
   become: "{{ launchd_load_become }}"
-  when: throwaway.rc != 0
+  when: launchd_load_check_result.rc != 0

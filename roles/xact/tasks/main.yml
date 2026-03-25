@@ -3,14 +3,14 @@
 ---
 - stat:
     path: "{{ xact_app_path }}/{{ xact_app_name }}.app"
-  register: throwaway
+  register: xact_stat
   when: not xact_force_install
 
 - set_fact:
     xact_local_zip: "{{ downloads }}/xact.zip"
     xact_unarchive_dir: "{{ downloads }}/xACT"
 
-- when: xact_force_install or not (throwaway.stat.isdir is defined and throwaway.stat.isdir)
+- when: xact_force_install or not (xact_stat.stat.isdir is defined and xact_stat.stat.isdir)
   block:
     - file:
         path: "{{ xact_unarchive_dir }}"
