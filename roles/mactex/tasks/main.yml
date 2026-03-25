@@ -2,10 +2,10 @@
 ---
 - stat:
     path: /usr/local/texlive
-  register: throwaway
+  register: mactex_stat
   when: not mactex_force_install
 
-- when: mactex_force_install or not (throwaway.stat.isdir is defined and throwaway.stat.isdir)
+- when: mactex_force_install or not (mactex_stat.stat.isdir is defined and mactex_stat.stat.isdir)
   block:
     - name: Download MacTeX
       get_url:

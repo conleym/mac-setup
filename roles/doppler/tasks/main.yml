@@ -5,7 +5,7 @@
 ---
 - stat:
     path: "{{ doppler_binary_directory }}/doppler"
-  register: throwaway
+  register: doppler_stat
 
 - set_fact:
     doppler_download_scheme_and_host: "https://cli.doppler.com"
@@ -44,7 +44,7 @@
     force: "{{ doppler_force_download }}"
     mode: u=rw
 
-- when: doppler_force_install or not (throwaway.stat.executable is defined and throwaway.stat.executable)
+- when: doppler_force_install or not (doppler_stat.stat.executable is defined and doppler_stat.stat.executable)
   block:
     - name: Verify GPG Signature
       command: gpgv --keyring "{{ doppler_pubkey }}" "{{ doppler_signature }}" "{{ doppler_tar_gz }}"
