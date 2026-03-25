@@ -20,8 +20,5 @@ pip_user_packages_to_install:
   - youtube-dl
 
   ## Other development.
-  - localstack  # localstack CLI.
-  - awscli-local # localstack AWS CLI wrapper.
-  - terraform-local # localstack Terraform CLI wrapper.
   - dotenv
   - black

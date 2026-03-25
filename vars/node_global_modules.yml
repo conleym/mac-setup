@@ -6,7 +6,5 @@
 #   version is optional. If omitted, the default is `latest`.
 ---
 setup_node_global_modules_to_install:
-  aws-cdk:
-  aws-cdk-local:
   prettier:
   pnpm:
