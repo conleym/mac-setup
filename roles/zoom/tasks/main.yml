@@ -7,7 +7,7 @@
   when: not zoom_force_install
 
 - set_fact:
-    zoom_pkg_arch: "{{ '' if (ansible_machine == 'x86_64') else '?archType=arm64' }}"
+    zoom_pkg_arch: "{{ '' if (ansible_facts['machine'] == 'x86_64') else '?archType=arm64' }}"
 
 - when: zoom_force_install or not (zoom_stat.stat.isdir is defined and zoom_stat.stat.isdir)
   block:
