@@ -4,7 +4,7 @@
 #   https://developer.1password.com/docs/cli/get-started/
 ---
 - set_fact:
-    one_password_cli_arch: "{{ 'amd64' if (ansible_machine == 'x86_64') else ansible_machine }}"
+    one_password_cli_arch: "{{ 'amd64' if (ansible_facts['machine'] == 'x86_64') else ansible_facts['machine'] }}"
     one_password_cli_zip: "{{ downloads }}/1password_cli.zip"
 - set_fact:
     one_password_cli_url: "https://cache.agilebits.com/dist/1P/op2/pkg/v{{ one_password_cli_version }}/op_darwin_{{ one_password_cli_arch }}_v{{ one_password_cli_version }}.zip"

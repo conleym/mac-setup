@@ -4,7 +4,7 @@
   register: aws_sam_cli_stat
 
 - set_fact:
-    aws_sam_cli_package_name: "aws-sam-cli-macos-{{ ansible_machine }}.pkg"
+    aws_sam_cli_package_name: "aws-sam-cli-macos-{{ ansible_facts['machine'] }}.pkg"
 
 - name: Download AWS SAM CLI installer
   get_url:
