@@ -11,7 +11,7 @@
 - when: ngrok_force_install or not (ngrok_stat.stat.executable is defined and ngrok_stat.stat.executable)
   block:
     - set_fact:
-        ngrok_zip_arch: "{{ 'amd64' if (ansible_machine == 'x86_64') else ansible_machine }}"
+        ngrok_zip_arch: "{{ 'amd64' if (ansible_facts['machine'] == 'x86_64') else ansible_facts['machine'] }}"
 
     - name: Download ngrok
       get_url:

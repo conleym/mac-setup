@@ -9,7 +9,7 @@
 
 - set_fact:
     doppler_download_scheme_and_host: "https://cli.doppler.com"
-    doppler_download_query_params: "os=Darwin&arch={{ ansible_machine }}&format=tar"
+    doppler_download_query_params: "os=Darwin&arch={{ ansible_facts['machine'] }}&format=tar"
     doppler_download_dir: "{{ downloads }}/doppler"
 
 - set_fact:
