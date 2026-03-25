@@ -1,21 +1,16 @@
 # Determine macOS version.
 #
-# Sets the following facts:
-#   macos_version: the full version number (e.g., 10.15.7).
-#   macos_major_minor_version: the major and minor version number (e.g., 10.15).
-#   macos_major_version: the major version number (e.g., 10).
-#   macos_marketing_version: the marketing version (e.g., High Sierra, Catalina).
+# Sets the `macos_version_info` fact. It is a dict with the following fields:
+#   full: the full version number (e.g., 10.15.7).
+#   major_minor: the major and minor version number (e.g., 10.15).
+#   major: the major version number (e.g., 10).
+#   marketing: the marketing version (e.g., High Sierra, Catalina).
 #
 # See https://unix.stackexchange.com/questions/234104/get-osx-codename-from-command-line
 ---
 - name: Determine OS version
   command: sw_vers -productVersion
-  register: macos_version_throwaway
-
-- set_fact:
-    macos_version: "{{ macos_version_throwaway.stdout }}"
-    macos_major_minor_version: "{{ macos_version_throwaway.stdout | regex_replace('^(\\d+\\.\\d+).*', '\\1') }}"
-    macos_major_version: "{{ macos_version_throwaway.stdout | regex_replace('(^\\d+)\\..*', '\\1') }}"
+  register: macos_version_sw_vers
 
 - name: Determine marketing version
   shell: >-
@@ -23,7 +18,11 @@
     awk '/SOFTWARE LICENSE AGREEMENT FOR (macOS|OS X)/' '/System/Library/CoreServices/Setup Assistant.app/Contents/Resources/en.lproj/OSXSoftwareLicense.rtf' |
     awk -F '(macOS|OS X)' '{ print $NF }' |
     awk '{ gsub(/^[^a-zA-Z]*|[^a-zA-Z]*$/, ""); print }'
-  register: macos_version_throwaway
+  register: macos_version_marketing
 
 - set_fact:
-    macos_marketing_version: "{{ macos_version_throwaway.stdout }}"
+    macos_version_info:
+      full: "{{ macos_version_sw_vers.stdout }}"
+      major_minor: "{{ macos_version_sw_vers.stdout | regex_replace('^(\\d+\\.\\d+).*', '\\1') }}"
+      major: "{{ macos_version_sw_vers.stdout | regex_replace('(^\\d+)\\..*', '\\1') }}"
+      marketing: "{{ macos_version_marketing.stdout }}"
