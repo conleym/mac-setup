@@ -20,7 +20,9 @@
     force: "{{ one_password_cli_force_download }}"
     mode: u=rw
 
-- when: one_password_cli_force_install or not (one_password_cli_stat.stat.executable is defined and one_password_cli_stat.stat.executable)
+- when: >
+    one_password_cli_force_install
+      or not (one_password_cli_stat.stat.executable is defined and one_password_cli_stat.stat.executable)
   block:
     - name: Create directory for unarchive
       tempfile:
