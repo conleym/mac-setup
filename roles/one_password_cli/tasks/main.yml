@@ -53,4 +53,4 @@
 
     - name: Install 1password CLI
       command: "mv {{ one_password_cli_uncompressed }}/op {{ one_password_cli_binary_directory }}"
-      become: yes
+      become: true
