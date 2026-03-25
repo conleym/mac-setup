@@ -8,18 +8,24 @@
 
 - when: macports_force_install or not (macports_stat.stat.executable is defined and macports_stat.stat.executable)
   block:
+    # MacPorts for older OS versions uses the major.minor versioning scheme.
     - set_fact:
-        macports_macos_version: "{{ macos_major_minor_version }}"
-      when: macos_major_version == "10"
+        macports_macos_version: "{{ macos_version_info.major_minor }}"
+      when: macos_version_info.major == "10"
 
-    # Starting with Big Sur, macOS major version numbers get bumped, and MacPorts package files are named with only the major version.
+    # Starting with Big Sur, macOS major version numbers get bumped, and MacPorts package files are named with only the
+    # major version.
     - set_fact:
-        macports_macos_version: "{{ macos_major_version }}"
-      when: macos_major_version != "10"
+        macports_macos_version: "{{ macos_version_info.major }}"
+      when: macos_version_info.major != "10"
 
     - set_fact:
         # Marketing version has no spaces in package name, e.g., Big Sur -> BigSur.
-        macports_macos_package_name: "MacPorts-{{ macports_version }}-{{ macports_macos_version }}-{{ macos_marketing_version | regex_replace('\\s', '') }}.pkg"
+        macports_marketing_version: "{{ macos_version_info.marketing | regex_replace('\\s', '') }}"
+
+    - set_fact:
+        macports_macos_package_name:
+          "MacPorts-{{ macports_version }}-{{ macports_macos_version }}-{{ macports_marketing_version }}.pkg"
 
     - name: Download MacPorts
       get_url:
