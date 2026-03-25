@@ -1,3 +1,3 @@
 ---
 - name: Unmount dmg
-  command: "hdiutil detach '/Volumes/{{ mountpoint }}'"
+  command: "hdiutil detach '/Volumes/{{ unmount_dmg_mountpoint }}'"

@@ -4,10 +4,10 @@
 - name: Create temporary directory
   tempfile:
     state: directory
-  register: throwaway
+  register: install_fonts_from_archive_throwaway
 
 - set_fact:
-    install_fonts_from_archive_tempdir: "{{ throwaway.path }}"
+    install_fonts_from_archive_tempdir: "{{ install_fonts_from_archive_throwaway.path }}"
 
 - block:
     - name: Download archive

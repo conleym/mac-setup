@@ -5,10 +5,10 @@
 - name: Check for job
   command: "launchctl list {{ launchd_unload_label }}"
   become: "{{ launchd_unload_become }}"
-  register: launchctl_check_result
+  register: launchd_unload_check_result
   ignore_errors: true
 
 - name: Unload job
   command: "launchctl unload -w {{ launchd_unload_plist }}"
   become: "{{ launchd_unload_become }}"
-  when: launchctl_check_result.rc != 0
+  when: launchd_unload_check_result.rc != 0

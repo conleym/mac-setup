@@ -1,7 +1,7 @@
 ---
 - stat:
     path: /usr/local/bin/sam
-  register: throwaway
+  register: aws_sam_cli_stat
 
 - set_fact:
     aws_sam_cli_package_name: "aws-sam-cli-macos-{{ ansible_machine }}.pkg"
@@ -16,4 +16,4 @@
 - name: Install AWS SAM CLI
   command: "installer -pkg {{ downloads }}/{{ aws_sam_cli_package_name }} -target /"
   become: true
-  when: aws_sam_cli_force_install or not (throwaway.stat.executable is defined and throwaway.stat.executable)
+  when: aws_sam_cli_force_install or not (aws_sam_cli_stat.stat.executable is defined and aws_sam_cli_stat.stat.executable)

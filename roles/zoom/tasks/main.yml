@@ -3,13 +3,13 @@
 ---
 - stat:
     path: /Applications/zoom.us.app
-  register: throwaway
+  register: zoom_stat
   when: not zoom_force_install
 
 - set_fact:
     zoom_pkg_arch: "{{ '' if (ansible_machine == 'x86_64') else '?archType=arm64' }}"
 
-- when: zoom_force_install or not (throwaway.stat.isdir is defined and throwaway.stat.isdir)
+- when: zoom_force_install or not (zoom_stat.stat.isdir is defined and zoom_stat.stat.isdir)
   block:
     - name: Download Zoom package
       get_url:

@@ -7,18 +7,18 @@
   become: true
 
 - set_fact:
-    throwaway: "{{ '~/.parallel' | expanduser }}"
+    gnu_parallel_config_dir: "{{ '~/.parallel' | expanduser }}"
 
 - name: Ensure configuration directory exists
   file:
-    path: "{{ throwaway }}"
+    path: "{{ gnu_parallel_config_dir }}"
     state: directory
     mode: u=rwx,g=rx,o=rx
 
   # I'm never publishing a paper...
 - name: Silence citation warning
   file:
-    path: "{{ throwaway }}/will-cite"
+    path: "{{ gnu_parallel_config_dir }}/will-cite"
     state: touch
     mode: u=rw,g=r,o=r
 
