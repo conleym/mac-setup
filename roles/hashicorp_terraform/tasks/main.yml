@@ -9,7 +9,9 @@
 - when: hashicorp_terraform_force_install or not hashicorp_terraform_stat.stat.exists
   block:
     - set_fact:
-        hashicorp_terraform_arch: "{{ 'amd64' if (ansible_machine == 'x86_64') else ansible_machine }}"
+        hashicorp_terraform_arch: >-
+          {{ 'amd64' if (ansible_facts['machine'] == 'x86_64') else ansible_facts['machine'] }}
+
     - name: Download terraform
       get_url:
         url: "https://releases.hashicorp.com/terraform/{{ hashicorp_terraform_version }}/terraform_{{ hashicorp_terraform_version }}_darwin_{{ hashicorp_terraform_arch }}.zip"

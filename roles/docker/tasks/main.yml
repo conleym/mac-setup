@@ -1,7 +1,7 @@
 # Install Docker Desktop
 ---
 - set_fact:
-    docker_dmg_arch: "{{ 'amd64' if (ansible_machine == 'x86_64') else ansible_machine }}"
+    docker_dmg_arch: "{{ 'amd64' if (ansible_facts['machine'] == 'x86_64') else ansible_facts['machine'] }}"
 
 - name: Download and install Docker
   include_role:
