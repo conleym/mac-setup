@@ -3,10 +3,10 @@
 ---
 - stat:
     path: /Applications/Mozilla VPN.app
-  register: throwaway
+  register: mozilla_vpn_stat
   when: not mozilla_vpn_force_install
 
-- when: mozilla_vpn_force_install or not (throwaway.stat.isdir is defined and throwaway.stat.isdir)
+- when: mozilla_vpn_force_install or not (mozilla_vpn_stat.stat.isdir is defined and mozilla_vpn_stat.stat.isdir)
   block:
     - name: Download Mozilla VPN package
       get_url:

@@ -3,10 +3,10 @@
 ---
 - stat:
     path: /Applications/R.app
-  register: throwaway
+  register: r_app_stat
   when: not r_app_force_install
 
-- when: r_app_force_install or not (throwaway.stat.isdir is defined and throwaway.stat.isdir)
+- when: r_app_force_install or not (r_app_stat.stat.isdir is defined and r_app_stat.stat.isdir)
   block:
     - name: Download R package
       get_url:

@@ -9,10 +9,10 @@
 
 - stat:
     path: "{{ one_password_app }}"
-  register: throwaway
+  register: one_password_stat
   when: not one_password_force_install
 
-- when: one_password_force_install or not(throwaway.stat.isdir is defined and throwaway.stat.isdir)
+- when: one_password_force_install or not(one_password_stat.stat.isdir is defined and one_password_stat.stat.isdir)
   block:
     - set_fact:
         one_password_local_zip: "{{ downloads }}/1password.zip"

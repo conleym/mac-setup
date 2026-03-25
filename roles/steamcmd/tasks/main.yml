@@ -6,10 +6,10 @@
 
 - stat:
     path: "{{ steamcmd_script }}"
-  register: throwaway
+  register: steamcmd_stat
   when: not steamcmd_force_install
 
-- when: steamcmd_force_install or not throwaway.stat.exists
+- when: steamcmd_force_install or not steamcmd_stat.stat.exists
   block:
     - name: Download steamcmd
       get_url:

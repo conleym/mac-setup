@@ -3,10 +3,10 @@
 ---
 - stat:
     path: "{{ iterm2_browser_plugin_app_path }}/{{ iterm2_browser_plugin_app_name }}.app"
-  register: throwaway
+  register: iterm2_browser_plugin_stat
   when: not(iterm2_browser_plugin_force_install)
 
-- when: iterm2_browser_plugin_force_install or not(throwaway.stat.isdir is defined and throwaway.stat.isdir)
+- when: iterm2_browser_plugin_force_install or not(iterm2_browser_plugin_stat.stat.isdir is defined and iterm2_browser_plugin_stat.stat.isdir)
   block:
     - name: Download iTerm2
       get_url:

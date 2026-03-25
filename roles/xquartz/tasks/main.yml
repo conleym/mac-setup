@@ -11,7 +11,7 @@
 
 - stat:
     path: "/usr/X11/bin/Xquartz"
-  register: throwaway
+  register: xquartz_stat
   when: not xquartz_force_install
 
 - name: Download XQuartz
@@ -24,4 +24,4 @@
 - name: Install XQuartz
   command: "installer -pkg '{{ xquartz_pkg }}' -target /"
   become: true
-  when: not (throwaway.stat.executable is defined and throwaway.stat.executable) or xquartz_force_install
+  when: not (xquartz_stat.stat.executable is defined and xquartz_stat.stat.executable) or xquartz_force_install
