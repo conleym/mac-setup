@@ -11,10 +11,6 @@
   include_role:
     name: iterm2_browser_plugin
 
-- name: Install xACT
-  include_role:
-    name: xact
-
 - name: Install Terraform
   include_role:
     name: hashicorp_terraform
