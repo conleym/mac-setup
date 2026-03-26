@@ -15,10 +15,6 @@
   include_role:
     name: hashicorp_terraform
 
-- name: Install steamcmd
-  include_role:
-    name: steamcmd
-
 - name: Install ngrok
   include_role:
     name: ngrok
