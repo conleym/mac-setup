@@ -1,2 +1,4 @@
 ---
 visualvm_version: "2.2"
+visualvm_force_download: false
+visualvm_force_install: false
