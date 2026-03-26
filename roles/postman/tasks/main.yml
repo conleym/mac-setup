@@ -5,11 +5,19 @@
   register: postman_stat
   when: not postman_force_install
 
+- set_fact:
+    postman_url: "https://dl.pstmn.io/download/latest/osx_arm64"
+  when: ansible_facts['machine'] == 'arm64'
+
+- set_fact:
+    postman_url: "https://dl.pstmn.io/download/latest/osx_64"
+  when: ansible_facts['machine'] == 'x86_64'
+
 - when: postman_force_install or not (postman_stat.stat.isdir is defined and postman_stat.stat.isdir)
   block:
     - name: Download Postman
       get_url:
-        url: "https://dl.pstmn.io/download/latest/osx"
+        url: "{{ postman_url }}"
         dest: "{{ downloads }}/postman.zip"
         force: "{{ postman_force_download }}"
         mode: u=rw
