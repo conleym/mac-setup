@@ -1,0 +1,19 @@
+# Install gpg tools
+#  https://gpgtools.org/
+#
+# I don't really see the need for gpg in 2025, and the developers of this haven't really been keeping it up to date
+# in any meaningful way, so...not sure how much more effort will go into this role.
+---
+- name: Download and install GPG Tools
+  include_role:
+    name: install_from_dmg
+  vars:
+    install_from_dmg_app_name: "GPG Keychain"
+    install_from_dmg_image_url: "https://releases.gpgtools.org/GPG_Suite-{{ gpg_tools_version }}.dmg"
+    install_from_dmg_image_destination: "{{ downloads }}/GPGTools.dmg"
+    install_from_dmg_install_method: "Install.pkg"
+    install_from_dmg_path_to_stat: "/usr/local/MacGPG2/bin/gpg"
+    install_from_dmg_force_download: "{{ gpg_tools_force_download }}"
+    install_from_dmg_force_install: "{{ gpg_tools_force_install }}"
+
+# TODO configure Mail.app integration (optionally)
