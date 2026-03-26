@@ -18,6 +18,7 @@
         mode: u=rwx
 
     - name: Download xACT
+      # This cert is self-signed, so not really safe.
       get_url:
         url: "https://xact.scottcbrown.org/xACT{{ xact_version }}.zip"
         dest: "{{ xact_local_zip }}"
