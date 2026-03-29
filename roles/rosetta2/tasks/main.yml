@@ -1,0 +1,6 @@
+# Install Rosetta 2 (Intel -> ARM translation)
+#
+# See https://osxdaily.com/2020/12/04/how-install-rosetta-2-apple-silicon-mac/
+---
+- name: Install Rosetta 2
+  command: /usr/sbin/softwareupdate --install-rosetta --agree-to-license
