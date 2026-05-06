@@ -13,7 +13,6 @@ pip_user_packages_to_install:
   ## Start with the basics (upgrading already installed versions if necessary)
   - pip
   - virtualenv
-  - virtualenvwrapper
 
   ## Other development.
   - dotenv
