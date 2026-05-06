@@ -15,10 +15,6 @@ pip_user_packages_to_install:
   - virtualenv
   - virtualenvwrapper
 
-  # Download stuff from YouTube.
-  - chat-downloader
-  - youtube-dl
-
   ## Other development.
   - dotenv
   - black
