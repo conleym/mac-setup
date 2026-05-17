@@ -11,8 +11,10 @@ DIR="$( cd "$( dirname "${SCRIPT}" )" >/dev/null 2>&1 && pwd )"
 # defined here.
 export PATH=/opt/local/bin:/opt/local/sbin:"${PATH}"
 
-# Assumes ansible was installed with pip3 --user (see init.sh).
-"$(python3 -m site --user-base)"/bin/ansible-playbook "${DIR}"/setup-playbook.yml "$@"
+source "${DIR}/common.sh"
+
+# Run the setup playbook with any provided arguments.
+_run_ansible_playbook_ "${DIR}" setup-playbook.yml "$@"
 
 
 # Local Variables:

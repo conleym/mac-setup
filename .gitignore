@@ -1,2 +1,3 @@
 # ANSIBLE_HOME, if it's set here.
 .ansible/
+.virtualenv/
