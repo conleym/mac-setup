@@ -2,7 +2,7 @@
 ---
 
 # Version of node to install and make the default (via nvm)
-setup_node_version: "22.12.0"
+setup_node_version: "22.18.0"
 
 # Node modules to install globally.
 #
