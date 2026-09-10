@@ -14,6 +14,21 @@
                   <Item>
                     <option name="path" value="vars/node.yml" />
                   </Item>
+                  <Item>
+                    <option name="path" value="vars/mas.yml" />
+                  </Item>
+                  <Item>
+                    <option name="path" value="vars/launchd.yml" />
+                  </Item>
+                  <Item>
+                    <option name="path" value="vars/fonts.yml" />
+                  </Item>
+                  <Item>
+                    <option name="path" value="vars/pip.yml" />
+                  </Item>
+                  <Item>
+                    <option name="path" value="vars/ports.yml" />
+                  </Item>
                 </list>
               </option>
             </SchemaInfo>
