@@ -2,4 +2,4 @@
 zoom_force_download: false
 zoom_force_install: false
 # In the about screen, this is rendered as, e.g., 6.6.2 (65462).
-zoom_version: "6.7.2.72191"
+zoom_version: "7.1.5.84650"
