@@ -15,13 +15,6 @@ copy to avoid issues. The downside is that this will remove the app from whereve
 
 This probably requires a fix for [TBX-653](https://youtrack.jetbrains.com/issue/TBX-653).
 
-## GPG tools
-
-GPG tools on requires some manual setup. Open Mail > Preferences > General, click on "Manage Plug-ins...",
-and check the box next to the GPGMailLoader plugin.
-
-Can we automate that away?
-
 ## Other stuff
 
 * Fonts.
