@@ -19,6 +19,46 @@
             </SchemaInfo>
           </value>
         </entry>
+        <entry key="Ansible Tasks File">
+          <value>
+            <SchemaInfo>
+              <option name="name" value="Ansible Tasks File" />
+              <option name="relativePathToSchema" value="https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json#/$defs/tasks" />
+              <option name="applicationDefined" value="true" />
+              <option name="patterns">
+                <list>
+                  <Item>
+                    <option name="path" value="tasks/install_bootstrap_ports.yml" />
+                  </Item>
+                  <Item>
+                    <option name="path" value="tasks/customize.yml" />
+                  </Item>
+                  <Item>
+                    <option name="path" value="tasks/install_apps.yml" />
+                  </Item>
+                  <Item>
+                    <option name="path" value="tasks/install_node.yml" />
+                  </Item>
+                  <Item>
+                    <option name="path" value="tasks/install_ports.yml" />
+                  </Item>
+                  <Item>
+                    <option name="path" value="tasks/launchd_load.yml" />
+                  </Item>
+                  <Item>
+                    <option name="path" value="tasks/pip.yml" />
+                  </Item>
+                  <Item>
+                    <option name="path" value="tasks/preliminaries.yml" />
+                  </Item>
+                  <Item>
+                    <option name="path" value="tasks/ssh_setup.yml" />
+                  </Item>
+                </list>
+              </option>
+            </SchemaInfo>
+          </value>
+        </entry>
         <entry key="Ansible Vars File">
           <value>
             <SchemaInfo>
