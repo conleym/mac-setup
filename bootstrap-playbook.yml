@@ -28,6 +28,12 @@
       tags:
         - always
 
+    # This is now required to build openjdk.
+    - name: Install the Xcode MetalToolchain component
+      command: /usr/bin/xcodebuild -downloadComponent MetalToolchain
+      tags:
+        - always
+
     # Ensure MacPorts is installed, and that the ports required by setup-playbook are installed.
 
     - name: Install MacPorts
